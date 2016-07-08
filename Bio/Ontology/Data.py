@@ -96,12 +96,11 @@ class OntologyGraph(DiGraph):
     def to_networkx(self, annotations = None):
         """
         Exports OntologyGraph to networkx DiGraph object
-        
+
         Parameters:
         - annotations - (optional) annotations from term to list of genes in
             form of a dictionary {"term_id" : ['gene_a', ...]}
         """
-        
         try:
             import networkx as nx
         except ImportError:
@@ -122,7 +121,10 @@ class OntologyGraph(DiGraph):
                         nxgraph.node[k]['annotated_genes'] = v
             # Add rest of the data
             nxgraph.graph['typedefs'] = self.typedefs
-            nxgraph.graph['synonyms'] = self.synonyms
+            synonyms_dc = {}
+            for k, v in self.synonyms.items():
+                synonyms_dc[k] = v.label
+            nxgraph.graph['synonyms'] = synonyms_dc
             
             return nxgraph
             
