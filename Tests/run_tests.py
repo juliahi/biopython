@@ -20,13 +20,11 @@ Command line options:
 <test_name>   -- supply the name of one (or more) tests to be run.
                  The .py file extension is optional.
 doctest       -- run the docstring tests.
+
 By default, all tests are run.
 """
 
-# The default verbosity (not verbose)
 from __future__ import print_function
-
-VERBOSITY = 0
 
 # standard modules
 import sys
@@ -45,18 +43,18 @@ from io import BytesIO
 # Biopython is installed, so we can't use this:
 # from Bio._py3k import StringIO
 try:
-    from StringIO import StringIO # Python 2 (byte strings)
+    from StringIO import StringIO  # Python 2 (byte strings)
 except ImportError:
-    from io import StringIO # Python 3 (unicode strings)
+    from io import StringIO  # Python 3 (unicode strings)
 
 
 def is_pypy():
     import platform
     try:
-        if platform.python_implementation()=='PyPy':
+        if platform.python_implementation() == 'PyPy':
             return True
     except AttributeError:
-        #New in Python 2.6, not in Jython yet either
+        # New in Python 2.6, not in Jython yet either
         pass
     return False
 
@@ -71,67 +69,84 @@ def is_numpy():
     except ImportError:
         return False
 
+# The default verbosity (not verbose)
+VERBOSITY = 0
+
 # This is the list of modules containing docstring tests.
 # If you develop docstring tests for other modules, please add
 # those modules here. Please sort names alphabetically.
 DOCTEST_MODULES = [
-                   "Bio.Align",
-                   "Bio.Align.Generic",
-                   "Bio.Align.Applications._Clustalw",
-                   "Bio.Align.Applications._ClustalOmega",
-                   "Bio.Align.Applications._MSAProbs",
-                   "Bio.Align.Applications._Mafft",
-                   "Bio.Align.Applications._Muscle",
-                   "Bio.Align.Applications._Probcons",
-                   "Bio.Align.Applications._Prank",
-                   "Bio.Align.Applications._TCoffee",
-                   "Bio.AlignIO",
-                   "Bio.AlignIO.StockholmIO",
-                   "Bio.Alphabet",
-                   "Bio.Application",
-                   "Bio.bgzf",
-                   "Bio.Blast.Applications",
-                   "Bio.Emboss.Applications",
-                   "Bio.GenBank",
-                   "Bio.KEGG.Compound",
-                   "Bio.KEGG.Enzyme",
-                   "Bio.Motif",
-                   "Bio.motifs",
-                   "Bio.motifs.applications._alignace",
-                   "Bio.motifs.applications._xxmotif",
-                   "Bio.pairwise2",
-                   "Bio.Phylo.Applications._Raxml",
-                   "Bio.SearchIO",
-                   "Bio.SearchIO._model",
-                   "Bio.SearchIO._model.query",
-                   "Bio.SearchIO._model.hit",
-                   "Bio.SearchIO._model.hsp",
-                   "Bio.SearchIO.BlastIO",
-                   "Bio.SearchIO.HmmerIO",
-                   "Bio.SearchIO.FastaIO",
-                   "Bio.SearchIO.BlatIO",
-                   "Bio.SearchIO.ExonerateIO",
-                   "Bio.Seq",
-                   "Bio.SeqIO",
-                   "Bio.SeqIO.FastaIO",
-                   "Bio.SeqIO.AceIO",
-                   "Bio.SeqIO.PhdIO",
-                   "Bio.SeqIO.QualityIO",
-                   "Bio.SeqIO.SffIO",
-                   "Bio.SeqFeature",
-                   "Bio.SeqRecord",
-                   "Bio.SeqUtils",
-                   "Bio.SeqUtils.MeltingTemp",
-                   "Bio.Sequencing.Applications._Novoalign",
-                   "Bio.Sequencing.Applications._bwa",
-                   "Bio.Wise",
-                   "Bio.Wise.psw",
-                  ]
-#Silently ignore any doctests for modules requiring numpy!
+    "Bio.Align",
+    "Bio.Align.Generic",
+    "Bio.Align.Applications._Clustalw",
+    "Bio.Align.Applications._ClustalOmega",
+    "Bio.Align.Applications._Dialign",
+    "Bio.Align.Applications._MSAProbs",
+    "Bio.Align.Applications._Mafft",
+    "Bio.Align.Applications._Muscle",
+    "Bio.Align.Applications._Probcons",
+    "Bio.Align.Applications._Prank",
+    "Bio.Align.Applications._TCoffee",
+    "Bio.AlignIO",
+    "Bio.AlignIO.StockholmIO",
+    "Bio.Alphabet",
+    "Bio.Application",
+    "Bio.bgzf",
+    "Bio.codonalign",
+    "Bio.codonalign.codonalignment",
+    "Bio.codonalign.codonalphabet",
+    "Bio.codonalign.codonseq",
+    "Bio.Blast.Applications",
+    "Bio.Emboss.Applications",
+    "Bio.GenBank",
+    "Bio.KEGG.Compound",
+    "Bio.KEGG.Enzyme",
+    "Bio.NMR.xpktools",
+    "Bio.motifs",
+    "Bio.motifs.applications._xxmotif",
+    "Bio.pairwise2",
+    "Bio.Phylo.Applications._Raxml",
+    "Bio.Phylo.Consensus",
+    "Bio.Phylo.BaseTree",
+    "Bio.SearchIO",
+    "Bio.SearchIO._model",
+    "Bio.SearchIO._model.query",
+    "Bio.SearchIO._model.hit",
+    "Bio.SearchIO._model.hsp",
+    "Bio.SearchIO.BlastIO",
+    "Bio.SearchIO.HmmerIO",
+    "Bio.SearchIO.FastaIO",
+    "Bio.SearchIO.BlatIO",
+    "Bio.SearchIO.ExonerateIO",
+    "Bio.Seq",
+    "Bio.SeqIO",
+    "Bio.SeqIO.AceIO",
+    "Bio.SeqIO.FastaIO",
+    "Bio.SeqIO.IgIO",
+    "Bio.SeqIO.InsdcIO",
+    "Bio.SeqIO.PhdIO",
+    "Bio.SeqIO.PirIO",
+    "Bio.SeqIO.QualityIO",
+    "Bio.SeqIO.SffIO",
+    "Bio.SeqIO.TabIO",
+    "Bio.SeqFeature",
+    "Bio.SeqRecord",
+    "Bio.SeqUtils",
+    "Bio.SeqUtils.CheckSum",
+    "Bio.SeqUtils.MeltingTemp",
+    "Bio.Sequencing.Applications._Novoalign",
+    "Bio.Sequencing.Applications._bwa",
+    "Bio.Sequencing.Applications._samtools",
+    "Bio.Wise",
+    "Bio.Wise.psw",
+]
+# Silently ignore any doctests for modules requiring numpy!
 if is_numpy():
-    DOCTEST_MODULES.extend(["Bio.Statistics.lowess",
+    DOCTEST_MODULES.extend(["Bio.Affy.CelFile",
+                            "Bio.Statistics.lowess",
                             "Bio.PDB.Polypeptide",
-                            "Bio.PDB.Selection"
+                            "Bio.PDB.Selection",
+                            "Bio.SeqIO.PdbIO",
                             ])
 
 
@@ -139,15 +154,16 @@ try:
     import sqlite3
     del sqlite3
 except ImportError:
-    #Missing on Jython or Python 2.4
+    # Missing on Jython or Python 2.4
     DOCTEST_MODULES.remove("Bio.SeqIO")
     DOCTEST_MODULES.remove("Bio.SearchIO")
 
-#Skip Bio.Seq doctest under Python 3, see http://bugs.python.org/issue7490
+# Skip Bio.Seq doctest under Python 3, see http://bugs.python.org/issue7490
 if sys.version_info[0] == 3:
     DOCTEST_MODULES.remove("Bio.Seq")
 
-#Skip Bio.bgzf doctest for broken gzip, see http://bugs.python.org/issue17666
+
+# Skip Bio.bgzf doctest for broken gzip, see http://bugs.python.org/issue17666
 def _have_bug17666():
     """Debug function to check if Python's gzip is broken (PRIVATE).
 
@@ -155,10 +171,10 @@ def _have_bug17666():
     3.2.4 and 3.3.1 only.
     """
     if os.name == 'java':
-        #Jython not affected
+        # Jython not affected
         return False
     import gzip
-    #Would like to use byte literal here:
+    # Would like to use byte literal here:
     bgzf_eof = "\x1f\x8b\x08\x04\x00\x00\x00\x00\x00\xff\x06\x00BC" + \
                "\x02\x00\x1b\x00\x03\x00\x00\x00\x00\x00\x00\x00\x00\x00"
     if sys.version_info[0] >= 3:
@@ -171,17 +187,11 @@ def _have_bug17666():
         assert not data, "Should be zero length, not %i" % len(data)
         return False
     except TypeError as err:
-        #TypeError: integer argument expected, got 'tuple'
+        # TypeError: integer argument expected, got 'tuple'
         h.close()
         return True
 if _have_bug17666():
     DOCTEST_MODULES.remove("Bio.bgzf")
-
-#HACK: Since Python2.5 under Windows have slightly different str(float) output,
-#we're removing doctests that may fail because of this
-if sys.platform == "win32" and sys.version_info < (2, 6):
-    DOCTEST_MODULES.remove("Bio.SearchIO._model.hit")
-    DOCTEST_MODULES.remove("Bio.SearchIO._model.hsp")
 
 system_lang = os.environ.get('LANG', 'C')  # Cache this
 
@@ -208,12 +218,12 @@ def main(argv):
     # non-English OS (we may want 'command not found' in English).
     # HOWEVER, we do not want to change the default encoding which is
     # rather important on Python 3 with unicode.
-    #lang = os.environ['LANG']
+    # lang = os.environ['LANG']
 
     # get the command line options
     try:
         opts, args = getopt.getopt(argv, 'gv', ["generate", "verbose",
-            "doctest", "help", "offline"])
+                                                "doctest", "help", "offline"])
     except getopt.error as msg:
         print(msg)
         print(__doc__)
@@ -228,10 +238,10 @@ def main(argv):
             return 0
         if o == "--offline":
             print("Skipping any tests requiring internet access")
-            #This is a bit of a hack...
+            # This is a bit of a hack...
             import requires_internet
             requires_internet.check.available = False
-            #The check() function should now report internet not available
+            # The check() function should now report internet not available
         if o == "-g" or o == "--generate":
             if len(args) > 1:
                 print("Only one argument (the test name) needed for generate")
@@ -267,8 +277,7 @@ def main(argv):
 
 
 class ComparisonTestCase(unittest.TestCase):
-    """Run a print-and-compare test and compare its output against expected output.
-    """
+    """Run a print-and-compare test and check it against expected output."""
 
     def __init__(self, name, output=None):
         """Initialize with the test to run.
@@ -292,13 +301,15 @@ class ComparisonTestCase(unittest.TestCase):
         outputfile = os.path.join(outputdir, self.name)
         try:
             if sys.version_info[0] >= 3:
-                #Python 3 problem: Can't use utf8 on output/test_geo
-                #due to micro (\xb5) and degrees (\xb0) symbols
+                # Python 3 problem: Can't use utf8 on output/test_geo
+                # due to micro (\xb5) and degrees (\xb0) symbols
+                # Also universal new lines mode deprecated on Python 3
                 expected = open(outputfile, encoding="latin")
             else:
-                expected = open(outputfile, 'rU')
+                expected = open(outputfile, "rU")
         except IOError:
-            self.fail("Warning: Can't open %s for test %s" % (outputfile, self.name))
+            self.fail("Warning: Can't open %s for test %s" %
+                      (outputfile, self.name))
 
         self.output.seek(0)
         # first check that we are dealing with the right output
@@ -308,7 +319,7 @@ class ComparisonTestCase(unittest.TestCase):
         if expected_test != self.name:
             expected.close()
             raise ValueError("\nOutput:   %s\nExpected: %s"
-                  % (self.name, expected_test))
+                             % (self.name, expected_test))
 
         # now loop through the output and compare it to the expected file
         while True:
@@ -335,7 +346,7 @@ class ComparisonTestCase(unittest.TestCase):
             elif expected_line != output_line:
                 expected.close()
                 raise ValueError("\nOutput  : %s\nExpected: %s"
-                      % (repr(output_line), repr(expected_line)))
+                                 % (repr(output_line), repr(expected_line)))
         expected.close()
 
     def generate_output(self):
@@ -367,9 +378,9 @@ class TestRunner(unittest.TextTestRunner):
         file = sys.argv[0]
     else:
         file = __file__
-    testdir = os.path.dirname(file) or os.curdir
+    testdir = os.path.abspath(os.path.dirname(file) or os.curdir)
 
-    def __init__(self, tests=[], verbosity=0):
+    def __init__(self, tests=(), verbosity=0):
         # if no tests were specified to run, we run them all
         # including the doctests
         self.tests = tests
@@ -386,7 +397,7 @@ class TestRunner(unittest.TextTestRunner):
             self.tests.extend(DOCTEST_MODULES)
         stream = StringIO()
         unittest.TextTestRunner.__init__(self, stream,
-                verbosity=verbosity)
+                                         verbosity=verbosity)
 
     def runTest(self, name):
         from Bio import MissingExternalDependencyError
@@ -395,38 +406,56 @@ class TestRunner(unittest.TextTestRunner):
         # Restore the language and thus default encoding (in case a prior
         # test changed this, e.g. to help with detecting command line tools)
         global system_lang
-        os.environ['LANG']=system_lang
-        # Note the current directory:
-        cur_dir = os.path.abspath(".")
+        os.environ['LANG'] = system_lang
+        # Always run tests from the Tests/ folder where run_tests.py
+        # should be located (as we assume this with relative paths etc)
+        os.chdir(self.testdir)
         try:
             stdout = sys.stdout
             sys.stdout = output
             if name.startswith("test_"):
                 sys.stderr.write("%s ... " % name)
-                #It's either a unittest or a print-and-compare test
-                suite = unittest.TestLoader().loadTestsFromName(name)
-                if suite.countTestCases()==0:
+                # It's either a unittest or a print-and-compare test
+                loader = unittest.TestLoader()
+                suite = loader.loadTestsFromName(name)
+                if hasattr(loader, "errors") and loader.errors:
+                    # New in Python 3.5, don't always get an exception anymore
+                    # Instead this is a list of error messages as strings
+                    for msg in loader.errors:
+                        if "Bio.MissingExternalDependencyError: " in msg or \
+                                "Bio.MissingPythonDependencyError: " in msg:
+                            # Remove the traceback etc
+                            msg = msg[msg.find("Bio.Missing"):]
+                            msg = msg[msg.find("Error: "):]
+                            sys.stderr.write("skipping. %s\n" % msg)
+                            return True
+                    # Looks like a real failure
+                    sys.stderr.write("loading tests failed:\n")
+                    for msg in loader.errors:
+                        sys.stderr.write("%s\n" % msg)
+                    return False
+                if suite.countTestCases() == 0:
                     # This is a print-and-compare test instead of a
                     # unittest-type test.
                     test = ComparisonTestCase(name, output)
                     suite = unittest.TestSuite([test])
             else:
-                #It's a doc test
+                # It's a doc test
                 sys.stderr.write("%s docstring test ... " % name)
-                #Can't use fromlist=name.split(".") until python 2.5+
-                module = __import__(name, None, None, name.split("."))
-                suite = doctest.DocTestSuite(module, optionflags=doctest.ELLIPSIS)
+                module = __import__(name, fromlist=name.split("."))
+                suite = doctest.DocTestSuite(module,
+                                             optionflags=doctest.ELLIPSIS)
                 del module
             suite.run(result)
-            if cur_dir != os.path.abspath("."):
+            if self.testdir != os.path.abspath("."):
                 sys.stderr.write("FAIL\n")
-                result.stream.write(result.separator1+"\n")
+                result.stream.write(result.separator1 + "\n")
                 result.stream.write("ERROR: %s\n" % name)
-                result.stream.write(result.separator2+"\n")
+                result.stream.write(result.separator2 + "\n")
                 result.stream.write("Current directory changed\n")
-                result.stream.write("Was: %s\n" % cur_dir)
+                result.stream.write("Was: %s\n" % self.testdir)
                 result.stream.write("Now: %s\n" % os.path.abspath("."))
-                os.chdir(cur_dir)
+                os.chdir(self.testdir)
                 if not result.wasSuccessful():
                     result.printErrors()
                 return False
@@ -438,14 +467,16 @@ class TestRunner(unittest.TextTestRunner):
                 result.printErrors()
             return False
         except MissingExternalDependencyError as msg:
+            # Seems this isn't always triggered on Python 3.5,
+            # exception messages can be in loader.errors instead.
             sys.stderr.write("skipping. %s\n" % msg)
             return True
         except Exception as msg:
             # This happened during the import
             sys.stderr.write("ERROR\n")
-            result.stream.write(result.separator1+"\n")
+            result.stream.write(result.separator1 + "\n")
             result.stream.write("ERROR: %s\n" % name)
-            result.stream.write(result.separator2+"\n")
+            result.stream.write(result.separator2 + "\n")
             result.stream.write(traceback.format_exc())
             return False
         except KeyboardInterrupt as err:
@@ -456,14 +487,14 @@ class TestRunner(unittest.TextTestRunner):
             # This happens in Jython with java.lang.ClassFormatError:
             # Invalid method Code length ...
             sys.stderr.write("ERROR\n")
-            result.stream.write(result.separator1+"\n")
+            result.stream.write(result.separator1 + "\n")
             result.stream.write("ERROR: %s\n" % name)
-            result.stream.write(result.separator2+"\n")
+            result.stream.write(result.separator2 + "\n")
             result.stream.write(traceback.format_exc())
             return False
         finally:
             sys.stdout = stdout
-            #Running under PyPy we were leaking file handles...
+            # Running under PyPy we were leaking file handles...
             gc.collect()
 
     def run(self):
@@ -480,7 +511,7 @@ class TestRunner(unittest.TextTestRunner):
         sys.stderr.write(self.stream.getvalue())
         sys.stderr.write('-' * 70 + "\n")
         sys.stderr.write("Ran %d test%s in %.3f seconds\n" %
-                            (total, total != 1 and "s" or "", timeTaken))
+                         (total, total != 1 and "s" or "", timeTaken))
         sys.stderr.write("\n")
         if failures:
             sys.stderr.write("FAILED (failures = %d)\n" % failures)
@@ -490,5 +521,5 @@ class TestRunner(unittest.TextTestRunner):
 if __name__ == "__main__":
     errors = main(sys.argv[1:])
     if errors:
-        #Doing a sys.exit(...) isn't nice if run from IDLE...
+        # Doing a sys.exit(...) isn't nice if run from IDLE...
         sys.exit(1)

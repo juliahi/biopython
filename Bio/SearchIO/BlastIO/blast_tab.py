@@ -135,7 +135,7 @@ _DEFAULT_FIELDS = ['qseqid', 'sseqid', 'pident', 'length', 'mismatch',
 # one field from each of the following sets must exist in order for the
 # parser to work
 _MIN_QUERY_FIELDS = set(['qseqid', 'qacc', 'qaccver'])
-_MIN_HIT_FIELDS = set(['sseqid', 'sacc', 'saccver'])
+_MIN_HIT_FIELDS = set(['sseqid', 'sacc', 'saccver', 'sallseqid'])
 
 # simple function to create BLAST HSP attributes that may be computed if
 # other certain attributes are present
@@ -230,7 +230,7 @@ class BlastTabParser(object):
         # we want to transform 'std' to its proper column names
         if 'std' in fields:
             idx = fields.index('std')
-            fields = fields[:idx] + _DEFAULT_FIELDS + fields[idx+1:]
+            fields = fields[:idx] + _DEFAULT_FIELDS + fields[idx + 1:]
         # if set(fields) has a null intersection with minimum required
         # fields for hit and query, raise an exception
         if not set(fields).intersection(_MIN_QUERY_FIELDS) or \
@@ -346,10 +346,12 @@ class BlastTabParser(object):
 
     def _get_id(self, parsed):
         """Returns the value used for a QueryResult or Hit ID from a parsed row."""
-        # use 'id', with 'accession' and 'accession_version' fallbacks
-        # one of these must have a value since we've checked whether
+        # use 'id', with 'id_all', 'accession' and 'accession_version'
+        # fallbacks one of these must have a value since we've checked whether
         # they exist or not when parsing the comments
         id_cache = parsed.get('id')
+        if id_cache is None and 'id_all' in parsed:
+            id_cache = parsed.get('id_all')[0]
         if id_cache is None:
             id_cache = parsed.get('accession')
         if id_cache is None:
@@ -369,6 +371,8 @@ class BlastTabParser(object):
         qres_state = None
         hit_state = None
         file_state = None
+        cur_qid = None
+        cur_hid = None
         # dummies for initial id caches
         prev_qid = None
         prev_hid = None
@@ -445,7 +449,12 @@ class BlastTabParser(object):
                 if hit_state == state_HIT_NEW:
                     hit = Hit(hsp_list)
                     for attr, value in prev['hit'].items():
-                        setattr(hit, attr, value)
+                        if attr != 'id_all':
+                            setattr(hit, attr, value)
+                        else:
+                            # not setting hit ID since it's already set from the
+                            # prev_hid above
+                            setattr(hit, '_id_alt', value[1:])
                     hit_list.append(hit)
                     hsp_list = []
                 # create qresult and yield if we're at a new qresult or EOF
@@ -570,7 +579,7 @@ class BlastTabIndexer(SearchIndexer):
             # get end offset here since we only know a qresult ends after
             # encountering the next one
             end_offset = handle.tell()
-            #line = handle.readline()
+            # line = handle.readline()
             line = handle.readline()
 
             if qresult_key is None:
@@ -591,7 +600,7 @@ class BlastTabIndexer(SearchIndexer):
                 break
 
     def get_raw(self, offset):
-        """Returns the raw string of a QueryResult object from the given offset."""
+        """Returns the raw bytes string of a QueryResult object from the given offset."""
         if self._kwargs['comments']:
             getfunc = self._get_raw_qresult_commented
         else:
@@ -600,7 +609,7 @@ class BlastTabIndexer(SearchIndexer):
         return getfunc(offset)
 
     def _get_raw_qresult(self, offset):
-        """Returns the raw string of a single QueryResult from a noncommented file."""
+        """Returns the raw bytes string of a single QueryResult from a noncommented file."""
         handle = self._handle
         handle.seek(offset)
         qresult_raw = _as_bytes('')
@@ -627,7 +636,7 @@ class BlastTabIndexer(SearchIndexer):
         return qresult_raw
 
     def _get_raw_qresult_commented(self, offset):
-        """Returns the raw string of a single QueryResult from a commented file."""
+        """Returns the bytes raw string of a single QueryResult from a commented file."""
         handle = self._handle
         handle.seek(offset)
         qresult_raw = _as_bytes('')
@@ -700,7 +709,10 @@ class BlastTabWriter(object):
                     if field in _COLUMN_QRESULT:
                         value = getattr(qresult, _COLUMN_QRESULT[field][0])
                     elif field in _COLUMN_HIT:
-                        value = getattr(hit, _COLUMN_HIT[field][0])
+                        if field == 'sallseqid':
+                            value = getattr(hit, 'id_all')
+                        else:
+                            value = getattr(hit, _COLUMN_HIT[field][0])
                     # special case, since 'frames' can be determined from
                     # query frame and hit frame
                     elif field == 'frames':

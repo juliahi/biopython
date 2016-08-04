@@ -5,17 +5,18 @@
 # File: xbb_utils.py
 
 import sys
+
 sys.path.insert(0, '.')
 
 try:
-    from Tkinter import * # Python 2
+    from Tkinter import *  # Python 2
 except ImportError:
-    from tkinter import * # Python 3
+    from tkinter import *  # Python 3
 
 try:
-    import tkFileDialog as filedialog # Python 2
+    import tkFileDialog as filedialog  # Python 2
 except ImportError:
-    from tkinter import filedialog # Python 3
+    from tkinter import filedialog  # Python 3
 
 
 class NotePad(Toplevel):
@@ -45,6 +46,5 @@ class NotePad(Toplevel):
         fd = filedialog.SaveFileDialog(self)
         file = fd.go(key="test")
         if file:
-            fid = open(file, 'w')
-            fid.write(self.tid.get(0.0, END))
-            fid.close()
+            with open(file, 'w') as fid:
+                fid.write(self.tid.get(0.0, END))

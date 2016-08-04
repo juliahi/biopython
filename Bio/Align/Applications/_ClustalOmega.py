@@ -13,8 +13,6 @@
 
 from __future__ import print_function
 
-__docformat__ = "epytext en"  # Don't just use plain text in epydoc API pages!
-
 from Bio.Application import _Option, _Switch, AbstractCommandline
 
 
@@ -24,6 +22,7 @@ class ClustalOmegaCommandline(AbstractCommandline):
     http://www.clustal.org/omega
 
     Example:
+    --------
 
     >>> from Bio.Align.Applications import ClustalOmegaCommandline
     >>> in_file = "unaligned.fasta"
@@ -37,6 +36,7 @@ class ClustalOmegaCommandline(AbstractCommandline):
     the Python subprocess module, as described in the Biopython tutorial.
 
     Citation:
+    ---------
 
     Sievers F, Wilm A, Dineen DG, Gibson TJ, Karplus K, Li W, Lopez R,
     McWilliam H, Remmert M, Söding J, Thompson JD, Higgins DG (2011).
@@ -199,12 +199,6 @@ class ClustalOmegaCommandline(AbstractCommandline):
         AbstractCommandline.__init__(self, cmd, **kwargs)
 
 
-def _test():
-    """Run the module's doctests (PRIVATE)."""
-    print("Running ClustalOmega doctests...")
-    import doctest
-    doctest.testmod()
-    print("Done")
-
 if __name__ == "__main__":
-    _test()
+    from Bio._utils import run_doctest
+    run_doctest()

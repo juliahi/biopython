@@ -64,13 +64,12 @@ class ParserTest(unittest.TestCase):
     def test_wrong_file_parser(self):
         """Testing the ability to deal with wrongly formatted files
         """
-        f = open(os.path.join("PopGen", "fdist1"))
-        try:
-            rec = GenePop.read(f)
-            raise Error("Should have raised exception")
-        except ValueError:
-            pass
-        f.close()
+        with open(os.path.join("PopGen", "fdist1")) as f:
+            try:
+                rec = GenePop.read(f)
+                raise Exception("Should have raised exception")
+            except ValueError:
+                pass
 
 
 class FileParserTest(unittest.TestCase):
@@ -98,9 +97,9 @@ class FileParserTest(unittest.TestCase):
             assert len(rec.loci_list) == self.num_loci[index]
             for skip in range(self.pops_indivs[index][0]):
                 if rec.skip_population() is False:
-                    raise Error("Not enough populations")
+                    raise Exception("Not enough populations")
             if rec.skip_population() is True:
-                    raise Error("Too much populations")
+                    raise Exception("Too much populations")
             for i in range(self.pops_indivs[index][0]):
                 continue
                 assert len(rec.populations[i]) == \
@@ -110,18 +109,17 @@ class FileParserTest(unittest.TestCase):
     def test_wrong_file_parser(self):
         """Testing the ability to deal with wrongly formatted files
         """
-        f = open(os.path.join("PopGen", "fdist1"))
-        try:
-            rec = GenePop.read(f)
-            raise Error("Should have raised exception")
-        except ValueError:
-            pass
-        f.close()
+        with open(os.path.join("PopGen", "fdist1")) as f:
+            try:
+                rec = GenePop.read(f)
+                raise Exception("Should have raised exception")
+            except ValueError:
+                pass
 
 
 class UtilsTest(unittest.TestCase):
     def setUp(self):
-        #All files have to have at least 3 loci and 2 pops
+        # All files have to have at least 3 loci and 2 pops
         files = ["c2line.gen"]
         self.handles = []
         for filename in files:
@@ -149,5 +147,5 @@ class UtilsTest(unittest.TestCase):
         assert len(rec.loci_list) == initial_loci - 2
 
 if __name__ == "__main__":
-    runner = unittest.TextTestRunner(verbosity = 2)
+    runner = unittest.TextTestRunner(verbosity=2)
     unittest.main(testRunner=runner)

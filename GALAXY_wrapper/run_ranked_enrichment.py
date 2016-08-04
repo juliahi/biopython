@@ -69,7 +69,7 @@ def run_gsea(assocs, go_graph, gene_rank, perms, minset, corr, seed=None):
 def run_parent_child(assocs, go_graph, gene_rank, side, corrections, rank_as_population, method):
     from Bio.Ontology import RankedParentChildEnrichmentFinder
 
-    ef = RankedParentChildEnrichmentFinder(assocs, go_graph)
+    ef = RankedParentChildEnrichmentFinder(assocs, go_graph, resolver_generator)
     result = ef.find_enrichment(gene_rank, side, corrections, rank_as_population, method)
     return result
 
@@ -176,7 +176,7 @@ def main():
     
     if args.which == "GSEA":
         result = run_gsea(assocs, go_graph, gene_rank, args.perms, args.minset, args.corrpower, args.seed)
-    elif args.which = "parent-child":
+    elif args.which == "parent-child":
         result = run_parent_child(assocs, go_graph, gene_rank, args.side, args.corrections, args.rank_as_population, args.method)
     else:
         parser.error("Method unimplemented!")

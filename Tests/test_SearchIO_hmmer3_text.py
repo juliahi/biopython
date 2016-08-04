@@ -9,7 +9,14 @@
 import os
 import unittest
 
-from Bio.SearchIO import parse
+from Bio import BiopythonExperimentalWarning
+
+import warnings
+
+
+with warnings.catch_warnings():
+    warnings.simplefilter('ignore', BiopythonExperimentalWarning)
+    from Bio.SearchIO import parse
 
 # test case files are in the Blast directory
 TEST_DIR = 'Hmmer'
@@ -21,13 +28,118 @@ def get_file(filename):
     return os.path.join(TEST_DIR, filename)
 
 
-class HmmerscanCases(unittest.TestCase):
+class HmmscanCases(unittest.TestCase):
+
+    def test_31b1_hmmscan_001(self):
+        "Test parsing hmmscan 3.1b1 (text_31b1_hmmscan_001)"
+
+        txt_file = get_file('text_31b1_hmmscan_001.out')
+        qresults = parse(txt_file, FMT)
+        counter = 0
+
+        # test first qresult
+        qresult = next(qresults)
+        counter += 1
+
+        self.assertEqual('hmmscan', qresult.program)
+        self.assertEqual('/home/bow/db/hmmer/protdb/Pfam-A.hmm', qresult.target)
+        self.assertEqual('3.1b1', qresult.version)
+        self.assertEqual('random_s00', qresult.id)
+        self.assertEqual(22, qresult.seq_len)
+        self.assertEqual(0, len(qresult))
+
+        # test fifth result
+        for qresult in qresults:
+            counter += 1
+
+        self.assertEqual('hmmscan', qresult.program)
+        self.assertEqual('/home/bow/db/hmmer/protdb/Pfam-A.hmm', qresult.target)
+        self.assertEqual('3.1b1', qresult.version)
+        self.assertEqual('gi|125490392|ref|NP_038661.2|', qresult.id)
+        self.assertEqual('POU domain, class 5, transcription factor 1 isoform 1 [Mus musculus]', qresult.description)
+        self.assertEqual(352, qresult.seq_len)
+        self.assertEqual(5, len(qresult))
+
+        hit = qresult[0]
+        self.assertEqual('Pou', hit.id)
+        self.assertEqual('Pou domain - N-terminal to homeobox domain', hit.description)
+        self.assertTrue(hit.is_included)
+        self.assertEqual(7.6e-37, hit.evalue)
+        self.assertEqual(124.8, hit.bitscore)
+        self.assertEqual(0.5, hit.bias)
+        self.assertEqual(1.5, hit.domain_exp_num)
+        self.assertEqual(1, hit.domain_obs_num)
+        self.assertEqual(1, len(hit))
+
+        hsp = hit.hsps[0]
+        self.assertEqual(1, hsp.domain_index)
+        self.assertTrue(hsp.is_included)
+        self.assertEqual(123.9, hsp.bitscore)
+        self.assertEqual(0.5, hsp.bias)
+        self.assertEqual(5e-40, hsp.evalue_cond)
+        self.assertEqual(1.5e-36, hsp.evalue)
+        self.assertEqual(2, hsp.hit_start)
+        self.assertEqual(75, hsp.hit_end)
+        self.assertEqual('.]', hsp.hit_endtype)
+        self.assertEqual(132, hsp.query_start)
+        self.assertEqual(205, hsp.query_end)
+        self.assertEqual('..', hsp.query_endtype)
+        self.assertEqual(130, hsp.env_start)
+        self.assertEqual(205, hsp.env_end)
+        self.assertEqual('..', hsp.env_endtype)
+        self.assertEqual(0.97, hsp.acc_avg)
+        self.assertEqual('eldleeleefakefkqrrikLgltqadvgsalgalyGkefsqttIcrFEalqLslknmckLkpllekWLeeae',
+                str(hsp.hit.seq))
+        self.assertEqual('KALQKELEQFAKLLKQKRITLGYTQADVGLTLGVLFGKVFSQTTICRFEALQLSLKNMCKLRPLLEKWVEEAD',
+                str(hsp.query.seq))
+        self.assertEqual('67899******************************************************************96',
+                hsp.aln_annotation['PP'])
+
+        # last hit
+        hit = qresult[4]
+        self.assertEqual('DUF521', hit.id)
+        self.assertEqual('Protein of unknown function (DUF521)', hit.description)
+        self.assertFalse(hit.is_included)
+        self.assertEqual(0.15, hit.evalue)
+        self.assertEqual(10.5, hit.bitscore)
+        self.assertEqual(0.1, hit.bias)
+        self.assertEqual(1.4, hit.domain_exp_num)
+        self.assertEqual(1, hit.domain_obs_num)
+        self.assertEqual(1, len(hit))
+
+        hsp = hit.hsps[0]
+        self.assertEqual(1, hsp.domain_index)
+        self.assertFalse(hsp.is_included)
+        self.assertEqual(9.6, hsp.bitscore)
+        self.assertEqual(0.1, hsp.bias)
+        self.assertEqual(9.4e-05, hsp.evalue_cond)
+        self.assertEqual(0.28, hsp.evalue)
+        self.assertEqual(272, hsp.hit_start)
+        self.assertEqual(334, hsp.hit_end)
+        self.assertEqual('..', hsp.hit_endtype)
+        self.assertEqual(220, hsp.query_start)
+        self.assertEqual(280, hsp.query_end)
+        self.assertEqual('..', hsp.query_endtype)
+        self.assertEqual(196, hsp.env_start)
+        self.assertEqual(294, hsp.env_end)
+        self.assertEqual('..', hsp.env_endtype)
+        self.assertEqual(0.77, hsp.acc_avg)
+        self.assertEqual('adlaavleelnkakkeevdlvvlGcPhlsleeleelaellkgrkkkvsvelvvttsravlsk',
+                str(hsp.hit.seq))
+        self.assertEqual('QARKRKRTSIENRVRWSLETMFLKCPKPSLQQITHIANQLGLEK--DVVRVWFCNRRQKGKR',
+                str(hsp.query.seq))
+        self.assertEqual('345666667778888899************************99..9999999988876554',
+                hsp.aln_annotation['PP'])
+
+        # test if we've properly finished iteration
+        self.assertRaises(StopIteration, next, qresults)
+        self.assertEqual(5, counter)
 
     def test_30_hmmscan_001(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_001)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_001)"
 
-        xml_file = get_file('text_30_hmmscan_001.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_001.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -527,10 +639,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(5, counter)
 
     def test_30_hmmscan_002(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_002)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_002)"
 
-        xml_file = get_file('text_30_hmmscan_002.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_002.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -549,10 +661,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(1, counter)
 
     def test_30_hmmscan_003(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_003)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_003)"
 
-        xml_file = get_file('text_30_hmmscan_003.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_003.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -609,10 +721,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(1, counter)
 
     def test_30_hmmscan_004(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_004)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_004)"
 
-        xml_file = get_file('text_30_hmmscan_004.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_004.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -701,10 +813,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(1, counter)
 
     def test_30_hmmscan_005(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_005)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_005)"
 
-        xml_file = get_file('text_30_hmmscan_005.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_005.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first result
@@ -850,10 +962,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(1, counter)
 
     def test_30_hmmscan_006(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_006)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_006)"
 
-        xml_file = get_file('text_30_hmmscan_006.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_006.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -1074,10 +1186,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(1, counter)
 
     def test_30_hmmscan_007(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_007)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_007)"
 
-        xml_file = get_file('text_30_hmmscan_007.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_007.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -1260,10 +1372,10 @@ class HmmerscanCases(unittest.TestCase):
         self.assertEqual(1, counter)
 
     def test_30_hmmscan_008(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_008)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_008)"
 
-        xml_file = get_file('text_30_hmmscan_008.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmscan_008.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first result
@@ -1408,9 +1520,8 @@ class HmmerscanCases(unittest.TestCase):
         self.assertRaises(StopIteration, next, qresults)
         self.assertEqual(1, counter)
 
-
     def test_30_hmmscan_009(self):
-        "Test parsing hmmerscan 3.0 (text_30_hmmscan_009)"
+        "Test parsing hmmscan 3.0 (text_30_hmmscan_009)"
         hmmer_file = get_file('text_30_hmmscan_009.out')
         qresults = parse(hmmer_file, FMT)
         counter = 0
@@ -1444,11 +1555,94 @@ class HmmerscanCases(unittest.TestCase):
 
 class HmmersearchCases(unittest.TestCase):
 
+    def test_31b2_hmmscan_001(self):
+        """Test parsing hmmscan 3.1b2 (text_31b2_hmmscan_001)"""
+
+        txt_file = get_file('text_31b2_hmmscan_001.out')
+        qresults = list(parse(txt_file, FMT))
+
+        # expects only 1 query result
+        self.assertEqual(1, len(qresults))
+
+        # in that query result, there are 108 hits
+        qresult = qresults[0]
+        self.assertEqual(108, len(qresult))
+
+        # making sure all query IDs are equal
+        self.assertEqual("Protein-arginine kinase activator protein "
+                         "OS=Bacillus subtilis (strain 168) GN=mcsA "
+                         "PE=1 SV=1", qresult.description)
+
+        # and all hits have no descriptions
+        for hit in qresult:
+            self.assertEqual("", hit.description)
+
+    def test_31b1_hmmsearch_001(self):
+        """Test parsing hmmsearch 3.1b1 (text_31b1_hmmsearch_001)"""
+
+        txt_file = get_file('text_31b1_hmmsearch_001.out')
+        qresults = list(parse(txt_file, FMT))
+
+        self.assertEqual(2, len(qresults))
+
+        # first qresult is empty
+        qresult = qresults[0]
+        self.assertEqual('Globins', qresult.id)
+        self.assertEqual(149, qresult.seq_len)
+        self.assertEqual(0, len(qresult))
+
+        # second qresult
+        qresult = qresults[1]
+        self.assertEqual('Pkinase', qresult.id)
+        self.assertEqual(260, qresult.seq_len)
+        self.assertEqual('PF00069.17', qresult.accession)
+        self.assertEqual('Protein kinase domain', qresult.description)
+        self.assertEqual(4, len(qresult))
+
+        # first hit, first hsp
+        hit = qresult[0]
+        self.assertEqual('sp|Q9WUT3|KS6A2_MOUSE', hit.id)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS=Mus musculus GN=Rps6ka2 PE=1 SV=1',
+                         hit.description)
+        self.assertTrue(hit.is_included)
+        self.assertEqual(8.5e-147, hit.evalue)
+        self.assertEqual(492.3, hit.bitscore)
+        self.assertEqual(0.0, hit.bias)
+        self.assertEqual(2.1, hit.domain_exp_num)
+        self.assertEqual(2, hit.domain_obs_num)
+        self.assertEqual(2, len(hit))
+
+        hsp = hit.hsps[0]
+        self.assertEqual(1, hsp.domain_index)
+        self.assertTrue(hsp.is_included)
+        self.assertEqual(241.2, hsp.bitscore)
+        self.assertEqual(0.0, hsp.bias)
+        self.assertEqual(2.6e-75, hsp.evalue_cond)
+        self.assertEqual(3.6e-70, hsp.evalue)
+        self.assertEqual(0, hsp.query_start)
+        self.assertEqual(260, hsp.query_end)
+        self.assertEqual('[]', hsp.query_endtype)
+        self.assertEqual(58, hsp.hit_start)
+        self.assertEqual(318, hsp.hit_end)
+        self.assertEqual('..', hsp.hit_endtype)
+        self.assertEqual(58, hsp.env_start)
+        self.assertEqual(318, hsp.env_end)
+        self.assertEqual('..', hsp.env_endtype)
+        self.assertEqual(0.95, hsp.acc_avg)
+        self.assertEqual('EEEEEEEEEETTEEEEEEEE...TTTTEEEEEEEEEHHHCCCCCCHHHHHHHHHHHHHSSSSB--EEEEEEETTEEEEEEE--TS-BHHHHHHHHHST-HHHHHHHHHHHHHHHHHHHHTTEE-S--SGGGEEEETTTEEEE--GTT.E..EECSS-C-S--S-GGGS-HHHHCCS-CTHHHHHHHHHHHHHHHHHHSS-TTSSSHHCCTHHHHSSHHH......TTS.....HHHHHHHHHHT-SSGGGSTT.....HHHHHTSGGG',
+                hsp.aln_annotation['CS'])
+        self.assertEqual('yelleklGsGsfGkVykakk...kktgkkvAvKilkkeeekskkektavrElkilkklsHpnivkllevfetkdelylvleyveggdlfdllkkegklseeeikkialqilegleylHsngiiHrDLKpeNiLldkkgevkiaDFGlakkleksseklttlvgtreYmAPEvllkakeytkkvDvWslGvilyelltgklpfsgeseedqleliekilkkkleedepkssskseelkdlikkllekdpakRlt.....aeeilkhpwl',
+                str(hsp.query.seq))
+        self.assertEqual('FELLKVLGQGSYGKVFLVRKvtgSDAGQLYAMKVLKKATLKVRDRVRSKMERDILAEVNHPFIVKLHYAFQTEGKLYLILDFLRGGDLFTRLSKEVMFTEEDVKFYLAELALALDHLHGLGIIYRDLKPENILLDEEGHIKITDFGLSKEATDHDKRAYSFCGTIEYMAPEVVN-RRGHTQSADWWSFGVLMFEMLTGSLPFQGK---DRKETMALILKAKLGMPQFLS----AEAQSLLRALFKRNPCNRLGagvdgVEEIKRHPFF',
+                str(hsp.hit.seq))
+        self.assertEqual('67899**********7666611155667*****************99999****************************************************************************************************************************.******************************...999999999999999998866....99******************9999999*****997',
+                hsp.aln_annotation['PP'])
+
     def test_30_hmmsearch_001(self):
         "Test parsing hmmersearch 3.0 (text_30_hmmsearch_001)"
 
-        xml_file = get_file('text_30_hmmsearch_001.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmsearch_001.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         qresult = next(qresults)
@@ -1468,8 +1662,8 @@ class HmmersearchCases(unittest.TestCase):
     def test_30_hmmsearch_002(self):
         "Test parsing hmmersearch 3.0 (text_30_hmmsearch_002)"
 
-        xml_file = get_file('text_30_hmmsearch_002.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmsearch_002.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         qresult = next(qresults)
@@ -1486,7 +1680,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[0]
         self.assertEqual('sp|Q9WUT3|KS6A2_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS=Mus musculus GN=Rps6ka2 PE=2 SV=1',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(8.4e-147, hit.evalue)
         self.assertEqual(492.3, hit.bitscore)
@@ -1549,7 +1744,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[-1]
         self.assertEqual('sp|P18654|KS6A3_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS=Mus musculus GN=Rps6ka3 PE=1 SV=2',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(5e-144, hit.evalue)
         self.assertEqual(483.2, hit.bitscore)
@@ -1611,14 +1807,14 @@ class HmmersearchCases(unittest.TestCase):
                 hsp.aln_annotation['PP'])
 
         # test if we've properly finished iteration
-        #self.assertRaises(StopIteration, next, qresults)
-        #self.assertEqual(1, counter)
+        # self.assertRaises(StopIteration, next, qresults)
+        # self.assertEqual(1, counter)
 
     def test_30_hmmsearch_003(self):
         "Test parsing hmmersearch 3.0 (text_30_hmmsearch_003)"
 
-        xml_file = get_file('text_30_hmmsearch_003.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmsearch_003.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         qresult = next(qresults)
@@ -1635,7 +1831,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[0]
         self.assertEqual('sp|Q9WUT3|KS6A2_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS=Mus musculus GN=Rps6ka2 PE=2 SV=1',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(8.4e-147, hit.evalue)
         self.assertEqual(492.3, hit.bitscore)
@@ -1682,7 +1879,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[-1]
         self.assertEqual('sp|P18654|KS6A3_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS=Mus musculus GN=Rps6ka3 PE=1 SV=2',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(5e-144, hit.evalue)
         self.assertEqual(483.2, hit.bitscore)
@@ -1728,14 +1926,14 @@ class HmmersearchCases(unittest.TestCase):
         self.assertEqual(0.97, hsp.acc_avg)
 
         # test if we've properly finished iteration
-        #self.assertRaises(StopIteration, next, qresults)
-        #self.assertEqual(1, counter)
+        # self.assertRaises(StopIteration, next, qresults)
+        # self.assertEqual(1, counter)
 
     def test_30_hmmsearch_004(self):
         "Test parsing hmmersearch 3.0 (text_30_hmmsearch_004)"
 
-        xml_file = get_file('text_30_hmmsearch_004.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmsearch_004.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         qresult = next(qresults)
@@ -1752,7 +1950,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[0]
         self.assertEqual('sp|Q9WUT3|KS6A2_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS=Mus musculus GN=Rps6ka2 PE=2 SV=1', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS=Mus musculus GN=Rps6ka2 PE=2 SV=1',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(8.4e-147, hit.evalue)
         self.assertEqual(492.3, hit.bitscore)
@@ -1815,7 +2014,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[-1]
         self.assertEqual('sp|P18654|KS6A3_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS=Mus musculus GN=Rps6ka3 PE=1 SV=2', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS=Mus musculus GN=Rps6ka3 PE=1 SV=2',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(5e-144, hit.evalue)
         self.assertEqual(483.2, hit.bitscore)
@@ -1877,14 +2077,14 @@ class HmmersearchCases(unittest.TestCase):
                 hsp.aln_annotation['PP'])
 
         # test if we've properly finished iteration
-        #self.assertRaises(StopIteration, next, qresults)
-        #self.assertEqual(1, counter)
+        # self.assertRaises(StopIteration, next, qresults)
+        # self.assertEqual(1, counter)
 
     def test_30_hmmsearch_005(self):
         "Test parsing hmmersearch 3.0 (text_30_hmmsearch_005)"
 
-        xml_file = get_file('text_30_hmmsearch_005.out')
-        qresults = parse(xml_file, FMT)
+        txt_file = get_file('text_30_hmmsearch_005.out')
+        qresults = parse(txt_file, FMT)
         counter = 0
 
         # test first qresult
@@ -1913,7 +2113,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[0]
         self.assertEqual('sp|Q9WUT3|KS6A2_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-2 OS=Mus musculus GN=Rps6ka2 PE=2 SV=1',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(8.4e-147, hit.evalue)
         self.assertEqual(492.3, hit.bitscore)
@@ -1976,7 +2177,8 @@ class HmmersearchCases(unittest.TestCase):
 
         hit = qresult[-1]
         self.assertEqual('sp|P18654|KS6A3_MOUSE', hit.id)
-        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS', hit.description)
+        self.assertEqual('Ribosomal protein S6 kinase alpha-3 OS=Mus musculus GN=Rps6ka3 PE=1 SV=2',
+                         hit.description)
         self.assertTrue(hit.is_included)
         self.assertEqual(5e-144, hit.evalue)
         self.assertEqual(483.2, hit.bitscore)
@@ -2042,6 +2244,108 @@ class HmmersearchCases(unittest.TestCase):
         self.assertEqual(2, counter)
 
 
+class PhmmerCases(unittest.TestCase):
+
+    def test_31b2_phmmer_001(self):
+        "Test parsing phmmer 3.1b2 (text_31b2_phmmer_001)"
+
+        txt_file = get_file('text_31b2_phmmer_001.out')
+        qresults = list(parse(txt_file, FMT))
+
+        # first qresult
+        qresult = qresults[0]
+
+        self.assertEqual('phmmer', qresult.program)
+        self.assertEqual('/home/bow/devel/sandbox/biopython-sandbox/db/hmmer/protdb/uniprot_sprot.fasta',
+                         qresult.target)
+        self.assertEqual('3.1b2', qresult.version)
+        self.assertEqual('sp|Q6GZX4|001R_FRG3G', qresult.id)
+        self.assertEqual(256, qresult.seq_len)
+        self.assertEqual(13, len(qresult))
+
+        hit = qresult[0]
+        self.assertEqual('sp|Q6GZX4|001R_FRG3G', hit.id)
+        self.assertEqual('Putative transcription factor 001R OS=Frog virus 3 (isolate Goorha) GN=FV3-001R PE=4 SV=1',
+                         hit.description)
+        self.assertTrue(hit.is_included)
+        self.assertEqual(1.1e-176, hit.evalue)
+        self.assertEqual(590.0, hit.bitscore)
+        self.assertEqual(1.4, hit.bias)
+        self.assertEqual(1.0, hit.domain_exp_num)
+        self.assertEqual(1, hit.domain_obs_num)
+        self.assertEqual(1, len(hit))
+
+        hsp = hit.hsps[0]
+        self.assertEqual(1, hsp.domain_index)
+        self.assertTrue(hsp.is_included)
+        self.assertEqual(589.9, hsp.bitscore)
+        self.assertEqual(1.4, hsp.bias)
+        self.assertEqual(3e-181, hsp.evalue_cond)
+        self.assertEqual(1.3e-176, hsp.evalue)
+        self.assertEqual(0, hsp.hit_start)
+        self.assertEqual(256, hsp.hit_end)
+        self.assertEqual('[]', hsp.hit_endtype)
+        self.assertEqual(0, hsp.query_start)
+        self.assertEqual(256, hsp.query_end)
+        self.assertEqual('[]', hsp.query_endtype)
+        self.assertEqual(0, hsp.env_start)
+        self.assertEqual(256, hsp.env_end)
+        self.assertEqual('[]', hsp.env_endtype)
+        self.assertEqual(1.00, hsp.acc_avg)
+        self.assertEqual('mafsaedvlkeydrrrrmealllslyypndrklldykewspprvqvecpkapvewnnppsekglivghfsgikykgekaqasevdvnkm',
+                str(hsp.query.seq)[:89])
+        self.assertEqual('MAFSAEDVLKEYDRRRRMEALLLSLYYPNDRKLLDYKEWSPPRVQVECPKAPVEWNNPPSEKGLIVGHFSGIKYKGEKAQASEVDVNKM',
+                str(hsp.hit.seq)[:89])
+        self.assertEqual('89***************************************************************************************',
+                hsp.aln_annotation['PP'][:89])
+
+        # last query, last hit
+        qresult = qresults[-1]
+
+        self.assertEqual('phmmer', qresult.program)
+        self.assertEqual('/home/bow/devel/sandbox/biopython-sandbox/db/hmmer/protdb/uniprot_sprot.fasta',
+                         qresult.target)
+        self.assertEqual('3.1b2', qresult.version)
+        self.assertEqual('sp|Q197F7|003L_IIV3', qresult.id)
+        self.assertEqual(156, qresult.seq_len)
+        self.assertEqual(6, len(qresult))
+
+        hit = qresult[-1]
+        self.assertEqual('sp|P04060|RNAS1_HYSCR', hit.id)
+        self.assertEqual('Ribonuclease pancreatic OS=Hystrix cristata GN=RNASE1 PE=1 SV=1', hit.description)
+        self.assertFalse(hit.is_included)
+        self.assertEqual(2.1, hit.evalue)
+        self.assertEqual(13.1, hit.bitscore)
+        self.assertEqual(0.7, hit.bias)
+        self.assertEqual(1.8, hit.domain_exp_num)
+        self.assertEqual(2, hit.domain_obs_num)
+        self.assertEqual(2, len(hit))
+
+        hsp = hit.hsps[-1]
+        self.assertEqual(2, hsp.domain_index)
+        self.assertFalse(hsp.is_included)
+        self.assertEqual(12.1, hsp.bitscore)
+        self.assertEqual(0.1, hsp.bias)
+        self.assertEqual(4.7e-05, hsp.evalue_cond)
+        self.assertEqual(4.2, hsp.evalue)
+        self.assertEqual(91, hsp.hit_start)
+        self.assertEqual(121, hsp.hit_end)
+        self.assertEqual('..', hsp.hit_endtype)
+        self.assertEqual(7, hsp.query_start)
+        self.assertEqual(37, hsp.query_end)
+        self.assertEqual('..', hsp.query_endtype)
+        self.assertEqual(84, hsp.env_start)
+        self.assertEqual(127, hsp.env_end)
+        self.assertEqual('..', hsp.env_endtype)
+        self.assertEqual(0.84, hsp.acc_avg)
+        self.assertEqual('cpqswygspqlereivckmsgaphypnyyp',
+                str(hsp.query.seq))
+        self.assertEqual('YPDCSYGMSQLERSIVVACEGSPYVPVHFD',
+                str(hsp.hit.seq))
+        self.assertEqual('68889******************9887764',
+                hsp.aln_annotation['PP'])
+
+
 if __name__ == "__main__":
-    runner = unittest.TextTestRunner(verbosity = 2)
+    runner = unittest.TextTestRunner(verbosity=2)
     unittest.main(testRunner=runner)

@@ -8,11 +8,13 @@
 
 import sys
 import re
+import warnings
 from itertools import chain
 from xml.sax.saxutils import XMLGenerator, escape
 
+from Bio import BiopythonParserWarning
 
-#For speed try to use cElementTree rather than ElementTree
+# For speed try to use cElementTree rather than ElementTree
 try:
     if (3, 0) <= sys.version_info[:2] <= (3, 1):
         # Workaround for bug in python 3.0 and 3.1,
@@ -24,13 +26,12 @@ except ImportError:
     from xml.etree import ElementTree as ElementTree
 
 
-from Bio._py3k import _as_bytes, _bytes_to_string, unicode
-_empty_bytes_string = _as_bytes("")
-
 from Bio.Alphabet import generic_dna, generic_protein
 from Bio.SearchIO._index import SearchIndexer
 from Bio.SearchIO._model import QueryResult, Hit, HSP, HSPFragment
 
+from Bio._py3k import _as_bytes, _bytes_to_string, unicode
+_empty_bytes_string = _as_bytes("")
 
 __all__ = ['BlastXmlParser', 'BlastXmlIndexer', 'BlastXmlWriter']
 
@@ -47,7 +48,7 @@ _ELEM_QRESULT_OPT = {
 }
 # element - hit attribute name mapping
 _ELEM_HIT = {
-    #'Hit_def': ('description', str),   # not set by this dict
+    # 'Hit_def': ('description', str),   # not set by this dict
     'Hit_accession': ('accession', str),
     'Hit_len': ('seq_len', int),
 }
@@ -179,7 +180,27 @@ _DTD_OPT = (
 )
 
 # compile RE patterns
+# for capturing BLAST version
 _RE_VERSION = re.compile(r'\d+\.\d+\.\d+\+?')
+# for splitting ID-description pairs
+_RE_ID_DESC_PAIRS_PATTERN = re.compile(" +>")
+# for splitting ID and description (must be used with maxsplit = 1)
+_RE_ID_DESC_PATTERN = re.compile(" +")
+
+
+def _extract_ids_and_descs(concat_str):
+    # Given a string space-separate string of IDs and descriptions,
+    # return a list of tuples, each tuple containing an ID and
+    # a description string (which may be empty)
+
+    # create a list of lists, each list containing an ID and description
+    # or just an ID, if description is not present
+    id_desc_pairs = [re.split(_RE_ID_DESC_PATTERN, x, 1)
+                     for x in re.split(_RE_ID_DESC_PAIRS_PATTERN, concat_str)]
+    # make sure empty descriptions are added as empty strings
+    # also, we return lists for compatibility reasons between Py2 and Py3
+    add_descs = lambda x: x if len(x) == 2 else x + [""]
+    return [pair for pair in map(add_descs, id_desc_pairs)]
 
 
 class BlastXmlParser(object):
@@ -290,6 +311,11 @@ class BlastXmlParser(object):
                     if hit:
                         # need to keep track of hit IDs, since there could be duplicates,
                         if hit.id in key_list:
+                            warnings.warn("Adding hit with BLAST-generated ID "
+                                    "%r since hit ID %r is already present "
+                                    "in query %r. Your BLAST database may contain "
+                                    "duplicate entries." %
+                                    (hit._blast_id, hit.id, query_id), BiopythonParserWarning)
                             # fallback to Blast-generated IDs, if the ID is already present
                             # and restore the desc, too
                             hit.description = '%s %s' % (hit.id, hit.description)
@@ -341,9 +367,10 @@ class BlastXmlParser(object):
     def _parse_hit(self, root_hit_elem, query_id):
         """Generator that transforms Iteration_hits XML elements into Hit objects.
 
-        Arguments:
-        root_hit_elem -- Element object of the Iteration_hits tag.
-        query_id -- String of QueryResult ID of this Hit
+        :param root_hit_elem: root element of the Iteration_hits tag.
+        :type root_hit_elem: XML element tag
+        :param query_id: QueryResult ID of this Hit
+        :type query_id: string
 
         """
         # Hit level processing
@@ -378,12 +405,19 @@ class BlastXmlParser(object):
             else:
                 blast_hit_id = ''
 
+            # combine primary ID and defline first before splitting
+            full_id_desc = hit_id + ' ' + hit_desc
+            id_descs = _extract_ids_and_descs(full_id_desc)
+            hit_id, hit_desc = id_descs[0]
+
             hsps = [hsp for hsp in
                     self._parse_hsp(hit_elem.find('Hit_hsps'),
                         query_id, hit_id)]
 
             hit = Hit(hsps)
             hit.description = hit_desc
+            hit._id_alt = [x[0] for x in id_descs[1:]]
+            hit._description_alt = [x[1] for x in id_descs[1:]]
             # blast_hit_id is only set if the hit ID is Blast-generated
             hit._blast_id = blast_hit_id
 
@@ -403,10 +437,12 @@ class BlastXmlParser(object):
     def _parse_hsp(self, root_hsp_frag_elem, query_id, hit_id):
         """Iterator that transforms Hit_hsps XML elements into HSP objects.
 
-        Arguments:
-        root_hsp_frag_elem -- Element object of the Hit_hsps tag.
-        query_id -- Query ID string.
-        hit_id -- Hit ID string.
+        :param root_hsp_frag_elem: the ``Hit_hsps`` tag
+        :type root_hsp_frag_elem: XML element tag
+        :param query_id: query ID
+        :type query_id: string
+        :param hit_id: hit ID
+        :type hit_id: string
 
         """
         # Hit_hsps DTD:
@@ -454,8 +490,8 @@ class BlastXmlParser(object):
                         value = caster(value)
                     setattr(frag, val_info[0], value)
 
-            # set the homology characters into aln_annotation dict
-            frag.aln_annotation['homology'] = \
+            # set the similarity characters into aln_annotation dict
+            frag.aln_annotation['similarity'] = \
                     hsp_frag_elem.findtext('Hsp_midline')
 
             # process coordinates
@@ -547,7 +583,7 @@ class BlastXmlIndexer(SearchIndexer):
                 block = _empty_bytes_string.join(block)
             assert block.count(qstart_mark) == 1, "XML without line breaks? %r" % block
             assert block.count(qend_mark) == 1, "XML without line breaks? %r" % block
-            #Now we have a full <Iteration>...</Iteration> block, find the ID
+            # Now we have a full <Iteration>...</Iteration> block, find the ID
             regx = re.search(re_desc, block)
             try:
                 qstart_desc = regx.group(2)
@@ -571,6 +607,7 @@ class BlastXmlIndexer(SearchIndexer):
         return next(iter(generator))
 
     def get_raw(self, offset):
+        """Return the raw record from the file as a bytes string."""
         qend_mark = self.qend_mark
         handle = self._handle
         handle.seek(offset)
@@ -613,15 +650,19 @@ class _BlastXmlGenerator(XMLGenerator):
                 '<!DOCTYPE BlastOutput PUBLIC "-//NCBI//NCBI BlastOutput/EN" '
                 '"http://www.ncbi.nlm.nih.gov/dtd/NCBI_BlastOutput.dtd">\n')
 
-    def startElement(self, name, attrs={}, children=False):
+    def startElement(self, name, attrs=None, children=False):
         """Starts an XML element.
 
-        Arguments:
-        name -- String of element name.
-        attrs -- Dictionary of element attributes.
-        children -- Boolean, whether the element has children or not.
+        :param name: element name
+        :type name: string
+        :param attrs: element attributes
+        :type attrs: dictionary {string: object}
+        :param children: whether the element has children or not
+        :type children: bool
 
         """
+        if attrs is None:
+            attrs = {}
         self.ignorableWhitespace(self._indent * self._level)
         XMLGenerator.startElement(self, name, attrs)
 
@@ -630,14 +671,17 @@ class _BlastXmlGenerator(XMLGenerator):
         XMLGenerator.endElement(self, name)
         self.write(u'\n')
 
-    def startParent(self, name, attrs={}):
+    def startParent(self, name, attrs=None):
         """Starts an XML element which has children.
 
-        Arguments:
-        name -- String of element name.
-        attrs -- Dictionary of element attributes.
+        :param name: element name
+        :type name: string
+        :param attrs: element attributes
+        :type attrs: dictionary {string: object}
 
         """
+        if attrs is None:
+            attrs = {}
         self.startElement(name, attrs, children=True)
         self._level += self._increment
         self.write(u'\n')
@@ -703,16 +747,21 @@ class BlastXmlWriter(object):
         return self.qresult_counter, self.hit_counter, self.hsp_counter, \
             self.frag_counter
 
-    def _write_elem_block(self, block_name, map_name, obj, opt_dict={}):
+    def _write_elem_block(self, block_name, map_name, obj, opt_dict=None):
         """Writes sibling XML elements.
 
-        Arguments:
-        block_name -- String of common element name prefix.
-        map_name -- Dictionary name to for mapping element and attribute names.
-        obj -- Object whose attribute values will be used.
-        opt_dict -- Dictionary for custom element-attribute mapping.
+        :param block_name: common element name prefix
+        :type block_name: string
+        :param map_name: name of mapping between element and attribute names
+        :type map_name: string
+        :param obj: object whose attribute value will be used
+        :type obj: object
+        :param opt_dict: custom element-attribute mapping
+        :type opt_dict: dictionary {string: string}
 
         """
+        if opt_dict is None:
+            opt_dict = {}
         for elem, attr in _WRITE_MAPS[map_name]:
             elem = block_name + elem
             try:
@@ -768,7 +817,7 @@ class BlastXmlWriter(object):
 
         for num, qresult in enumerate(qresults):
             xml.startParent('Iteration')
-            xml.simpleElement('Iteration_iter-num', str(num+1))
+            xml.simpleElement('Iteration_iter-num', str(num + 1))
             opt_dict = {}
             # use custom Iteration_query-ID and Iteration_query-def mapping
             # if the query has a BLAST-generated ID
@@ -803,7 +852,7 @@ class BlastXmlWriter(object):
 
         for num, hit in enumerate(hits):
             xml.startParent('Hit')
-            xml.simpleElement('Hit_num', str(num+1))
+            xml.simpleElement('Hit_num', str(num + 1))
             # use custom hit_id and hit_def mapping if the hit has a
             # BLAST-generated ID
             opt_dict = {}
@@ -823,7 +872,7 @@ class BlastXmlWriter(object):
         xml = self.xml
         for num, hsp in enumerate(hsps):
             xml.startParent('Hsp')
-            xml.simpleElement('Hsp_num', str(num+1))
+            xml.simpleElement('Hsp_num', str(num + 1))
             for elem, attr in _WRITE_MAPS['hsp']:
                 elem = 'Hsp_' + elem
                 try:
@@ -864,7 +913,7 @@ class BlastXmlWriter(object):
         elif elem in ('Hsp_hseq', 'Hsp_qseq'):
             content = str(getattr(hsp, attr).seq)
         elif elem == 'Hsp_midline':
-            content = hsp.aln_annotation['homology']
+            content = hsp.aln_annotation['similarity']
         elif elem in ('Hsp_evalue', 'Hsp_bit-score'):
             # adapted from src/algo/blast/format/blastxml_format.cpp#L138-140
             content = '%.*g' % (6, getattr(hsp, attr))

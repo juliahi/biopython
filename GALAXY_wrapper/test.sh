@@ -1,3 +1,5 @@
+cp run_enrichment.py ../
+cp run_ranked_enrichment.py ../
 
 #OPTIONS="-m cProfile"
 #OPTIONS="-m memory_profiler"
