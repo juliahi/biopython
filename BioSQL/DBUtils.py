@@ -10,11 +10,13 @@
 # available and licensed separately.  Please consult www.biosql.org
 import os
 
+
 _dbutils = {}
 
 
-class Generic_dbutils:
+class Generic_dbutils(object):
     """Default database utilities."""
+
     def __init__(self):
         pass
 
@@ -37,6 +39,11 @@ class Generic_dbutils:
         """
         cursor.execute(sql, args or ())
 
+    def executemany(self, cursor, sql, seq):
+        """Execute many sql commands
+        """
+        cursor.executemany(sql, seq)
+
     def autocommit(self, conn, y=1):
         # Let's hope it was not really needed
         pass
@@ -44,26 +51,39 @@ class Generic_dbutils:
 
 class Sqlite_dbutils(Generic_dbutils):
     """Custom database utilities for SQLite."""
+
+    def _sub_placeholder(self, sql):
+        """Format the argument placeholders for sqlite
+        """
+        return sql.replace("%s", "?")
+
     def execute(self, cursor, sql, args=None):
         """Execute SQL command, replacing %s with ? for variable substitution in sqlite3.
         """
-        cursor.execute(sql.replace("%s", "?"), args or ())
+        sql = self._sub_placeholder(sql)
+        cursor.execute(sql, args or ())
+
+    def executemany(self, cursor, sql, seq):
+        sql = self._sub_placeholder(sql)
+        cursor.executemany(sql, seq)
+
 
 _dbutils["sqlite3"] = Sqlite_dbutils
 
 
 class Mysql_dbutils(Generic_dbutils):
     """Custom database utilities for MySQL."""
+
     def last_id(self, cursor, table):
         if os.name == "java":
             return Generic_dbutils.last_id(self, cursor, table)
         try:
-            #This worked on older versions of MySQL
+            # This worked on older versions of MySQL
             return cursor.insert_id()
         except AttributeError:
-            #See bug 2390
-            #Google suggests this is the new way,
-            #same fix also suggested by Eric Gibert:
+            # See bug 2390
+            # Google suggests this is the new way,
+            # same fix also suggested by Eric Gibert:
             return cursor.lastrowid
 
 _dbutils["MySQLdb"] = Mysql_dbutils
@@ -71,6 +91,7 @@ _dbutils["MySQLdb"] = Mysql_dbutils
 
 class _PostgreSQL_dbutils(Generic_dbutils):
     """Base class for any PostgreSQL adaptor."""
+
     def next_id(self, cursor, table):
         table = self.tname(table)
         sql = r"select nextval('%s_pk_seq')" % table
@@ -88,6 +109,7 @@ class _PostgreSQL_dbutils(Generic_dbutils):
 
 class Psycopg2_dbutils(_PostgreSQL_dbutils):
     """Custom database utilities for Psycopg2 (PostgreSQL)."""
+
     def autocommit(self, conn, y=True):
         if y:
             if os.name == "java":
@@ -105,6 +127,7 @@ _dbutils["psycopg2"] = Psycopg2_dbutils
 
 class Pgdb_dbutils(_PostgreSQL_dbutils):
     """Custom database utilities for Pgdb (aka PyGreSQL, for PostgreSQL)."""
+
     def autocommit(self, conn, y=True):
         raise NotImplementedError("pgdb does not support this!")
 

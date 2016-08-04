@@ -24,6 +24,8 @@ dist
 #Ignore all compiled python files (e.g. from running the unit tests):
 *.pyc
 *.pyo
+*.py{}
+*.py-e
 
 #Ignore all Jython class files (present if using Jython)
 *.class
@@ -40,6 +42,9 @@ Tests/Graphics/*.pdf
 Tests/Graphics/*.eps
 Tests/Graphics/*.svg
 Tests/Graphics/*.png
+
+#Ignore the local BioSQL test settings:
+Tests/biosql.ini
 
 #TODO - The unit tests shouldn't leave temp files after running:
 Tests/BioSQL/temp_sqlite.db

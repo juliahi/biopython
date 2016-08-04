@@ -9,31 +9,19 @@ from BioSQL import BioSeqDatabase
 
 from common_BioSQL import *
 
-##################################
-# Start of user-editable section #
-##################################
-
-# Constants for the database driver
-DBHOST = 'localhost'
-DBUSER = 'root'
-DBPASSWD = ''
-TESTDB = 'biosql_test'
-
-################################
-# End of user-editable section #
-################################
-
 DBDRIVER = 'MySQLdb'
 DBTYPE = 'mysql'
 
-#This will abort if driver not installed etc:
+DBHOST, DBUSER, DBPASSWD, TESTDB = load_biosql_ini(DBTYPE)
+
+# This will abort if driver not installed etc:
 check_config(DBDRIVER, DBTYPE, DBHOST, DBUSER, DBPASSWD, TESTDB)
 
-#Some of the unit tests don't create their own database,
-#so just in case there is no database already:
-create_database()
+# Some of the unit tests don't create their own database,
+# so just in case there is no database already:
+TESTDB = create_database()
 
 if __name__ == "__main__":
-    #Run the test cases
-    runner = unittest.TextTestRunner(verbosity = 2)
+    # Run the test cases
+    runner = unittest.TextTestRunner(verbosity=2)
     unittest.main(testRunner=runner)

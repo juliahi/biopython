@@ -1,4 +1,4 @@
-# Copyright 2008-2010 by Peter Cock.  All rights reserved.
+# Copyright 2008-2016 by Peter Cock.  All rights reserved.
 # Revisions copyright 2009 by Cymon J. Cox.  All rights reserved.
 #
 # This code is part of the Biopython distribution and governed by its
@@ -16,7 +16,7 @@ For example, using Bio.SeqIO we can read in one of the example PHRED files
 from the Biopython unit tests:
 
     >>> from Bio import SeqIO
-    >>> for record in SeqIO.parse(open("Phd/phd1"), "phd"):
+    >>> for record in SeqIO.parse("Phd/phd1", "phd"):
     ...     print(record.id)
     ...     print("%s..." % record.seq[:10])
     ...     print("%s..." % record.letter_annotations["phred_quality"][:10])
@@ -67,18 +67,18 @@ def PhdIterator(handle):
     """
     phd_records = Phd.parse(handle)
     for phd_record in phd_records:
-        #Convert the PHY record into a SeqRecord...
-        #The "filename" can contain spaces, e.g. 'HWI-EAS94_4_1_1_602_99 1'
-        #from unit test example file phd_solexa.
-        #This will cause problems if used as the record identifier
-        #(e.g. output for FASTQ format).
+        # Convert the PHY record into a SeqRecord...
+        # The "filename" can contain spaces, e.g. 'HWI-EAS94_4_1_1_602_99 1'
+        # from unit test example file phd_solexa.
+        # This will cause problems if used as the record identifier
+        # (e.g. output for FASTQ format).
         name = phd_record.file_name.split(None, 1)[0]
         seq_record = SeqRecord(phd_record.seq,
                                id=name, name=name,
                                description=phd_record.file_name)
-        #Just re-use the comments dictionary as the SeqRecord's annotations
+        # Just re-use the comments dictionary as the SeqRecord's annotations
         seq_record.annotations = phd_record.comments
-        #And store the qualities and peak locations as per-letter-annotation
+        # And store the qualities and peak locations as per-letter-annotation
         seq_record.letter_annotations["phred_quality"] = \
             [int(site[1]) for site in phd_record.sites]
         try:
@@ -89,7 +89,7 @@ def PhdIterator(handle):
             # David Gordon (the Consed author)
             pass
         yield seq_record
-    #All done
+    # All done
 
 
 class PhdWriter(SequentialSequenceWriter):
@@ -104,7 +104,7 @@ class PhdWriter(SequentialSequenceWriter):
         # This method returns the 'phred_quality' scores or converted
         # 'solexa_quality' scores if present, else raises a value error
         phred_qualities = QualityIO._get_phred_quality(record)
-        peak_locations = record.letter_annotations.get("peak_location", None)
+        peak_locations = record.letter_annotations.get("peak_location")
         assert len(record.seq) == len(phred_qualities), "Number of " + \
             "phd quality scores does not match length of sequence"
         if peak_locations:
@@ -121,14 +121,14 @@ class PhdWriter(SequentialSequenceWriter):
         for annot in [k.lower() for k in Phd.CKEYWORDS]:
             value = None
             if annot == "trim":
-                if record.annotations.get("trim", None):
+                if record.annotations.get("trim"):
                     value = "%s %s %.4f" % record.annotations["trim"]
             elif annot == "trace_peak_area_ratio":
-                if record.annotations.get("trace_peak_area_ratio", None):
+                if record.annotations.get("trace_peak_area_ratio"):
                     value = "%.4f" % record.annotations[
                         "trace_peak_area_ratio"]
             else:
-                value = record.annotations.get(annot, None)
+                value = record.annotations.get(annot)
             if value or value == 0:
                 self.handle.write("%s: %s\n" % (annot.upper(), value))
 
@@ -152,4 +152,3 @@ class PhdWriter(SequentialSequenceWriter):
 if __name__ == "__main__":
     from Bio._utils import run_doctest
     run_doctest()
-

@@ -4,8 +4,6 @@
 # as part of this package.
 """Alignment command line tool wrappers."""
 
-__docformat__ = "epytext en"  # Don't just use plain text in epydoc API pages!
-
 from ._Muscle import MuscleCommandline
 from ._Clustalw import ClustalwCommandline
 from ._ClustalOmega import ClustalOmegaCommandline
@@ -16,7 +14,7 @@ from ._Probcons import ProbconsCommandline
 from ._TCoffee import TCoffeeCommandline
 from ._MSAProbs import MSAProbsCommandline
 
-#Make this explicit, then they show up in the API docs
+# Make this explicit, then they show up in the API docs
 __all__ = ["MuscleCommandline",
            "ClustalwCommandline",
            "ClustalOmegaCommandline",

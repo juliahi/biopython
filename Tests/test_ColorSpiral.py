@@ -39,7 +39,7 @@ class SpiralTest(unittest.TestCase):
 
     def test_colorlist(self):
         """Get set of eight colours, no jitter, using ColorSpiral."""
-        cs = ColorSpiral(a = 4, b = 0.33, jitter = 0)
+        cs = ColorSpiral(a=4, b=0.33, jitter=0)
         colours = list(cs.get_colors(8))
         cstr = ["(%.2f, %.2f, %.2f)" % (r, g, b)
                     for r, g, b in colours]
@@ -51,7 +51,7 @@ class SpiralTest(unittest.TestCase):
 
     def test_colorspiral(self):
         """Get set of 16 colours, no jitter, using ColorSpiral."""
-        cs = ColorSpiral(a = 4, b = 0.33, jitter = 0)
+        cs = ColorSpiral(a=4, b=0.33, jitter=0)
         radius = A4[0] * 0.025
         for r, g, b in cs.get_colors(16):
             self.c.setFillColor((r, g, b))
@@ -60,7 +60,7 @@ class SpiralTest(unittest.TestCase):
             coords = rect(s * A4[0] * 0.45, h * 2 * pi)
             x, y = self.x_0 + coords.real, self.y_0 + coords.imag
             self.c.ellipse(x - radius, y - radius, x + radius, y + radius,
-                           stroke = 0, fill = 1)
+                           stroke=0, fill=1)
         self.finish()
 
     def finish(self):
@@ -84,8 +84,8 @@ class SquareTest(unittest.TestCase):
             self.c.setFillColor(c)
             x1 = boxedge * (i % boxes_per_row)
             y1 = rows * boxedge
-            self.c.rect(x1, y1, boxedge, boxedge, fill = 1, stroke = 0)
-            if not (i+1) % boxes_per_row:
+            self.c.rect(x1, y1, boxedge, boxedge, fill=1, stroke=0)
+            if not (i + 1) % boxes_per_row:
                 rows += 1
         self.finish()
 
@@ -101,11 +101,13 @@ class DictTest(unittest.TestCase):
         classes = ['A', 'B', 'C', 'D']
         colors = get_color_dict(classes, jitter=0)
         cstr = ["%s: (%.2f, %.2f, %.2f)" % (c, r, g, b)
-                    for c, (r, g, b) in colors.items()]
-        expected = ['A: (0.52, 0.76, 0.69)', 'C: (0.59, 0.13, 0.47)',
-                    'B: (0.40, 0.31, 0.68)', 'D: (0.50, 0.00, 0.00)']
+                    for c, (r, g, b) in sorted(colors.items())]
+        expected = ['A: (0.52, 0.76, 0.69)',
+                    'B: (0.40, 0.31, 0.68)',
+                    'C: (0.59, 0.13, 0.47)',
+                    'D: (0.50, 0.00, 0.00)']
         self.assertEqual(cstr, expected)
 
 if __name__ == "__main__":
-    runner = unittest.TextTestRunner(verbosity = 2)
-    unittest.main(testRunner = runner)
+    runner = unittest.TextTestRunner(verbosity=2)
+    unittest.main(testRunner=runner)

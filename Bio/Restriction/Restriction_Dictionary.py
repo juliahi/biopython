@@ -1,4 +1,3 @@
-
 #!/usr/bin/env python
 #
 #      Restriction Analysis Libraries.
@@ -15,12 +14,15 @@
 # The following dictionaries used to be defined in one go, but that does
 # not work on Jython due to JVM limitations. Therefore we break this up
 # into steps, using temporary functions to avoid the JVM limits.
-
+#
+# Used REBASE emboss files version 605 (2016).
 
 rest_dict = {}
+
+
 def _temp():
     return {
-        'compsite': '(?P<AanI>TTATAA)|(?P<AanI_as>TTATAA)',
+        'compsite': '(?P<AanI>TTATAA)',
         'results': None,
         'site': 'TTATAA',
         'substrat': 'DNA',
@@ -33,12 +35,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TTATAA'),
         'ovhgseq': '',
     }
 rest_dict['AanI'] = _temp()
+
 
 def _temp():
     return {
@@ -55,16 +58,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (11, 8, None, None, 'CACCTGC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['AarI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AasI>GAC......GTC)|(?P<AasI_as>GAC......GTC)',
+        'compsite': '(?P<AasI>GAC......GTC)',
         'results': None,
         'site': 'GACNNNNNNGTC',
         'substrat': 'DNA',
@@ -77,38 +81,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, -7, None, None, 'GACNNNNNNGTC'),
         'ovhgseq': 'NN',
     }
 rest_dict['AasI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<AatI>AGGCCT)|(?P<AatI_as>AGGCCT)',
-        'results': None,
-        'site': 'AGGCCT',
-        'substrat': 'DNA',
-        'fst3': -3,
-        'fst5': 3,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 0,
-        'scd3': None,
-        'suppl': ('O',),
-        'scd5': None,
-        'charac': (3, -3, None, None, 'AGGCCT'),
-        'ovhgseq': '',
-    }
-rest_dict['AatI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<AatII>GACGTC)|(?P<AatII_as>GACGTC)',
+        'compsite': '(?P<AatII>GACGTC)',
         'results': None,
         'site': 'GACGTC',
         'substrat': 'DNA',
@@ -121,16 +104,109 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F', 'I', 'K', 'M', 'N', 'O', 'R', 'V'),
+        'suppl': ('B', 'I', 'K', 'M', 'N', 'V'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GACGTC'),
         'ovhgseq': 'ACGT',
     }
 rest_dict['AatII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AbsI>CCTCGAGG)|(?P<AbsI_as>CCTCGAGG)',
+        'compsite': '(?P<Aba6411II>C[AG][AG]TAAG)|(?P<Aba6411II_as>CTTA[CT][CT]G)',
+        'results': None,
+        'site': 'CRRTAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CRRTAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Aba6411II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AbaCIII>CTATCA[ACG])|(?P<AbaCIII_as>[CGT]TGATAG)',
+        'results': None,
+        'site': 'CTATCAV',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CTATCAV'),
+        'ovhgseq': None,
+    }
+rest_dict['AbaCIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AbaSI>C)|(?P<AbaSI_as>G)',
+        'results': None,
+        'site': 'C',
+        'substrat': 'DNA',
+        'fst3': 9,
+        'fst5': 12,
+        'freq': 4,
+        'size': 1,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (12, 9, None, None, 'C'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['AbaSI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AbaUMB2I>[CT]CCG[CG][CG])|(?P<AbaUMB2I_as>[CG][CG]CGG[AG])',
+        'results': None,
+        'site': 'YCCGSS',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 512,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'YCCGSS'),
+        'ovhgseq': None,
+    }
+rest_dict['AbaUMB2I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AbsI>CCTCGAGG)',
         'results': None,
         'site': 'CCTCGAGG',
         'substrat': 'DNA',
@@ -150,9 +226,10 @@ def _temp():
     }
 rest_dict['AbsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Acc16I>TGCGCA)|(?P<Acc16I_as>TGCGCA)',
+        'compsite': '(?P<Acc16I>TGCGCA)',
         'results': None,
         'site': 'TGCGCA',
         'substrat': 'DNA',
@@ -171,6 +248,7 @@ def _temp():
         'ovhgseq': '',
     }
 rest_dict['Acc16I'] = _temp()
+
 
 def _temp():
     return {
@@ -194,9 +272,10 @@ def _temp():
     }
 rest_dict['Acc36I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Acc65I>GGTACC)|(?P<Acc65I_as>GGTACC)',
+        'compsite': '(?P<Acc65I>GGTACC)',
         'results': None,
         'site': 'GGTACC',
         'substrat': 'DNA',
@@ -209,16 +288,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'I', 'N', 'R', 'V', 'W'),
+        'suppl': ('B', 'I', 'N', 'V'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGTACC'),
         'ovhgseq': 'GTAC',
     }
 rest_dict['Acc65I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AccB1I>GG[CT][AG]CC)|(?P<AccB1I_as>GG[CT][AG]CC)',
+        'compsite': '(?P<AccB1I>GG[CT][AG]CC)',
         'results': None,
         'site': 'GGYRCC',
         'substrat': 'DNA',
@@ -238,9 +318,10 @@ def _temp():
     }
 rest_dict['AccB1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AccB7I>CCA.....TGG)|(?P<AccB7I_as>CCA.....TGG)',
+        'compsite': '(?P<AccB7I>CCA.....TGG)',
         'results': None,
         'site': 'CCANNNNNTGG',
         'substrat': 'DNA',
@@ -253,12 +334,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('I', 'R', 'V'),
+        'suppl': ('I', 'V'),
         'scd5': None,
         'charac': (7, -7, None, None, 'CCANNNNNTGG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['AccB7I'] = _temp()
+
 
 def _temp():
     return {
@@ -282,9 +364,10 @@ def _temp():
     }
 rest_dict['AccBSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AccI>GT[AC][GT]AC)|(?P<AccI_as>GT[AC][GT]AC)',
+        'compsite': '(?P<AccI>GT[AC][GT]AC)',
         'results': None,
         'site': 'GTMKAC',
         'substrat': 'DNA',
@@ -297,16 +380,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('B', 'J', 'K', 'M', 'N', 'O', 'R', 'S', 'U', 'W', 'X'),
+        'suppl': ('B', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GTMKAC'),
         'ovhgseq': 'MK',
     }
 rest_dict['AccI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AccII>CGCG)|(?P<AccII_as>CGCG)',
+        'compsite': '(?P<AccII>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -326,9 +410,10 @@ def _temp():
     }
 rest_dict['AccII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AccIII>TCCGGA)|(?P<AccIII_as>TCCGGA)',
+        'compsite': '(?P<AccIII>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -341,12 +426,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('J', 'K', 'R', 'W'),
+        'suppl': ('J', 'K', 'R'),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCCGGA'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['AccIII'] = _temp()
+
 
 def _temp():
     return {
@@ -370,6 +456,30 @@ def _temp():
     }
 rest_dict['AceIII'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<AchA6III>AGCCAG)|(?P<AchA6III_as>CTGGCT)',
+        'results': None,
+        'site': 'AGCCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'AGCCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['AchA6III'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<AciI>CCGC)|(?P<AciI_as>GCGG)',
@@ -392,9 +502,10 @@ def _temp():
     }
 rest_dict['AciI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AclI>AACGTT)|(?P<AclI_as>AACGTT)',
+        'compsite': '(?P<AclI>AACGTT)',
         'results': None,
         'site': 'AACGTT',
         'substrat': 'DNA',
@@ -413,6 +524,7 @@ def _temp():
         'ovhgseq': 'CG',
     }
 rest_dict['AclI'] = _temp()
+
 
 def _temp():
     return {
@@ -436,9 +548,33 @@ def _temp():
     }
 rest_dict['AclWI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AcoI>[CT]GGCC[AG])|(?P<AcoI_as>[CT]GGCC[AG])',
+        'compsite': '(?P<Aco12261II>CC[AG]GAG)|(?P<Aco12261II_as>CTC[CT]GG)',
+        'results': None,
+        'site': 'CCRGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCRGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Aco12261II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AcoI>[CT]GGCC[AG])',
         'results': None,
         'site': 'YGGCCR',
         'substrat': 'DNA',
@@ -458,9 +594,10 @@ def _temp():
     }
 rest_dict['AcoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AcsI>[AG]AATT[CT])|(?P<AcsI_as>[AG]AATT[CT])',
+        'compsite': '(?P<AcsI>[AG]AATT[CT])',
         'results': None,
         'site': 'RAATTY',
         'substrat': 'DNA',
@@ -479,6 +616,7 @@ def _temp():
         'ovhgseq': 'AATT',
     }
 rest_dict['AcsI'] = _temp()
+
 
 def _temp():
     return {
@@ -502,9 +640,10 @@ def _temp():
     }
 rest_dict['AcuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AcvI>CACGTG)|(?P<AcvI_as>CACGTG)',
+        'compsite': '(?P<AcvI>CACGTG)',
         'results': None,
         'site': 'CACGTG',
         'substrat': 'DNA',
@@ -524,9 +663,10 @@ def _temp():
     }
 rest_dict['AcvI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AcyI>G[AG]CG[CT]C)|(?P<AcyI_as>G[AG]CG[CT]C)',
+        'compsite': '(?P<AcyI>G[AG]CG[CT]C)',
         'results': None,
         'site': 'GRCGYC',
         'substrat': 'DNA',
@@ -539,16 +679,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('J', 'M'),
+        'suppl': ('J',),
         'scd5': None,
         'charac': (2, -2, None, None, 'GRCGYC'),
         'ovhgseq': 'CG',
     }
 rest_dict['AcyI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AdeI>CAC...GTG)|(?P<AdeI_as>CAC...GTG)',
+        'compsite': '(?P<AdeI>CAC...GTG)',
         'results': None,
         'site': 'CACNNNGTG',
         'substrat': 'DNA',
@@ -561,16 +702,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (6, -6, None, None, 'CACNNNGTG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['AdeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AfaI>GTAC)|(?P<AfaI_as>GTAC)',
+        'compsite': '(?P<AfaI>GTAC)',
         'results': None,
         'site': 'GTAC',
         'substrat': 'DNA',
@@ -583,16 +725,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('K',),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GTAC'),
         'ovhgseq': '',
     }
 rest_dict['AfaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AfeI>AGCGCT)|(?P<AfeI_as>AGCGCT)',
+        'compsite': '(?P<AfeI>AGCGCT)',
         'results': None,
         'site': 'AGCGCT',
         'substrat': 'DNA',
@@ -612,9 +755,10 @@ def _temp():
     }
 rest_dict['AfeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AfiI>CC.......GG)|(?P<AfiI_as>CC.......GG)',
+        'compsite': '(?P<AfiI>CC.......GG)',
         'results': None,
         'site': 'CCNNNNNNNGG',
         'substrat': 'DNA',
@@ -634,9 +778,10 @@ def _temp():
     }
 rest_dict['AfiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AflII>CTTAAG)|(?P<AflII_as>CTTAAG)',
+        'compsite': '(?P<AflII>CTTAAG)',
         'results': None,
         'site': 'CTTAAG',
         'substrat': 'DNA',
@@ -656,9 +801,10 @@ def _temp():
     }
 rest_dict['AflII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AflIII>AC[AG][CT]GT)|(?P<AflIII_as>AC[AG][CT]GT)',
+        'compsite': '(?P<AflIII>AC[AG][CT]GT)',
         'results': None,
         'site': 'ACRYGT',
         'substrat': 'DNA',
@@ -671,16 +817,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('M', 'N', 'W'),
+        'suppl': ('M', 'N'),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACRYGT'),
         'ovhgseq': 'CRYG',
     }
 rest_dict['AflIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AgeI>ACCGGT)|(?P<AgeI_as>ACCGGT)',
+        'compsite': '(?P<AgeI>ACCGGT)',
         'results': None,
         'site': 'ACCGGT',
         'substrat': 'DNA',
@@ -700,9 +847,10 @@ def _temp():
     }
 rest_dict['AgeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AgsI>TT[CG]AA)|(?P<AgsI_as>TT[CG]AA)',
+        'compsite': '(?P<AgsI>TT[CG]AA)',
         'results': None,
         'site': 'TTSAA',
         'substrat': 'DNA',
@@ -722,9 +870,10 @@ def _temp():
     }
 rest_dict['AgsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AhaIII>TTTAAA)|(?P<AhaIII_as>TTTAAA)',
+        'compsite': '(?P<AhaIII>TTTAAA)',
         'results': None,
         'site': 'TTTAAA',
         'substrat': 'DNA',
@@ -744,9 +893,10 @@ def _temp():
     }
 rest_dict['AhaIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AhdI>GAC.....GTC)|(?P<AhdI_as>GAC.....GTC)',
+        'compsite': '(?P<AhdI>GAC.....GTC)',
         'results': None,
         'site': 'GACNNNNNGTC',
         'substrat': 'DNA',
@@ -766,9 +916,10 @@ def _temp():
     }
 rest_dict['AhdI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AhlI>ACTAGT)|(?P<AhlI_as>ACTAGT)',
+        'compsite': '(?P<AhlI>ACTAGT)',
         'results': None,
         'site': 'ACTAGT',
         'substrat': 'DNA',
@@ -788,6 +939,30 @@ def _temp():
     }
 rest_dict['AhlI'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<AhyYL17I>[CT]AA[AC]GAG)|(?P<AhyYL17I_as>CTC[GT]TT[AG])',
+        'results': None,
+        'site': 'YAAMGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'YAAMGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['AhyYL17I'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<AjiI>CACGTC)|(?P<AjiI_as>GACGTG)',
@@ -803,16 +978,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'CACGTC'),
         'ovhgseq': '',
     }
 rest_dict['AjiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AjnI>CC[AT]GG)|(?P<AjnI_as>CC[AT]GG)',
+        'compsite': '(?P<AjnI>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -832,6 +1008,7 @@ def _temp():
     }
 rest_dict['AjnI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<AjuI>GAA.......TTGG)|(?P<AjuI_as>CCAA.......TTC)',
@@ -847,16 +1024,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 5,
         'scd3': 6,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': 25,
         'charac': (-7, -26, 25, 6, 'GAANNNNNNNTTGG'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['AjuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AleI>CAC....GTG)|(?P<AleI_as>CAC....GTG)',
+        'compsite': '(?P<AleI>CAC....GTG)',
         'results': None,
         'site': 'CACNNNNGTG',
         'substrat': 'DNA',
@@ -876,9 +1054,10 @@ def _temp():
     }
 rest_dict['AleI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AlfI>GCA......TGC)|(?P<AlfI_as>GCA......TGC)',
+        'compsite': '(?P<AlfI>GCA......TGC)',
         'results': None,
         'site': 'GCANNNNNNTGC',
         'substrat': 'DNA',
@@ -891,12 +1070,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': 10,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': 24,
         'charac': (-10, -24, 24, 10, 'GCANNNNNNTGC'),
         'ovhgseq': 'NN',
     }
 rest_dict['AlfI'] = _temp()
+
 
 def _temp():
     return {
@@ -913,16 +1093,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 5,
         'scd3': 7,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': 25,
         'charac': (-7, -25, 25, 7, 'GAACNNNNNNTCC'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['AloI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AluBI>AGCT)|(?P<AluBI_as>AGCT)',
+        'compsite': '(?P<AluBI>AGCT)',
         'results': None,
         'site': 'AGCT',
         'substrat': 'DNA',
@@ -942,9 +1123,10 @@ def _temp():
     }
 rest_dict['AluBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AluI>AGCT)|(?P<AluI_as>AGCT)',
+        'compsite': '(?P<AluI>AGCT)',
         'results': None,
         'site': 'AGCT',
         'substrat': 'DNA',
@@ -957,16 +1139,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (2, -2, None, None, 'AGCT'),
         'ovhgseq': '',
     }
 rest_dict['AluI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Alw21I>G[AT]GC[AT]C)|(?P<Alw21I_as>G[AT]GC[AT]C)',
+        'compsite': '(?P<Alw21I>G[AT]GC[AT]C)',
         'results': None,
         'site': 'GWGCWC',
         'substrat': 'DNA',
@@ -979,12 +1162,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GWGCWC'),
         'ovhgseq': 'WGCW',
     }
 rest_dict['Alw21I'] = _temp()
+
 
 def _temp():
     return {
@@ -1001,16 +1185,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (6, 5, None, None, 'GTCTC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['Alw26I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Alw44I>GTGCAC)|(?P<Alw44I_as>GTGCAC)',
+        'compsite': '(?P<Alw44I>GTGCAC)',
         'results': None,
         'site': 'GTGCAC',
         'substrat': 'DNA',
@@ -1023,12 +1208,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'J', 'O', 'R'),
+        'suppl': ('B', 'J'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GTGCAC'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['Alw44I'] = _temp()
+
 
 def _temp():
     return {
@@ -1052,6 +1238,7 @@ def _temp():
     }
 rest_dict['AlwFI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<AlwI>GGATC)|(?P<AlwI_as>GATCC)',
@@ -1074,9 +1261,10 @@ def _temp():
     }
 rest_dict['AlwI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AlwNI>CAG...CTG)|(?P<AlwNI_as>CAG...CTG)',
+        'compsite': '(?P<AlwNI>CAG...CTG)',
         'results': None,
         'site': 'CAGNNNCTG',
         'substrat': 'DNA',
@@ -1096,9 +1284,10 @@ def _temp():
     }
 rest_dict['AlwNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Ama87I>C[CT]CG[AG]G)|(?P<Ama87I_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<Ama87I>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -1118,9 +1307,10 @@ def _temp():
     }
 rest_dict['Ama87I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Aor13HI>TCCGGA)|(?P<Aor13HI_as>TCCGGA)',
+        'compsite': '(?P<Aor13HI>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -1140,9 +1330,10 @@ def _temp():
     }
 rest_dict['Aor13HI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Aor51HI>AGCGCT)|(?P<Aor51HI_as>AGCGCT)',
+        'compsite': '(?P<Aor51HI>AGCGCT)',
         'results': None,
         'site': 'AGCGCT',
         'substrat': 'DNA',
@@ -1162,9 +1353,33 @@ def _temp():
     }
 rest_dict['Aor51HI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ApaBI>GCA.....TGC)|(?P<ApaBI_as>GCA.....TGC)',
+        'compsite': '(?P<AoxI>GGCC)',
+        'results': None,
+        'site': 'GGCC',
+        'substrat': 'DNA',
+        'fst3': 0,
+        'fst5': 0,
+        'freq': 256,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (0, 0, None, None, 'GGCC'),
+        'ovhgseq': 'GGCC',
+    }
+rest_dict['AoxI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<ApaBI>GCA.....TGC)',
         'results': None,
         'site': 'GCANNNNNTGC',
         'substrat': 'DNA',
@@ -1184,9 +1399,10 @@ def _temp():
     }
 rest_dict['ApaBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ApaI>GGGCCC)|(?P<ApaI_as>GGGCCC)',
+        'compsite': '(?P<ApaI>GGGCCC)',
         'results': None,
         'site': 'GGGCCC',
         'substrat': 'DNA',
@@ -1199,16 +1415,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('B', 'F', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GGGCCC'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['ApaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ApaLI>GTGCAC)|(?P<ApaLI_as>GTGCAC)',
+        'compsite': '(?P<ApaLI>GTGCAC)',
         'results': None,
         'site': 'GTGCAC',
         'substrat': 'DNA',
@@ -1221,16 +1438,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('C', 'K', 'N', 'U'),
+        'suppl': ('C', 'K', 'N'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GTGCAC'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['ApaLI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ApeKI>GC[AT]GC)|(?P<ApeKI_as>GC[AT]GC)',
+        'compsite': '(?P<ApeKI>GC[AT]GC)',
         'results': None,
         'site': 'GCWGC',
         'substrat': 'DNA',
@@ -1250,9 +1468,10 @@ def _temp():
     }
 rest_dict['ApeKI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ApoI>[AG]AATT[CT])|(?P<ApoI_as>[AG]AATT[CT])',
+        'compsite': '(?P<ApoI>[AG]AATT[CT])',
         'results': None,
         'site': 'RAATTY',
         'substrat': 'DNA',
@@ -1271,6 +1490,7 @@ def _temp():
         'ovhgseq': 'AATT',
     }
 rest_dict['ApoI'] = _temp()
+
 
 def _temp():
     return {
@@ -1294,6 +1514,7 @@ def _temp():
     }
 rest_dict['ApyPI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<AquII>GCCG.AC)|(?P<AquII_as>GT.CGGC)',
@@ -1315,6 +1536,7 @@ def _temp():
         'ovhgseq': 'NN',
     }
 rest_dict['AquII'] = _temp()
+
 
 def _temp():
     return {
@@ -1338,6 +1560,7 @@ def _temp():
     }
 rest_dict['AquIII'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<AquIV>G[AG]GGAAG)|(?P<AquIV_as>CTTCC[CT]C)',
@@ -1359,6 +1582,7 @@ def _temp():
         'ovhgseq': 'NN',
     }
 rest_dict['AquIV'] = _temp()
+
 
 def _temp():
     return {
@@ -1382,9 +1606,10 @@ def _temp():
     }
 rest_dict['ArsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AscI>GGCGCGCC)|(?P<AscI_as>GGCGCGCC)',
+        'compsite': '(?P<AscI>GGCGCGCC)',
         'results': None,
         'site': 'GGCGCGCC',
         'substrat': 'DNA',
@@ -1397,16 +1622,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('N', 'W'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGCGCGCC'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['AscI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AseI>ATTAAT)|(?P<AseI_as>ATTAAT)',
+        'compsite': '(?P<AseI>ATTAAT)',
         'results': None,
         'site': 'ATTAAT',
         'substrat': 'DNA',
@@ -1419,16 +1645,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('J', 'N', 'O'),
+        'suppl': ('J', 'N'),
         'scd5': None,
         'charac': (2, -2, None, None, 'ATTAAT'),
         'ovhgseq': 'TA',
     }
 rest_dict['AseI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Asi256I>GATC)|(?P<Asi256I_as>GATC)',
+        'compsite': '(?P<Asi256I>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -1448,9 +1675,10 @@ def _temp():
     }
 rest_dict['Asi256I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AsiGI>ACCGGT)|(?P<AsiGI_as>ACCGGT)',
+        'compsite': '(?P<AsiGI>ACCGGT)',
         'results': None,
         'site': 'ACCGGT',
         'substrat': 'DNA',
@@ -1470,9 +1698,10 @@ def _temp():
     }
 rest_dict['AsiGI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AsiSI>GCGATCGC)|(?P<AsiSI_as>GCGATCGC)',
+        'compsite': '(?P<AsiSI>GCGATCGC)',
         'results': None,
         'site': 'GCGATCGC',
         'substrat': 'DNA',
@@ -1485,16 +1714,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('N',),
+        'suppl': ('I', 'N'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GCGATCGC'),
         'ovhgseq': 'AT',
     }
 rest_dict['AsiSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Asp700I>GAA....TTC)|(?P<Asp700I_as>GAA....TTC)',
+        'compsite': '(?P<Asp700I>GAA....TTC)',
         'results': None,
         'site': 'GAANNNNTTC',
         'substrat': 'DNA',
@@ -1514,9 +1744,10 @@ def _temp():
     }
 rest_dict['Asp700I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Asp718I>GGTACC)|(?P<Asp718I_as>GGTACC)',
+        'compsite': '(?P<Asp718I>GGTACC)',
         'results': None,
         'site': 'GGTACC',
         'substrat': 'DNA',
@@ -1536,9 +1767,10 @@ def _temp():
     }
 rest_dict['Asp718I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AspA2I>CCTAGG)|(?P<AspA2I_as>CCTAGG)',
+        'compsite': '(?P<AspA2I>CCTAGG)',
         'results': None,
         'site': 'CCTAGG',
         'substrat': 'DNA',
@@ -1558,16 +1790,40 @@ def _temp():
     }
 rest_dict['AspA2I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AspCNI>GCCGC)|(?P<AspCNI_as>GCGGC)',
+        'compsite': '(?P<AspBHI>[CT][CG]C.[CG])|(?P<AspBHI_as>[CG].G[CG][AG])',
         'results': None,
-        'site': 'GCCGC',
+        'site': 'YSCNS',
+        'substrat': 'DNA',
+        'fst3': 12,
+        'fst5': 13,
+        'freq': 32,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (13, 12, None, None, 'YSCNS'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['AspBHI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AspDUT2V>G.GCAAC)|(?P<AspDUT2V_as>GTTGC.C)',
+        'results': None,
+        'site': 'GNGCAAC',
         'substrat': 'DNA',
         'fst3': None,
         'fst5': None,
-        'freq': 1024,
-        'size': 5,
+        'freq': 4096,
+        'size': 7,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
@@ -1575,58 +1831,38 @@ def _temp():
         'scd3': None,
         'suppl': (),
         'scd5': None,
-        'charac': (None, None, None, None, 'GCCGC'),
+        'charac': (None, None, None, None, 'GNGCAAC'),
         'ovhgseq': None,
     }
-rest_dict['AspCNI'] = _temp()
+rest_dict['AspDUT2V'] = _temp()
+
 
 def _temp():
     return {
-        'compsite': '(?P<AspEI>GAC.....GTC)|(?P<AspEI_as>GAC.....GTC)',
+        'compsite': '(?P<AspJHL3II>CGCCCAG)|(?P<AspJHL3II_as>CTGGGCG)',
         'results': None,
-        'site': 'GACNNNNNGTC',
+        'site': 'CGCCCAG',
         'substrat': 'DNA',
-        'fst3': -6,
-        'fst5': 6,
-        'freq': 4096,
-        'size': 11,
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': 1,
+        'ovhg': None,
         'scd3': None,
-        'suppl': ('M',),
+        'suppl': (),
         'scd5': None,
-        'charac': (6, -6, None, None, 'GACNNNNNGTC'),
-        'ovhgseq': 'N',
+        'charac': (None, None, None, None, 'CGCCCAG'),
+        'ovhgseq': None,
     }
-rest_dict['AspEI'] = _temp()
+rest_dict['AspJHL3II'] = _temp()
+
 
 def _temp():
     return {
-        'compsite': '(?P<AspI>GAC...GTC)|(?P<AspI_as>GAC...GTC)',
-        'results': None,
-        'site': 'GACNNNGTC',
-        'substrat': 'DNA',
-        'fst3': -4,
-        'fst5': 4,
-        'freq': 4096,
-        'size': 9,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -1,
-        'scd3': None,
-        'suppl': ('M',),
-        'scd5': None,
-        'charac': (4, -4, None, None, 'GACNNNGTC'),
-        'ovhgseq': 'N',
-    }
-rest_dict['AspI'] = _temp()
-
-def _temp():
-    return {
-        'compsite': '(?P<AspLEI>GCGC)|(?P<AspLEI_as>GCGC)',
+        'compsite': '(?P<AspLEI>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -1646,9 +1882,10 @@ def _temp():
     }
 rest_dict['AspLEI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AspS9I>GG.CC)|(?P<AspS9I_as>GG.CC)',
+        'compsite': '(?P<AspS9I>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -1668,31 +1905,33 @@ def _temp():
     }
 rest_dict['AspS9I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AssI>AGTACT)|(?P<AssI_as>AGTACT)',
+        'compsite': '(?P<Asu14238IV>CGT[AG]AC)|(?P<Asu14238IV_as>GT[CT]ACG)',
         'results': None,
-        'site': 'AGTACT',
+        'site': 'CGTRAC',
         'substrat': 'DNA',
-        'fst3': -3,
-        'fst5': 3,
-        'freq': 4096,
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
         'size': 6,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': 0,
+        'ovhg': None,
         'scd3': None,
-        'suppl': ('U',),
+        'suppl': (),
         'scd5': None,
-        'charac': (3, -3, None, None, 'AGTACT'),
-        'ovhgseq': '',
+        'charac': (None, None, None, None, 'CGTRAC'),
+        'ovhgseq': None,
     }
-rest_dict['AssI'] = _temp()
+rest_dict['Asu14238IV'] = _temp()
+
 
 def _temp():
     return {
-        'compsite': '(?P<AsuC2I>CC[CG]GG)|(?P<AsuC2I_as>CC[CG]GG)',
+        'compsite': '(?P<AsuC2I>CC[CG]GG)',
         'results': None,
         'site': 'CCSGG',
         'substrat': 'DNA',
@@ -1711,6 +1950,7 @@ def _temp():
         'ovhgseq': 'S',
     }
 rest_dict['AsuC2I'] = _temp()
+
 
 def _temp():
     return {
@@ -1734,9 +1974,10 @@ def _temp():
     }
 rest_dict['AsuHPI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AsuI>GG.CC)|(?P<AsuI_as>GG.CC)',
+        'compsite': '(?P<AsuI>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -1756,9 +1997,10 @@ def _temp():
     }
 rest_dict['AsuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AsuII>TTCGAA)|(?P<AsuII_as>TTCGAA)',
+        'compsite': '(?P<AsuII>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -1778,9 +2020,10 @@ def _temp():
     }
 rest_dict['AsuII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AsuNHI>GCTAGC)|(?P<AsuNHI_as>GCTAGC)',
+        'compsite': '(?P<AsuNHI>GCTAGC)',
         'results': None,
         'site': 'GCTAGC',
         'substrat': 'DNA',
@@ -1800,9 +2043,10 @@ def _temp():
     }
 rest_dict['AsuNHI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AvaI>C[CT]CG[AG]G)|(?P<AvaI_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<AvaI>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -1815,16 +2059,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'J', 'M', 'N', 'O', 'R', 'S', 'U', 'W', 'X'),
+        'suppl': ('J', 'N', 'Q', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CYCGRG'),
         'ovhgseq': 'YCGR',
     }
 rest_dict['AvaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AvaII>GG[AT]CC)|(?P<AvaII_as>GG[AT]CC)',
+        'compsite': '(?P<AvaII>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -1837,16 +2082,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('J', 'K', 'M', 'N', 'R', 'S', 'W', 'Y'),
+        'suppl': ('J', 'N', 'R', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGWCC'),
         'ovhgseq': 'GWC',
     }
 rest_dict['AvaII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AvaIII>ATGCAT)|(?P<AvaIII_as>ATGCAT)',
+        'compsite': '(?P<AvaIII>ATGCAT)',
         'results': None,
         'site': 'ATGCAT',
         'substrat': 'DNA',
@@ -1866,31 +2112,10 @@ def _temp():
     }
 rest_dict['AvaIII'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<AviII>TGCGCA)|(?P<AviII_as>TGCGCA)',
-        'results': None,
-        'site': 'TGCGCA',
-        'substrat': 'DNA',
-        'fst3': -3,
-        'fst5': 3,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 0,
-        'scd3': None,
-        'suppl': ('M',),
-        'scd5': None,
-        'charac': (3, -3, None, None, 'TGCGCA'),
-        'ovhgseq': '',
-    }
-rest_dict['AviII'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<AvrII>CCTAGG)|(?P<AvrII_as>CCTAGG)',
+        'compsite': '(?P<AvrII>CCTAGG)',
         'results': None,
         'site': 'CCTAGG',
         'substrat': 'DNA',
@@ -1910,9 +2135,33 @@ def _temp():
     }
 rest_dict['AvrII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<AxyI>CCT.AGG)|(?P<AxyI_as>CCT.AGG)',
+        'compsite': '(?P<Awo1030IV>GCC[AG]AG)|(?P<Awo1030IV_as>CT[CT]GGC)',
+        'results': None,
+        'site': 'GCCRAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCCRAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Awo1030IV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<AxyI>CCT.AGG)',
         'results': None,
         'site': 'CCTNAGG',
         'substrat': 'DNA',
@@ -1932,9 +2181,10 @@ def _temp():
     }
 rest_dict['AxyI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BaeGI>G[GT]GC[AC]C)|(?P<BaeGI_as>G[GT]GC[AC]C)',
+        'compsite': '(?P<BaeGI>G[GT]GC[AC]C)',
         'results': None,
         'site': 'GKGCMC',
         'substrat': 'DNA',
@@ -1953,6 +2203,7 @@ def _temp():
         'ovhgseq': 'KGCM',
     }
 rest_dict['BaeGI'] = _temp()
+
 
 def _temp():
     return {
@@ -1976,9 +2227,33 @@ def _temp():
     }
 rest_dict['BaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BalI>TGGCCA)|(?P<BalI_as>TGGCCA)',
+        'compsite': '(?P<Bag18758I>CCCGAG)|(?P<Bag18758I_as>CTCGGG)',
+        'results': None,
+        'site': 'CCCGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCCGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Bag18758I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BalI>TGGCCA)',
         'results': None,
         'site': 'TGGCCA',
         'substrat': 'DNA',
@@ -1991,16 +2266,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('J', 'K', 'R', 'X'),
+        'suppl': ('B', 'J', 'K', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGGCCA'),
         'ovhgseq': '',
     }
 rest_dict['BalI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BamHI>GGATCC)|(?P<BamHI_as>GGATCC)',
+        'compsite': '(?P<BamHI>GGATCC)',
         'results': None,
         'site': 'GGATCC',
         'substrat': 'DNA',
@@ -2013,16 +2289,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGATCC'),
         'ovhgseq': 'GATC',
     }
 rest_dict['BamHI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BanI>GG[CT][AG]CC)|(?P<BanI_as>GG[CT][AG]CC)',
+        'compsite': '(?P<BanI>GG[CT][AG]CC)',
         'results': None,
         'site': 'GGYRCC',
         'substrat': 'DNA',
@@ -2035,16 +2312,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('N', 'O', 'R', 'U'),
+        'suppl': ('N', 'R'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGYRCC'),
         'ovhgseq': 'GYRC',
     }
 rest_dict['BanI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BanII>G[AG]GC[CT]C)|(?P<BanII_as>G[AG]GC[CT]C)',
+        'compsite': '(?P<BanII>G[AG]GC[CT]C)',
         'results': None,
         'site': 'GRGCYC',
         'substrat': 'DNA',
@@ -2057,34 +2335,36 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('K', 'N', 'O', 'Q', 'R', 'W', 'X'),
+        'suppl': ('K', 'N', 'X'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GRGCYC'),
         'ovhgseq': 'RGCY',
     }
 rest_dict['BanII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BanIII>ATCGAT)|(?P<BanIII_as>ATCGAT)',
+        'compsite': '(?P<BanLI>[AG]TCAGG)|(?P<BanLI_as>CCTGA[CT])',
         'results': None,
-        'site': 'ATCGAT',
+        'site': 'RTCAGG',
         'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
-        'freq': 4096,
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
         'size': 6,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': -2,
+        'ovhg': None,
         'scd3': None,
-        'suppl': ('O',),
+        'suppl': (),
         'scd5': None,
-        'charac': (2, -2, None, None, 'ATCGAT'),
-        'ovhgseq': 'CG',
+        'charac': (None, None, None, None, 'RTCAGG'),
+        'ovhgseq': None,
     }
-rest_dict['BanIII'] = _temp()
+rest_dict['BanLI'] = _temp()
+
 
 def _temp():
     return {
@@ -2108,27 +2388,6 @@ def _temp():
     }
 rest_dict['BarI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BasI>CCA.....TGG)|(?P<BasI_as>CCA.....TGG)',
-        'results': None,
-        'site': 'CCANNNNNTGG',
-        'substrat': 'DNA',
-        'fst3': -7,
-        'fst5': 7,
-        'freq': 4096,
-        'size': 11,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 3,
-        'scd3': None,
-        'suppl': ('U',),
-        'scd5': None,
-        'charac': (7, -7, None, None, 'CCANNNNNTGG'),
-        'ovhgseq': 'NNN',
-    }
-rest_dict['BasI'] = _temp()
 
 def _temp():
     return {
@@ -2145,34 +2404,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CACGAG'),
         'ovhgseq': 'ACGA',
     }
 rest_dict['BauI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BbeI>GGCGCC)|(?P<BbeI_as>GGCGCC)',
-        'results': None,
-        'site': 'GGCGCC',
-        'substrat': 'DNA',
-        'fst3': -5,
-        'fst5': 5,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 4,
-        'scd3': None,
-        'suppl': ('K',),
-        'scd5': None,
-        'charac': (5, -5, None, None, 'GGCGCC'),
-        'ovhgseq': 'GCGC',
-    }
-rest_dict['BbeI'] = _temp()
 
 def _temp():
     return {
@@ -2196,9 +2434,10 @@ def _temp():
     }
 rest_dict['Bbr7I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BbrPI>CACGTG)|(?P<BbrPI_as>CACGTG)',
+        'compsite': '(?P<BbrPI>CACGTG)',
         'results': None,
         'site': 'CACGTG',
         'substrat': 'DNA',
@@ -2211,12 +2450,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('M', 'O'),
+        'suppl': ('M',),
         'scd5': None,
         'charac': (3, -3, None, None, 'CACGTG'),
         'ovhgseq': '',
     }
 rest_dict['BbrPI'] = _temp()
+
 
 def _temp():
     return {
@@ -2240,31 +2480,10 @@ def _temp():
     }
 rest_dict['BbsI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BbuI>GCATGC)|(?P<BbuI_as>GCATGC)',
-        'results': None,
-        'site': 'GCATGC',
-        'substrat': 'DNA',
-        'fst3': -5,
-        'fst5': 5,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 4,
-        'scd3': None,
-        'suppl': ('R',),
-        'scd5': None,
-        'charac': (5, -5, None, None, 'GCATGC'),
-        'ovhgseq': 'CATG',
-    }
-rest_dict['BbuI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<Bbv12I>G[AT]GC[AT]C)|(?P<Bbv12I_as>G[AT]GC[AT]C)',
+        'compsite': '(?P<Bbv12I>G[AT]GC[AT]C)',
         'results': None,
         'site': 'GWGCWC',
         'substrat': 'DNA',
@@ -2283,6 +2502,7 @@ def _temp():
         'ovhgseq': 'WGCW',
     }
 rest_dict['Bbv12I'] = _temp()
+
 
 def _temp():
     return {
@@ -2306,6 +2526,7 @@ def _temp():
     }
 rest_dict['BbvCI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BbvI>GCAGC)|(?P<BbvI_as>GCTGC)',
@@ -2327,6 +2548,7 @@ def _temp():
         'ovhgseq': 'NNNN',
     }
 rest_dict['BbvI'] = _temp()
+
 
 def _temp():
     return {
@@ -2350,6 +2572,7 @@ def _temp():
     }
 rest_dict['BbvII'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BccI>CCATC)|(?P<BccI_as>GATGG)',
@@ -2371,6 +2594,30 @@ def _temp():
         'ovhgseq': 'N',
     }
 rest_dict['BccI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Bce3081I>TAGGAG)|(?P<Bce3081I_as>CTCCTA)',
+        'results': None,
+        'site': 'TAGGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'TAGGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Bce3081I'] = _temp()
+
 
 def _temp():
     return {
@@ -2394,6 +2641,7 @@ def _temp():
     }
 rest_dict['Bce83I'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BceAI>ACGGC)|(?P<BceAI_as>GCCGT)',
@@ -2415,6 +2663,30 @@ def _temp():
         'ovhgseq': 'NN',
     }
 rest_dict['BceAI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BceSIV>GCAGC)|(?P<BceSIV_as>GCTGC)',
+        'results': None,
+        'site': 'GCAGC',
+        'substrat': 'DNA',
+        'fst3': -10,
+        'fst5': -7,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -2,
+        'scd3': 11,
+        'suppl': (),
+        'scd5': 14,
+        'charac': (-7, -10, 14, 11, 'GCAGC'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['BceSIV'] = _temp()
+
 
 def _temp():
     return {
@@ -2438,6 +2710,7 @@ def _temp():
     }
 rest_dict['BcefI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BcgI>CGA......TGC)|(?P<BcgI_as>GCA......TCG)',
@@ -2459,6 +2732,30 @@ def _temp():
         'ovhgseq': 'NN',
     }
 rest_dict['BcgI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BciT130I>CC[AT]GG)',
+        'results': None,
+        'site': 'CCWGG',
+        'substrat': 'DNA',
+        'fst3': -2,
+        'fst5': 2,
+        'freq': 512,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -1,
+        'scd3': None,
+        'suppl': ('K',),
+        'scd5': None,
+        'charac': (2, -2, None, None, 'CCWGG'),
+        'ovhgseq': 'W',
+    }
+rest_dict['BciT130I'] = _temp()
+
 
 def _temp():
     return {
@@ -2482,9 +2779,10 @@ def _temp():
     }
 rest_dict['BciVI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BclI>TGATCA)|(?P<BclI_as>TGATCA)',
+        'compsite': '(?P<BclI>TGATCA)',
         'results': None,
         'site': 'TGATCA',
         'substrat': 'DNA',
@@ -2497,16 +2795,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('C', 'F', 'J', 'M', 'N', 'O', 'R', 'S', 'U', 'W', 'Y'),
+        'suppl': ('B', 'C', 'J', 'M', 'N', 'O', 'R', 'S'),
         'scd5': None,
         'charac': (1, -1, None, None, 'TGATCA'),
         'ovhgseq': 'GATC',
     }
 rest_dict['BclI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BcnI>CC[CG]GG)|(?P<BcnI_as>CC[CG]GG)',
+        'compsite': '(?P<BcnI>CC[CG]GG)',
         'results': None,
         'site': 'CCSGG',
         'substrat': 'DNA',
@@ -2519,16 +2818,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCSGG'),
         'ovhgseq': 'S',
     }
 rest_dict['BcnI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BcuI>ACTAGT)|(?P<BcuI_as>ACTAGT)',
+        'compsite': '(?P<BcoDI>GTCTC)|(?P<BcoDI_as>GAGAC)',
+        'results': None,
+        'site': 'GTCTC',
+        'substrat': 'DNA',
+        'fst3': 5,
+        'fst5': 6,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (6, 5, None, None, 'GTCTC'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['BcoDI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BcuI>ACTAGT)',
         'results': None,
         'site': 'ACTAGT',
         'substrat': 'DNA',
@@ -2541,16 +2864,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACTAGT'),
         'ovhgseq': 'CTAG',
     }
 rest_dict['BcuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BdaI>TGA......TCA)|(?P<BdaI_as>TGA......TCA)',
+        'compsite': '(?P<BdaI>TGA......TCA)',
         'results': None,
         'site': 'TGANNNNNNTCA',
         'substrat': 'DNA',
@@ -2563,16 +2887,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': 10,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': 24,
         'charac': (-10, -24, 24, 10, 'TGANNNNNNTCA'),
         'ovhgseq': 'NN',
     }
 rest_dict['BdaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BetI>[AT]CCGG[AT])|(?P<BetI_as>[AT]CCGG[AT])',
+        'compsite': '(?P<BetI>[AT]CCGG[AT])',
         'results': None,
         'site': 'WCCGGW',
         'substrat': 'DNA',
@@ -2592,9 +2917,10 @@ def _temp():
     }
 rest_dict['BetI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BfaI>CTAG)|(?P<BfaI_as>CTAG)',
+        'compsite': '(?P<BfaI>CTAG)',
         'results': None,
         'site': 'CTAG',
         'substrat': 'DNA',
@@ -2614,6 +2940,30 @@ def _temp():
     }
 rest_dict['BfaI'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<BfaSII>GA.GGAG)|(?P<BfaSII_as>CTCC.TC)',
+        'results': None,
+        'site': 'GANGGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GANGGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['BfaSII'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<BfiI>ACTGGG)|(?P<BfiI_as>CCCAGT)',
@@ -2629,16 +2979,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': None,
         'charac': (11, 4, None, None, 'ACTGGG'),
         'ovhgseq': 'N',
     }
 rest_dict['BfiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BfmI>CT[AG][CT]AG)|(?P<BfmI_as>CT[AG][CT]AG)',
+        'compsite': '(?P<BfmI>CT[AG][CT]AG)',
         'results': None,
         'site': 'CTRYAG',
         'substrat': 'DNA',
@@ -2651,16 +3002,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTRYAG'),
         'ovhgseq': 'TRYA',
     }
 rest_dict['BfmI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BfoI>[AG]GCGC[CT])|(?P<BfoI_as>[AG]GCGC[CT])',
+        'compsite': '(?P<BfoI>[AG]GCGC[CT])',
         'results': None,
         'site': 'RGCGCY',
         'substrat': 'DNA',
@@ -2673,16 +3025,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'RGCGCY'),
         'ovhgseq': 'GCGC',
     }
 rest_dict['BfoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BfrI>CTTAAG)|(?P<BfrI_as>CTTAAG)',
+        'compsite': '(?P<BfrI>CTTAAG)',
         'results': None,
         'site': 'CTTAAG',
         'substrat': 'DNA',
@@ -2695,12 +3048,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('M', 'O'),
+        'suppl': ('M',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTTAAG'),
         'ovhgseq': 'TTAA',
     }
 rest_dict['BfrI'] = _temp()
+
 
 def _temp():
     return {
@@ -2724,9 +3078,10 @@ def _temp():
     }
 rest_dict['BfuAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BfuCI>GATC)|(?P<BfuCI_as>GATC)',
+        'compsite': '(?P<BfuCI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -2746,6 +3101,7 @@ def _temp():
     }
 rest_dict['BfuCI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BfuI>GTATCC)|(?P<BfuI_as>GGATAC)',
@@ -2761,16 +3117,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (12, 5, None, None, 'GTATCC'),
         'ovhgseq': 'N',
     }
 rest_dict['BfuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BglI>GCC.....GGC)|(?P<BglI_as>GCC.....GGC)',
+        'compsite': '(?P<BglI>GCC.....GGC)',
         'results': None,
         'site': 'GCCNNNNNGGC',
         'substrat': 'DNA',
@@ -2783,16 +3140,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'N', 'O', 'Q', 'R', 'V', 'X'),
         'scd5': None,
         'charac': (7, -7, None, None, 'GCCNNNNNGGC'),
         'ovhgseq': 'NNN',
     }
 rest_dict['BglI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BglII>AGATCT)|(?P<BglII_as>AGATCT)',
+        'compsite': '(?P<BglII>AGATCT)',
         'results': None,
         'site': 'AGATCT',
         'substrat': 'DNA',
@@ -2805,12 +3163,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'AGATCT'),
         'ovhgseq': 'GATC',
     }
 rest_dict['BglII'] = _temp()
+
 
 def _temp():
     return {
@@ -2834,9 +3193,10 @@ def _temp():
     }
 rest_dict['BinI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BisI>GC.GC)|(?P<BisI_as>GC.GC)',
+        'compsite': '(?P<BisI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -2856,9 +3216,10 @@ def _temp():
     }
 rest_dict['BisI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BlnI>CCTAGG)|(?P<BlnI_as>CCTAGG)',
+        'compsite': '(?P<BlnI>CCTAGG)',
         'results': None,
         'site': 'CCTAGG',
         'substrat': 'DNA',
@@ -2878,9 +3239,33 @@ def _temp():
     }
 rest_dict['BlnI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BlpI>GCT.AGC)|(?P<BlpI_as>GCT.AGC)',
+        'compsite': '(?P<BloAII>GAGGAC)|(?P<BloAII_as>GTCCTC)',
+        'results': None,
+        'site': 'GAGGAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAGGAC'),
+        'ovhgseq': None,
+    }
+rest_dict['BloAII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BlpI>GCT.AGC)',
         'results': None,
         'site': 'GCTNAGC',
         'substrat': 'DNA',
@@ -2900,9 +3285,10 @@ def _temp():
     }
 rest_dict['BlpI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BlsI>GC.GC)|(?P<BlsI_as>GC.GC)',
+        'compsite': '(?P<BlsI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -2922,9 +3308,10 @@ def _temp():
     }
 rest_dict['BlsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmcAI>AGTACT)|(?P<BmcAI_as>AGTACT)',
+        'compsite': '(?P<BmcAI>AGTACT)',
         'results': None,
         'site': 'AGTACT',
         'substrat': 'DNA',
@@ -2944,9 +3331,10 @@ def _temp():
     }
 rest_dict['BmcAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bme1390I>CC.GG)|(?P<Bme1390I_as>CC.GG)',
+        'compsite': '(?P<Bme1390I>CC.GG)',
         'results': None,
         'site': 'CCNGG',
         'substrat': 'DNA',
@@ -2959,16 +3347,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCNGG'),
         'ovhgseq': 'N',
     }
 rest_dict['Bme1390I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bme18I>GG[AT]CC)|(?P<Bme18I_as>GG[AT]CC)',
+        'compsite': '(?P<Bme18I>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -2988,9 +3377,33 @@ def _temp():
     }
 rest_dict['Bme18I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmeRI>GAC.....GTC)|(?P<BmeRI_as>GAC.....GTC)',
+        'compsite': '(?P<BmeDI>C)|(?P<BmeDI_as>G)',
+        'results': None,
+        'site': 'C',
+        'substrat': 'DNA',
+        'fst3': 0,
+        'fst5': 3,
+        'freq': 4,
+        'size': 1,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (3, 0, None, None, 'C'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['BmeDI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BmeRI>GAC.....GTC)',
         'results': None,
         'site': 'GACNNNNNGTC',
         'substrat': 'DNA',
@@ -3010,9 +3423,10 @@ def _temp():
     }
 rest_dict['BmeRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmeT110I>C[CT]CG[AG]G)|(?P<BmeT110I_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<BmeT110I>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -3025,12 +3439,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('K',),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CYCGRG'),
         'ovhgseq': 'YCGR',
     }
 rest_dict['BmeT110I'] = _temp()
+
 
 def _temp():
     return {
@@ -3054,6 +3469,7 @@ def _temp():
     }
 rest_dict['BmgBI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BmgI>G[GT]GCCC)|(?P<BmgI_as>GGGC[AC]C)',
@@ -3076,31 +3492,33 @@ def _temp():
     }
 rest_dict['BmgI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmgT120I>GG.CC)|(?P<BmgT120I_as>GG.CC)',
+        'compsite': '(?P<BmgT120I>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
+        'fst3': -1,
+        'fst5': 1,
         'freq': 256,
         'size': 5,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': -1,
+        'ovhg': -3,
         'scd3': None,
         'suppl': ('K',),
         'scd5': None,
-        'charac': (2, -2, None, None, 'GGNCC'),
-        'ovhgseq': 'N',
+        'charac': (1, -1, None, None, 'GGNCC'),
+        'ovhgseq': 'GNC',
     }
 rest_dict['BmgT120I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmiI>GG..CC)|(?P<BmiI_as>GG..CC)',
+        'compsite': '(?P<BmiI>GG..CC)',
         'results': None,
         'site': 'GGNNCC',
         'substrat': 'DNA',
@@ -3120,9 +3538,10 @@ def _temp():
     }
 rest_dict['BmiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmrFI>CC.GG)|(?P<BmrFI_as>CC.GG)',
+        'compsite': '(?P<BmrFI>CC.GG)',
         'results': None,
         'site': 'CCNGG',
         'substrat': 'DNA',
@@ -3141,6 +3560,7 @@ def _temp():
         'ovhgseq': 'N',
     }
 rest_dict['BmrFI'] = _temp()
+
 
 def _temp():
     return {
@@ -3164,6 +3584,7 @@ def _temp():
     }
 rest_dict['BmrI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BmsI>GCATC)|(?P<BmsI_as>GATGC)',
@@ -3179,16 +3600,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (10, 9, None, None, 'GCATC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['BmsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BmtI>GCTAGC)|(?P<BmtI_as>GCTAGC)',
+        'compsite': '(?P<BmtI>GCTAGC)',
         'results': None,
         'site': 'GCTAGC',
         'substrat': 'DNA',
@@ -3207,6 +3629,7 @@ def _temp():
         'ovhgseq': 'CTAG',
     }
 rest_dict['BmtI'] = _temp()
+
 
 def _temp():
     return {
@@ -3230,9 +3653,10 @@ def _temp():
     }
 rest_dict['BmuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BoxI>GAC....GTC)|(?P<BoxI_as>GAC....GTC)',
+        'compsite': '(?P<BoxI>GAC....GTC)',
         'results': None,
         'site': 'GACNNNNGTC',
         'substrat': 'DNA',
@@ -3245,12 +3669,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GACNNNNGTC'),
         'ovhgseq': '',
     }
 rest_dict['BoxI'] = _temp()
+
 
 def _temp():
     return {
@@ -3267,16 +3692,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (8, 6, None, None, 'GAAGAC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['BpiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BplI>GAG.....CTC)|(?P<BplI_as>GAG.....CTC)',
+        'compsite': '(?P<BplI>GAG.....CTC)',
         'results': None,
         'site': 'GAGNNNNNCTC',
         'substrat': 'DNA',
@@ -3289,12 +3715,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 5,
         'scd3': 8,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': 24,
         'charac': (-8, -24, 24, 8, 'GAGNNNNNCTC'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['BplI'] = _temp()
+
 
 def _temp():
     return {
@@ -3318,6 +3745,7 @@ def _temp():
     }
 rest_dict['BpmI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<Bpu10I>CCT.AGC)|(?P<Bpu10I_as>GCT.AGG)',
@@ -3333,16 +3761,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'I', 'N', 'V'),
+        'suppl': ('B', 'I', 'N', 'V'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCTNAGC'),
         'ovhgseq': 'TNA',
     }
 rest_dict['Bpu10I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bpu1102I>GCT.AGC)|(?P<Bpu1102I_as>GCT.AGC)',
+        'compsite': '(?P<Bpu1102I>GCT.AGC)',
         'results': None,
         'site': 'GCTNAGC',
         'substrat': 'DNA',
@@ -3355,16 +3784,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GCTNAGC'),
         'ovhgseq': 'TNA',
     }
 rest_dict['Bpu1102I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bpu14I>TTCGAA)|(?P<Bpu14I_as>TTCGAA)',
+        'compsite': '(?P<Bpu14I>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -3384,27 +3814,6 @@ def _temp():
     }
 rest_dict['Bpu14I'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BpuAI>GAAGAC)|(?P<BpuAI_as>GTCTTC)',
-        'results': None,
-        'site': 'GAAGAC',
-        'substrat': 'DNA',
-        'fst3': 6,
-        'fst5': 8,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -4,
-        'scd3': None,
-        'suppl': ('M',),
-        'scd5': None,
-        'charac': (8, 6, None, None, 'GAAGAC'),
-        'ovhgseq': 'NNNN',
-    }
-rest_dict['BpuAI'] = _temp()
 
 def _temp():
     return {
@@ -3428,9 +3837,10 @@ def _temp():
     }
 rest_dict['BpuEI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BpuMI>CC[CG]GG)|(?P<BpuMI_as>CC[CG]GG)',
+        'compsite': '(?P<BpuMI>CC[CG]GG)',
         'results': None,
         'site': 'CCSGG',
         'substrat': 'DNA',
@@ -3450,31 +3860,10 @@ def _temp():
     }
 rest_dict['BpuMI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BpvUI>CGATCG)|(?P<BpvUI_as>CGATCG)',
-        'results': None,
-        'site': 'CGATCG',
-        'substrat': 'DNA',
-        'fst3': -4,
-        'fst5': 4,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 2,
-        'scd3': None,
-        'suppl': ('V',),
-        'scd5': None,
-        'charac': (4, -4, None, None, 'CGATCG'),
-        'ovhgseq': 'AT',
-    }
-rest_dict['BpvUI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<Bsa29I>ATCGAT)|(?P<Bsa29I_as>ATCGAT)',
+        'compsite': '(?P<Bsa29I>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -3494,9 +3883,10 @@ def _temp():
     }
 rest_dict['Bsa29I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsaAI>[CT]ACGT[AG])|(?P<BsaAI_as>[CT]ACGT[AG])',
+        'compsite': '(?P<BsaAI>[CT]ACGT[AG])',
         'results': None,
         'site': 'YACGTR',
         'substrat': 'DNA',
@@ -3516,9 +3906,10 @@ def _temp():
     }
 rest_dict['BsaAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsaBI>GAT....ATC)|(?P<BsaBI_as>GAT....ATC)',
+        'compsite': '(?P<BsaBI>GAT....ATC)',
         'results': None,
         'site': 'GATNNNNATC',
         'substrat': 'DNA',
@@ -3538,9 +3929,10 @@ def _temp():
     }
 rest_dict['BsaBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsaHI>G[AG]CG[CT]C)|(?P<BsaHI_as>G[AG]CG[CT]C)',
+        'compsite': '(?P<BsaHI>G[AG]CG[CT]C)',
         'results': None,
         'site': 'GRCGYC',
         'substrat': 'DNA',
@@ -3559,6 +3951,7 @@ def _temp():
         'ovhgseq': 'CG',
     }
 rest_dict['BsaHI'] = _temp()
+
 
 def _temp():
     return {
@@ -3582,9 +3975,10 @@ def _temp():
     }
 rest_dict['BsaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsaJI>CC..GG)|(?P<BsaJI_as>CC..GG)',
+        'compsite': '(?P<BsaJI>CC..GG)',
         'results': None,
         'site': 'CCNNGG',
         'substrat': 'DNA',
@@ -3604,31 +3998,10 @@ def _temp():
     }
 rest_dict['BsaJI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BsaMI>GAATGC)|(?P<BsaMI_as>GCATTC)',
-        'results': None,
-        'site': 'GAATGC',
-        'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 7,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 2,
-        'scd3': None,
-        'suppl': ('R',),
-        'scd5': None,
-        'charac': (7, -1, None, None, 'GAATGC'),
-        'ovhgseq': 'CN',
-    }
-rest_dict['BsaMI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<BsaWI>[AT]CCGG[AT])|(?P<BsaWI_as>[AT]CCGG[AT])',
+        'compsite': '(?P<BsaWI>[AT]CCGG[AT])',
         'results': None,
         'site': 'WCCGGW',
         'substrat': 'DNA',
@@ -3647,6 +4020,7 @@ def _temp():
         'ovhgseq': 'CCGG',
     }
 rest_dict['BsaWI'] = _temp()
+
 
 def _temp():
     return {
@@ -3670,6 +4044,7 @@ def _temp():
     }
 rest_dict['BsaXI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BsbI>CAACAC)|(?P<BsbI_as>GTGTTG)',
@@ -3692,9 +4067,10 @@ def _temp():
     }
 rest_dict['BsbI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsc4I>CC.......GG)|(?P<Bsc4I_as>CC.......GG)',
+        'compsite': '(?P<Bsc4I>CC.......GG)',
         'results': None,
         'site': 'CCNNNNNNNGG',
         'substrat': 'DNA',
@@ -3713,6 +4089,7 @@ def _temp():
         'ovhgseq': 'NNN',
     }
 rest_dict['Bsc4I'] = _temp()
+
 
 def _temp():
     return {
@@ -3736,6 +4113,7 @@ def _temp():
     }
 rest_dict['BscAI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BscGI>CCCGT)|(?P<BscGI_as>ACGGG)',
@@ -3758,9 +4136,10 @@ def _temp():
     }
 rest_dict['BscGI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bse118I>[AG]CCGG[CT])|(?P<Bse118I_as>[AG]CCGG[CT])',
+        'compsite': '(?P<Bse118I>[AG]CCGG[CT])',
         'results': None,
         'site': 'RCCGGY',
         'substrat': 'DNA',
@@ -3779,6 +4158,7 @@ def _temp():
         'ovhgseq': 'CCGG',
     }
 rest_dict['Bse118I'] = _temp()
+
 
 def _temp():
     return {
@@ -3802,9 +4182,10 @@ def _temp():
     }
 rest_dict['Bse1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bse21I>CCT.AGG)|(?P<Bse21I_as>CCT.AGG)',
+        'compsite': '(?P<Bse21I>CCT.AGG)',
         'results': None,
         'site': 'CCTNAGG',
         'substrat': 'DNA',
@@ -3823,6 +4204,7 @@ def _temp():
         'ovhgseq': 'TNA',
     }
 rest_dict['Bse21I'] = _temp()
+
 
 def _temp():
     return {
@@ -3846,9 +4228,10 @@ def _temp():
     }
 rest_dict['Bse3DI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bse8I>GAT....ATC)|(?P<Bse8I_as>GAT....ATC)',
+        'compsite': '(?P<Bse8I>GAT....ATC)',
         'results': None,
         'site': 'GATNNNNATC',
         'substrat': 'DNA',
@@ -3868,9 +4251,10 @@ def _temp():
     }
 rest_dict['Bse8I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseAI>TCCGGA)|(?P<BseAI_as>TCCGGA)',
+        'compsite': '(?P<BseAI>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -3883,16 +4267,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('C', 'M'),
+        'suppl': ('C',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCCGGA'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['BseAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseBI>CC[AT]GG)|(?P<BseBI_as>CC[AT]GG)',
+        'compsite': '(?P<BseBI>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -3912,9 +4297,10 @@ def _temp():
     }
 rest_dict['BseBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseCI>ATCGAT)|(?P<BseCI_as>ATCGAT)',
+        'compsite': '(?P<BseCI>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -3934,9 +4320,10 @@ def _temp():
     }
 rest_dict['BseCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseDI>CC..GG)|(?P<BseDI_as>CC..GG)',
+        'compsite': '(?P<BseDI>CC..GG)',
         'results': None,
         'site': 'CCNNGG',
         'substrat': 'DNA',
@@ -3949,12 +4336,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCNNGG'),
         'ovhgseq': 'CNNG',
     }
 rest_dict['BseDI'] = _temp()
+
 
 def _temp():
     return {
@@ -3971,16 +4359,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, 0, None, None, 'GGATG'),
         'ovhgseq': 'NN',
     }
 rest_dict['BseGI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseJI>GAT....ATC)|(?P<BseJI_as>GAT....ATC)',
+        'compsite': '(?P<BseJI>GAT....ATC)',
         'results': None,
         'site': 'GATNNNNATC',
         'substrat': 'DNA',
@@ -3993,16 +4382,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GATNNNNATC'),
         'ovhgseq': '',
     }
 rest_dict['BseJI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseLI>CC.......GG)|(?P<BseLI_as>CC.......GG)',
+        'compsite': '(?P<BseLI>CC.......GG)',
         'results': None,
         'site': 'CCNNNNNNNGG',
         'substrat': 'DNA',
@@ -4015,12 +4405,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, -7, None, None, 'CCNNNNNNNGG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['BseLI'] = _temp()
+
 
 def _temp():
     return {
@@ -4037,12 +4428,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (8, 0, None, None, 'GCAATG'),
         'ovhgseq': 'NN',
     }
 rest_dict['BseMI'] = _temp()
+
 
 def _temp():
     return {
@@ -4059,12 +4451,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (15, 8, None, None, 'CTCAG'),
         'ovhgseq': 'NN',
     }
 rest_dict['BseMII'] = _temp()
+
 
 def _temp():
     return {
@@ -4081,16 +4474,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (6, -1, None, None, 'ACTGG'),
         'ovhgseq': 'GN',
     }
 rest_dict['BseNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsePI>GCGCGC)|(?P<BsePI_as>GCGCGC)',
+        'compsite': '(?P<BsePI>GCGCGC)',
         'results': None,
         'site': 'GCGCGC',
         'substrat': 'DNA',
@@ -4109,6 +4503,7 @@ def _temp():
         'ovhgseq': 'CGCG',
     }
 rest_dict['BsePI'] = _temp()
+
 
 def _temp():
     return {
@@ -4132,9 +4527,10 @@ def _temp():
     }
 rest_dict['BseRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseSI>G[GT]GC[AC]C)|(?P<BseSI_as>G[GT]GC[AC]C)',
+        'compsite': '(?P<BseSI>G[GT]GC[AC]C)',
         'results': None,
         'site': 'GKGCMC',
         'substrat': 'DNA',
@@ -4147,16 +4543,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GKGCMC'),
         'ovhgseq': 'KGCM',
     }
 rest_dict['BseSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BseX3I>CGGCCG)|(?P<BseX3I_as>CGGCCG)',
+        'compsite': '(?P<BseX3I>CGGCCG)',
         'results': None,
         'site': 'CGGCCG',
         'substrat': 'DNA',
@@ -4176,6 +4573,7 @@ def _temp():
     }
 rest_dict['BseX3I'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BseXI>GCAGC)|(?P<BseXI_as>GCTGC)',
@@ -4191,12 +4589,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (13, 12, None, None, 'GCAGC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['BseXI'] = _temp()
+
 
 def _temp():
     return {
@@ -4220,6 +4619,7 @@ def _temp():
     }
 rest_dict['BseYI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BsgI>GTGCAG)|(?P<BsgI_as>CTGCAC)',
@@ -4242,9 +4642,10 @@ def _temp():
     }
 rest_dict['BsgI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsh1236I>CGCG)|(?P<Bsh1236I_as>CGCG)',
+        'compsite': '(?P<Bsh1236I>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -4257,16 +4658,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGCG'),
         'ovhgseq': '',
     }
 rest_dict['Bsh1236I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsh1285I>CG[AG][CT]CG)|(?P<Bsh1285I_as>CG[AG][CT]CG)',
+        'compsite': '(?P<Bsh1285I>CG[AG][CT]CG)',
         'results': None,
         'site': 'CGRYCG',
         'substrat': 'DNA',
@@ -4279,16 +4681,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'CGRYCG'),
         'ovhgseq': 'RY',
     }
 rest_dict['Bsh1285I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BshFI>GGCC)|(?P<BshFI_as>GGCC)',
+        'compsite': '(?P<BshFI>GGCC)',
         'results': None,
         'site': 'GGCC',
         'substrat': 'DNA',
@@ -4308,9 +4711,10 @@ def _temp():
     }
 rest_dict['BshFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BshNI>GG[CT][AG]CC)|(?P<BshNI_as>GG[CT][AG]CC)',
+        'compsite': '(?P<BshNI>GG[CT][AG]CC)',
         'results': None,
         'site': 'GGYRCC',
         'substrat': 'DNA',
@@ -4323,16 +4727,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGYRCC'),
         'ovhgseq': 'GYRC',
     }
 rest_dict['BshNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BshTI>ACCGGT)|(?P<BshTI_as>ACCGGT)',
+        'compsite': '(?P<BshTI>ACCGGT)',
         'results': None,
         'site': 'ACCGGT',
         'substrat': 'DNA',
@@ -4345,16 +4750,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACCGGT'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['BshTI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BshVI>ATCGAT)|(?P<BshVI_as>ATCGAT)',
+        'compsite': '(?P<BshVI>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -4374,9 +4780,10 @@ def _temp():
     }
 rest_dict['BshVI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsiEI>CG[AG][CT]CG)|(?P<BsiEI_as>CG[AG][CT]CG)',
+        'compsite': '(?P<BsiEI>CG[AG][CT]CG)',
         'results': None,
         'site': 'CGRYCG',
         'substrat': 'DNA',
@@ -4396,9 +4803,10 @@ def _temp():
     }
 rest_dict['BsiEI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsiHKAI>G[AT]GC[AT]C)|(?P<BsiHKAI_as>G[AT]GC[AT]C)',
+        'compsite': '(?P<BsiHKAI>G[AT]GC[AT]C)',
         'results': None,
         'site': 'GWGCWC',
         'substrat': 'DNA',
@@ -4418,9 +4826,10 @@ def _temp():
     }
 rest_dict['BsiHKAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsiHKCI>C[CT]CG[AG]G)|(?P<BsiHKCI_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<BsiHKCI>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -4439,6 +4848,7 @@ def _temp():
         'ovhgseq': 'YCGR',
     }
 rest_dict['BsiHKCI'] = _temp()
+
 
 def _temp():
     return {
@@ -4462,9 +4872,10 @@ def _temp():
     }
 rest_dict['BsiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsiSI>CCGG)|(?P<BsiSI_as>CCGG)',
+        'compsite': '(?P<BsiSI>CCGG)',
         'results': None,
         'site': 'CCGG',
         'substrat': 'DNA',
@@ -4477,16 +4888,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('C',),
+        'suppl': ('C', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCGG'),
         'ovhgseq': 'CG',
     }
 rest_dict['BsiSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsiWI>CGTACG)|(?P<BsiWI_as>CGTACG)',
+        'compsite': '(?P<BsiWI>CGTACG)',
         'results': None,
         'site': 'CGTACG',
         'substrat': 'DNA',
@@ -4499,16 +4911,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('M', 'N', 'O'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CGTACG'),
         'ovhgseq': 'GTAC',
     }
 rest_dict['BsiWI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsiYI>CC.......GG)|(?P<BsiYI_as>CC.......GG)',
+        'compsite': '(?P<BsiYI>CC.......GG)',
         'results': None,
         'site': 'CCNNNNNNNGG',
         'substrat': 'DNA',
@@ -4527,6 +4940,7 @@ def _temp():
         'ovhgseq': 'NNN',
     }
 rest_dict['BsiYI'] = _temp()
+
 
 def _temp():
     return {
@@ -4550,9 +4964,10 @@ def _temp():
     }
 rest_dict['BslFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BslI>CC.......GG)|(?P<BslI_as>CC.......GG)',
+        'compsite': '(?P<BslI>CC.......GG)',
         'results': None,
         'site': 'CCNNNNNNNGG',
         'substrat': 'DNA',
@@ -4565,12 +4980,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('N', 'W'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (7, -7, None, None, 'CCNNNNNNNGG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['BslI'] = _temp()
+
 
 def _temp():
     return {
@@ -4594,6 +5010,7 @@ def _temp():
     }
 rest_dict['BsmAI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BsmBI>CGTCTC)|(?P<BsmBI_as>GAGACG)',
@@ -4615,6 +5032,7 @@ def _temp():
         'ovhgseq': 'NNNN',
     }
 rest_dict['BsmBI'] = _temp()
+
 
 def _temp():
     return {
@@ -4638,6 +5056,7 @@ def _temp():
     }
 rest_dict['BsmFI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BsmI>GAATGC)|(?P<BsmI_as>GCATTC)',
@@ -4653,16 +5072,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('J', 'M', 'N', 'O', 'S', 'W'),
+        'suppl': ('J', 'M', 'N', 'S'),
         'scd5': None,
         'charac': (7, -1, None, None, 'GAATGC'),
         'ovhgseq': 'CN',
     }
 rest_dict['BsmI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsnI>GGCC)|(?P<BsnI_as>GGCC)',
+        'compsite': '(?P<BsnI>GGCC)',
         'results': None,
         'site': 'GGCC',
         'substrat': 'DNA',
@@ -4681,6 +5101,7 @@ def _temp():
         'ovhgseq': '',
     }
 rest_dict['BsnI'] = _temp()
+
 
 def _temp():
     return {
@@ -4704,9 +5125,10 @@ def _temp():
     }
 rest_dict['Bso31I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsoBI>C[CT]CG[AG]G)|(?P<BsoBI_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<BsoBI>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -4726,9 +5148,10 @@ def _temp():
     }
 rest_dict['BsoBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp119I>TTCGAA)|(?P<Bsp119I_as>TTCGAA)',
+        'compsite': '(?P<Bsp119I>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -4741,16 +5164,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'TTCGAA'),
         'ovhgseq': 'CG',
     }
 rest_dict['Bsp119I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp120I>GGGCCC)|(?P<Bsp120I_as>GGGCCC)',
+        'compsite': '(?P<Bsp120I>GGGCCC)',
         'results': None,
         'site': 'GGGCCC',
         'substrat': 'DNA',
@@ -4763,16 +5187,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGGCCC'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['Bsp120I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp1286I>G[AGT]GC[ACT]C)|(?P<Bsp1286I_as>G[AGT]GC[ACT]C)',
+        'compsite': '(?P<Bsp1286I>G[AGT]GC[ACT]C)',
         'results': None,
         'site': 'GDGCHC',
         'substrat': 'DNA',
@@ -4785,16 +5210,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('J', 'K', 'N', 'R'),
+        'suppl': ('J', 'K', 'N'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GDGCHC'),
         'ovhgseq': 'DGCH',
     }
 rest_dict['Bsp1286I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp13I>TCCGGA)|(?P<Bsp13I_as>TCCGGA)',
+        'compsite': '(?P<Bsp13I>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -4814,9 +5240,10 @@ def _temp():
     }
 rest_dict['Bsp13I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp1407I>TGTACA)|(?P<Bsp1407I_as>TGTACA)',
+        'compsite': '(?P<Bsp1407I>TGTACA)',
         'results': None,
         'site': 'TGTACA',
         'substrat': 'DNA',
@@ -4829,16 +5256,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (1, -1, None, None, 'TGTACA'),
         'ovhgseq': 'GTAC',
     }
 rest_dict['Bsp1407I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp143I>GATC)|(?P<Bsp143I_as>GATC)',
+        'compsite': '(?P<Bsp143I>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -4851,16 +5279,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (0, 0, None, None, 'GATC'),
         'ovhgseq': 'GATC',
     }
 rest_dict['Bsp143I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp1720I>GCT.AGC)|(?P<Bsp1720I_as>GCT.AGC)',
+        'compsite': '(?P<Bsp1720I>GCT.AGC)',
         'results': None,
         'site': 'GCTNAGC',
         'substrat': 'DNA',
@@ -4880,9 +5309,10 @@ def _temp():
     }
 rest_dict['Bsp1720I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp19I>CCATGG)|(?P<Bsp19I_as>CCATGG)',
+        'compsite': '(?P<Bsp19I>CCATGG)',
         'results': None,
         'site': 'CCATGG',
         'substrat': 'DNA',
@@ -4901,6 +5331,7 @@ def _temp():
         'ovhgseq': 'CATG',
     }
 rest_dict['Bsp19I'] = _temp()
+
 
 def _temp():
     return {
@@ -4924,9 +5355,33 @@ def _temp():
     }
 rest_dict['Bsp24I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsp68I>TCGCGA)|(?P<Bsp68I_as>TCGCGA)',
+        'compsite': '(?P<Bsp3004IV>CCGCAT)|(?P<Bsp3004IV_as>ATGCGG)',
+        'results': None,
+        'site': 'CCGCAT',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCGCAT'),
+        'ovhgseq': None,
+    }
+rest_dict['Bsp3004IV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Bsp68I>TCGCGA)',
         'results': None,
         'site': 'TCGCGA',
         'substrat': 'DNA',
@@ -4939,12 +5394,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TCGCGA'),
         'ovhgseq': '',
     }
 rest_dict['Bsp68I'] = _temp()
+
 
 def _temp():
     return {
@@ -4968,6 +5424,30 @@ def _temp():
     }
 rest_dict['BspACI'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<BspANI>GGCC)',
+        'results': None,
+        'site': 'GGCC',
+        'substrat': 'DNA',
+        'fst3': -2,
+        'fst5': 2,
+        'freq': 256,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 0,
+        'scd3': None,
+        'suppl': ('X',),
+        'scd5': None,
+        'charac': (2, -2, None, None, 'GGCC'),
+        'ovhgseq': '',
+    }
+rest_dict['BspANI'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<BspCNI>CTCAG)|(?P<BspCNI_as>CTGAG)',
@@ -4989,6 +5469,7 @@ def _temp():
         'ovhgseq': 'NN',
     }
 rest_dict['BspCNI'] = _temp()
+
 
 def _temp():
     return {
@@ -5012,9 +5493,10 @@ def _temp():
     }
 rest_dict['BspD6I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspDI>ATCGAT)|(?P<BspDI_as>ATCGAT)',
+        'compsite': '(?P<BspDI>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -5034,9 +5516,10 @@ def _temp():
     }
 rest_dict['BspDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspEI>TCCGGA)|(?P<BspEI_as>TCCGGA)',
+        'compsite': '(?P<BspEI>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -5056,9 +5539,10 @@ def _temp():
     }
 rest_dict['BspEI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspFNI>CGCG)|(?P<BspFNI_as>CGCG)',
+        'compsite': '(?P<BspFNI>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -5077,6 +5561,7 @@ def _temp():
         'ovhgseq': '',
     }
 rest_dict['BspFNI'] = _temp()
+
 
 def _temp():
     return {
@@ -5100,9 +5585,10 @@ def _temp():
     }
 rest_dict['BspGI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspHI>TCATGA)|(?P<BspHI_as>TCATGA)',
+        'compsite': '(?P<BspHI>TCATGA)',
         'results': None,
         'site': 'TCATGA',
         'substrat': 'DNA',
@@ -5122,9 +5608,10 @@ def _temp():
     }
 rest_dict['BspHI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspLI>GG..CC)|(?P<BspLI_as>GG..CC)',
+        'compsite': '(?P<BspLI>GG..CC)',
         'results': None,
         'site': 'GGNNCC',
         'substrat': 'DNA',
@@ -5137,16 +5624,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GGNNCC'),
         'ovhgseq': '',
     }
 rest_dict['BspLI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspLU11I>ACATGT)|(?P<BspLU11I_as>ACATGT)',
+        'compsite': '(?P<BspLU11I>ACATGT)',
         'results': None,
         'site': 'ACATGT',
         'substrat': 'DNA',
@@ -5165,6 +5653,30 @@ def _temp():
         'ovhgseq': 'CATG',
     }
 rest_dict['BspLU11I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BspMAI>CTGCAG)',
+        'results': None,
+        'site': 'CTGCAG',
+        'substrat': 'DNA',
+        'fst3': -5,
+        'fst5': 5,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 4,
+        'scd3': None,
+        'suppl': ('X',),
+        'scd5': None,
+        'charac': (5, -5, None, None, 'CTGCAG'),
+        'ovhgseq': 'TGCA',
+    }
+rest_dict['BspMAI'] = _temp()
+
 
 def _temp():
     return {
@@ -5188,9 +5700,10 @@ def _temp():
     }
 rest_dict['BspMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspMII>TCCGGA)|(?P<BspMII_as>TCCGGA)',
+        'compsite': '(?P<BspMII>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -5209,6 +5722,7 @@ def _temp():
         'ovhgseq': 'CCGG',
     }
 rest_dict['BspMII'] = _temp()
+
 
 def _temp():
     return {
@@ -5232,9 +5746,10 @@ def _temp():
     }
 rest_dict['BspNCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspOI>GCTAGC)|(?P<BspOI_as>GCTAGC)',
+        'compsite': '(?P<BspOI>GCTAGC)',
         'results': None,
         'site': 'GCTAGC',
         'substrat': 'DNA',
@@ -5247,12 +5762,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GCTAGC'),
         'ovhgseq': 'CTAG',
     }
 rest_dict['BspOI'] = _temp()
+
 
 def _temp():
     return {
@@ -5269,12 +5785,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (9, 5, None, None, 'GGATC'),
         'ovhgseq': 'N',
     }
 rest_dict['BspPI'] = _temp()
+
 
 def _temp():
     return {
@@ -5298,9 +5815,10 @@ def _temp():
     }
 rest_dict['BspQI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspT104I>TTCGAA)|(?P<BspT104I_as>TTCGAA)',
+        'compsite': '(?P<BspT104I>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -5320,9 +5838,10 @@ def _temp():
     }
 rest_dict['BspT104I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspT107I>GG[CT][AG]CC)|(?P<BspT107I_as>GG[CT][AG]CC)',
+        'compsite': '(?P<BspT107I>GG[CT][AG]CC)',
         'results': None,
         'site': 'GGYRCC',
         'substrat': 'DNA',
@@ -5342,9 +5861,10 @@ def _temp():
     }
 rest_dict['BspT107I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BspTI>CTTAAG)|(?P<BspTI_as>CTTAAG)',
+        'compsite': '(?P<BspTI>CTTAAG)',
         'results': None,
         'site': 'CTTAAG',
         'substrat': 'DNA',
@@ -5357,12 +5877,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTTAAG'),
         'ovhgseq': 'TTAA',
     }
 rest_dict['BspTI'] = _temp()
+
 
 def _temp():
     return {
@@ -5379,34 +5900,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('Q', 'X'),
+        'suppl': ('X',),
         'scd5': None,
         'charac': (7, 5, None, None, 'GGTCTC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['BspTNI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BspXI>ATCGAT)|(?P<BspXI_as>ATCGAT)',
-        'results': None,
-        'site': 'ATCGAT',
-        'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -2,
-        'scd3': None,
-        'suppl': ('W',),
-        'scd5': None,
-        'charac': (2, -2, None, None, 'ATCGAT'),
-        'ovhgseq': 'CG',
-    }
-rest_dict['BspXI'] = _temp()
 
 def _temp():
     return {
@@ -5430,6 +5930,7 @@ def _temp():
     }
 rest_dict['BsrBI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BsrDI>GCAATG)|(?P<BsrDI_as>CATTGC)',
@@ -5452,9 +5953,10 @@ def _temp():
     }
 rest_dict['BsrDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsrFI>[AG]CCGG[CT])|(?P<BsrFI_as>[AG]CCGG[CT])',
+        'compsite': '(?P<BsrFI>[AG]CCGG[CT])',
         'results': None,
         'site': 'RCCGGY',
         'substrat': 'DNA',
@@ -5474,9 +5976,10 @@ def _temp():
     }
 rest_dict['BsrFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsrGI>TGTACA)|(?P<BsrGI_as>TGTACA)',
+        'compsite': '(?P<BsrGI>TGTACA)',
         'results': None,
         'site': 'TGTACA',
         'substrat': 'DNA',
@@ -5495,6 +5998,7 @@ def _temp():
         'ovhgseq': 'GTAC',
     }
 rest_dict['BsrGI'] = _temp()
+
 
 def _temp():
     return {
@@ -5518,31 +6022,10 @@ def _temp():
     }
 rest_dict['BsrI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BsrSI>ACTGG)|(?P<BsrSI_as>CCAGT)',
-        'results': None,
-        'site': 'ACTGG',
-        'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 6,
-        'freq': 1024,
-        'size': 5,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 2,
-        'scd3': None,
-        'suppl': ('R',),
-        'scd5': None,
-        'charac': (6, -1, None, None, 'ACTGG'),
-        'ovhgseq': 'GN',
-    }
-rest_dict['BsrSI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<BssAI>[AG]CCGG[CT])|(?P<BssAI_as>[AG]CCGG[CT])',
+        'compsite': '(?P<BssAI>[AG]CCGG[CT])',
         'results': None,
         'site': 'RCCGGY',
         'substrat': 'DNA',
@@ -5562,9 +6045,10 @@ def _temp():
     }
 rest_dict['BssAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BssECI>CC..GG)|(?P<BssECI_as>CC..GG)',
+        'compsite': '(?P<BssECI>CC..GG)',
         'results': None,
         'site': 'CCNNGG',
         'substrat': 'DNA',
@@ -5584,9 +6068,10 @@ def _temp():
     }
 rest_dict['BssECI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BssHII>GCGCGC)|(?P<BssHII_as>GCGCGC)',
+        'compsite': '(?P<BssHII>GCGCGC)',
         'results': None,
         'site': 'GCGCGC',
         'substrat': 'DNA',
@@ -5599,38 +6084,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
+        'suppl': ('J', 'K', 'M', 'N', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GCGCGC'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['BssHII'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BssKI>CC.GG)|(?P<BssKI_as>CC.GG)',
-        'results': None,
-        'site': 'CCNGG',
-        'substrat': 'DNA',
-        'fst3': 0,
-        'fst5': 0,
-        'freq': 256,
-        'size': 5,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -5,
-        'scd3': None,
-        'suppl': ('N',),
-        'scd5': None,
-        'charac': (0, 0, None, None, 'CCNGG'),
-        'ovhgseq': 'CCNGG',
-    }
-rest_dict['BssKI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<BssMI>GATC)|(?P<BssMI_as>GATC)',
+        'compsite': '(?P<BssMI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -5650,9 +6114,10 @@ def _temp():
     }
 rest_dict['BssMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BssNAI>GTATAC)|(?P<BssNAI_as>GTATAC)',
+        'compsite': '(?P<BssNAI>GTATAC)',
         'results': None,
         'site': 'GTATAC',
         'substrat': 'DNA',
@@ -5672,9 +6137,10 @@ def _temp():
     }
 rest_dict['BssNAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BssNI>G[AG]CG[CT]C)|(?P<BssNI_as>G[AG]CG[CT]C)',
+        'compsite': '(?P<BssNI>G[AG]CG[CT]C)',
         'results': None,
         'site': 'GRCGYC',
         'substrat': 'DNA',
@@ -5693,6 +6159,7 @@ def _temp():
         'ovhgseq': 'CG',
     }
 rest_dict['BssNI'] = _temp()
+
 
 def _temp():
     return {
@@ -5716,9 +6183,10 @@ def _temp():
     }
 rest_dict['BssSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BssT1I>CC[AT][AT]GG)|(?P<BssT1I_as>CC[AT][AT]GG)',
+        'compsite': '(?P<BssT1I>CC[AT][AT]GG)',
         'results': None,
         'site': 'CCWWGG',
         'substrat': 'DNA',
@@ -5738,9 +6206,10 @@ def _temp():
     }
 rest_dict['BssT1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bst1107I>GTATAC)|(?P<Bst1107I_as>GTATAC)',
+        'compsite': '(?P<Bst1107I>GTATAC)',
         'results': None,
         'site': 'GTATAC',
         'substrat': 'DNA',
@@ -5753,12 +6222,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'K', 'M'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GTATAC'),
         'ovhgseq': '',
     }
 rest_dict['Bst1107I'] = _temp()
+
 
 def _temp():
     return {
@@ -5775,16 +6245,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('I', 'V'),
+        'suppl': ('I',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CACGAG'),
         'ovhgseq': 'ACGA',
     }
 rest_dict['Bst2BI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bst2UI>CC[AT]GG)|(?P<Bst2UI_as>CC[AT]GG)',
+        'compsite': '(?P<Bst2UI>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -5804,9 +6275,10 @@ def _temp():
     }
 rest_dict['Bst2UI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bst4CI>AC.GT)|(?P<Bst4CI_as>AC.GT)',
+        'compsite': '(?P<Bst4CI>AC.GT)',
         'results': None,
         'site': 'ACNGT',
         'substrat': 'DNA',
@@ -5825,6 +6297,7 @@ def _temp():
         'ovhgseq': 'N',
     }
 rest_dict['Bst4CI'] = _temp()
+
 
 def _temp():
     return {
@@ -5848,31 +6321,10 @@ def _temp():
     }
 rest_dict['Bst6I'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<Bst98I>CTTAAG)|(?P<Bst98I_as>CTTAAG)',
-        'results': None,
-        'site': 'CTTAAG',
-        'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 1,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -4,
-        'scd3': None,
-        'suppl': ('R',),
-        'scd5': None,
-        'charac': (1, -1, None, None, 'CTTAAG'),
-        'ovhgseq': 'TTAA',
-    }
-rest_dict['Bst98I'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<BstACI>G[AG]CG[CT]C)|(?P<BstACI_as>G[AG]CG[CT]C)',
+        'compsite': '(?P<BstACI>G[AG]CG[CT]C)',
         'results': None,
         'site': 'GRCGYC',
         'substrat': 'DNA',
@@ -5892,9 +6344,10 @@ def _temp():
     }
 rest_dict['BstACI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstAFI>CTTAAG)|(?P<BstAFI_as>CTTAAG)',
+        'compsite': '(?P<BstAFI>CTTAAG)',
         'results': None,
         'site': 'CTTAAG',
         'substrat': 'DNA',
@@ -5914,9 +6367,10 @@ def _temp():
     }
 rest_dict['BstAFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstAPI>GCA.....TGC)|(?P<BstAPI_as>GCA.....TGC)',
+        'compsite': '(?P<BstAPI>GCA.....TGC)',
         'results': None,
         'site': 'GCANNNNNTGC',
         'substrat': 'DNA',
@@ -5936,9 +6390,10 @@ def _temp():
     }
 rest_dict['BstAPI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstAUI>TGTACA)|(?P<BstAUI_as>TGTACA)',
+        'compsite': '(?P<BstAUI>TGTACA)',
         'results': None,
         'site': 'TGTACA',
         'substrat': 'DNA',
@@ -5958,9 +6413,10 @@ def _temp():
     }
 rest_dict['BstAUI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstBAI>[CT]ACGT[AG])|(?P<BstBAI_as>[CT]ACGT[AG])',
+        'compsite': '(?P<BstBAI>[CT]ACGT[AG])',
         'results': None,
         'site': 'YACGTR',
         'substrat': 'DNA',
@@ -5980,9 +6436,10 @@ def _temp():
     }
 rest_dict['BstBAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstBI>TTCGAA)|(?P<BstBI_as>TTCGAA)',
+        'compsite': '(?P<BstBI>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -6002,9 +6459,10 @@ def _temp():
     }
 rest_dict['BstBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstC8I>GC..GC)|(?P<BstC8I_as>GC..GC)',
+        'compsite': '(?P<BstC8I>GC..GC)',
         'results': None,
         'site': 'GCNNGC',
         'substrat': 'DNA',
@@ -6024,9 +6482,10 @@ def _temp():
     }
 rest_dict['BstC8I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstDEI>CT.AG)|(?P<BstDEI_as>CT.AG)',
+        'compsite': '(?P<BstDEI>CT.AG)',
         'results': None,
         'site': 'CTNAG',
         'substrat': 'DNA',
@@ -6046,9 +6505,10 @@ def _temp():
     }
 rest_dict['BstDEI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstDSI>CC[AG][CT]GG)|(?P<BstDSI_as>CC[AG][CT]GG)',
+        'compsite': '(?P<BstDSI>CC[AG][CT]GG)',
         'results': None,
         'site': 'CCRYGG',
         'substrat': 'DNA',
@@ -6068,9 +6528,10 @@ def _temp():
     }
 rest_dict['BstDSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstEII>GGT.ACC)|(?P<BstEII_as>GGT.ACC)',
+        'compsite': '(?P<BstEII>GGT.ACC)',
         'results': None,
         'site': 'GGTNACC',
         'substrat': 'DNA',
@@ -6083,16 +6544,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('C', 'H', 'J', 'M', 'N', 'O', 'R', 'S', 'U', 'W'),
+        'suppl': ('C', 'J', 'N', 'R', 'S'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGTNACC'),
         'ovhgseq': 'GTNAC',
     }
 rest_dict['BstEII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstENI>CCT.....AGG)|(?P<BstENI_as>CCT.....AGG)',
+        'compsite': '(?P<BstENI>CCT.....AGG)',
         'results': None,
         'site': 'CCTNNNNNAGG',
         'substrat': 'DNA',
@@ -6111,6 +6573,7 @@ def _temp():
         'ovhgseq': 'N',
     }
 rest_dict['BstENI'] = _temp()
+
 
 def _temp():
     return {
@@ -6134,9 +6597,10 @@ def _temp():
     }
 rest_dict['BstF5I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstFNI>CGCG)|(?P<BstFNI_as>CGCG)',
+        'compsite': '(?P<BstFNI>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -6156,9 +6620,10 @@ def _temp():
     }
 rest_dict['BstFNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstH2I>[AG]GCGC[CT])|(?P<BstH2I_as>[AG]GCGC[CT])',
+        'compsite': '(?P<BstH2I>[AG]GCGC[CT])',
         'results': None,
         'site': 'RGCGCY',
         'substrat': 'DNA',
@@ -6178,9 +6643,10 @@ def _temp():
     }
 rest_dict['BstH2I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstHHI>GCGC)|(?P<BstHHI_as>GCGC)',
+        'compsite': '(?P<BstHHI>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -6200,9 +6666,10 @@ def _temp():
     }
 rest_dict['BstHHI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstKTI>GATC)|(?P<BstKTI_as>GATC)',
+        'compsite': '(?P<BstKTI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -6221,6 +6688,7 @@ def _temp():
         'ovhgseq': 'AT',
     }
 rest_dict['BstKTI'] = _temp()
+
 
 def _temp():
     return {
@@ -6244,9 +6712,10 @@ def _temp():
     }
 rest_dict['BstMAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstMBI>GATC)|(?P<BstMBI_as>GATC)',
+        'compsite': '(?P<BstMBI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -6266,9 +6735,10 @@ def _temp():
     }
 rest_dict['BstMBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstMCI>CG[AG][CT]CG)|(?P<BstMCI_as>CG[AG][CT]CG)',
+        'compsite': '(?P<BstMCI>CG[AG][CT]CG)',
         'results': None,
         'site': 'CGRYCG',
         'substrat': 'DNA',
@@ -6288,9 +6758,10 @@ def _temp():
     }
 rest_dict['BstMCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstMWI>GC.......GC)|(?P<BstMWI_as>GC.......GC)',
+        'compsite': '(?P<BstMWI>GC.......GC)',
         'results': None,
         'site': 'GCNNNNNNNGC',
         'substrat': 'DNA',
@@ -6310,9 +6781,10 @@ def _temp():
     }
 rest_dict['BstMWI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstNI>CC[AT]GG)|(?P<BstNI_as>CC[AT]GG)',
+        'compsite': '(?P<BstNI>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -6332,9 +6804,10 @@ def _temp():
     }
 rest_dict['BstNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstNSI>[AG]CATG[CT])|(?P<BstNSI_as>[AG]CATG[CT])',
+        'compsite': '(?P<BstNSI>[AG]CATG[CT])',
         'results': None,
         'site': 'RCATGY',
         'substrat': 'DNA',
@@ -6354,31 +6827,10 @@ def _temp():
     }
 rest_dict['BstNSI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<BstOI>CC[AT]GG)|(?P<BstOI_as>CC[AT]GG)',
-        'results': None,
-        'site': 'CCWGG',
-        'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
-        'freq': 512,
-        'size': 5,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -1,
-        'scd3': None,
-        'suppl': ('R',),
-        'scd5': None,
-        'charac': (2, -2, None, None, 'CCWGG'),
-        'ovhgseq': 'W',
-    }
-rest_dict['BstOI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<BstPAI>GAC....GTC)|(?P<BstPAI_as>GAC....GTC)',
+        'compsite': '(?P<BstPAI>GAC....GTC)',
         'results': None,
         'site': 'GACNNNNGTC',
         'substrat': 'DNA',
@@ -6398,9 +6850,10 @@ def _temp():
     }
 rest_dict['BstPAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstPI>GGT.ACC)|(?P<BstPI_as>GGT.ACC)',
+        'compsite': '(?P<BstPI>GGT.ACC)',
         'results': None,
         'site': 'GGTNACC',
         'substrat': 'DNA',
@@ -6420,9 +6873,10 @@ def _temp():
     }
 rest_dict['BstPI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstSCI>CC.GG)|(?P<BstSCI_as>CC.GG)',
+        'compsite': '(?P<BstSCI>CC.GG)',
         'results': None,
         'site': 'CCNGG',
         'substrat': 'DNA',
@@ -6442,9 +6896,10 @@ def _temp():
     }
 rest_dict['BstSCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstSFI>CT[AG][CT]AG)|(?P<BstSFI_as>CT[AG][CT]AG)',
+        'compsite': '(?P<BstSFI>CT[AG][CT]AG)',
         'results': None,
         'site': 'CTRYAG',
         'substrat': 'DNA',
@@ -6464,9 +6919,10 @@ def _temp():
     }
 rest_dict['BstSFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstSLI>G[GT]GC[AC]C)|(?P<BstSLI_as>G[GT]GC[AC]C)',
+        'compsite': '(?P<BstSLI>G[GT]GC[AC]C)',
         'results': None,
         'site': 'GKGCMC',
         'substrat': 'DNA',
@@ -6486,9 +6942,10 @@ def _temp():
     }
 rest_dict['BstSLI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstSNI>TACGTA)|(?P<BstSNI_as>TACGTA)',
+        'compsite': '(?P<BstSNI>TACGTA)',
         'results': None,
         'site': 'TACGTA',
         'substrat': 'DNA',
@@ -6508,9 +6965,10 @@ def _temp():
     }
 rest_dict['BstSNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstUI>CGCG)|(?P<BstUI_as>CGCG)',
+        'compsite': '(?P<BstUI>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -6529,6 +6987,7 @@ def _temp():
         'ovhgseq': '',
     }
 rest_dict['BstUI'] = _temp()
+
 
 def _temp():
     return {
@@ -6552,6 +7011,7 @@ def _temp():
     }
 rest_dict['BstV1I'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BstV2I>GAAGAC)|(?P<BstV2I_as>GTCTTC)',
@@ -6574,9 +7034,10 @@ def _temp():
     }
 rest_dict['BstV2I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstX2I>[AG]GATC[CT])|(?P<BstX2I_as>[AG]GATC[CT])',
+        'compsite': '(?P<BstX2I>[AG]GATC[CT])',
         'results': None,
         'site': 'RGATCY',
         'substrat': 'DNA',
@@ -6596,9 +7057,10 @@ def _temp():
     }
 rest_dict['BstX2I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstXI>CCA......TGG)|(?P<BstXI_as>CCA......TGG)',
+        'compsite': '(?P<BstXI>CCA......TGG)',
         'results': None,
         'site': 'CCANNNNNNTGG',
         'substrat': 'DNA',
@@ -6611,16 +7073,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (8, -8, None, None, 'CCANNNNNNTGG'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['BstXI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstYI>[AG]GATC[CT])|(?P<BstYI_as>[AG]GATC[CT])',
+        'compsite': '(?P<BstYI>[AG]GATC[CT])',
         'results': None,
         'site': 'RGATCY',
         'substrat': 'DNA',
@@ -6640,9 +7103,10 @@ def _temp():
     }
 rest_dict['BstYI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstZ17I>GTATAC)|(?P<BstZ17I_as>GTATAC)',
+        'compsite': '(?P<BstZ17I>GTATAC)',
         'results': None,
         'site': 'GTATAC',
         'substrat': 'DNA',
@@ -6662,9 +7126,10 @@ def _temp():
     }
 rest_dict['BstZ17I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BstZI>CGGCCG)|(?P<BstZI_as>CGGCCG)',
+        'compsite': '(?P<BstZI>CGGCCG)',
         'results': None,
         'site': 'CGGCCG',
         'substrat': 'DNA',
@@ -6684,9 +7149,10 @@ def _temp():
     }
 rest_dict['BstZI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsu15I>ATCGAT)|(?P<Bsu15I_as>ATCGAT)',
+        'compsite': '(?P<Bsu15I>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -6699,16 +7165,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'ATCGAT'),
         'ovhgseq': 'CG',
     }
 rest_dict['Bsu15I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Bsu36I>CCT.AGG)|(?P<Bsu36I_as>CCT.AGG)',
+        'compsite': '(?P<Bsu36I>CCT.AGG)',
         'results': None,
         'site': 'CCTNAGG',
         'substrat': 'DNA',
@@ -6721,16 +7188,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('N', 'R'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCTNAGG'),
         'ovhgseq': 'TNA',
     }
 rest_dict['Bsu36I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsuRI>GGCC)|(?P<BsuRI_as>GGCC)',
+        'compsite': '(?P<Bsu7003I>GACGAGC)|(?P<Bsu7003I_as>GCTCGTC)',
+        'results': None,
+        'site': 'GACGAGC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GACGAGC'),
+        'ovhgseq': None,
+    }
+rest_dict['Bsu7003I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BsuI>GTATCC)|(?P<BsuI_as>GGATAC)',
+        'results': None,
+        'site': 'GTATCC',
+        'substrat': 'DNA',
+        'fst3': 5,
+        'fst5': 12,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 1,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (12, 5, None, None, 'GTATCC'),
+        'ovhgseq': 'N',
+    }
+rest_dict['BsuI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BsuRI>GGCC)',
         'results': None,
         'site': 'GGCC',
         'substrat': 'DNA',
@@ -6743,16 +7257,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'I'),
+        'suppl': ('B', 'I'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGCC'),
         'ovhgseq': '',
     }
 rest_dict['BsuRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BsuTUI>ATCGAT)|(?P<BsuTUI_as>ATCGAT)',
+        'compsite': '(?P<BsuTUI>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -6772,9 +7287,10 @@ def _temp():
     }
 rest_dict['BsuTUI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BtgI>CC[AG][CT]GG)|(?P<BtgI_as>CC[AG][CT]GG)',
+        'compsite': '(?P<BtgI>CC[AG][CT]GG)',
         'results': None,
         'site': 'CCRYGG',
         'substrat': 'DNA',
@@ -6793,6 +7309,7 @@ def _temp():
         'ovhgseq': 'CRYG',
     }
 rest_dict['BtgI'] = _temp()
+
 
 def _temp():
     return {
@@ -6816,9 +7333,10 @@ def _temp():
     }
 rest_dict['BtgZI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BthCI>GC.GC)|(?P<BthCI_as>GC.GC)',
+        'compsite': '(?P<BthCI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -6838,6 +7356,7 @@ def _temp():
     }
 rest_dict['BthCI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BtrI>CACGTC)|(?P<BtrI_as>GACGTG)',
@@ -6853,12 +7372,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('I', 'V'),
+        'suppl': ('I',),
         'scd5': None,
         'charac': (3, -3, None, None, 'CACGTC'),
         'ovhgseq': '',
     }
 rest_dict['BtrI'] = _temp()
+
 
 def _temp():
     return {
@@ -6882,6 +7402,7 @@ def _temp():
     }
 rest_dict['BtsCI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BtsI>GCAGTG)|(?P<BtsI_as>CACTGC)',
@@ -6904,9 +7425,33 @@ def _temp():
     }
 rest_dict['BtsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<BtuMI>TCGCGA)|(?P<BtuMI_as>TCGCGA)',
+        'compsite': '(?P<BtsIMutI>CAGTG)|(?P<BtsIMutI_as>CACTG)',
+        'results': None,
+        'site': 'CAGTG',
+        'substrat': 'DNA',
+        'fst3': 0,
+        'fst5': 7,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (7, 0, None, None, 'CAGTG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['BtsIMutI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<BtuMI>TCGCGA)',
         'results': None,
         'site': 'TCGCGA',
         'substrat': 'DNA',
@@ -6926,6 +7471,7 @@ def _temp():
     }
 rest_dict['BtuMI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<BveI>ACCTGC)|(?P<BveI_as>GCAGGT)',
@@ -6941,16 +7487,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (10, 8, None, None, 'ACCTGC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['BveI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Cac8I>GC..GC)|(?P<Cac8I_as>GC..GC)',
+        'compsite': '(?P<Cac8I>GC..GC)',
         'results': None,
         'site': 'GCNNGC',
         'substrat': 'DNA',
@@ -6970,9 +7517,10 @@ def _temp():
     }
 rest_dict['Cac8I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CaiI>CAG...CTG)|(?P<CaiI_as>CAG...CTG)',
+        'compsite': '(?P<CaiI>CAG...CTG)',
         'results': None,
         'site': 'CAGNNNCTG',
         'substrat': 'DNA',
@@ -6985,16 +7533,86 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (6, -6, None, None, 'CAGNNNCTG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['CaiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CauII>CC[CG]GG)|(?P<CauII_as>CC[CG]GG)',
+        'compsite': '(?P<Cal14237I>GGTTAG)|(?P<Cal14237I_as>CTAACC)',
+        'results': None,
+        'site': 'GGTTAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGTTAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Cal14237I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CalB3II>G[AG]TT[AG]AG)|(?P<CalB3II_as>CT[CT]AA[CT]C)',
+        'results': None,
+        'site': 'GRTTRAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GRTTRAG'),
+        'ovhgseq': None,
+    }
+rest_dict['CalB3II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Cau10061II>GTTAAT)|(?P<Cau10061II_as>ATTAAC)',
+        'results': None,
+        'site': 'GTTAAT',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GTTAAT'),
+        'ovhgseq': None,
+    }
+rest_dict['Cau10061II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CauII>CC[CG]GG)',
         'results': None,
         'site': 'CCSGG',
         'substrat': 'DNA',
@@ -7014,9 +7632,102 @@ def _temp():
     }
 rest_dict['CauII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CciI>TCATGA)|(?P<CciI_as>TCATGA)',
+        'compsite': '(?P<Cba13II>AGGAAT)|(?P<Cba13II_as>ATTCCT)',
+        'results': None,
+        'site': 'AGGAAT',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'AGGAAT'),
+        'ovhgseq': None,
+    }
+rest_dict['Cba13II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Cba16038I>CCT.A[CT].C)|(?P<Cba16038I_as>G.[AG]T.AGG)',
+        'results': None,
+        'site': 'CCTNAYNC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 8,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCTNAYNC'),
+        'ovhgseq': None,
+    }
+rest_dict['Cba16038I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CchII>GGA[AG]GA)|(?P<CchII_as>TC[CT]TCC)',
+        'results': None,
+        'site': 'GGARGA',
+        'substrat': 'DNA',
+        'fst3': 9,
+        'fst5': 17,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (17, 9, None, None, 'GGARGA'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['CchII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CchIII>CCCAAG)|(?P<CchIII_as>CTTGGG)',
+        'results': None,
+        'site': 'CCCAAG',
+        'substrat': 'DNA',
+        'fst3': 18,
+        'fst5': 26,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (26, 18, None, None, 'CCCAAG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['CchIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CciI>TCATGA)',
         'results': None,
         'site': 'TCATGA',
         'substrat': 'DNA',
@@ -7036,9 +7747,10 @@ def _temp():
     }
 rest_dict['CciI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CciNI>GCGGCCGC)|(?P<CciNI_as>GCGGCCGC)',
+        'compsite': '(?P<CciNI>GCGGCCGC)',
         'results': None,
         'site': 'GCGGCCGC',
         'substrat': 'DNA',
@@ -7057,6 +7769,53 @@ def _temp():
         'ovhgseq': 'GGCC',
     }
 rest_dict['CciNI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CcrNAIII>CGACCAG)|(?P<CcrNAIII_as>CTGGTCG)',
+        'results': None,
+        'site': 'CGACCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGACCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['CcrNAIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Cdi11397I>GCGCAG)|(?P<Cdi11397I_as>CTGCGC)',
+        'results': None,
+        'site': 'GCGCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCGCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Cdi11397I'] = _temp()
+
 
 def _temp():
     return {
@@ -7080,6 +7839,7 @@ def _temp():
     }
 rest_dict['CdiI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<CdpI>GCGGAG)|(?P<CdpI_as>CTCCGC)',
@@ -7102,31 +7862,33 @@ def _temp():
     }
 rest_dict['CdpI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<CelII>GCT.AGC)|(?P<CelII_as>GCT.AGC)',
-        'results': None,
-        'site': 'GCTNAGC',
-        'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
-        'freq': 4096,
-        'size': 7,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -3,
-        'scd3': None,
-        'suppl': ('M',),
-        'scd5': None,
-        'charac': (2, -2, None, None, 'GCTNAGC'),
-        'ovhgseq': 'TNA',
-    }
-rest_dict['CelII'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<CfoI>GCGC)|(?P<CfoI_as>GCGC)',
+        'compsite': '(?P<Cdu23823II>GTGAAG)|(?P<Cdu23823II_as>CTTCAC)',
+        'results': None,
+        'site': 'GTGAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GTGAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Cdu23823II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CfoI>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -7146,9 +7908,10 @@ def _temp():
     }
 rest_dict['CfoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Cfr10I>[AG]CCGG[CT])|(?P<Cfr10I_as>[AG]CCGG[CT])',
+        'compsite': '(?P<Cfr10I>[AG]CCGG[CT])',
         'results': None,
         'site': 'RCCGGY',
         'substrat': 'DNA',
@@ -7161,16 +7924,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'K', 'O'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (1, -1, None, None, 'RCCGGY'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['Cfr10I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Cfr13I>GG.CC)|(?P<Cfr13I_as>GG.CC)',
+        'compsite': '(?P<Cfr13I>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -7183,16 +7947,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'O'),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGNCC'),
         'ovhgseq': 'GNC',
     }
 rest_dict['Cfr13I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Cfr42I>CCGCGG)|(?P<Cfr42I_as>CCGCGG)',
+        'compsite': '(?P<Cfr42I>CCGCGG)',
         'results': None,
         'site': 'CCGCGG',
         'substrat': 'DNA',
@@ -7205,16 +7970,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'CCGCGG'),
         'ovhgseq': 'GC',
     }
 rest_dict['Cfr42I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Cfr9I>CCCGGG)|(?P<Cfr9I_as>CCCGGG)',
+        'compsite': '(?P<Cfr9I>CCCGGG)',
         'results': None,
         'site': 'CCCGGG',
         'substrat': 'DNA',
@@ -7227,16 +7993,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'O'),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCCGGG'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['Cfr9I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CfrI>[CT]GGCC[AG])|(?P<CfrI_as>[CT]GGCC[AG])',
+        'compsite': '(?P<CfrI>[CT]GGCC[AG])',
         'results': None,
         'site': 'YGGCCR',
         'substrat': 'DNA',
@@ -7249,16 +8016,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': None,
         'charac': (1, -1, None, None, 'YGGCCR'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['CfrI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ChaI>GATC)|(?P<ChaI_as>GATC)',
+        'compsite': '(?P<Cgl13032I>GGCGCA)|(?P<Cgl13032I_as>TGCGCC)',
+        'results': None,
+        'site': 'GGCGCA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGCGCA'),
+        'ovhgseq': None,
+    }
+rest_dict['Cgl13032I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Cgl13032II>ACGA[CGT]GG)|(?P<Cgl13032II_as>CC[ACG]TCGT)',
+        'results': None,
+        'site': 'ACGABGG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'ACGABGG'),
+        'ovhgseq': None,
+    }
+rest_dict['Cgl13032II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<ChaI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -7277,6 +8091,53 @@ def _temp():
         'ovhgseq': 'GATC',
     }
 rest_dict['ChaI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CjeFIII>GCAAGG)|(?P<CjeFIII_as>CCTTGC)',
+        'results': None,
+        'site': 'GCAAGG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCAAGG'),
+        'ovhgseq': None,
+    }
+rest_dict['CjeFIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CjeFV>GG[AG]CA)|(?P<CjeFV_as>TG[CT]CC)',
+        'results': None,
+        'site': 'GGRCA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 512,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGRCA'),
+        'ovhgseq': None,
+    }
+rest_dict['CjeFV'] = _temp()
+
 
 def _temp():
     return {
@@ -7300,6 +8161,7 @@ def _temp():
     }
 rest_dict['CjeI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<CjeNII>GAG.....GT)|(?P<CjeNII_as>AC.....CTC)',
@@ -7321,6 +8183,53 @@ def _temp():
         'ovhgseq': None,
     }
 rest_dict['CjeNII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CjeNIII>G[GT]AA[CT]G)|(?P<CjeNIII_as>C[AG]TT[AC]C)',
+        'results': None,
+        'site': 'GKAAYG',
+        'substrat': 'DNA',
+        'fst3': 17,
+        'fst5': 25,
+        'freq': 1024,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (25, 17, None, None, 'GKAAYG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['CjeNIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CjeP659IV>CAC.......GAA)|(?P<CjeP659IV_as>TTC.......GTG)',
+        'results': None,
+        'site': 'CACNNNNNNNGAA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 13,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CACNNNNNNNGAA'),
+        'ovhgseq': None,
+    }
+rest_dict['CjeP659IV'] = _temp()
+
 
 def _temp():
     return {
@@ -7344,9 +8253,10 @@ def _temp():
     }
 rest_dict['CjePI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CjuI>CA[CT].....[AG]TG)|(?P<CjuI_as>CA[CT].....[AG]TG)',
+        'compsite': '(?P<CjuI>CA[CT].....[AG]TG)',
         'results': None,
         'site': 'CAYNNNNNRTG',
         'substrat': 'DNA',
@@ -7365,6 +8275,7 @@ def _temp():
         'ovhgseq': None,
     }
 rest_dict['CjuI'] = _temp()
+
 
 def _temp():
     return {
@@ -7388,9 +8299,33 @@ def _temp():
     }
 rest_dict['CjuII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ClaI>ATCGAT)|(?P<ClaI_as>ATCGAT)',
+        'compsite': '(?P<Cla11845III>GCGAA)|(?P<Cla11845III_as>TTCGC)',
+        'results': None,
+        'site': 'GCGAA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCGAA'),
+        'ovhgseq': None,
+    }
+rest_dict['Cla11845III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<ClaI>ATCGAT)',
         'results': None,
         'site': 'ATCGAT',
         'substrat': 'DNA',
@@ -7403,16 +8338,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('B', 'H', 'K', 'M', 'N', 'R', 'S', 'U'),
+        'suppl': ('B', 'K', 'M', 'N', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'ATCGAT'),
         'ovhgseq': 'CG',
     }
 rest_dict['ClaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CpoI>CGG[AT]CCG)|(?P<CpoI_as>CGG[AT]CCG)',
+        'compsite': '(?P<Cly7489II>AAAAG[AG]G)|(?P<Cly7489II_as>C[CT]CTTTT)',
+        'results': None,
+        'site': 'AAAAGRG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'AAAAGRG'),
+        'ovhgseq': None,
+    }
+rest_dict['Cly7489II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Cma23826I>CGGAAG)|(?P<Cma23826I_as>CTTCCG)',
+        'results': None,
+        'site': 'CGGAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGGAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Cma23826I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<CpoI>CGG[AT]CCG)',
         'results': None,
         'site': 'CGGWCCG',
         'substrat': 'DNA',
@@ -7425,12 +8407,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGGWCCG'),
         'ovhgseq': 'GWC',
     }
 rest_dict['CpoI'] = _temp()
+
 
 def _temp():
     return {
@@ -7447,16 +8430,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (10, 10, None, None, 'GACGC'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['CseI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CsiI>ACC[AT]GGT)|(?P<CsiI_as>ACC[AT]GGT)',
+        'compsite': '(?P<CsiI>ACC[AT]GGT)',
         'results': None,
         'site': 'ACCWGGT',
         'substrat': 'DNA',
@@ -7469,38 +8453,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACCWGGT'),
         'ovhgseq': 'CCWGG',
     }
 rest_dict['CsiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Csp45I>TTCGAA)|(?P<Csp45I_as>TTCGAA)',
+        'compsite': '(?P<Csp2014I>GGAGGC)|(?P<Csp2014I_as>GCCTCC)',
         'results': None,
-        'site': 'TTCGAA',
+        'site': 'GGAGGC',
         'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
+        'fst3': None,
+        'fst5': None,
         'freq': 4096,
         'size': 6,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': -2,
+        'ovhg': None,
         'scd3': None,
-        'suppl': ('O', 'R'),
+        'suppl': (),
         'scd5': None,
-        'charac': (2, -2, None, None, 'TTCGAA'),
-        'ovhgseq': 'CG',
+        'charac': (None, None, None, None, 'GGAGGC'),
+        'ovhgseq': None,
     }
-rest_dict['Csp45I'] = _temp()
+rest_dict['Csp2014I'] = _temp()
+
 
 def _temp():
     return {
-        'compsite': '(?P<Csp6I>GTAC)|(?P<Csp6I_as>GTAC)',
+        'compsite': '(?P<Csp6I>GTAC)',
         'results': None,
         'site': 'GTAC',
         'substrat': 'DNA',
@@ -7513,16 +8499,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GTAC'),
         'ovhgseq': 'TA',
     }
 rest_dict['Csp6I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CspAI>ACCGGT)|(?P<CspAI_as>ACCGGT)',
+        'compsite': '(?P<CspAI>ACCGGT)',
         'results': None,
         'site': 'ACCGGT',
         'substrat': 'DNA',
@@ -7541,6 +8528,7 @@ def _temp():
         'ovhgseq': 'CCGG',
     }
 rest_dict['CspAI'] = _temp()
+
 
 def _temp():
     return {
@@ -7564,9 +8552,10 @@ def _temp():
     }
 rest_dict['CspCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CspI>CGG[AT]CCG)|(?P<CspI_as>CGG[AT]CCG)',
+        'compsite': '(?P<CspI>CGG[AT]CCG)',
         'results': None,
         'site': 'CGGWCCG',
         'substrat': 'DNA',
@@ -7579,12 +8568,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('O', 'R'),
+        'suppl': ('R',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGGWCCG'),
         'ovhgseq': 'GWC',
     }
 rest_dict['CspI'] = _temp()
+
 
 def _temp():
     return {
@@ -7608,9 +8598,10 @@ def _temp():
     }
 rest_dict['CstMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CviAII>CATG)|(?P<CviAII_as>CATG)',
+        'compsite': '(?P<CviAII>CATG)',
         'results': None,
         'site': 'CATG',
         'substrat': 'DNA',
@@ -7630,9 +8621,10 @@ def _temp():
     }
 rest_dict['CviAII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CviJI>[AG]GC[CT])|(?P<CviJI_as>[AG]GC[CT])',
+        'compsite': '(?P<CviJI>[AG]GC[CT])',
         'results': None,
         'site': 'RGCY',
         'substrat': 'DNA',
@@ -7652,9 +8644,10 @@ def _temp():
     }
 rest_dict['CviJI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CviKI_1>[AG]GC[CT])|(?P<CviKI_1_as>[AG]GC[CT])',
+        'compsite': '(?P<CviKI_1>[AG]GC[CT])',
         'results': None,
         'site': 'RGCY',
         'substrat': 'DNA',
@@ -7674,9 +8667,10 @@ def _temp():
     }
 rest_dict['CviKI_1'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CviQI>GTAC)|(?P<CviQI_as>GTAC)',
+        'compsite': '(?P<CviQI>GTAC)',
         'results': None,
         'site': 'GTAC',
         'substrat': 'DNA',
@@ -7696,9 +8690,10 @@ def _temp():
     }
 rest_dict['CviQI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<CviRI>TGCA)|(?P<CviRI_as>TGCA)',
+        'compsite': '(?P<CviRI>TGCA)',
         'results': None,
         'site': 'TGCA',
         'substrat': 'DNA',
@@ -7718,9 +8713,10 @@ def _temp():
     }
 rest_dict['CviRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DdeI>CT.AG)|(?P<DdeI_as>CT.AG)',
+        'compsite': '(?P<DdeI>CT.AG)',
         'results': None,
         'site': 'CTNAG',
         'substrat': 'DNA',
@@ -7733,16 +8729,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('B', 'M', 'N', 'O', 'R', 'S', 'W'),
+        'suppl': ('K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTNAG'),
         'ovhgseq': 'TNA',
     }
 rest_dict['DdeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DinI>GGCGCC)|(?P<DinI_as>GGCGCC)',
+        'compsite': '(?P<DinI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -7762,9 +8759,10 @@ def _temp():
     }
 rest_dict['DinI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DpnI>GATC)|(?P<DpnI_as>GATC)',
+        'compsite': '(?P<DpnI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -7777,16 +8775,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'E', 'F', 'M', 'N', 'O', 'R', 'S', 'W', 'X'),
+        'suppl': ('B', 'E', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GATC'),
         'ovhgseq': '',
     }
 rest_dict['DpnI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DpnII>GATC)|(?P<DpnII_as>GATC)',
+        'compsite': '(?P<DpnII>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -7806,9 +8805,10 @@ def _temp():
     }
 rest_dict['DpnII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DraI>TTTAAA)|(?P<DraI_as>TTTAAA)',
+        'compsite': '(?P<DraI>TTTAAA)',
         'results': None,
         'site': 'TTTAAA',
         'substrat': 'DNA',
@@ -7821,16 +8821,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'F', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TTTAAA'),
         'ovhgseq': '',
     }
 rest_dict['DraI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DraII>[AG]GG.CC[CT])|(?P<DraII_as>[AG]GG.CC[CT])',
+        'compsite': '(?P<DraII>[AG]GG.CC[CT])',
         'results': None,
         'site': 'RGGNCCY',
         'substrat': 'DNA',
@@ -7843,16 +8844,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('M', 'W'),
+        'suppl': (),
         'scd5': None,
         'charac': (2, -2, None, None, 'RGGNCCY'),
         'ovhgseq': 'GNC',
     }
 rest_dict['DraII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DraIII>CAC...GTG)|(?P<DraIII_as>CAC...GTG)',
+        'compsite': '(?P<DraIII>CAC...GTG)',
         'results': None,
         'site': 'CACNNNGTG',
         'substrat': 'DNA',
@@ -7865,12 +8867,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('I', 'M', 'N', 'V', 'W'),
+        'suppl': ('I', 'M', 'N', 'V'),
         'scd5': None,
         'charac': (6, -6, None, None, 'CACNNNGTG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['DraIII'] = _temp()
+
 
 def _temp():
     return {
@@ -7894,9 +8897,10 @@ def _temp():
     }
 rest_dict['DraRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DrdI>GAC......GTC)|(?P<DrdI_as>GAC......GTC)',
+        'compsite': '(?P<DrdI>GAC......GTC)',
         'results': None,
         'site': 'GACNNNNNNGTC',
         'substrat': 'DNA',
@@ -7915,6 +8919,7 @@ def _temp():
         'ovhgseq': 'NN',
     }
 rest_dict['DrdI'] = _temp()
+
 
 def _temp():
     return {
@@ -7938,31 +8943,10 @@ def _temp():
     }
 rest_dict['DrdII'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<DrdIV>TACGAC)|(?P<DrdIV_as>GTCGTA)',
-        'results': None,
-        'site': 'TACGAC',
-        'substrat': 'DNA',
-        'fst3': 18,
-        'fst5': 26,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 2,
-        'scd3': None,
-        'suppl': (),
-        'scd5': None,
-        'charac': (26, 18, None, None, 'TACGAC'),
-        'ovhgseq': 'NN',
-    }
-rest_dict['DrdIV'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<DriI>GAC.....GTC)|(?P<DriI_as>GAC.....GTC)',
+        'compsite': '(?P<DriI>GAC.....GTC)',
         'results': None,
         'site': 'GACNNNNNGTC',
         'substrat': 'DNA',
@@ -7982,9 +8966,10 @@ def _temp():
     }
 rest_dict['DriI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DsaI>CC[AG][CT]GG)|(?P<DsaI_as>CC[AG][CT]GG)',
+        'compsite': '(?P<DsaI>CC[AG][CT]GG)',
         'results': None,
         'site': 'CCRYGG',
         'substrat': 'DNA',
@@ -8004,9 +8989,10 @@ def _temp():
     }
 rest_dict['DsaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<DseDI>GAC......GTC)|(?P<DseDI_as>GAC......GTC)',
+        'compsite': '(?P<DseDI>GAC......GTC)',
         'results': None,
         'site': 'GACNNNNNNGTC',
         'substrat': 'DNA',
@@ -8026,9 +9012,10 @@ def _temp():
     }
 rest_dict['DseDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EaeI>[CT]GGCC[AG])|(?P<EaeI_as>[CT]GGCC[AG])',
+        'compsite': '(?P<EaeI>[CT]GGCC[AG])',
         'results': None,
         'site': 'YGGCCR',
         'substrat': 'DNA',
@@ -8048,9 +9035,10 @@ def _temp():
     }
 rest_dict['EaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EagI>CGGCCG)|(?P<EagI_as>CGGCCG)',
+        'compsite': '(?P<EagI>CGGCCG)',
         'results': None,
         'site': 'CGGCCG',
         'substrat': 'DNA',
@@ -8063,12 +9051,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('N', 'W'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CGGCCG'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['EagI'] = _temp()
+
 
 def _temp():
     return {
@@ -8085,16 +9074,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, 4, None, None, 'CTCTTC'),
         'ovhgseq': 'NNN',
     }
 rest_dict['Eam1104I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eam1105I>GAC.....GTC)|(?P<Eam1105I_as>GAC.....GTC)',
+        'compsite': '(?P<Eam1105I>GAC.....GTC)',
         'results': None,
         'site': 'GACNNNNNGTC',
         'substrat': 'DNA',
@@ -8107,12 +9097,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (6, -6, None, None, 'GACNNNNNGTC'),
         'ovhgseq': 'N',
     }
 rest_dict['Eam1105I'] = _temp()
+
 
 def _temp():
     return {
@@ -8136,6 +9127,7 @@ def _temp():
     }
 rest_dict['EarI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<EciI>GGCGGA)|(?P<EciI_as>TCCGCC)',
@@ -8158,9 +9150,10 @@ def _temp():
     }
 rest_dict['EciI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Ecl136II>GAGCTC)|(?P<Ecl136II_as>GAGCTC)',
+        'compsite': '(?P<Ecl136II>GAGCTC)',
         'results': None,
         'site': 'GAGCTC',
         'substrat': 'DNA',
@@ -8173,16 +9166,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GAGCTC'),
         'ovhgseq': '',
     }
 rest_dict['Ecl136II'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EclXI>CGGCCG)|(?P<EclXI_as>CGGCCG)',
+        'compsite': '(?P<Ecl35734I>GAAA[CT]TC)|(?P<Ecl35734I_as>GA[AG]TTTC)',
+        'results': None,
+        'site': 'GAAAYTC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAAAYTC'),
+        'ovhgseq': None,
+    }
+rest_dict['Ecl35734I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<EclXI>CGGCCG)',
         'results': None,
         'site': 'CGGCCG',
         'substrat': 'DNA',
@@ -8195,16 +9212,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('M', 'S'),
+        'suppl': ('S',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CGGCCG'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['EclXI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco105I>TACGTA)|(?P<Eco105I_as>TACGTA)',
+        'compsite': '(?P<Eco105I>TACGTA)',
         'results': None,
         'site': 'TACGTA',
         'substrat': 'DNA',
@@ -8217,16 +9235,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'O'),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TACGTA'),
         'ovhgseq': '',
     }
 rest_dict['Eco105I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco130I>CC[AT][AT]GG)|(?P<Eco130I_as>CC[AT][AT]GG)',
+        'compsite': '(?P<Eco130I>CC[AT][AT]GG)',
         'results': None,
         'site': 'CCWWGG',
         'substrat': 'DNA',
@@ -8239,16 +9258,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCWWGG'),
         'ovhgseq': 'CWWG',
     }
 rest_dict['Eco130I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco147I>AGGCCT)|(?P<Eco147I_as>AGGCCT)',
+        'compsite': '(?P<Eco147I>AGGCCT)',
         'results': None,
         'site': 'AGGCCT',
         'substrat': 'DNA',
@@ -8261,16 +9281,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'AGGCCT'),
         'ovhgseq': '',
     }
 rest_dict['Eco147I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco24I>G[AG]GC[CT]C)|(?P<Eco24I_as>G[AG]GC[CT]C)',
+        'compsite': '(?P<Eco24I>G[AG]GC[CT]C)',
         'results': None,
         'site': 'GRGCYC',
         'substrat': 'DNA',
@@ -8283,12 +9304,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GRGCYC'),
         'ovhgseq': 'RGCY',
     }
 rest_dict['Eco24I'] = _temp()
+
 
 def _temp():
     return {
@@ -8305,16 +9327,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, 5, None, None, 'GGTCTC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['Eco31I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco32I>GATATC)|(?P<Eco32I_as>GATATC)',
+        'compsite': '(?P<Eco32I>GATATC)',
         'results': None,
         'site': 'GATATC',
         'substrat': 'DNA',
@@ -8327,16 +9350,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GATATC'),
         'ovhgseq': '',
     }
 rest_dict['Eco32I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco47I>GG[AT]CC)|(?P<Eco47I_as>GG[AT]CC)',
+        'compsite': '(?P<Eco47I>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -8349,16 +9373,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'O'),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGWCC'),
         'ovhgseq': 'GWC',
     }
 rest_dict['Eco47I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco47III>AGCGCT)|(?P<Eco47III_as>AGCGCT)',
+        'compsite': '(?P<Eco47III>AGCGCT)',
         'results': None,
         'site': 'AGCGCT',
         'substrat': 'DNA',
@@ -8371,16 +9396,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'M', 'O', 'R', 'W'),
+        'suppl': ('B', 'M', 'R'),
         'scd5': None,
         'charac': (3, -3, None, None, 'AGCGCT'),
         'ovhgseq': '',
     }
 rest_dict['Eco47III'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco52I>CGGCCG)|(?P<Eco52I_as>CGGCCG)',
+        'compsite': '(?P<Eco52I>CGGCCG)',
         'results': None,
         'site': 'CGGCCG',
         'substrat': 'DNA',
@@ -8393,16 +9419,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'K', 'O'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CGGCCG'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['Eco52I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco53kI>GAGCTC)|(?P<Eco53kI_as>GAGCTC)',
+        'compsite': '(?P<Eco53kI>GAGCTC)',
         'results': None,
         'site': 'GAGCTC',
         'substrat': 'DNA',
@@ -8422,6 +9449,7 @@ def _temp():
     }
 rest_dict['Eco53kI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<Eco57I>CTGAAG)|(?P<Eco57I_as>CTTCAG)',
@@ -8437,12 +9465,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (22, 14, None, None, 'CTGAAG'),
         'ovhgseq': 'NN',
     }
 rest_dict['Eco57I'] = _temp()
+
 
 def _temp():
     return {
@@ -8459,16 +9488,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': None,
         'charac': (22, 14, None, None, 'CTGRAG'),
         'ovhgseq': 'NN',
     }
 rest_dict['Eco57MI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco72I>CACGTG)|(?P<Eco72I_as>CACGTG)',
+        'compsite': '(?P<Eco72I>CACGTG)',
         'results': None,
         'site': 'CACGTG',
         'substrat': 'DNA',
@@ -8481,16 +9511,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'CACGTG'),
         'ovhgseq': '',
     }
 rest_dict['Eco72I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco81I>CCT.AGG)|(?P<Eco81I_as>CCT.AGG)',
+        'compsite': '(?P<Eco81I>CCT.AGG)',
         'results': None,
         'site': 'CCTNAGG',
         'substrat': 'DNA',
@@ -8503,16 +9534,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'K', 'O'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCTNAGG'),
         'ovhgseq': 'TNA',
     }
 rest_dict['Eco81I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco88I>C[CT]CG[AG]G)|(?P<Eco88I_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<Eco88I>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -8525,16 +9557,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CYCGRG'),
         'ovhgseq': 'YCGR',
     }
 rest_dict['Eco88I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Eco91I>GGT.ACC)|(?P<Eco91I_as>GGT.ACC)',
+        'compsite': '(?P<Eco91I>GGT.ACC)',
         'results': None,
         'site': 'GGTNACC',
         'substrat': 'DNA',
@@ -8547,16 +9580,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGTNACC'),
         'ovhgseq': 'GTNAC',
     }
 rest_dict['Eco91I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoHI>CC[CG]GG)|(?P<EcoHI_as>CC[CG]GG)',
+        'compsite': '(?P<EcoE1140I>ACC[CT]AC)|(?P<EcoE1140I_as>GT[AG]GGT)',
+        'results': None,
+        'site': 'ACCYAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'ACCYAC'),
+        'ovhgseq': None,
+    }
+rest_dict['EcoE1140I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<EcoHI>CC[CG]GG)',
         'results': None,
         'site': 'CCSGG',
         'substrat': 'DNA',
@@ -8576,9 +9633,10 @@ def _temp():
     }
 rest_dict['EcoHI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoICRI>GAGCTC)|(?P<EcoICRI_as>GAGCTC)',
+        'compsite': '(?P<EcoICRI>GAGCTC)',
         'results': None,
         'site': 'GAGCTC',
         'substrat': 'DNA',
@@ -8598,9 +9656,33 @@ def _temp():
     }
 rest_dict['EcoICRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoNI>CCT.....AGG)|(?P<EcoNI_as>CCT.....AGG)',
+        'compsite': '(?P<EcoMII>CA.CATC)|(?P<EcoMII_as>GATG.TG)',
+        'results': None,
+        'site': 'CANCATC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CANCATC'),
+        'ovhgseq': None,
+    }
+rest_dict['EcoMII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<EcoNI>CCT.....AGG)',
         'results': None,
         'site': 'CCTNNNNNAGG',
         'substrat': 'DNA',
@@ -8620,9 +9702,10 @@ def _temp():
     }
 rest_dict['EcoNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoO109I>[AG]GG.CC[CT])|(?P<EcoO109I_as>[AG]GG.CC[CT])',
+        'compsite': '(?P<EcoO109I>[AG]GG.CC[CT])',
         'results': None,
         'site': 'RGGNCCY',
         'substrat': 'DNA',
@@ -8635,16 +9718,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F', 'J', 'K', 'N'),
+        'suppl': ('B', 'J', 'K', 'N'),
         'scd5': None,
         'charac': (2, -2, None, None, 'RGGNCCY'),
         'ovhgseq': 'GNC',
     }
 rest_dict['EcoO109I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoO65I>GGT.ACC)|(?P<EcoO65I_as>GGT.ACC)',
+        'compsite': '(?P<EcoO65I>GGT.ACC)',
         'results': None,
         'site': 'GGTNACC',
         'substrat': 'DNA',
@@ -8664,9 +9748,10 @@ def _temp():
     }
 rest_dict['EcoO65I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoRI>GAATTC)|(?P<EcoRI_as>GAATTC)',
+        'compsite': '(?P<EcoRI>GAATTC)',
         'results': None,
         'site': 'GAATTC',
         'substrat': 'DNA',
@@ -8679,16 +9764,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GAATTC'),
         'ovhgseq': 'AATT',
     }
 rest_dict['EcoRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoRII>CC[AT]GG)|(?P<EcoRII_as>CC[AT]GG)',
+        'compsite': '(?P<EcoRII>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -8701,16 +9787,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('F', 'J', 'M', 'O', 'S'),
+        'suppl': ('B', 'J'),
         'scd5': None,
         'charac': (0, 0, None, None, 'CCWGG'),
         'ovhgseq': 'CCWGG',
     }
 rest_dict['EcoRII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoRV>GATATC)|(?P<EcoRV_as>GATATC)',
+        'compsite': '(?P<EcoRV>GATATC)',
         'results': None,
         'site': 'GATATC',
         'substrat': 'DNA',
@@ -8723,16 +9810,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GATATC'),
         'ovhgseq': '',
     }
 rest_dict['EcoRV'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoT14I>CC[AT][AT]GG)|(?P<EcoT14I_as>CC[AT][AT]GG)',
+        'compsite': '(?P<EcoT14I>CC[AT][AT]GG)',
         'results': None,
         'site': 'CCWWGG',
         'substrat': 'DNA',
@@ -8752,9 +9840,10 @@ def _temp():
     }
 rest_dict['EcoT14I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoT22I>ATGCAT)|(?P<EcoT22I_as>ATGCAT)',
+        'compsite': '(?P<EcoT22I>ATGCAT)',
         'results': None,
         'site': 'ATGCAT',
         'substrat': 'DNA',
@@ -8767,16 +9856,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('K', 'O'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (5, -5, None, None, 'ATGCAT'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['EcoT22I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EcoT38I>G[AG]GC[CT]C)|(?P<EcoT38I_as>G[AG]GC[CT]C)',
+        'compsite': '(?P<EcoT38I>G[AG]GC[CT]C)',
         'results': None,
         'site': 'GRGCYC',
         'substrat': 'DNA',
@@ -8796,9 +9886,10 @@ def _temp():
     }
 rest_dict['EcoT38I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EgeI>GGCGCC)|(?P<EgeI_as>GGCGCC)',
+        'compsite': '(?P<EgeI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -8818,9 +9909,10 @@ def _temp():
     }
 rest_dict['EgeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EheI>GGCGCC)|(?P<EheI_as>GGCGCC)',
+        'compsite': '(?P<EheI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -8833,16 +9925,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'O'),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GGCGCC'),
         'ovhgseq': '',
     }
 rest_dict['EheI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ErhI>CC[AT][AT]GG)|(?P<ErhI_as>CC[AT][AT]GG)',
+        'compsite': '(?P<ErhI>CC[AT][AT]GG)',
         'results': None,
         'site': 'CCWWGG',
         'substrat': 'DNA',
@@ -8855,16 +9948,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('I', 'V'),
+        'suppl': ('I',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCWWGG'),
         'ovhgseq': 'CWWG',
     }
 rest_dict['ErhI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EsaBC3I>TCGA)|(?P<EsaBC3I_as>TCGA)',
+        'compsite': '(?P<EsaBC3I>TCGA)',
         'results': None,
         'site': 'TCGA',
         'substrat': 'DNA',
@@ -8883,6 +9977,7 @@ def _temp():
         'ovhgseq': '',
     }
 rest_dict['EsaBC3I'] = _temp()
+
 
 def _temp():
     return {
@@ -8906,6 +10001,30 @@ def _temp():
     }
 rest_dict['EsaSSI'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<Esp3007I>CAGAAG)|(?P<Esp3007I_as>CTTCTG)',
+        'results': None,
+        'site': 'CAGAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CAGAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Esp3007I'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<Esp3I>CGTCTC)|(?P<Esp3I_as>GAGACG)',
@@ -8921,16 +10040,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, 5, None, None, 'CGTCTC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['Esp3I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<EspI>GCT.AGC)|(?P<EspI_as>GCT.AGC)',
+        'compsite': '(?P<EspI>GCT.AGC)',
         'results': None,
         'site': 'GCTNAGC',
         'substrat': 'DNA',
@@ -8950,9 +10070,10 @@ def _temp():
     }
 rest_dict['EspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FaeI>CATG)|(?P<FaeI_as>CATG)',
+        'compsite': '(?P<FaeI>CATG)',
         'results': None,
         'site': 'CATG',
         'substrat': 'DNA',
@@ -8972,9 +10093,10 @@ def _temp():
     }
 rest_dict['FaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FaiI>[CT]AT[AG])|(?P<FaiI_as>[CT]AT[AG])',
+        'compsite': '(?P<FaiI>[CT]AT[AG])',
         'results': None,
         'site': 'YATR',
         'substrat': 'DNA',
@@ -8994,9 +10116,10 @@ def _temp():
     }
 rest_dict['FaiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FalI>AAG.....CTT)|(?P<FalI_as>AAG.....CTT)',
+        'compsite': '(?P<FalI>AAG.....CTT)',
         'results': None,
         'site': 'AAGNNNNNCTT',
         'substrat': 'DNA',
@@ -9016,6 +10139,7 @@ def _temp():
     }
 rest_dict['FalI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<FaqI>GGGAC)|(?P<FaqI_as>GTCCC)',
@@ -9031,16 +10155,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (15, 14, None, None, 'GGGAC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['FaqI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FatI>CATG)|(?P<FatI_as>CATG)',
+        'compsite': '(?P<FatI>CATG)',
         'results': None,
         'site': 'CATG',
         'substrat': 'DNA',
@@ -9059,6 +10184,7 @@ def _temp():
         'ovhgseq': 'CATG',
     }
 rest_dict['FatI'] = _temp()
+
 
 def _temp():
     return {
@@ -9082,9 +10208,10 @@ def _temp():
     }
 rest_dict['FauI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FauNDI>CATATG)|(?P<FauNDI_as>CATATG)',
+        'compsite': '(?P<FauNDI>CATATG)',
         'results': None,
         'site': 'CATATG',
         'substrat': 'DNA',
@@ -9104,9 +10231,10 @@ def _temp():
     }
 rest_dict['FauNDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FbaI>TGATCA)|(?P<FbaI_as>TGATCA)',
+        'compsite': '(?P<FbaI>TGATCA)',
         'results': None,
         'site': 'TGATCA',
         'substrat': 'DNA',
@@ -9126,9 +10254,10 @@ def _temp():
     }
 rest_dict['FbaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FblI>GT[AC][GT]AC)|(?P<FblI_as>GT[AC][GT]AC)',
+        'compsite': '(?P<FblI>GT[AC][GT]AC)',
         'results': None,
         'site': 'GTMKAC',
         'substrat': 'DNA',
@@ -9147,6 +10276,7 @@ def _temp():
         'ovhgseq': 'MK',
     }
 rest_dict['FblI'] = _temp()
+
 
 def _temp():
     return {
@@ -9170,9 +10300,10 @@ def _temp():
     }
 rest_dict['FinI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FmuI>GG.CC)|(?P<FmuI_as>GG.CC)',
+        'compsite': '(?P<FmuI>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -9192,9 +10323,10 @@ def _temp():
     }
 rest_dict['FmuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Fnu4HI>GC.GC)|(?P<Fnu4HI_as>GC.GC)',
+        'compsite': '(?P<Fnu4HI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -9214,9 +10346,10 @@ def _temp():
     }
 rest_dict['Fnu4HI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FnuDII>CGCG)|(?P<FnuDII_as>CGCG)',
+        'compsite': '(?P<FnuDII>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -9236,6 +10369,7 @@ def _temp():
     }
 rest_dict['FnuDII'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<FokI>GGATG)|(?P<FokI_as>CATCC)',
@@ -9251,16 +10385,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('I', 'J', 'K', 'M', 'N', 'Q', 'R', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'J', 'K', 'M', 'N', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (14, 13, None, None, 'GGATG'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['FokI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FriOI>G[AG]GC[CT]C)|(?P<FriOI_as>G[AG]GC[CT]C)',
+        'compsite': '(?P<FriOI>G[AG]GC[CT]C)',
         'results': None,
         'site': 'GRGCYC',
         'substrat': 'DNA',
@@ -9280,9 +10415,10 @@ def _temp():
     }
 rest_dict['FriOI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FseI>GGCCGGCC)|(?P<FseI_as>GGCCGGCC)',
+        'compsite': '(?P<FseI>GGCCGGCC)',
         'results': None,
         'site': 'GGCCGGCC',
         'substrat': 'DNA',
@@ -9302,9 +10438,10 @@ def _temp():
     }
 rest_dict['FseI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Fsp4HI>GC.GC)|(?P<Fsp4HI_as>GC.GC)',
+        'compsite': '(?P<Fsp4HI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -9324,9 +10461,10 @@ def _temp():
     }
 rest_dict['Fsp4HI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FspAI>[AG]TGCGCA[CT])|(?P<FspAI_as>[AG]TGCGCA[CT])',
+        'compsite': '(?P<FspAI>[AG]TGCGCA[CT])',
         'results': None,
         'site': 'RTGCGCAY',
         'substrat': 'DNA',
@@ -9339,16 +10477,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'RTGCGCAY'),
         'ovhgseq': '',
     }
 rest_dict['FspAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FspBI>CTAG)|(?P<FspBI_as>CTAG)',
+        'compsite': '(?P<FspBI>CTAG)',
         'results': None,
         'site': 'CTAG',
         'substrat': 'DNA',
@@ -9361,16 +10500,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTAG'),
         'ovhgseq': 'TA',
     }
 rest_dict['FspBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<FspI>TGCGCA)|(?P<FspI_as>TGCGCA)',
+        'compsite': '(?P<FspEI>CC)|(?P<FspEI_as>GG)',
+        'results': None,
+        'site': 'CC',
+        'substrat': 'DNA',
+        'fst3': 16,
+        'fst5': 14,
+        'freq': 16,
+        'size': 2,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (14, 16, None, None, 'CC'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['FspEI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<FspI>TGCGCA)',
         'results': None,
         'site': 'TGCGCA',
         'substrat': 'DNA',
@@ -9383,12 +10546,82 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('J', 'N', 'O'),
+        'suppl': ('J', 'N'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGCGCA'),
         'ovhgseq': '',
     }
 rest_dict['FspI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<FtnUV>GAAACA)|(?P<FtnUV_as>TGTTTC)',
+        'results': None,
+        'site': 'GAAACA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAAACA'),
+        'ovhgseq': None,
+    }
+rest_dict['FtnUV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<GauT27I>CGCGCAGG)|(?P<GauT27I_as>CCTGCGCG)',
+        'results': None,
+        'site': 'CGCGCAGG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 65536,
+        'size': 8,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGCGCAGG'),
+        'ovhgseq': None,
+    }
+rest_dict['GauT27I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Gba708II>ATGCAC)|(?P<Gba708II_as>GTGCAT)',
+        'results': None,
+        'site': 'ATGCAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'ATGCAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Gba708II'] = _temp()
+
 
 def _temp():
     return {
@@ -9412,9 +10645,10 @@ def _temp():
     }
 rest_dict['GdiII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<GlaI>GCGC)|(?P<GlaI_as>GCGC)',
+        'compsite': '(?P<GlaI>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -9434,9 +10668,10 @@ def _temp():
     }
 rest_dict['GlaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<GluI>GC.GC)|(?P<GluI_as>GC.GC)',
+        'compsite': '(?P<GluI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -9455,6 +10690,7 @@ def _temp():
         'ovhgseq': 'N',
     }
 rest_dict['GluI'] = _temp()
+
 
 def _temp():
     return {
@@ -9478,6 +10714,7 @@ def _temp():
     }
 rest_dict['GsaI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<GsuI>CTGGAG)|(?P<GsuI_as>CTCCAG)',
@@ -9493,16 +10730,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (22, 14, None, None, 'CTGGAG'),
         'ovhgseq': 'NN',
     }
 rest_dict['GsuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HaeI>[AT]GGCC[AT])|(?P<HaeI_as>[AT]GGCC[AT])',
+        'compsite': '(?P<HaeI>[AT]GGCC[AT])',
         'results': None,
         'site': 'WGGCCW',
         'substrat': 'DNA',
@@ -9522,9 +10760,10 @@ def _temp():
     }
 rest_dict['HaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HaeII>[AG]GCGC[CT])|(?P<HaeII_as>[AG]GCGC[CT])',
+        'compsite': '(?P<HaeII>[AG]GCGC[CT])',
         'results': None,
         'site': 'RGCGCY',
         'substrat': 'DNA',
@@ -9537,16 +10776,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('J', 'K', 'N', 'O', 'R', 'W'),
+        'suppl': ('J', 'K', 'N', 'R'),
         'scd5': None,
         'charac': (5, -5, None, None, 'RGCGCY'),
         'ovhgseq': 'GCGC',
     }
 rest_dict['HaeII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HaeIII>GGCC)|(?P<HaeIII_as>GGCC)',
+        'compsite': '(?P<HaeIII>GGCC)',
         'results': None,
         'site': 'GGCC',
         'substrat': 'DNA',
@@ -9559,16 +10799,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGCC'),
         'ovhgseq': '',
     }
 rest_dict['HaeIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HapII>CCGG)|(?P<HapII_as>CCGG)',
+        'compsite': '(?P<HapII>CCGG)',
         'results': None,
         'site': 'CCGG',
         'substrat': 'DNA',
@@ -9581,12 +10822,59 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('K',),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCGG'),
         'ovhgseq': 'CG',
     }
 rest_dict['HapII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HauII>TGGCCA)',
+        'results': None,
+        'site': 'TGGCCA',
+        'substrat': 'DNA',
+        'fst3': 9,
+        'fst5': 17,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (17, 9, None, None, 'TGGCCA'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['HauII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HbaII>GCCCAG)|(?P<HbaII_as>CTGGGC)',
+        'results': None,
+        'site': 'GCCCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCCCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['HbaII'] = _temp()
+
 
 def _temp():
     return {
@@ -9610,9 +10898,10 @@ def _temp():
     }
 rest_dict['HgaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HgiAI>G[AT]GC[AT]C)|(?P<HgiAI_as>G[AT]GC[AT]C)',
+        'compsite': '(?P<HgiAI>G[AT]GC[AT]C)',
         'results': None,
         'site': 'GWGCWC',
         'substrat': 'DNA',
@@ -9632,9 +10921,10 @@ def _temp():
     }
 rest_dict['HgiAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HgiCI>GG[CT][AG]CC)|(?P<HgiCI_as>GG[CT][AG]CC)',
+        'compsite': '(?P<HgiCI>GG[CT][AG]CC)',
         'results': None,
         'site': 'GGYRCC',
         'substrat': 'DNA',
@@ -9654,9 +10944,10 @@ def _temp():
     }
 rest_dict['HgiCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HgiEII>ACC......GGT)|(?P<HgiEII_as>ACC......GGT)',
+        'compsite': '(?P<HgiEII>ACC......GGT)',
         'results': None,
         'site': 'ACCNNNNNNGGT',
         'substrat': 'DNA',
@@ -9676,9 +10967,10 @@ def _temp():
     }
 rest_dict['HgiEII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HgiJII>G[AG]GC[CT]C)|(?P<HgiJII_as>G[AG]GC[CT]C)',
+        'compsite': '(?P<HgiJII>G[AG]GC[CT]C)',
         'results': None,
         'site': 'GRGCYC',
         'substrat': 'DNA',
@@ -9698,9 +10990,10 @@ def _temp():
     }
 rest_dict['HgiJII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HhaI>GCGC)|(?P<HhaI_as>GCGC)',
+        'compsite': '(?P<HhaI>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -9713,16 +11006,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('B', 'F', 'J', 'K', 'N', 'O', 'R', 'U', 'W', 'Y'),
+        'suppl': ('B', 'J', 'K', 'N', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GCGC'),
         'ovhgseq': 'CG',
     }
 rest_dict['HhaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hin1I>G[AG]CG[CT]C)|(?P<Hin1I_as>G[AG]CG[CT]C)',
+        'compsite': '(?P<Hin1I>G[AG]CG[CT]C)',
         'results': None,
         'site': 'GRCGYC',
         'substrat': 'DNA',
@@ -9735,16 +11029,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F', 'K', 'O'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GRCGYC'),
         'ovhgseq': 'CG',
     }
 rest_dict['Hin1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hin1II>CATG)|(?P<Hin1II_as>CATG)',
+        'compsite': '(?P<Hin1II>CATG)',
         'results': None,
         'site': 'CATG',
         'substrat': 'DNA',
@@ -9757,12 +11052,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'CATG'),
         'ovhgseq': 'CATG',
     }
 rest_dict['Hin1II'] = _temp()
+
 
 def _temp():
     return {
@@ -9779,12 +11075,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 5,
         'scd3': 8,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': 24,
         'charac': (-8, -24, 24, 8, 'GAYNNNNNVTC'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['Hin4I'] = _temp()
+
 
 def _temp():
     return {
@@ -9808,9 +11105,10 @@ def _temp():
     }
 rest_dict['Hin4II'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hin6I>GCGC)|(?P<Hin6I_as>GCGC)',
+        'compsite': '(?P<Hin6I>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -9823,16 +11121,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GCGC'),
         'ovhgseq': 'CG',
     }
 rest_dict['Hin6I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HinP1I>GCGC)|(?P<HinP1I_as>GCGC)',
+        'compsite': '(?P<HinP1I>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -9852,9 +11151,10 @@ def _temp():
     }
 rest_dict['HinP1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HincII>GT[CT][AG]AC)|(?P<HincII_as>GT[CT][AG]AC)',
+        'compsite': '(?P<HincII>GT[CT][AG]AC)',
         'results': None,
         'site': 'GTYRAC',
         'substrat': 'DNA',
@@ -9867,16 +11167,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'F', 'H', 'J', 'K', 'N', 'O', 'Q', 'R', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'J', 'K', 'N', 'O', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GTYRAC'),
         'ovhgseq': '',
     }
 rest_dict['HincII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HindII>GT[CT][AG]AC)|(?P<HindII_as>GT[CT][AG]AC)',
+        'compsite': '(?P<HindII>GT[CT][AG]AC)',
         'results': None,
         'site': 'GTYRAC',
         'substrat': 'DNA',
@@ -9889,16 +11190,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('I', 'M', 'S', 'V'),
+        'suppl': ('I', 'M', 'V'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GTYRAC'),
         'ovhgseq': '',
     }
 rest_dict['HindII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HindIII>AAGCTT)|(?P<HindIII_as>AAGCTT)',
+        'compsite': '(?P<HindIII>AAGCTT)',
         'results': None,
         'site': 'AAGCTT',
         'substrat': 'DNA',
@@ -9911,16 +11213,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'AAGCTT'),
         'ovhgseq': 'AGCT',
     }
 rest_dict['HindIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HinfI>GA.TC)|(?P<HinfI_as>GA.TC)',
+        'compsite': '(?P<HinfI>GA.TC)',
         'results': None,
         'site': 'GANTC',
         'substrat': 'DNA',
@@ -9933,16 +11236,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GANTC'),
         'ovhgseq': 'ANT',
     }
 rest_dict['HinfI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpaI>GTTAAC)|(?P<HpaI_as>GTTAAC)',
+        'compsite': '(?P<HpaI>GTTAAC)',
         'results': None,
         'site': 'GTTAAC',
         'substrat': 'DNA',
@@ -9955,16 +11259,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GTTAAC'),
         'ovhgseq': '',
     }
 rest_dict['HpaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpaII>CCGG)|(?P<HpaII_as>CCGG)',
+        'compsite': '(?P<HpaII>CCGG)',
         'results': None,
         'site': 'CCGG',
         'substrat': 'DNA',
@@ -9977,12 +11282,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('B', 'F', 'I', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCGG'),
         'ovhgseq': 'CG',
     }
 rest_dict['HpaII'] = _temp()
+
 
 def _temp():
     return {
@@ -9999,16 +11305,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F', 'N'),
+        'suppl': ('B', 'N'),
         'scd5': None,
         'charac': (13, 7, None, None, 'GGTGA'),
         'ovhgseq': 'N',
     }
 rest_dict['HphI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hpy166II>GT..AC)|(?P<Hpy166II_as>GT..AC)',
+        'compsite': '(?P<Hpy166II>GT..AC)',
         'results': None,
         'site': 'GTNNAC',
         'substrat': 'DNA',
@@ -10028,9 +11335,10 @@ def _temp():
     }
 rest_dict['Hpy166II'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hpy178III>TC..GA)|(?P<Hpy178III_as>TC..GA)',
+        'compsite': '(?P<Hpy178III>TC..GA)',
         'results': None,
         'site': 'TCNNGA',
         'substrat': 'DNA',
@@ -10050,9 +11358,10 @@ def _temp():
     }
 rest_dict['Hpy178III'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hpy188I>TC.GA)|(?P<Hpy188I_as>TC.GA)',
+        'compsite': '(?P<Hpy188I>TC.GA)',
         'results': None,
         'site': 'TCNGA',
         'substrat': 'DNA',
@@ -10072,9 +11381,10 @@ def _temp():
     }
 rest_dict['Hpy188I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hpy188III>TC..GA)|(?P<Hpy188III_as>TC..GA)',
+        'compsite': '(?P<Hpy188III>TC..GA)',
         'results': None,
         'site': 'TCNNGA',
         'substrat': 'DNA',
@@ -10094,9 +11404,10 @@ def _temp():
     }
 rest_dict['Hpy188III'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hpy8I>GT..AC)|(?P<Hpy8I_as>GT..AC)',
+        'compsite': '(?P<Hpy8I>GT..AC)',
         'results': None,
         'site': 'GTNNAC',
         'substrat': 'DNA',
@@ -10109,16 +11420,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GTNNAC'),
         'ovhgseq': '',
     }
 rest_dict['Hpy8I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hpy99I>CG[AT]CG)|(?P<Hpy99I_as>CG[AT]CG)',
+        'compsite': '(?P<Hpy99I>CG[AT]CG)',
         'results': None,
         'site': 'CGWCG',
         'substrat': 'DNA',
@@ -10137,6 +11449,99 @@ def _temp():
         'ovhgseq': 'CGWCG',
     }
 rest_dict['Hpy99I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Hpy99XIII>GCCTA)|(?P<Hpy99XIII_as>TAGGC)',
+        'results': None,
+        'site': 'GCCTA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCCTA'),
+        'ovhgseq': None,
+    }
+rest_dict['Hpy99XIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Hpy99XIV>GG[AT]TAA)|(?P<Hpy99XIV_as>TTA[AT]CC)',
+        'results': None,
+        'site': 'GGWTAA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGWTAA'),
+        'ovhgseq': None,
+    }
+rest_dict['Hpy99XIV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Hpy99XIV_mut1>GG[AT]C.A)|(?P<Hpy99XIV_mut1_as>T.G[AT]CC)',
+        'results': None,
+        'site': 'GGWCNA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 512,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGWCNA'),
+        'ovhgseq': None,
+    }
+rest_dict['Hpy99XIV_mut1'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Hpy99XXII>TCA......T[AG]G)|(?P<Hpy99XXII_as>C[CT]A......TGA)',
+        'results': None,
+        'site': 'TCANNNNNNTRG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 12,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'TCANNNNNNTRG'),
+        'ovhgseq': None,
+    }
+rest_dict['Hpy99XXII'] = _temp()
+
 
 def _temp():
     return {
@@ -10160,9 +11565,79 @@ def _temp():
     }
 rest_dict['HpyAV'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpyCH4III>AC.GT)|(?P<HpyCH4III_as>AC.GT)',
+        'compsite': '(?P<HpyAXIV>GCGTA)|(?P<HpyAXIV_as>TACGC)',
+        'results': None,
+        'site': 'GCGTA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCGTA'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyAXIV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyAXVI_mut1>C[AG]TTAA)|(?P<HpyAXVI_mut1_as>TTAA[CT]G)',
+        'results': None,
+        'site': 'CRTTAA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CRTTAA'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyAXVI_mut1'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyAXVI_mut2>C[AG]TC.A)|(?P<HpyAXVI_mut2_as>T.GA[CT]G)',
+        'results': None,
+        'site': 'CRTCNA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 512,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CRTCNA'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyAXVI_mut2'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyCH4III>AC.GT)',
         'results': None,
         'site': 'ACNGT',
         'substrat': 'DNA',
@@ -10182,9 +11657,10 @@ def _temp():
     }
 rest_dict['HpyCH4III'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpyCH4IV>ACGT)|(?P<HpyCH4IV_as>ACGT)',
+        'compsite': '(?P<HpyCH4IV>ACGT)',
         'results': None,
         'site': 'ACGT',
         'substrat': 'DNA',
@@ -10204,9 +11680,10 @@ def _temp():
     }
 rest_dict['HpyCH4IV'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpyCH4V>TGCA)|(?P<HpyCH4V_as>TGCA)',
+        'compsite': '(?P<HpyCH4V>TGCA)',
         'results': None,
         'site': 'TGCA',
         'substrat': 'DNA',
@@ -10226,9 +11703,10 @@ def _temp():
     }
 rest_dict['HpyCH4V'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpyF10VI>GC.......GC)|(?P<HpyF10VI_as>GC.......GC)',
+        'compsite': '(?P<HpyF10VI>GC.......GC)',
         'results': None,
         'site': 'GCNNNNNNNGC',
         'substrat': 'DNA',
@@ -10241,16 +11719,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, -7, None, None, 'GCNNNNNNNGC'),
         'ovhgseq': 'NNN',
     }
 rest_dict['HpyF10VI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HpyF3I>CT.AG)|(?P<HpyF3I_as>CT.AG)',
+        'compsite': '(?P<HpyF3I>CT.AG)',
         'results': None,
         'site': 'CTNAG',
         'substrat': 'DNA',
@@ -10263,16 +11742,132 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTNAG'),
         'ovhgseq': 'TNA',
     }
 rest_dict['HpyF3I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hsp92I>G[AG]CG[CT]C)|(?P<Hsp92I_as>G[AG]CG[CT]C)',
+        'compsite': '(?P<HpySE526I>ACGT)',
+        'results': None,
+        'site': 'ACGT',
+        'substrat': 'DNA',
+        'fst3': -1,
+        'fst5': 1,
+        'freq': 256,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -2,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (1, -1, None, None, 'ACGT'),
+        'ovhgseq': 'CG',
+    }
+rest_dict['HpySE526I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyUM032XIII>C[CT]A.......T[AG]G)',
+        'results': None,
+        'site': 'CYANNNNNNNTRG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 13,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CYANNNNNNNTRG'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyUM032XIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyUM032XIII_mut1>C[CT]A.......TTC)|(?P<HpyUM032XIII_mut1_as>GAA.......T[AG]G)',
+        'results': None,
+        'site': 'CYANNNNNNNTTC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 13,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CYANNNNNNNTTC'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyUM032XIII_mut1'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyUM032XIV>GAAAG)|(?P<HpyUM032XIV_as>CTTTC)',
+        'results': None,
+        'site': 'GAAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyUM032XIV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<HpyUM037X>T.GG.AG)|(?P<HpyUM037X_as>CT.CC.A)',
+        'results': None,
+        'site': 'TNGGNAG|GTGGNAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'TNGGNAG|GTGGNAG'),
+        'ovhgseq': None,
+    }
+rest_dict['HpyUM037X'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Hsp92I>G[AG]CG[CT]C)',
         'results': None,
         'site': 'GRCGYC',
         'substrat': 'DNA',
@@ -10292,9 +11887,10 @@ def _temp():
     }
 rest_dict['Hsp92I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Hsp92II>CATG)|(?P<Hsp92II_as>CATG)',
+        'compsite': '(?P<Hsp92II>CATG)',
         'results': None,
         'site': 'CATG',
         'substrat': 'DNA',
@@ -10314,9 +11910,10 @@ def _temp():
     }
 rest_dict['Hsp92II'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<HspAI>GCGC)|(?P<HspAI_as>GCGC)',
+        'compsite': '(?P<HspAI>GCGC)',
         'results': None,
         'site': 'GCGC',
         'substrat': 'DNA',
@@ -10336,31 +11933,56 @@ def _temp():
     }
 rest_dict['HspAI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<ItaI>GC.GC)|(?P<ItaI_as>GC.GC)',
-        'results': None,
-        'site': 'GCNGC',
-        'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
-        'freq': 256,
-        'size': 5,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -1,
-        'scd3': None,
-        'suppl': ('M',),
-        'scd5': None,
-        'charac': (2, -2, None, None, 'GCNGC'),
-        'ovhgseq': 'N',
-    }
-rest_dict['ItaI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<KasI>GGCGCC)|(?P<KasI_as>GGCGCC)',
+        'compsite': '(?P<Jma19592I>GTAT.AC)|(?P<Jma19592I_as>GT.ATAC)',
+        'results': None,
+        'site': 'GTATNAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GTATNAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Jma19592I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Jma19592II>G[AG]GC[AG]AC)|(?P<Jma19592II_as>GT[CT]GC[CT]C)',
+        'results': None,
+        'site': 'GRGCRAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GRGCRAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Jma19592II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<KasI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -10380,9 +12002,10 @@ def _temp():
     }
 rest_dict['KasI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<KflI>GGG[AT]CCC)|(?P<KflI_as>GGG[AT]CCC)',
+        'compsite': '(?P<KflI>GGG[AT]CCC)',
         'results': None,
         'site': 'GGGWCCC',
         'substrat': 'DNA',
@@ -10395,16 +12018,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGGWCCC'),
         'ovhgseq': 'GWC',
     }
 rest_dict['KflI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Kpn2I>TCCGGA)|(?P<Kpn2I_as>TCCGGA)',
+        'compsite': '(?P<Kpn2I>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -10417,16 +12041,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCCGGA'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['Kpn2I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<KpnI>GGTACC)|(?P<KpnI_as>GGTACC)',
+        'compsite': '(?P<KpnI>GGTACC)',
         'results': None,
         'site': 'GGTACC',
         'substrat': 'DNA',
@@ -10439,16 +12064,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GGTACC'),
         'ovhgseq': 'GTAC',
     }
 rest_dict['KpnI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Ksp22I>TGATCA)|(?P<Ksp22I_as>TGATCA)',
+        'compsite': '(?P<KpnNIH30III>GTTC.AC)|(?P<KpnNIH30III_as>GT.GAAC)',
+        'results': None,
+        'site': 'GTTCNAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GTTCNAC'),
+        'ovhgseq': None,
+    }
+rest_dict['KpnNIH30III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<KroI>GCCGGC)',
+        'results': None,
+        'site': 'GCCGGC',
+        'substrat': 'DNA',
+        'fst3': -1,
+        'fst5': 1,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (1, -1, None, None, 'GCCGGC'),
+        'ovhgseq': 'CCGG',
+    }
+rest_dict['KroI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Ksp22I>TGATCA)',
         'results': None,
         'site': 'TGATCA',
         'substrat': 'DNA',
@@ -10467,6 +12139,7 @@ def _temp():
         'ovhgseq': 'GATC',
     }
 rest_dict['Ksp22I'] = _temp()
+
 
 def _temp():
     return {
@@ -10490,9 +12163,10 @@ def _temp():
     }
 rest_dict['Ksp632I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<KspAI>GTTAAC)|(?P<KspAI_as>GTTAAC)',
+        'compsite': '(?P<KspAI>GTTAAC)',
         'results': None,
         'site': 'GTTAAC',
         'substrat': 'DNA',
@@ -10505,16 +12179,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GTTAAC'),
         'ovhgseq': '',
     }
 rest_dict['KspAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<KspI>CCGCGG)|(?P<KspI_as>CCGCGG)',
+        'compsite': '(?P<KspI>CCGCGG)',
         'results': None,
         'site': 'CCGCGG',
         'substrat': 'DNA',
@@ -10534,9 +12209,10 @@ def _temp():
     }
 rest_dict['KspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Kzo9I>GATC)|(?P<Kzo9I_as>GATC)',
+        'compsite': '(?P<Kzo9I>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -10556,6 +12232,30 @@ def _temp():
     }
 rest_dict['Kzo9I'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<Lba2029III>C[CT]AAA.G)|(?P<Lba2029III_as>C.TTT[AG]G)',
+        'results': None,
+        'site': 'CYAAANG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CYAAANG'),
+        'ovhgseq': None,
+    }
+rest_dict['Lba2029III'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<LguI>GCTCTTC)|(?P<LguI_as>GAAGAGC)',
@@ -10571,16 +12271,86 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (8, 4, None, None, 'GCTCTTC'),
         'ovhgseq': 'NNN',
     }
 rest_dict['LguI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<LpnI>[AG]GCGC[CT])|(?P<LpnI_as>[AG]GCGC[CT])',
+        'compsite': '(?P<LmnI>GCTCC)|(?P<LmnI_as>GGAGC)',
+        'results': None,
+        'site': 'GCTCC',
+        'substrat': 'DNA',
+        'fst3': -1,
+        'fst5': 6,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (6, -1, None, None, 'GCTCC'),
+        'ovhgseq': 'CN',
+    }
+rest_dict['LmnI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Lmo370I>AGCGCCG)|(?P<Lmo370I_as>CGGCGCT)',
+        'results': None,
+        'site': 'AGCGCCG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'AGCGCCG'),
+        'ovhgseq': None,
+    }
+rest_dict['Lmo370I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Lmo911II>TAG[AG]AG)|(?P<Lmo911II_as>CT[CT]CTA)',
+        'results': None,
+        'site': 'TAGRAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'TAGRAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Lmo911II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<LpnI>[AG]GCGC[CT])',
         'results': None,
         'site': 'RGCGCY',
         'substrat': 'DNA',
@@ -10600,6 +12370,30 @@ def _temp():
     }
 rest_dict['LpnI'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<LpnPI>CC[AGT]G)|(?P<LpnPI_as>C[ACT]GG)',
+        'results': None,
+        'site': 'CCDG',
+        'substrat': 'DNA',
+        'fst3': 14,
+        'fst5': 14,
+        'freq': 64,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (14, 14, None, None, 'CCDG'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['LpnPI'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<Lsp1109I>GCAGC)|(?P<Lsp1109I_as>GCTGC)',
@@ -10615,12 +12409,59 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (13, 12, None, None, 'GCAGC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['Lsp1109I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Lsp48III>AGCACC)|(?P<Lsp48III_as>GGTGCT)',
+        'results': None,
+        'site': 'AGCACC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'AGCACC'),
+        'ovhgseq': None,
+    }
+rest_dict['Lsp48III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Lsp6406VI>C[AG]AGCAC)|(?P<Lsp6406VI_as>GTGCT[CT]G)',
+        'results': None,
+        'site': 'CRAGCAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CRAGCAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Lsp6406VI'] = _temp()
+
 
 def _temp():
     return {
@@ -10637,16 +12478,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (10, 9, None, None, 'GCATC'),
         'ovhgseq': 'NNNN',
     }
 rest_dict['LweI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MabI>ACC[AT]GGT)|(?P<MabI_as>ACC[AT]GGT)',
+        'compsite': '(?P<MabI>ACC[AT]GGT)',
         'results': None,
         'site': 'ACCWGGT',
         'substrat': 'DNA',
@@ -10666,9 +12508,10 @@ def _temp():
     }
 rest_dict['MabI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MaeI>CTAG)|(?P<MaeI_as>CTAG)',
+        'compsite': '(?P<MaeI>CTAG)',
         'results': None,
         'site': 'CTAG',
         'substrat': 'DNA',
@@ -10688,9 +12531,10 @@ def _temp():
     }
 rest_dict['MaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MaeII>ACGT)|(?P<MaeII_as>ACGT)',
+        'compsite': '(?P<MaeII>ACGT)',
         'results': None,
         'site': 'ACGT',
         'substrat': 'DNA',
@@ -10710,9 +12554,10 @@ def _temp():
     }
 rest_dict['MaeII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MaeIII>GT.AC)|(?P<MaeIII_as>GT.AC)',
+        'compsite': '(?P<MaeIII>GT.AC)',
         'results': None,
         'site': 'GTNAC',
         'substrat': 'DNA',
@@ -10732,9 +12577,10 @@ def _temp():
     }
 rest_dict['MaeIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MalI>GATC)|(?P<MalI_as>GATC)',
+        'compsite': '(?P<MalI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -10753,6 +12599,7 @@ def _temp():
         'ovhgseq': '',
     }
 rest_dict['MalI'] = _temp()
+
 
 def _temp():
     return {
@@ -10776,9 +12623,10 @@ def _temp():
     }
 rest_dict['MaqI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MauBI>CGCGCGCG)|(?P<MauBI_as>CGCGCGCG)',
+        'compsite': '(?P<MauBI>CGCGCGCG)',
         'results': None,
         'site': 'CGCGCGCG',
         'substrat': 'DNA',
@@ -10791,12 +12639,36 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGCGCGCG'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['MauBI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Mba11I>AGGCGA)|(?P<Mba11I_as>TCGCCT)',
+        'results': None,
+        'site': 'AGGCGA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'AGGCGA'),
+        'ovhgseq': None,
+    }
+rest_dict['Mba11I'] = _temp()
+
 
 def _temp():
     return {
@@ -10813,16 +12685,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'CCGCTC'),
         'ovhgseq': '',
     }
 rest_dict['MbiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MboI>GATC)|(?P<MboI_as>GATC)',
+        'compsite': '(?P<MboI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -10835,12 +12708,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'K', 'N', 'Q', 'R', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'K', 'N', 'Q', 'R', 'X', 'Y'),
         'scd5': None,
         'charac': (0, 0, None, None, 'GATC'),
         'ovhgseq': 'GATC',
     }
 rest_dict['MboI'] = _temp()
+
 
 def _temp():
     return {
@@ -10857,16 +12731,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F', 'I', 'J', 'K', 'N', 'O', 'Q', 'R', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'J', 'K', 'N', 'Q', 'R', 'V', 'X'),
         'scd5': None,
         'charac': (13, 7, None, None, 'GAAGA'),
         'ovhgseq': 'N',
     }
 rest_dict['MboII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<McaTI>GCGCGC)|(?P<McaTI_as>GCGCGC)',
+        'compsite': '(?P<McaTI>GCGCGC)',
         'results': None,
         'site': 'GCGCGC',
         'substrat': 'DNA',
@@ -10886,9 +12761,33 @@ def _temp():
     }
 rest_dict['McaTI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<McrI>CG[AG][CT]CG)|(?P<McrI_as>CG[AG][CT]CG)',
+        'compsite': '(?P<Mcr10I>GAAG.....CTC)|(?P<Mcr10I_as>GAG.....CTTC)',
+        'results': None,
+        'site': 'GAAGNNNNNCTC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 12,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAAGNNNNNCTC'),
+        'ovhgseq': None,
+    }
+rest_dict['Mcr10I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<McrI>CG[AG][CT]CG)',
         'results': None,
         'site': 'CGRYCG',
         'substrat': 'DNA',
@@ -10908,9 +12807,10 @@ def _temp():
     }
 rest_dict['McrI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MfeI>CAATTG)|(?P<MfeI_as>CAATTG)',
+        'compsite': '(?P<MfeI>CAATTG)',
         'results': None,
         'site': 'CAATTG',
         'substrat': 'DNA',
@@ -10923,16 +12823,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('N',),
+        'suppl': ('I', 'N'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CAATTG'),
         'ovhgseq': 'AATT',
     }
 rest_dict['MfeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MflI>[AG]GATC[CT])|(?P<MflI_as>[AG]GATC[CT])',
+        'compsite': '(?P<MflI>[AG]GATC[CT])',
         'results': None,
         'site': 'RGATCY',
         'substrat': 'DNA',
@@ -10952,9 +12853,10 @@ def _temp():
     }
 rest_dict['MflI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MhlI>G[AGT]GC[ACT]C)|(?P<MhlI_as>G[AGT]GC[ACT]C)',
+        'compsite': '(?P<MhlI>G[AGT]GC[ACT]C)',
         'results': None,
         'site': 'GDGCHC',
         'substrat': 'DNA',
@@ -10974,9 +12876,10 @@ def _temp():
     }
 rest_dict['MhlI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MjaIV>GT..AC)|(?P<MjaIV_as>GT..AC)',
+        'compsite': '(?P<MjaIV>GT..AC)',
         'results': None,
         'site': 'GTNNAC',
         'substrat': 'DNA',
@@ -10996,9 +12899,33 @@ def _temp():
     }
 rest_dict['MjaIV'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MlsI>TGGCCA)|(?P<MlsI_as>TGGCCA)',
+        'compsite': '(?P<MkaDII>GAGA[CT]GT)|(?P<MkaDII_as>AC[AG]TCTC)',
+        'results': None,
+        'site': 'GAGAYGT',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAGAYGT'),
+        'ovhgseq': None,
+    }
+rest_dict['MkaDII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<MlsI>TGGCCA)',
         'results': None,
         'site': 'TGGCCA',
         'substrat': 'DNA',
@@ -11011,16 +12938,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGGCCA'),
         'ovhgseq': '',
     }
 rest_dict['MlsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MluI>ACGCGT)|(?P<MluI_as>ACGCGT)',
+        'compsite': '(?P<MluCI>AATT)',
+        'results': None,
+        'site': 'AATT',
+        'substrat': 'DNA',
+        'fst3': 0,
+        'fst5': 0,
+        'freq': 256,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (0, 0, None, None, 'AATT'),
+        'ovhgseq': 'AATT',
+    }
+rest_dict['MluCI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<MluI>ACGCGT)',
         'results': None,
         'site': 'ACGCGT',
         'substrat': 'DNA',
@@ -11033,16 +12984,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACGCGT'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['MluI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MluNI>TGGCCA)|(?P<MluNI_as>TGGCCA)',
+        'compsite': '(?P<MluNI>TGGCCA)',
         'results': None,
         'site': 'TGGCCA',
         'substrat': 'DNA',
@@ -11055,16 +13007,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('M', 'S'),
+        'suppl': ('M',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGGCCA'),
         'ovhgseq': '',
     }
 rest_dict['MluNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Mly113I>GGCGCC)|(?P<Mly113I_as>GGCGCC)',
+        'compsite': '(?P<Mly113I>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -11083,6 +13036,7 @@ def _temp():
         'ovhgseq': 'CG',
     }
 rest_dict['Mly113I'] = _temp()
+
 
 def _temp():
     return {
@@ -11106,6 +13060,7 @@ def _temp():
     }
 rest_dict['MlyI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<MmeI>TCC[AG]AC)|(?P<MmeI_as>GT[CT]GGA)',
@@ -11128,6 +13083,7 @@ def _temp():
     }
 rest_dict['MmeI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<MnlI>CCTC)|(?P<MnlI_as>GAGG)',
@@ -11143,16 +13099,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F', 'I', 'N', 'Q', 'V', 'W', 'X'),
+        'suppl': ('B', 'I', 'N', 'Q', 'V', 'X'),
         'scd5': None,
         'charac': (11, 6, None, None, 'CCTC'),
         'ovhgseq': 'N',
     }
 rest_dict['MnlI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Mph1103I>ATGCAT)|(?P<Mph1103I_as>ATGCAT)',
+        'compsite': '(?P<Mox20I>TGGCCA)',
+        'results': None,
+        'site': 'TGGCCA',
+        'substrat': 'DNA',
+        'fst3': -3,
+        'fst5': 3,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 0,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (3, -3, None, None, 'TGGCCA'),
+        'ovhgseq': '',
+    }
+rest_dict['Mox20I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Mph1103I>ATGCAT)',
         'results': None,
         'site': 'ATGCAT',
         'substrat': 'DNA',
@@ -11165,16 +13145,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'ATGCAT'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['Mph1103I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MreI>CGCCGGCG)|(?P<MreI_as>CGCCGGCG)',
+        'compsite': '(?P<MreI>CGCCGGCG)',
         'results': None,
         'site': 'CGCCGGCG',
         'substrat': 'DNA',
@@ -11187,16 +13168,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGCCGGCG'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['MreI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MroI>TCCGGA)|(?P<MroI_as>TCCGGA)',
+        'compsite': '(?P<MroI>TCCGGA)',
         'results': None,
         'site': 'TCCGGA',
         'substrat': 'DNA',
@@ -11216,9 +13198,10 @@ def _temp():
     }
 rest_dict['MroI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MroNI>GCCGGC)|(?P<MroNI_as>GCCGGC)',
+        'compsite': '(?P<MroNI>GCCGGC)',
         'results': None,
         'site': 'GCCGGC',
         'substrat': 'DNA',
@@ -11238,9 +13221,10 @@ def _temp():
     }
 rest_dict['MroNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MroXI>GAA....TTC)|(?P<MroXI_as>GAA....TTC)',
+        'compsite': '(?P<MroXI>GAA....TTC)',
         'results': None,
         'site': 'GAANNNNTTC',
         'substrat': 'DNA',
@@ -11260,9 +13244,10 @@ def _temp():
     }
 rest_dict['MroXI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MscI>TGGCCA)|(?P<MscI_as>TGGCCA)',
+        'compsite': '(?P<MscI>TGGCCA)',
         'results': None,
         'site': 'TGGCCA',
         'substrat': 'DNA',
@@ -11275,16 +13260,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'N', 'O'),
+        'suppl': ('N', 'O'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGGCCA'),
         'ovhgseq': '',
     }
 rest_dict['MscI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MseI>TTAA)|(?P<MseI_as>TTAA)',
+        'compsite': '(?P<MseI>TTAA)',
         'results': None,
         'site': 'TTAA',
         'substrat': 'DNA',
@@ -11297,16 +13283,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('B', 'N'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TTAA'),
         'ovhgseq': 'TA',
     }
 rest_dict['MseI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MslI>CA[CT]....[AG]TG)|(?P<MslI_as>CA[CT]....[AG]TG)',
+        'compsite': '(?P<MslI>CA[CT]....[AG]TG)',
         'results': None,
         'site': 'CAYNNNNRTG',
         'substrat': 'DNA',
@@ -11326,9 +13313,10 @@ def _temp():
     }
 rest_dict['MslI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Msp20I>TGGCCA)|(?P<Msp20I_as>TGGCCA)',
+        'compsite': '(?P<Msp20I>TGGCCA)',
         'results': None,
         'site': 'TGGCCA',
         'substrat': 'DNA',
@@ -11341,16 +13329,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('I', 'V'),
+        'suppl': ('V',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGGCCA'),
         'ovhgseq': '',
     }
 rest_dict['Msp20I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MspA1I>C[AC]GC[GT]G)|(?P<MspA1I_as>C[AC]GC[GT]G)',
+        'compsite': '(?P<MspA1I>C[AC]GC[GT]G)',
         'results': None,
         'site': 'CMGCKG',
         'substrat': 'DNA',
@@ -11370,9 +13359,10 @@ def _temp():
     }
 rest_dict['MspA1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MspCI>CTTAAG)|(?P<MspCI_as>CTTAAG)',
+        'compsite': '(?P<MspCI>CTTAAG)',
         'results': None,
         'site': 'CTTAAG',
         'substrat': 'DNA',
@@ -11392,9 +13382,10 @@ def _temp():
     }
 rest_dict['MspCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MspI>CCGG)|(?P<MspI_as>CCGG)',
+        'compsite': '(?P<MspI>CCGG)',
         'results': None,
         'site': 'CCGG',
         'substrat': 'DNA',
@@ -11407,16 +13398,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'I', 'J', 'K', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCGG'),
         'ovhgseq': 'CG',
     }
 rest_dict['MspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MspR9I>CC.GG)|(?P<MspR9I_as>CC.GG)',
+        'compsite': '(?P<MspI7II>ACG[AG]AG)|(?P<MspI7II_as>CT[CT]CGT)',
+        'results': None,
+        'site': 'ACGRAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'ACGRAG'),
+        'ovhgseq': None,
+    }
+rest_dict['MspI7II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<MspJI>C..[AG])|(?P<MspJI_as>[CT]..G)',
+        'results': None,
+        'site': 'CNNR',
+        'substrat': 'DNA',
+        'fst3': 13,
+        'fst5': 13,
+        'freq': 8,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (13, 13, None, None, 'CNNR'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['MspJI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<MspR9I>CC.GG)',
         'results': None,
         'site': 'CCNGG',
         'substrat': 'DNA',
@@ -11436,9 +13474,10 @@ def _temp():
     }
 rest_dict['MspR9I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MssI>GTTTAAAC)|(?P<MssI_as>GTTTAAAC)',
+        'compsite': '(?P<MssI>GTTTAAAC)',
         'results': None,
         'site': 'GTTTAAAC',
         'substrat': 'DNA',
@@ -11451,16 +13490,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'GTTTAAAC'),
         'ovhgseq': '',
     }
 rest_dict['MssI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MstI>TGCGCA)|(?P<MstI_as>TGCGCA)',
+        'compsite': '(?P<MstI>TGCGCA)',
         'results': None,
         'site': 'TGCGCA',
         'substrat': 'DNA',
@@ -11480,9 +13520,56 @@ def _temp():
     }
 rest_dict['MstI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MunI>CAATTG)|(?P<MunI_as>CAATTG)',
+        'compsite': '(?P<MteI>GCGC.GCGC)',
+        'results': None,
+        'site': 'GCGCNGCGC',
+        'substrat': 'DNA',
+        'fst3': -4,
+        'fst5': 4,
+        'freq': 65536,
+        'size': 9,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -1,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (4, -4, None, None, 'GCGCNGCGC'),
+        'ovhgseq': 'N',
+    }
+rest_dict['MteI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<MtuHN878II>CACGCAG)|(?P<MtuHN878II_as>CTGCGTG)',
+        'results': None,
+        'site': 'CACGCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CACGCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['MtuHN878II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<MunI>CAATTG)',
         'results': None,
         'site': 'CAATTG',
         'substrat': 'DNA',
@@ -11495,12 +13582,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F', 'K', 'M'),
+        'suppl': ('B', 'K', 'M'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CAATTG'),
         'ovhgseq': 'AATT',
     }
 rest_dict['MunI'] = _temp()
+
 
 def _temp():
     return {
@@ -11517,16 +13605,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, -1, None, None, 'GAATGC'),
         'ovhgseq': 'CN',
     }
 rest_dict['Mva1269I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MvaI>CC[AT]GG)|(?P<MvaI_as>CC[AT]GG)',
+        'compsite': '(?P<MvaI>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -11539,16 +13628,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F', 'K', 'M', 'O', 'S', 'W'),
+        'suppl': ('B', 'M', 'S'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCWGG'),
         'ovhgseq': 'W',
     }
 rest_dict['MvaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<MvnI>CGCG)|(?P<MvnI_as>CGCG)',
+        'compsite': '(?P<MvnI>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -11568,31 +13658,10 @@ def _temp():
     }
 rest_dict['MvnI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<MvrI>CGATCG)|(?P<MvrI_as>CGATCG)',
-        'results': None,
-        'site': 'CGATCG',
-        'substrat': 'DNA',
-        'fst3': -4,
-        'fst5': 4,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 2,
-        'scd3': None,
-        'suppl': ('U',),
-        'scd5': None,
-        'charac': (4, -4, None, None, 'CGATCG'),
-        'ovhgseq': 'AT',
-    }
-rest_dict['MvrI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<MwoI>GC.......GC)|(?P<MwoI_as>GC.......GC)',
+        'compsite': '(?P<MwoI>GC.......GC)',
         'results': None,
         'site': 'GCNNNNNNNGC',
         'substrat': 'DNA',
@@ -11612,9 +13681,10 @@ def _temp():
     }
 rest_dict['MwoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NaeI>GCCGGC)|(?P<NaeI_as>GCCGGC)',
+        'compsite': '(?P<NaeI>GCCGGC)',
         'results': None,
         'site': 'GCCGGC',
         'substrat': 'DNA',
@@ -11627,16 +13697,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('C', 'K', 'M', 'N', 'O', 'R', 'U'),
+        'suppl': ('C', 'K', 'N'),
         'scd5': None,
         'charac': (3, -3, None, None, 'GCCGGC'),
         'ovhgseq': '',
     }
 rest_dict['NaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NarI>GGCGCC)|(?P<NarI_as>GGCGCC)',
+        'compsite': '(?P<Nal45188II>ACCAGC)|(?P<Nal45188II_as>GCTGGT)',
+        'results': None,
+        'site': 'ACCAGC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'ACCAGC'),
+        'ovhgseq': None,
+    }
+rest_dict['Nal45188II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<NarI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -11649,16 +13743,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('J', 'M', 'N', 'O', 'Q', 'R', 'U', 'W', 'X'),
+        'suppl': ('J', 'M', 'N', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGCGCC'),
         'ovhgseq': 'CG',
     }
 rest_dict['NarI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NciI>CC[CG]GG)|(?P<NciI_as>CC[CG]GG)',
+        'compsite': '(?P<NciI>CC[CG]GG)',
         'results': None,
         'site': 'CCSGG',
         'substrat': 'DNA',
@@ -11671,16 +13766,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('J', 'N', 'O', 'R', 'W'),
+        'suppl': ('J', 'N', 'R'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCSGG'),
         'ovhgseq': 'S',
     }
 rest_dict['NciI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NcoI>CCATGG)|(?P<NcoI_as>CCATGG)',
+        'compsite': '(?P<NcoI>CCATGG)',
         'results': None,
         'site': 'CCATGG',
         'substrat': 'DNA',
@@ -11693,16 +13789,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCATGG'),
         'ovhgseq': 'CATG',
     }
 rest_dict['NcoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NdeI>CATATG)|(?P<NdeI_as>CATATG)',
+        'compsite': '(?P<NdeI>CATATG)',
         'results': None,
         'site': 'CATATG',
         'substrat': 'DNA',
@@ -11715,16 +13812,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('B', 'F', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'W', 'X', 'Y'),
+        'suppl': ('B', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CATATG'),
         'ovhgseq': 'TA',
     }
 rest_dict['NdeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NdeII>GATC)|(?P<NdeII_as>GATC)',
+        'compsite': '(?P<NdeII>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -11737,12 +13835,36 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('J', 'M', 'R', 'W'),
+        'suppl': ('J', 'M'),
         'scd5': None,
         'charac': (0, 0, None, None, 'GATC'),
         'ovhgseq': 'GATC',
     }
 rest_dict['NdeII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<NgoAVII>GCCGC)|(?P<NgoAVII_as>GCGGC)',
+        'results': None,
+        'site': 'GCCGC',
+        'substrat': 'DNA',
+        'fst3': 7,
+        'fst5': 12,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 0,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (12, 7, None, None, 'GCCGC'),
+        'ovhgseq': '',
+    }
+rest_dict['NgoAVII'] = _temp()
+
 
 def _temp():
     return {
@@ -11766,9 +13888,10 @@ def _temp():
     }
 rest_dict['NgoAVIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NgoMIV>GCCGGC)|(?P<NgoMIV_as>GCCGGC)',
+        'compsite': '(?P<NgoMIV>GCCGGC)',
         'results': None,
         'site': 'GCCGGC',
         'substrat': 'DNA',
@@ -11781,12 +13904,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('N', 'R'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GCCGGC'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['NgoMIV'] = _temp()
+
 
 def _temp():
     return {
@@ -11810,9 +13934,10 @@ def _temp():
     }
 rest_dict['NhaXI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NheI>GCTAGC)|(?P<NheI_as>GCTAGC)',
+        'compsite': '(?P<NheI>GCTAGC)',
         'results': None,
         'site': 'GCTAGC',
         'substrat': 'DNA',
@@ -11825,12 +13950,36 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'J', 'K', 'M', 'N', 'O', 'R', 'S', 'U', 'W'),
+        'suppl': ('B', 'C', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GCTAGC'),
         'ovhgseq': 'CTAG',
     }
 rest_dict['NheI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<NhoI>GC[AT]GC)',
+        'results': None,
+        'site': 'GCWGC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 512,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCWGC'),
+        'ovhgseq': None,
+    }
+rest_dict['NhoI'] = _temp()
+
 
 def _temp():
     return {
@@ -11854,9 +14003,10 @@ def _temp():
     }
 rest_dict['NlaCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NlaIII>CATG)|(?P<NlaIII_as>CATG)',
+        'compsite': '(?P<NlaIII>CATG)',
         'results': None,
         'site': 'CATG',
         'substrat': 'DNA',
@@ -11869,16 +14019,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('N', 'W'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (4, -4, None, None, 'CATG'),
         'ovhgseq': 'CATG',
     }
 rest_dict['NlaIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NlaIV>GG..CC)|(?P<NlaIV_as>GG..CC)',
+        'compsite': '(?P<NlaIV>GG..CC)',
         'results': None,
         'site': 'GGNNCC',
         'substrat': 'DNA',
@@ -11891,16 +14042,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('N', 'W'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GGNNCC'),
         'ovhgseq': '',
     }
 rest_dict['NlaIV'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Nli3877I>C[CT]CG[AG]G)|(?P<Nli3877I_as>C[CT]CG[AG]G)',
+        'compsite': '(?P<Nli3877I>C[CT]CG[AG]G)',
         'results': None,
         'site': 'CYCGRG',
         'substrat': 'DNA',
@@ -11919,6 +14071,7 @@ def _temp():
         'ovhgseq': 'YCGR',
     }
 rest_dict['Nli3877I'] = _temp()
+
 
 def _temp():
     return {
@@ -11942,9 +14095,10 @@ def _temp():
     }
 rest_dict['NmeAIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NmeDI>[AG]CCGG[CT])|(?P<NmeDI_as>[AG]CCGG[CT])',
+        'compsite': '(?P<NmeDI>[AG]CCGG[CT])',
         'results': None,
         'site': 'RCCGGY',
         'substrat': 'DNA',
@@ -11964,9 +14118,10 @@ def _temp():
     }
 rest_dict['NmeDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NmuCI>GT[CG]AC)|(?P<NmuCI_as>GT[CG]AC)',
+        'compsite': '(?P<NmuCI>GT[CG]AC)',
         'results': None,
         'site': 'GTSAC',
         'substrat': 'DNA',
@@ -11979,16 +14134,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (0, 0, None, None, 'GTSAC'),
         'ovhgseq': 'GTSAC',
     }
 rest_dict['NmuCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NotI>GCGGCCGC)|(?P<NotI_as>GCGGCCGC)',
+        'compsite': '(?P<NotI>GCGGCCGC)',
         'results': None,
         'site': 'GCGGCCGC',
         'substrat': 'DNA',
@@ -12001,16 +14157,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GCGGCCGC'),
         'ovhgseq': 'GGCC',
     }
 rest_dict['NotI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NruI>TCGCGA)|(?P<NruI_as>TCGCGA)',
+        'compsite': '(?P<NruI>TCGCGA)',
         'results': None,
         'site': 'TCGCGA',
         'substrat': 'DNA',
@@ -12023,16 +14180,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'U', 'W', 'X'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TCGCGA'),
         'ovhgseq': '',
     }
 rest_dict['NruI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NsbI>TGCGCA)|(?P<NsbI_as>TGCGCA)',
+        'compsite': '(?P<NsbI>TGCGCA)',
         'results': None,
         'site': 'TGCGCA',
         'substrat': 'DNA',
@@ -12045,16 +14203,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TGCGCA'),
         'ovhgseq': '',
     }
 rest_dict['NsbI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NsiI>ATGCAT)|(?P<NsiI_as>ATGCAT)',
+        'compsite': '(?P<NsiI>ATGCAT)',
         'results': None,
         'site': 'ATGCAT',
         'substrat': 'DNA',
@@ -12067,16 +14226,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('B', 'H', 'J', 'M', 'N', 'R', 'S', 'U', 'W'),
+        'suppl': ('J', 'M', 'N', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (5, -5, None, None, 'ATGCAT'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['NsiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NspBII>C[AC]GC[GT]G)|(?P<NspBII_as>C[AC]GC[GT]G)',
+        'compsite': '(?P<NspBII>C[AC]GC[GT]G)',
         'results': None,
         'site': 'CMGCKG',
         'substrat': 'DNA',
@@ -12096,9 +14256,10 @@ def _temp():
     }
 rest_dict['NspBII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NspI>[AG]CATG[CT])|(?P<NspI_as>[AG]CATG[CT])',
+        'compsite': '(?P<NspI>[AG]CATG[CT])',
         'results': None,
         'site': 'RCATGY',
         'substrat': 'DNA',
@@ -12111,16 +14272,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('M', 'N'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (5, -5, None, None, 'RCATGY'),
         'ovhgseq': 'CATG',
     }
 rest_dict['NspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<NspV>TTCGAA)|(?P<NspV_as>TTCGAA)',
+        'compsite': '(?P<NspV>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -12133,16 +14295,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('J', 'O'),
+        'suppl': ('J',),
         'scd5': None,
         'charac': (2, -2, None, None, 'TTCGAA'),
         'ovhgseq': 'CG',
     }
 rest_dict['NspV'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<OliI>CAC....GTG)|(?P<OliI_as>CAC....GTG)',
+        'compsite': '(?P<OliI>CAC....GTG)',
         'results': None,
         'site': 'CACNNNNGTG',
         'substrat': 'DNA',
@@ -12155,16 +14318,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'CACNNNNGTG'),
         'ovhgseq': '',
     }
 rest_dict['OliI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PabI>GTAC)|(?P<PabI_as>GTAC)',
+        'compsite': '(?P<OspHL35III>[CT]AGGAG)|(?P<OspHL35III_as>CTCCT[AG])',
+        'results': None,
+        'site': 'YAGGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'YAGGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['OspHL35III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PabI>GTAC)',
         'results': None,
         'site': 'GTAC',
         'substrat': 'DNA',
@@ -12184,9 +14371,33 @@ def _temp():
     }
 rest_dict['PabI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PacI>TTAATTAA)|(?P<PacI_as>TTAATTAA)',
+        'compsite': '(?P<Pac19842II>CCTTGA)|(?P<Pac19842II_as>TCAAGG)',
+        'results': None,
+        'site': 'CCTTGA',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCTTGA'),
+        'ovhgseq': None,
+    }
+rest_dict['Pac19842II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PacI>TTAATTAA)',
         'results': None,
         'site': 'TTAATTAA',
         'substrat': 'DNA',
@@ -12199,16 +14410,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F', 'N', 'O', 'W'),
+        'suppl': ('B', 'N', 'O'),
         'scd5': None,
         'charac': (5, -5, None, None, 'TTAATTAA'),
         'ovhgseq': 'AT',
     }
 rest_dict['PacI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PaeI>GCATGC)|(?P<PaeI_as>GCATGC)',
+        'compsite': '(?P<PaeI>GCATGC)',
         'results': None,
         'site': 'GCATGC',
         'substrat': 'DNA',
@@ -12221,16 +14433,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GCATGC'),
         'ovhgseq': 'CATG',
     }
 rest_dict['PaeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PaeR7I>CTCGAG)|(?P<PaeR7I_as>CTCGAG)',
+        'compsite': '(?P<PaeR7I>CTCGAG)',
         'results': None,
         'site': 'CTCGAG',
         'substrat': 'DNA',
@@ -12250,9 +14463,10 @@ def _temp():
     }
 rest_dict['PaeR7I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PagI>TCATGA)|(?P<PagI_as>TCATGA)',
+        'compsite': '(?P<PagI>TCATGA)',
         'results': None,
         'site': 'TCATGA',
         'substrat': 'DNA',
@@ -12265,16 +14479,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCATGA'),
         'ovhgseq': 'CATG',
     }
 rest_dict['PagI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PalAI>GGCGCGCC)|(?P<PalAI_as>GGCGCGCC)',
+        'compsite': '(?P<Pal408I>CC[AG]TGAG)|(?P<Pal408I_as>CTCA[CT]GG)',
+        'results': None,
+        'site': 'CCRTGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCRTGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Pal408I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PalAI>GGCGCGCC)',
         'results': None,
         'site': 'GGCGCGCC',
         'substrat': 'DNA',
@@ -12294,9 +14532,10 @@ def _temp():
     }
 rest_dict['PalAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PasI>CCC[AT]GGG)|(?P<PasI_as>CCC[AT]GGG)',
+        'compsite': '(?P<PasI>CCC[AT]GGG)',
         'results': None,
         'site': 'CCCWGGG',
         'substrat': 'DNA',
@@ -12309,16 +14548,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCCWGGG'),
         'ovhgseq': 'CWG',
     }
 rest_dict['PasI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PauI>GCGCGC)|(?P<PauI_as>GCGCGC)',
+        'compsite': '(?P<PauI>GCGCGC)',
         'results': None,
         'site': 'GCGCGC',
         'substrat': 'DNA',
@@ -12331,16 +14571,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GCGCGC'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['PauI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PceI>AGGCCT)|(?P<PceI_as>AGGCCT)',
+        'compsite': '(?P<PceI>AGGCCT)',
         'results': None,
         'site': 'AGGCCT',
         'substrat': 'DNA',
@@ -12360,9 +14601,10 @@ def _temp():
     }
 rest_dict['PceI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PciI>ACATGT)|(?P<PciI_as>ACATGT)',
+        'compsite': '(?P<PciI>ACATGT)',
         'results': None,
         'site': 'ACATGT',
         'substrat': 'DNA',
@@ -12381,6 +14623,7 @@ def _temp():
         'ovhgseq': 'CATG',
     }
 rest_dict['PciI'] = _temp()
+
 
 def _temp():
     return {
@@ -12404,6 +14647,30 @@ def _temp():
     }
 rest_dict['PciSI'] = _temp()
 
+
+def _temp():
+    return {
+        'compsite': '(?P<PcsI>[AT]CG.......CG[AT])',
+        'results': None,
+        'site': 'WCGNNNNNNNCGW',
+        'substrat': 'DNA',
+        'fst3': -7,
+        'fst5': 7,
+        'freq': 1024,
+        'size': 13,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 1,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (7, -7, None, None, 'WCGNNNNNNNCGW'),
+        'ovhgseq': 'N',
+    }
+rest_dict['PcsI'] = _temp()
+
+
 def _temp():
     return {
         'compsite': '(?P<PctI>GAATGC)|(?P<PctI_as>GCATTC)',
@@ -12426,9 +14693,33 @@ def _temp():
     }
 rest_dict['PctI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PdiI>GCCGGC)|(?P<PdiI_as>GCCGGC)',
+        'compsite': '(?P<Pdi8503III>CCGG.AG)|(?P<Pdi8503III_as>CT.CCGG)',
+        'results': None,
+        'site': 'CCGGNAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCGGNAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Pdi8503III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PdiI>GCCGGC)',
         'results': None,
         'site': 'GCCGGC',
         'substrat': 'DNA',
@@ -12441,16 +14732,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'GCCGGC'),
         'ovhgseq': '',
     }
 rest_dict['PdiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PdmI>GAA....TTC)|(?P<PdmI_as>GAA....TTC)',
+        'compsite': '(?P<PdmI>GAA....TTC)',
         'results': None,
         'site': 'GAANNNNTTC',
         'substrat': 'DNA',
@@ -12463,16 +14755,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GAANNNNTTC'),
         'ovhgseq': '',
     }
 rest_dict['PdmI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PfeI>GA[AT]TC)|(?P<PfeI_as>GA[AT]TC)',
+        'compsite': '(?P<Pdu1735I>CACCAC)|(?P<Pdu1735I_as>GTGGTG)',
+        'results': None,
+        'site': 'CACCAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CACCAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Pdu1735I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PenI>GCAGT)|(?P<PenI_as>ACTGC)',
+        'results': None,
+        'site': 'GCAGT',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCAGT'),
+        'ovhgseq': None,
+    }
+rest_dict['PenI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PfeI>GA[AT]TC)',
         'results': None,
         'site': 'GAWTC',
         'substrat': 'DNA',
@@ -12485,12 +14824,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GAWTC'),
         'ovhgseq': 'AWT',
     }
 rest_dict['PfeI'] = _temp()
+
 
 def _temp():
     return {
@@ -12514,9 +14854,10 @@ def _temp():
     }
 rest_dict['Pfl1108I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Pfl23II>CGTACG)|(?P<Pfl23II_as>CGTACG)',
+        'compsite': '(?P<Pfl23II>CGTACG)',
         'results': None,
         'site': 'CGTACG',
         'substrat': 'DNA',
@@ -12529,16 +14870,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CGTACG'),
         'ovhgseq': 'GTAC',
     }
 rest_dict['Pfl23II'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PflFI>GAC...GTC)|(?P<PflFI_as>GAC...GTC)',
+        'compsite': '(?P<PflFI>GAC...GTC)',
         'results': None,
         'site': 'GACNNNGTC',
         'substrat': 'DNA',
@@ -12558,9 +14900,10 @@ def _temp():
     }
 rest_dict['PflFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PflMI>CCA.....TGG)|(?P<PflMI_as>CCA.....TGG)',
+        'compsite': '(?P<PflMI>CCA.....TGG)',
         'results': None,
         'site': 'CCANNNNNTGG',
         'substrat': 'DNA',
@@ -12580,9 +14923,10 @@ def _temp():
     }
 rest_dict['PflMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PfoI>TCC.GGA)|(?P<PfoI_as>TCC.GGA)',
+        'compsite': '(?P<PfoI>TCC.GGA)',
         'results': None,
         'site': 'TCCNGGA',
         'substrat': 'DNA',
@@ -12595,38 +14939,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -5,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCCNGGA'),
         'ovhgseq': 'CCNGG',
     }
 rest_dict['PfoI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<PhoI>GGCC)|(?P<PhoI_as>GGCC)',
-        'results': None,
-        'site': 'GGCC',
-        'substrat': 'DNA',
-        'fst3': -2,
-        'fst5': 2,
-        'freq': 256,
-        'size': 4,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 0,
-        'scd3': None,
-        'suppl': ('N',),
-        'scd5': None,
-        'charac': (2, -2, None, None, 'GGCC'),
-        'ovhgseq': '',
-    }
-rest_dict['PhoI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<PinAI>ACCGGT)|(?P<PinAI_as>ACCGGT)',
+        'compsite': '(?P<PinAI>ACCGGT)',
         'results': None,
         'site': 'ACCGGT',
         'substrat': 'DNA',
@@ -12639,12 +14962,36 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'M', 'Q', 'X'),
+        'suppl': ('Q', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACCGGT'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['PinAI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PkrI>GC.GC)',
+        'results': None,
+        'site': 'GCNGC',
+        'substrat': 'DNA',
+        'fst3': -3,
+        'fst5': 3,
+        'freq': 256,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 1,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (3, -3, None, None, 'GCNGC'),
+        'ovhgseq': 'N',
+    }
+rest_dict['PkrI'] = _temp()
+
 
 def _temp():
     return {
@@ -12668,9 +15015,10 @@ def _temp():
     }
 rest_dict['PlaDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Ple19I>CGATCG)|(?P<Ple19I_as>CGATCG)',
+        'compsite': '(?P<Ple19I>CGATCG)',
         'results': None,
         'site': 'CGATCG',
         'substrat': 'DNA',
@@ -12689,6 +15037,7 @@ def _temp():
         'ovhgseq': 'AT',
     }
 rest_dict['Ple19I'] = _temp()
+
 
 def _temp():
     return {
@@ -12712,9 +15061,56 @@ def _temp():
     }
 rest_dict['PleI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PmaCI>CACGTG)|(?P<PmaCI_as>CACGTG)',
+        'compsite': '(?P<PliMI>CGCCGAC)|(?P<PliMI_as>GTCGGCG)',
+        'results': None,
+        'site': 'CGCCGAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGCCGAC'),
+        'ovhgseq': None,
+    }
+rest_dict['PliMI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PluTI>GGCGCC)',
+        'results': None,
+        'site': 'GGCGCC',
+        'substrat': 'DNA',
+        'fst3': -5,
+        'fst5': 5,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 4,
+        'scd3': None,
+        'suppl': ('N',),
+        'scd5': None,
+        'charac': (5, -5, None, None, 'GGCGCC'),
+        'ovhgseq': 'GCGC',
+    }
+rest_dict['PluTI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PmaCI>CACGTG)',
         'results': None,
         'site': 'CACGTG',
         'substrat': 'DNA',
@@ -12734,9 +15130,33 @@ def _temp():
     }
 rest_dict['PmaCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PmeI>GTTTAAAC)|(?P<PmeI_as>GTTTAAAC)',
+        'compsite': '(?P<Pme5II>GACGAG)|(?P<Pme5II_as>CTCGTC)',
+        'results': None,
+        'site': 'GACGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GACGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Pme5II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PmeI>GTTTAAAC)',
         'results': None,
         'site': 'GTTTAAAC',
         'substrat': 'DNA',
@@ -12749,16 +15169,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('N', 'W'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (4, -4, None, None, 'GTTTAAAC'),
         'ovhgseq': '',
     }
 rest_dict['PmeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PmlI>CACGTG)|(?P<PmlI_as>CACGTG)',
+        'compsite': '(?P<PmeS132I>GACGAG)|(?P<PmeS132I_as>CTCGTC)',
+        'results': None,
+        'site': 'GACGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GACGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['PmeS132I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PmlI>CACGTG)',
         'results': None,
         'site': 'CACGTG',
         'substrat': 'DNA',
@@ -12778,6 +15222,7 @@ def _temp():
     }
 rest_dict['PmlI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<PpiI>GAAC.....CTC)|(?P<PpiI_as>GAG.....GTTC)',
@@ -12793,12 +15238,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 5,
         'scd3': 8,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': 25,
         'charac': (-7, -24, 25, 8, 'GAACNNNNNCTC'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['PpiI'] = _temp()
+
 
 def _temp():
     return {
@@ -12822,9 +15268,10 @@ def _temp():
     }
 rest_dict['PpsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Ppu10I>ATGCAT)|(?P<Ppu10I_as>ATGCAT)',
+        'compsite': '(?P<Ppu10I>ATGCAT)',
         'results': None,
         'site': 'ATGCAT',
         'substrat': 'DNA',
@@ -12844,9 +15291,10 @@ def _temp():
     }
 rest_dict['Ppu10I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Ppu21I>[CT]ACGT[AG])|(?P<Ppu21I_as>[CT]ACGT[AG])',
+        'compsite': '(?P<Ppu21I>[CT]ACGT[AG])',
         'results': None,
         'site': 'YACGTR',
         'substrat': 'DNA',
@@ -12859,16 +15307,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'YACGTR'),
         'ovhgseq': '',
     }
 rest_dict['Ppu21I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PpuMI>[AG]GG[AT]CC[CT])|(?P<PpuMI_as>[AG]GG[AT]CC[CT])',
+        'compsite': '(?P<PpuMI>[AG]GG[AT]CC[CT])',
         'results': None,
         'site': 'RGGWCCY',
         'substrat': 'DNA',
@@ -12881,16 +15330,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('N', 'O'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (2, -2, None, None, 'RGGWCCY'),
         'ovhgseq': 'GWC',
     }
 rest_dict['PpuMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PscI>ACATGT)|(?P<PscI_as>ACATGT)',
+        'compsite': '(?P<PscI>ACATGT)',
         'results': None,
         'site': 'ACATGT',
         'substrat': 'DNA',
@@ -12903,16 +15353,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACATGT'),
         'ovhgseq': 'CATG',
     }
 rest_dict['PscI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PshAI>GAC....GTC)|(?P<PshAI_as>GAC....GTC)',
+        'compsite': '(?P<Pse18267I>[AG]CCGAAG)|(?P<Pse18267I_as>CTTCGG[CT])',
+        'results': None,
+        'site': 'RCCGAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'RCCGAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Pse18267I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PshAI>GAC....GTC)',
         'results': None,
         'site': 'GACNNNNGTC',
         'substrat': 'DNA',
@@ -12932,9 +15406,10 @@ def _temp():
     }
 rest_dict['PshAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PshBI>ATTAAT)|(?P<PshBI_as>ATTAAT)',
+        'compsite': '(?P<PshBI>ATTAAT)',
         'results': None,
         'site': 'ATTAAT',
         'substrat': 'DNA',
@@ -12954,9 +15429,10 @@ def _temp():
     }
 rest_dict['PshBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PsiI>TTATAA)|(?P<PsiI_as>TTATAA)',
+        'compsite': '(?P<PsiI>TTATAA)',
         'results': None,
         'site': 'TTATAA',
         'substrat': 'DNA',
@@ -12969,16 +15445,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('I', 'N', 'O'),
+        'suppl': ('I', 'N'),
         'scd5': None,
         'charac': (3, -3, None, None, 'TTATAA'),
         'ovhgseq': '',
     }
 rest_dict['PsiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Psp03I>GG[AT]CC)|(?P<Psp03I_as>GG[AT]CC)',
+        'compsite': '(?P<Psp0357II>GCGAAG)|(?P<Psp0357II_as>CTTCGC)',
+        'results': None,
+        'site': 'GCGAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GCGAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Psp0357II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Psp03I>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -12998,9 +15498,33 @@ def _temp():
     }
 rest_dict['Psp03I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Psp124BI>GAGCTC)|(?P<Psp124BI_as>GAGCTC)',
+        'compsite': '(?P<Psp10HII>G[AG]AGCAG)|(?P<Psp10HII_as>CTGCT[CT]C)',
+        'results': None,
+        'site': 'GRAGCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GRAGCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Psp10HII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Psp124BI>GAGCTC)',
         'results': None,
         'site': 'GAGCTC',
         'substrat': 'DNA',
@@ -13020,9 +15544,10 @@ def _temp():
     }
 rest_dict['Psp124BI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Psp1406I>AACGTT)|(?P<Psp1406I_as>AACGTT)',
+        'compsite': '(?P<Psp1406I>AACGTT)',
         'results': None,
         'site': 'AACGTT',
         'substrat': 'DNA',
@@ -13035,16 +15560,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F', 'K'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (2, -2, None, None, 'AACGTT'),
         'ovhgseq': 'CG',
     }
 rest_dict['Psp1406I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Psp5II>[AG]GG[AT]CC[CT])|(?P<Psp5II_as>[AG]GG[AT]CC[CT])',
+        'compsite': '(?P<Psp5II>[AG]GG[AT]CC[CT])',
         'results': None,
         'site': 'RGGWCCY',
         'substrat': 'DNA',
@@ -13057,16 +15583,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'RGGWCCY'),
         'ovhgseq': 'GWC',
     }
 rest_dict['Psp5II'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Psp6I>CC[AT]GG)|(?P<Psp6I_as>CC[AT]GG)',
+        'compsite': '(?P<Psp6I>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -13086,9 +15613,10 @@ def _temp():
     }
 rest_dict['Psp6I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspCI>CACGTG)|(?P<PspCI_as>CACGTG)',
+        'compsite': '(?P<PspCI>CACGTG)',
         'results': None,
         'site': 'CACGTG',
         'substrat': 'DNA',
@@ -13108,9 +15636,10 @@ def _temp():
     }
 rest_dict['PspCI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspEI>GGT.ACC)|(?P<PspEI_as>GGT.ACC)',
+        'compsite': '(?P<PspEI>GGT.ACC)',
         'results': None,
         'site': 'GGTNACC',
         'substrat': 'DNA',
@@ -13130,9 +15659,33 @@ def _temp():
     }
 rest_dict['PspEI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspGI>CC[AT]GG)|(?P<PspGI_as>CC[AT]GG)',
+        'compsite': '(?P<PspFI>CCCAGC)|(?P<PspFI_as>GCTGGG)',
+        'results': None,
+        'site': 'CCCAGC',
+        'substrat': 'DNA',
+        'fst3': -1,
+        'fst5': 1,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('B',),
+        'scd5': None,
+        'charac': (1, -1, None, None, 'CCCAGC'),
+        'ovhgseq': 'CCAG',
+    }
+rest_dict['PspFI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PspGI>CC[AT]GG)',
         'results': None,
         'site': 'CCWGG',
         'substrat': 'DNA',
@@ -13152,9 +15705,10 @@ def _temp():
     }
 rest_dict['PspGI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspLI>CGTACG)|(?P<PspLI_as>CGTACG)',
+        'compsite': '(?P<PspLI>CGTACG)',
         'results': None,
         'site': 'CGTACG',
         'substrat': 'DNA',
@@ -13174,9 +15728,10 @@ def _temp():
     }
 rest_dict['PspLI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspN4I>GG..CC)|(?P<PspN4I_as>GG..CC)',
+        'compsite': '(?P<PspN4I>GG..CC)',
         'results': None,
         'site': 'GGNNCC',
         'substrat': 'DNA',
@@ -13196,9 +15751,10 @@ def _temp():
     }
 rest_dict['PspN4I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspOMI>GGGCCC)|(?P<PspOMI_as>GGGCCC)',
+        'compsite': '(?P<PspOMI>GGGCCC)',
         'results': None,
         'site': 'GGGCCC',
         'substrat': 'DNA',
@@ -13217,6 +15773,7 @@ def _temp():
         'ovhgseq': 'GGCC',
     }
 rest_dict['PspOMI'] = _temp()
+
 
 def _temp():
     return {
@@ -13240,9 +15797,10 @@ def _temp():
     }
 rest_dict['PspOMII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspPI>GG.CC)|(?P<PspPI_as>GG.CC)',
+        'compsite': '(?P<PspPI>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -13262,9 +15820,10 @@ def _temp():
     }
 rest_dict['PspPI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspPPI>[AG]GG[AT]CC[CT])|(?P<PspPPI_as>[AG]GG[AT]CC[CT])',
+        'compsite': '(?P<PspPPI>[AG]GG[AT]CC[CT])',
         'results': None,
         'site': 'RGGWCCY',
         'substrat': 'DNA',
@@ -13283,6 +15842,7 @@ def _temp():
         'ovhgseq': 'GWC',
     }
 rest_dict['PspPPI'] = _temp()
+
 
 def _temp():
     return {
@@ -13306,9 +15866,10 @@ def _temp():
     }
 rest_dict['PspPRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PspXI>[ACG]CTCGAG[CGT])|(?P<PspXI_as>[ACG]CTCGAG[CGT])',
+        'compsite': '(?P<PspXI>[ACG]CTCGAG[CGT])',
         'results': None,
         'site': 'VCTCGAGB',
         'substrat': 'DNA',
@@ -13327,6 +15888,7 @@ def _temp():
         'ovhgseq': 'TCGA',
     }
 rest_dict['PspXI'] = _temp()
+
 
 def _temp():
     return {
@@ -13350,9 +15912,10 @@ def _temp():
     }
 rest_dict['PsrI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PssI>[AG]GG.CC[CT])|(?P<PssI_as>[AG]GG.CC[CT])',
+        'compsite': '(?P<PssI>[AG]GG.CC[CT])',
         'results': None,
         'site': 'RGGNCCY',
         'substrat': 'DNA',
@@ -13372,9 +15935,33 @@ def _temp():
     }
 rest_dict['PssI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PstI>CTGCAG)|(?P<PstI_as>CTGCAG)',
+        'compsite': '(?P<Pst14472I>C.[CT]ACAC)|(?P<Pst14472I_as>GTGT[AG].G)',
+        'results': None,
+        'site': 'CNYACAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 2048,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CNYACAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Pst14472I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PstI>CTGCAG)',
         'results': None,
         'site': 'CTGCAG',
         'substrat': 'DNA',
@@ -13387,16 +15974,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (5, -5, None, None, 'CTGCAG'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['PstI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PsuI>[AG]GATC[CT])|(?P<PsuI_as>[AG]GATC[CT])',
+        'compsite': '(?P<PstNI>CAG...CTG)',
+        'results': None,
+        'site': 'CAGNNNCTG',
+        'substrat': 'DNA',
+        'fst3': -6,
+        'fst5': 6,
+        'freq': 4096,
+        'size': 9,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 3,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (6, -6, None, None, 'CAGNNNCTG'),
+        'ovhgseq': 'NNN',
+    }
+rest_dict['PstNI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PsuGI>[CGT][CGT]CG[AGT])|(?P<PsuGI_as>[ACT]CG[ACG][ACG])',
+        'results': None,
+        'site': 'BBCGD',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'BBCGD'),
+        'ovhgseq': None,
+    }
+rest_dict['PsuGI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<PsuI>[AG]GATC[CT])',
         'results': None,
         'site': 'RGATCY',
         'substrat': 'DNA',
@@ -13409,16 +16043,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'RGATCY'),
         'ovhgseq': 'GATC',
     }
 rest_dict['PsuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PsyI>GAC...GTC)|(?P<PsyI_as>GAC...GTC)',
+        'compsite': '(?P<PsyI>GAC...GTC)',
         'results': None,
         'site': 'GACNNNGTC',
         'substrat': 'DNA',
@@ -13431,16 +16066,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'GACNNNGTC'),
         'ovhgseq': 'N',
     }
 rest_dict['PsyI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PteI>GCGCGC)|(?P<PteI_as>GCGCGC)',
+        'compsite': '(?P<PteI>GCGCGC)',
         'results': None,
         'site': 'GCGCGC',
         'substrat': 'DNA',
@@ -13453,16 +16089,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GCGCGC'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['PteI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PvuI>CGATCG)|(?P<PvuI_as>CGATCG)',
+        'compsite': '(?P<PvuI>CGATCG)',
         'results': None,
         'site': 'CGATCG',
         'substrat': 'DNA',
@@ -13475,16 +16112,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('B', 'F', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (4, -4, None, None, 'CGATCG'),
         'ovhgseq': 'AT',
     }
 rest_dict['PvuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<PvuII>CAGCTG)|(?P<PvuII_as>CAGCTG)',
+        'compsite': '(?P<PvuII>CAGCTG)',
         'results': None,
         'site': 'CAGCTG',
         'substrat': 'DNA',
@@ -13497,34 +16135,36 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'CAGCTG'),
         'ovhgseq': '',
     }
 rest_dict['PvuII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RcaI>TCATGA)|(?P<RcaI_as>TCATGA)',
+        'compsite': '(?P<Rba2021I>CACGAG[ACT])|(?P<Rba2021I_as>[AGT]CTCGTG)',
         'results': None,
-        'site': 'TCATGA',
+        'site': 'CACGAGH',
         'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 1,
+        'fst3': None,
+        'fst5': None,
         'freq': 4096,
-        'size': 6,
+        'size': 7,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': -4,
+        'ovhg': None,
         'scd3': None,
-        'suppl': ('M',),
+        'suppl': (),
         'scd5': None,
-        'charac': (1, -1, None, None, 'TCATGA'),
-        'ovhgseq': 'CATG',
+        'charac': (None, None, None, None, 'CACGAGH'),
+        'ovhgseq': None,
     }
-rest_dict['RcaI'] = _temp()
+rest_dict['Rba2021I'] = _temp()
+
 
 def _temp():
     return {
@@ -13548,9 +16188,102 @@ def _temp():
     }
 rest_dict['RceI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RgaI>GCGATCGC)|(?P<RgaI_as>GCGATCGC)',
+        'compsite': '(?P<RdeGBI>CCGCAG)|(?P<RdeGBI_as>CTGCGG)',
+        'results': None,
+        'site': 'CCGCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CCGCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['RdeGBI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RdeGBII>ACCCAG)|(?P<RdeGBII_as>CTGGGT)',
+        'results': None,
+        'site': 'ACCCAG',
+        'substrat': 'DNA',
+        'fst3': 18,
+        'fst5': 26,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (26, 18, None, None, 'ACCCAG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['RdeGBII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RdeGBIII>TG[AG][CT]CA)',
+        'results': None,
+        'site': 'TGRYCA',
+        'substrat': 'DNA',
+        'fst3': -17,
+        'fst5': -9,
+        'freq': 1024,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': 9,
+        'suppl': (),
+        'scd5': 17,
+        'charac': (-9, -17, 17, 9, 'TGRYCA'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['RdeGBIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RflFIII>CGCCAG)|(?P<RflFIII_as>CTGGCG)',
+        'results': None,
+        'site': 'CGCCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGCCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['RflFIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RgaI>GCGATCGC)',
         'results': None,
         'site': 'GCGATCGC',
         'substrat': 'DNA',
@@ -13570,9 +16303,10 @@ def _temp():
     }
 rest_dict['RgaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RigI>GGCCGGCC)|(?P<RigI_as>GGCCGGCC)',
+        'compsite': '(?P<RigI>GGCCGGCC)',
         'results': None,
         'site': 'GGCCGGCC',
         'substrat': 'DNA',
@@ -13591,6 +16325,30 @@ def _temp():
         'ovhgseq': 'CCGG',
     }
 rest_dict['RigI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RlaI>[ACG]C[AT])|(?P<RlaI_as>[AT]G[CGT])',
+        'results': None,
+        'site': 'VCW',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8,
+        'size': 3,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'VCW'),
+        'ovhgseq': None,
+    }
+rest_dict['RlaI'] = _temp()
+
 
 def _temp():
     return {
@@ -13614,6 +16372,7 @@ def _temp():
     }
 rest_dict['RleAI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<RpaB5I>CG[AG]GGAC)|(?P<RpaB5I_as>GTCC[CT]CG)',
@@ -13636,9 +16395,79 @@ def _temp():
     }
 rest_dict['RpaB5I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RruI>TCGCGA)|(?P<RruI_as>TCGCGA)',
+        'compsite': '(?P<RpaBI>CCCGCAG)|(?P<RpaBI_as>CTGCGGG)',
+        'results': None,
+        'site': 'CCCGCAG',
+        'substrat': 'DNA',
+        'fst3': 18,
+        'fst5': 27,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (27, 18, None, None, 'CCCGCAG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['RpaBI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RpaI>GT[CT]GGAG)|(?P<RpaI_as>CTCC[AG]AC)',
+        'results': None,
+        'site': 'GTYGGAG',
+        'substrat': 'DNA',
+        'fst3': 9,
+        'fst5': 18,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (18, 9, None, None, 'GTYGGAG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['RpaI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RpaTI>G[AG]TGGAG)|(?P<RpaTI_as>CTCCA[CT]C)',
+        'results': None,
+        'site': 'GRTGGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GRTGGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['RpaTI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<RruI>TCGCGA)',
         'results': None,
         'site': 'TCGCGA',
         'substrat': 'DNA',
@@ -13651,16 +16480,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'TCGCGA'),
         'ovhgseq': '',
     }
 rest_dict['RruI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RsaI>GTAC)|(?P<RsaI_as>GTAC)',
+        'compsite': '(?P<RsaI>GTAC)',
         'results': None,
         'site': 'GTAC',
         'substrat': 'DNA',
@@ -13673,16 +16503,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'M', 'N', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (2, -2, None, None, 'GTAC'),
         'ovhgseq': '',
     }
 rest_dict['RsaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RsaNI>GTAC)|(?P<RsaNI_as>GTAC)',
+        'compsite': '(?P<RsaNI>GTAC)',
         'results': None,
         'site': 'GTAC',
         'substrat': 'DNA',
@@ -13702,9 +16533,10 @@ def _temp():
     }
 rest_dict['RsaNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RseI>CA[CT]....[AG]TG)|(?P<RseI_as>CA[CT]....[AG]TG)',
+        'compsite': '(?P<RseI>CA[CT]....[AG]TG)',
         'results': None,
         'site': 'CAYNNNNRTG',
         'substrat': 'DNA',
@@ -13717,16 +16549,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'CAYNNNNRTG'),
         'ovhgseq': '',
     }
 rest_dict['RseI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Rsr2I>CGG[AT]CCG)|(?P<Rsr2I_as>CGG[AT]CCG)',
+        'compsite': '(?P<Rsr2I>CGG[AT]CCG)',
         'results': None,
         'site': 'CGGWCCG',
         'substrat': 'DNA',
@@ -13746,9 +16579,10 @@ def _temp():
     }
 rest_dict['Rsr2I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<RsrII>CGG[AT]CCG)|(?P<RsrII_as>CGG[AT]CCG)',
+        'compsite': '(?P<RsrII>CGG[AT]CCG)',
         'results': None,
         'site': 'CGGWCCG',
         'substrat': 'DNA',
@@ -13761,16 +16595,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('M', 'N', 'Q', 'X'),
+        'suppl': ('N', 'Q', 'X'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGGWCCG'),
         'ovhgseq': 'GWC',
     }
 rest_dict['RsrII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SacI>GAGCTC)|(?P<SacI_as>GAGCTC)',
+        'compsite': '(?P<SacI>GAGCTC)',
         'results': None,
         'site': 'GAGCTC',
         'substrat': 'DNA',
@@ -13783,16 +16618,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F', 'H', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X'),
+        'suppl': ('B', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GAGCTC'),
         'ovhgseq': 'AGCT',
     }
 rest_dict['SacI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SacII>CCGCGG)|(?P<SacII_as>CCGCGG)',
+        'compsite': '(?P<SacII>CCGCGG)',
         'results': None,
         'site': 'CCGCGG',
         'substrat': 'DNA',
@@ -13805,16 +16641,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('H', 'J', 'K', 'N', 'O', 'Q', 'R', 'W', 'X'),
+        'suppl': ('B', 'J', 'K', 'N', 'O', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (4, -4, None, None, 'CCGCGG'),
         'ovhgseq': 'GC',
     }
 rest_dict['SacII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SalI>GTCGAC)|(?P<SalI_as>GTCGAC)',
+        'compsite': '(?P<Saf8902III>CAAT.AG)|(?P<Saf8902III_as>CT.ATTG)',
+        'results': None,
+        'site': 'CAATNAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CAATNAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Saf8902III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SalI>GTCGAC)',
         'results': None,
         'site': 'GTCGAC',
         'substrat': 'DNA',
@@ -13827,16 +16687,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GTCGAC'),
         'ovhgseq': 'TCGA',
     }
 rest_dict['SalI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SanDI>GGG[AT]CCC)|(?P<SanDI_as>GGG[AT]CCC)',
+        'compsite': '(?P<SanDI>GGG[AT]CCC)',
         'results': None,
         'site': 'GGGWCCC',
         'substrat': 'DNA',
@@ -13849,12 +16710,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('E',),
+        'suppl': (),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGGWCCC'),
         'ovhgseq': 'GWC',
     }
 rest_dict['SanDI'] = _temp()
+
 
 def _temp():
     return {
@@ -13878,9 +16740,10 @@ def _temp():
     }
 rest_dict['SapI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SaqAI>TTAA)|(?P<SaqAI_as>TTAA)',
+        'compsite': '(?P<SaqAI>TTAA)',
         'results': None,
         'site': 'TTAA',
         'substrat': 'DNA',
@@ -13893,16 +16756,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TTAA'),
         'ovhgseq': 'TA',
     }
 rest_dict['SaqAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SatI>GC.GC)|(?P<SatI_as>GC.GC)',
+        'compsite': '(?P<SatI>GC.GC)',
         'results': None,
         'site': 'GCNGC',
         'substrat': 'DNA',
@@ -13915,16 +16779,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'GCNGC'),
         'ovhgseq': 'N',
     }
 rest_dict['SatI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sau3AI>GATC)|(?P<Sau3AI_as>GATC)',
+        'compsite': '(?P<Sau3AI>GATC)',
         'results': None,
         'site': 'GATC',
         'substrat': 'DNA',
@@ -13937,16 +16802,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('C', 'H', 'J', 'K', 'M', 'N', 'O', 'R', 'S', 'U', 'W', 'X'),
+        'suppl': ('C', 'J', 'K', 'M', 'N', 'R', 'S'),
         'scd5': None,
         'charac': (0, 0, None, None, 'GATC'),
         'ovhgseq': 'GATC',
     }
 rest_dict['Sau3AI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sau96I>GG.CC)|(?P<Sau96I_as>GG.CC)',
+        'compsite': '(?P<Sau96I>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -13959,16 +16825,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('J', 'N', 'O', 'U', 'W'),
+        'suppl': ('J', 'N'),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGNCC'),
         'ovhgseq': 'GNC',
     }
 rest_dict['Sau96I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SauI>CCT.AGG)|(?P<SauI_as>CCT.AGG)',
+        'compsite': '(?P<SauI>CCT.AGG)',
         'results': None,
         'site': 'CCTNAGG',
         'substrat': 'DNA',
@@ -13988,9 +16855,10 @@ def _temp():
     }
 rest_dict['SauI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SbfI>CCTGCAGG)|(?P<SbfI_as>CCTGCAGG)',
+        'compsite': '(?P<SbfI>CCTGCAGG)',
         'results': None,
         'site': 'CCTGCAGG',
         'substrat': 'DNA',
@@ -14003,16 +16871,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('I', 'N', 'O', 'V'),
+        'suppl': ('I', 'N', 'V'),
         'scd5': None,
         'charac': (6, -6, None, None, 'CCTGCAGG'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['SbfI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ScaI>AGTACT)|(?P<ScaI_as>AGTACT)',
+        'compsite': '(?P<Sbo46I>TGAAC)|(?P<Sbo46I_as>GTTCA)',
+        'results': None,
+        'site': 'TGAAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'TGAAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Sbo46I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<ScaI>AGTACT)',
         'results': None,
         'site': 'AGTACT',
         'substrat': 'DNA',
@@ -14025,12 +16917,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'W', 'X'),
+        'suppl': ('B', 'C', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'AGTACT'),
         'ovhgseq': '',
     }
 rest_dict['ScaI'] = _temp()
+
 
 def _temp():
     return {
@@ -14047,16 +16940,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (10, 5, None, None, 'GAGTC'),
         'ovhgseq': '',
     }
 rest_dict['SchI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SciI>CTCGAG)|(?P<SciI_as>CTCGAG)',
+        'compsite': '(?P<SciI>CTCGAG)',
         'results': None,
         'site': 'CTCGAG',
         'substrat': 'DNA',
@@ -14076,9 +16970,10 @@ def _temp():
     }
 rest_dict['SciI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ScrFI>CC.GG)|(?P<ScrFI_as>CC.GG)',
+        'compsite': '(?P<ScrFI>CC.GG)',
         'results': None,
         'site': 'CCNGG',
         'substrat': 'DNA',
@@ -14091,16 +16986,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('J', 'N', 'O', 'S'),
+        'suppl': ('J', 'N'),
         'scd5': None,
         'charac': (2, -2, None, None, 'CCNGG'),
         'ovhgseq': 'N',
     }
 rest_dict['ScrFI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SdaI>CCTGCAGG)|(?P<SdaI_as>CCTGCAGG)',
+        'compsite': '(?P<SdaI>CCTGCAGG)',
         'results': None,
         'site': 'CCTGCAGG',
         'substrat': 'DNA',
@@ -14113,12 +17009,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (6, -6, None, None, 'CCTGCAGG'),
         'ovhgseq': 'TGCA',
     }
 rest_dict['SdaI'] = _temp()
+
 
 def _temp():
     return {
@@ -14142,6 +17039,7 @@ def _temp():
     }
 rest_dict['SdeAI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<SdeOSI>GAC....[AG]TGA)|(?P<SdeOSI_as>TCA[CT]....GTC)',
@@ -14164,9 +17062,10 @@ def _temp():
     }
 rest_dict['SdeOSI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SduI>G[AGT]GC[ACT]C)|(?P<SduI_as>G[AGT]GC[ACT]C)',
+        'compsite': '(?P<SduI>G[AGT]GC[ACT]C)',
         'results': None,
         'site': 'GDGCHC',
         'substrat': 'DNA',
@@ -14179,16 +17078,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GDGCHC'),
         'ovhgseq': 'DGCH',
     }
 rest_dict['SduI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SecI>CC..GG)|(?P<SecI_as>CC..GG)',
+        'compsite': '(?P<SecI>CC..GG)',
         'results': None,
         'site': 'CCNNGG',
         'substrat': 'DNA',
@@ -14208,9 +17108,10 @@ def _temp():
     }
 rest_dict['SecI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SelI>CGCG)|(?P<SelI_as>CGCG)',
+        'compsite': '(?P<SelI>CGCG)',
         'results': None,
         'site': 'CGCG',
         'substrat': 'DNA',
@@ -14230,9 +17131,79 @@ def _temp():
     }
 rest_dict['SelI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SetI>A[CG][CG]T)|(?P<SetI_as>A[CG][CG]T)',
+        'compsite': '(?P<Sen13311III>GATCAG)|(?P<Sen13311III_as>CTGATC)',
+        'results': None,
+        'site': 'GATCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GATCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Sen13311III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Sen1736II>GATCAG)|(?P<Sen1736II_as>CTGATC)',
+        'results': None,
+        'site': 'GATCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GATCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Sen1736II'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SenTFIV>GATCAG)|(?P<SenTFIV_as>CTGATC)',
+        'results': None,
+        'site': 'GATCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GATCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['SenTFIV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SetI>A[CG][CG]T)',
         'results': None,
         'site': 'ASST',
         'substrat': 'DNA',
@@ -14252,9 +17223,10 @@ def _temp():
     }
 rest_dict['SetI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SexAI>ACC[AT]GGT)|(?P<SexAI_as>ACC[AT]GGT)',
+        'compsite': '(?P<SexAI>ACC[AT]GGT)',
         'results': None,
         'site': 'ACCWGGT',
         'substrat': 'DNA',
@@ -14274,9 +17246,10 @@ def _temp():
     }
 rest_dict['SexAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SfaAI>GCGATCGC)|(?P<SfaAI_as>GCGATCGC)',
+        'compsite': '(?P<SfaAI>GCGATCGC)',
         'results': None,
         'site': 'GCGATCGC',
         'substrat': 'DNA',
@@ -14289,12 +17262,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GCGATCGC'),
         'ovhgseq': 'AT',
     }
 rest_dict['SfaAI'] = _temp()
+
 
 def _temp():
     return {
@@ -14318,9 +17292,10 @@ def _temp():
     }
 rest_dict['SfaNI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SfcI>CT[AG][CT]AG)|(?P<SfcI_as>CT[AG][CT]AG)',
+        'compsite': '(?P<SfcI>CT[AG][CT]AG)',
         'results': None,
         'site': 'CTRYAG',
         'substrat': 'DNA',
@@ -14340,9 +17315,10 @@ def _temp():
     }
 rest_dict['SfcI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SfeI>CT[AG][CT]AG)|(?P<SfeI_as>CT[AG][CT]AG)',
+        'compsite': '(?P<SfeI>CT[AG][CT]AG)',
         'results': None,
         'site': 'CTRYAG',
         'substrat': 'DNA',
@@ -14362,9 +17338,10 @@ def _temp():
     }
 rest_dict['SfeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SfiI>GGCC.....GGCC)|(?P<SfiI_as>GGCC.....GGCC)',
+        'compsite': '(?P<SfiI>GGCC.....GGCC)',
         'results': None,
         'site': 'GGCCNNNNNGGCC',
         'substrat': 'DNA',
@@ -14377,16 +17354,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('C', 'F', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (8, -8, None, None, 'GGCCNNNNNGGCC'),
         'ovhgseq': 'NNN',
     }
 rest_dict['SfiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SfoI>GGCGCC)|(?P<SfoI_as>GGCGCC)',
+        'compsite': '(?P<SfoI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -14406,9 +17384,10 @@ def _temp():
     }
 rest_dict['SfoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sfr274I>CTCGAG)|(?P<Sfr274I_as>CTCGAG)',
+        'compsite': '(?P<Sfr274I>CTCGAG)',
         'results': None,
         'site': 'CTCGAG',
         'substrat': 'DNA',
@@ -14428,9 +17407,10 @@ def _temp():
     }
 rest_dict['Sfr274I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sfr303I>CCGCGG)|(?P<Sfr303I_as>CCGCGG)',
+        'compsite': '(?P<Sfr303I>CCGCGG)',
         'results': None,
         'site': 'CCGCGG',
         'substrat': 'DNA',
@@ -14450,9 +17430,10 @@ def _temp():
     }
 rest_dict['Sfr303I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SfuI>TTCGAA)|(?P<SfuI_as>TTCGAA)',
+        'compsite': '(?P<SfuI>TTCGAA)',
         'results': None,
         'site': 'TTCGAA',
         'substrat': 'DNA',
@@ -14472,9 +17453,33 @@ def _temp():
     }
 rest_dict['SfuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SgfI>GCGATCGC)|(?P<SgfI_as>GCGATCGC)',
+        'compsite': '(?P<SgeI>C..G)',
+        'results': None,
+        'site': 'CNNG',
+        'substrat': 'DNA',
+        'fst3': 13,
+        'fst5': 13,
+        'freq': 16,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('B',),
+        'scd5': None,
+        'charac': (13, 13, None, None, 'CNNG'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['SgeI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SgfI>GCGATCGC)',
         'results': None,
         'site': 'GCGATCGC',
         'substrat': 'DNA',
@@ -14494,9 +17499,10 @@ def _temp():
     }
 rest_dict['SgfI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SgrAI>C[AG]CCGG[CT]G)|(?P<SgrAI_as>C[AG]CCGG[CT]G)',
+        'compsite': '(?P<SgrAI>C[AG]CCGG[CT]G)',
         'results': None,
         'site': 'CRCCGGYG',
         'substrat': 'DNA',
@@ -14509,16 +17515,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('M', 'N'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CRCCGGYG'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['SgrAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SgrBI>CCGCGG)|(?P<SgrBI_as>CCGCGG)',
+        'compsite': '(?P<SgrBI>CCGCGG)',
         'results': None,
         'site': 'CCGCGG',
         'substrat': 'DNA',
@@ -14538,9 +17545,10 @@ def _temp():
     }
 rest_dict['SgrBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SgrDI>CGTCGACG)|(?P<SgrDI_as>CGTCGACG)',
+        'compsite': '(?P<SgrDI>CGTCGACG)',
         'results': None,
         'site': 'CGTCGACG',
         'substrat': 'DNA',
@@ -14553,16 +17561,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'CGTCGACG'),
         'ovhgseq': 'TCGA',
     }
 rest_dict['SgrDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SgsI>GGCGCGCC)|(?P<SgsI_as>GGCGCGCC)',
+        'compsite': '(?P<SgrTI>CC[AGT][CG])|(?P<SgrTI_as>[CG][ACT]GG)',
+        'results': None,
+        'site': 'CCDS',
+        'substrat': 'DNA',
+        'fst3': 14,
+        'fst5': 14,
+        'freq': 32,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (14, 14, None, None, 'CCDS'),
+        'ovhgseq': 'NNNN',
+    }
+rest_dict['SgrTI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SgsI>GGCGCGCC)',
         'results': None,
         'site': 'GGCGCGCC',
         'substrat': 'DNA',
@@ -14575,12 +17607,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'GGCGCGCC'),
         'ovhgseq': 'CGCG',
     }
 rest_dict['SgsI'] = _temp()
+
 
 def _temp():
     return {
@@ -14604,9 +17637,10 @@ def _temp():
     }
 rest_dict['SimI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SinI>GG[AT]CC)|(?P<SinI_as>GG[AT]CC)',
+        'compsite': '(?P<SinI>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -14619,16 +17653,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -3,
         'scd3': None,
-        'suppl': ('Q', 'R', 'W', 'X'),
+        'suppl': ('X',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGWCC'),
         'ovhgseq': 'GWC',
     }
 rest_dict['SinI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SlaI>CTCGAG)|(?P<SlaI_as>CTCGAG)',
+        'compsite': '(?P<SlaI>CTCGAG)',
         'results': None,
         'site': 'CTCGAG',
         'substrat': 'DNA',
@@ -14641,16 +17676,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('C',),
+        'suppl': ('C', 'Y'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTCGAG'),
         'ovhgseq': 'TCGA',
     }
 rest_dict['SlaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SmaI>CCCGGG)|(?P<SmaI_as>CCCGGG)',
+        'compsite': '(?P<SmaI>CCCGGG)',
         'results': None,
         'site': 'CCCGGG',
         'substrat': 'DNA',
@@ -14663,16 +17699,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X', 'Y'),
         'scd5': None,
         'charac': (3, -3, None, None, 'CCCGGG'),
         'ovhgseq': '',
     }
 rest_dict['SmaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SmiI>ATTTAAAT)|(?P<SmiI_as>ATTTAAAT)',
+        'compsite': '(?P<SmiI>ATTTAAAT)',
         'results': None,
         'site': 'ATTTAAAT',
         'substrat': 'DNA',
@@ -14685,16 +17722,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('F', 'I', 'K', 'V'),
+        'suppl': ('B', 'I', 'K', 'V'),
         'scd5': None,
         'charac': (4, -4, None, None, 'ATTTAAAT'),
         'ovhgseq': '',
     }
 rest_dict['SmiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SmiMI>CA[CT]....[AG]TG)|(?P<SmiMI_as>CA[CT]....[AG]TG)',
+        'compsite': '(?P<SmiMI>CA[CT]....[AG]TG)',
         'results': None,
         'site': 'CAYNNNNRTG',
         'substrat': 'DNA',
@@ -14714,9 +17752,10 @@ def _temp():
     }
 rest_dict['SmiMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SmlI>CT[CT][AG]AG)|(?P<SmlI_as>CT[CT][AG]AG)',
+        'compsite': '(?P<SmlI>CT[CT][AG]AG)',
         'results': None,
         'site': 'CTYRAG',
         'substrat': 'DNA',
@@ -14736,9 +17775,10 @@ def _temp():
     }
 rest_dict['SmlI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SmoI>CT[CT][AG]AG)|(?P<SmoI_as>CT[CT][AG]AG)',
+        'compsite': '(?P<SmoI>CT[CT][AG]AG)',
         'results': None,
         'site': 'CTYRAG',
         'substrat': 'DNA',
@@ -14751,38 +17791,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTYRAG'),
         'ovhgseq': 'TYRA',
     }
 rest_dict['SmoI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<SmuI>CCCGC)|(?P<SmuI_as>GCGGG)',
-        'results': None,
-        'site': 'CCCGC',
-        'substrat': 'DNA',
-        'fst3': 6,
-        'fst5': 9,
-        'freq': 1024,
-        'size': 5,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -2,
-        'scd3': None,
-        'suppl': ('F',),
-        'scd5': None,
-        'charac': (9, 6, None, None, 'CCCGC'),
-        'ovhgseq': 'NN',
-    }
-rest_dict['SmuI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<SnaBI>TACGTA)|(?P<SnaBI_as>TACGTA)',
+        'compsite': '(?P<SnaBI>TACGTA)',
         'results': None,
         'site': 'TACGTA',
         'substrat': 'DNA',
@@ -14802,9 +17821,10 @@ def _temp():
     }
 rest_dict['SnaBI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SnaI>GTATAC)|(?P<SnaI_as>GTATAC)',
+        'compsite': '(?P<SnaI>GTATAC)',
         'results': None,
         'site': 'GTATAC',
         'substrat': 'DNA',
@@ -14824,9 +17844,33 @@ def _temp():
     }
 rest_dict['SnaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SpeI>ACTAGT)|(?P<SpeI_as>ACTAGT)',
+        'compsite': '(?P<Sno506I>GGCCGAG)|(?P<Sno506I_as>CTCGGCC)',
+        'results': None,
+        'site': 'GGCCGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGCCGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Sno506I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SpeI>ACTAGT)',
         'results': None,
         'site': 'ACTAGT',
         'substrat': 'DNA',
@@ -14839,16 +17883,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'H', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X'),
+        'suppl': ('B', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'ACTAGT'),
         'ovhgseq': 'CTAG',
     }
 rest_dict['SpeI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SphI>GCATGC)|(?P<SphI_as>GCATGC)',
+        'compsite': '(?P<SphI>GCATGC)',
         'results': None,
         'site': 'GCATGC',
         'substrat': 'DNA',
@@ -14861,16 +17906,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('B', 'C', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'W', 'X'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GCATGC'),
         'ovhgseq': 'CATG',
     }
 rest_dict['SphI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SplI>CGTACG)|(?P<SplI_as>CGTACG)',
+        'compsite': '(?P<SplI>CGTACG)',
         'results': None,
         'site': 'CGTACG',
         'substrat': 'DNA',
@@ -14889,6 +17935,30 @@ def _temp():
         'ovhgseq': 'GTAC',
     }
 rest_dict['SplI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SpnRII>TCGAG)|(?P<SpnRII_as>CTCGA)',
+        'results': None,
+        'site': 'TCGAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 1024,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'TCGAG'),
+        'ovhgseq': None,
+    }
+rest_dict['SpnRII'] = _temp()
+
 
 def _temp():
     return {
@@ -14912,9 +17982,10 @@ def _temp():
     }
 rest_dict['SpoDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SrfI>GCCCGGGC)|(?P<SrfI_as>GCCCGGGC)',
+        'compsite': '(?P<SrfI>GCCCGGGC)',
         'results': None,
         'site': 'GCCCGGGC',
         'substrat': 'DNA',
@@ -14927,16 +17998,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('E', 'O'),
+        'suppl': ('N',),
         'scd5': None,
         'charac': (4, -4, None, None, 'GCCCGGGC'),
         'ovhgseq': '',
     }
 rest_dict['SrfI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sse232I>CGCCGGCG)|(?P<Sse232I_as>CGCCGGCG)',
+        'compsite': '(?P<Sse232I>CGCCGGCG)',
         'results': None,
         'site': 'CGCCGGCG',
         'substrat': 'DNA',
@@ -14956,9 +18028,10 @@ def _temp():
     }
 rest_dict['Sse232I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sse8387I>CCTGCAGG)|(?P<Sse8387I_as>CCTGCAGG)',
+        'compsite': '(?P<Sse8387I>CCTGCAGG)',
         'results': None,
         'site': 'CCTGCAGG',
         'substrat': 'DNA',
@@ -14978,9 +18051,10 @@ def _temp():
     }
 rest_dict['Sse8387I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sse8647I>AGG[AT]CCT)|(?P<Sse8647I_as>AGG[AT]CCT)',
+        'compsite': '(?P<Sse8647I>AGG[AT]CCT)',
         'results': None,
         'site': 'AGGWCCT',
         'substrat': 'DNA',
@@ -15000,9 +18074,10 @@ def _temp():
     }
 rest_dict['Sse8647I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sse9I>AATT)|(?P<Sse9I_as>AATT)',
+        'compsite': '(?P<Sse9I>AATT)',
         'results': None,
         'site': 'AATT',
         'substrat': 'DNA',
@@ -15022,9 +18097,10 @@ def _temp():
     }
 rest_dict['Sse9I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SseBI>AGGCCT)|(?P<SseBI_as>AGGCCT)',
+        'compsite': '(?P<SseBI>AGGCCT)',
         'results': None,
         'site': 'AGGCCT',
         'substrat': 'DNA',
@@ -15044,6 +18120,7 @@ def _temp():
     }
 rest_dict['SseBI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<SsiI>CCGC)|(?P<SsiI_as>GCGG)',
@@ -15059,12 +18136,59 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCGC'),
         'ovhgseq': 'CG',
     }
 rest_dict['SsiI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Ssp6803IV>GAAGGC)|(?P<Ssp6803IV_as>GCCTTC)',
+        'results': None,
+        'site': 'GAAGGC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GAAGGC'),
+        'ovhgseq': None,
+    }
+rest_dict['Ssp6803IV'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Ssp714II>CGCAGCG)|(?P<Ssp714II_as>CGCTGCG)',
+        'results': None,
+        'site': 'CGCAGCG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGCAGCG'),
+        'ovhgseq': None,
+    }
+rest_dict['Ssp714II'] = _temp()
+
 
 def _temp():
     return {
@@ -15088,9 +18212,10 @@ def _temp():
     }
 rest_dict['SspD5I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SspDI>GGCGCC)|(?P<SspDI_as>GGCGCC)',
+        'compsite': '(?P<SspDI>GGCGCC)',
         'results': None,
         'site': 'GGCGCC',
         'substrat': 'DNA',
@@ -15103,16 +18228,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'GGCGCC'),
         'ovhgseq': 'GCGC',
     }
 rest_dict['SspDI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SspI>AATATT)|(?P<SspI_as>AATATT)',
+        'compsite': '(?P<SspI>AATATT)',
         'results': None,
         'site': 'AATATT',
         'substrat': 'DNA',
@@ -15125,16 +18251,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'N', 'Q', 'R', 'V', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'AATATT'),
         'ovhgseq': '',
     }
 rest_dict['SspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SstI>GAGCTC)|(?P<SstI_as>GAGCTC)',
+        'compsite': '(?P<SspMI>CTAG)',
+        'results': None,
+        'site': 'CTAG',
+        'substrat': 'DNA',
+        'fst3': -1,
+        'fst5': 1,
+        'freq': 256,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -2,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (1, -1, None, None, 'CTAG'),
+        'ovhgseq': 'TA',
+    }
+rest_dict['SspMI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SstE37I>CGAAGAC)|(?P<SstE37I_as>GTCTTCG)',
+        'results': None,
+        'site': 'CGAAGAC',
+        'substrat': 'DNA',
+        'fst3': 18,
+        'fst5': 27,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (27, 18, None, None, 'CGAAGAC'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['SstE37I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<SstI>GAGCTC)',
         'results': None,
         'site': 'GAGCTC',
         'substrat': 'DNA',
@@ -15147,34 +18320,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('B', 'C'),
+        'suppl': ('C',),
         'scd5': None,
         'charac': (5, -5, None, None, 'GAGCTC'),
         'ovhgseq': 'AGCT',
     }
 rest_dict['SstI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<SstII>CCGCGG)|(?P<SstII_as>CCGCGG)',
-        'results': None,
-        'site': 'CCGCGG',
-        'substrat': 'DNA',
-        'fst3': -4,
-        'fst5': 4,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': 2,
-        'scd3': None,
-        'suppl': ('B',),
-        'scd5': None,
-        'charac': (4, -4, None, None, 'CCGCGG'),
-        'ovhgseq': 'GC',
-    }
-rest_dict['SstII'] = _temp()
 
 def _temp():
     return {
@@ -15198,9 +18350,33 @@ def _temp():
     }
 rest_dict['Sth132I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Sth302II>CCGG)|(?P<Sth302II_as>CCGG)',
+        'compsite': '(?P<Sth20745III>GGACGAC)|(?P<Sth20745III_as>GTCGTCC)',
+        'results': None,
+        'site': 'GGACGAC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 16384,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GGACGAC'),
+        'ovhgseq': None,
+    }
+rest_dict['Sth20745III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Sth302II>CCGG)',
         'results': None,
         'site': 'CCGG',
         'substrat': 'DNA',
@@ -15220,27 +18396,6 @@ def _temp():
     }
 rest_dict['Sth302II'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<StrI>CTCGAG)|(?P<StrI_as>CTCGAG)',
-        'results': None,
-        'site': 'CTCGAG',
-        'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 1,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -4,
-        'scd3': None,
-        'suppl': ('U',),
-        'scd5': None,
-        'charac': (1, -1, None, None, 'CTCGAG'),
-        'ovhgseq': 'TCGA',
-    }
-rest_dict['StrI'] = _temp()
 
 def _temp():
     return {
@@ -15264,9 +18419,10 @@ def _temp():
     }
 rest_dict['StsI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<StuI>AGGCCT)|(?P<StuI_as>AGGCCT)',
+        'compsite': '(?P<StuI>AGGCCT)',
         'results': None,
         'site': 'AGGCCT',
         'substrat': 'DNA',
@@ -15279,16 +18435,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('B', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'U', 'X'),
+        'suppl': ('B', 'J', 'K', 'M', 'N', 'Q', 'R', 'X'),
         'scd5': None,
         'charac': (3, -3, None, None, 'AGGCCT'),
         'ovhgseq': '',
     }
 rest_dict['StuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<StyD4I>CC.GG)|(?P<StyD4I_as>CC.GG)',
+        'compsite': '(?P<Sty13348III>GATCAG)|(?P<Sty13348III_as>CTGATC)',
+        'results': None,
+        'site': 'GATCAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'GATCAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Sty13348III'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<StyD4I>CC.GG)',
         'results': None,
         'site': 'CCNGG',
         'substrat': 'DNA',
@@ -15308,9 +18488,10 @@ def _temp():
     }
 rest_dict['StyD4I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<StyI>CC[AT][AT]GG)|(?P<StyI_as>CC[AT][AT]GG)',
+        'compsite': '(?P<StyI>CC[AT][AT]GG)',
         'results': None,
         'site': 'CCWWGG',
         'substrat': 'DNA',
@@ -15323,16 +18504,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('C', 'J', 'M', 'N', 'R', 'S'),
+        'suppl': ('C', 'J', 'N'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCWWGG'),
         'ovhgseq': 'CWWG',
     }
 rest_dict['StyI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<SwaI>ATTTAAAT)|(?P<SwaI_as>ATTTAAAT)',
+        'compsite': '(?P<SwaI>ATTTAAAT)',
         'results': None,
         'site': 'ATTTAAAT',
         'substrat': 'DNA',
@@ -15345,16 +18527,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('J', 'M', 'N', 'S', 'W'),
+        'suppl': ('J', 'M', 'N'),
         'scd5': None,
         'charac': (4, -4, None, None, 'ATTTAAAT'),
         'ovhgseq': '',
     }
 rest_dict['SwaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TaaI>AC.GT)|(?P<TaaI_as>AC.GT)',
+        'compsite': '(?P<TaaI>AC.GT)',
         'results': None,
         'site': 'ACNGT',
         'substrat': 'DNA',
@@ -15367,16 +18550,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (3, -3, None, None, 'ACNGT'),
         'ovhgseq': 'N',
     }
 rest_dict['TaaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TaiI>ACGT)|(?P<TaiI_as>ACGT)',
+        'compsite': '(?P<TaiI>ACGT)',
         'results': None,
         'site': 'ACGT',
         'substrat': 'DNA',
@@ -15389,16 +18573,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'ACGT'),
         'ovhgseq': 'ACGT',
     }
 rest_dict['TaiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TaqI>TCGA)|(?P<TaqI_as>TCGA)',
+        'compsite': '(?P<TaqI>TCGA)',
         'results': None,
         'site': 'TCGA',
         'substrat': 'DNA',
@@ -15411,18 +18596,19 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCGA'),
         'ovhgseq': 'CG',
     }
 rest_dict['TaqI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TaqII>CACCCA)|(?P<TaqII_as>TGGGTG)',
+        'compsite': '(?P<TaqII>GACCGA)|(?P<TaqII_as>TCGGTC)',
         'results': None,
-        'site': 'CACCCA|GACCGA',
+        'site': 'GACCGA',
         'substrat': 'DNA',
         'fst3': 9,
         'fst5': 17,
@@ -15435,14 +18621,61 @@ def _temp():
         'scd3': None,
         'suppl': ('Q', 'X'),
         'scd5': None,
-        'charac': (17, 9, None, None, 'CACCCA|GACCGA'),
-        'ovhgseq': '(?P<TaqII>CACCCA|GACCGA)|(?P<TaqII_as>TGGGTG|TCGGTC)',
+        'charac': (17, 9, None, None, 'GACCGA'),
+        'ovhgseq': 'NN',
     }
 rest_dict['TaqII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TatI>[AT]GTAC[AT])|(?P<TatI_as>[AT]GTAC[AT])',
+        'compsite': '(?P<TaqIII>CACCCA)|(?P<TaqIII_as>TGGGTG)',
+        'results': None,
+        'site': 'CACCCA',
+        'substrat': 'DNA',
+        'fst3': 9,
+        'fst5': 17,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (17, 9, None, None, 'CACCCA'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['TaqIII'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<TasI>AATT)',
+        'results': None,
+        'site': 'AATT',
+        'substrat': 'DNA',
+        'fst3': 0,
+        'fst5': 0,
+        'freq': 256,
+        'size': 4,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -4,
+        'scd3': None,
+        'suppl': ('B',),
+        'scd5': None,
+        'charac': (0, 0, None, None, 'AATT'),
+        'ovhgseq': 'AATT',
+    }
+rest_dict['TasI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<TatI>[AT]GTAC[AT])',
         'results': None,
         'site': 'WGTACW',
         'substrat': 'DNA',
@@ -15455,16 +18688,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'WGTACW'),
         'ovhgseq': 'GTAC',
     }
 rest_dict['TatI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TauI>GC[CG]GC)|(?P<TauI_as>GC[CG]GC)',
+        'compsite': '(?P<TauI>GC[CG]GC)',
         'results': None,
         'site': 'GCSGC',
         'substrat': 'DNA',
@@ -15477,16 +18711,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (4, -4, None, None, 'GCSGC'),
         'ovhgseq': 'CSG',
     }
 rest_dict['TauI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TfiI>GA[AT]TC)|(?P<TfiI_as>GA[AT]TC)',
+        'compsite': '(?P<TfiI>GA[AT]TC)',
         'results': None,
         'site': 'GAWTC',
         'substrat': 'DNA',
@@ -15506,31 +18741,10 @@ def _temp():
     }
 rest_dict['TfiI'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<TliI>CTCGAG)|(?P<TliI_as>CTCGAG)',
-        'results': None,
-        'site': 'CTCGAG',
-        'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 1,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -4,
-        'scd3': None,
-        'suppl': ('N',),
-        'scd5': None,
-        'charac': (1, -1, None, None, 'CTCGAG'),
-        'ovhgseq': 'TCGA',
-    }
-rest_dict['TliI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<Tru1I>TTAA)|(?P<Tru1I_as>TTAA)',
+        'compsite': '(?P<Tru1I>TTAA)',
         'results': None,
         'site': 'TTAA',
         'substrat': 'DNA',
@@ -15543,16 +18757,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'TTAA'),
         'ovhgseq': 'TA',
     }
 rest_dict['Tru1I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Tru9I>TTAA)|(?P<Tru9I_as>TTAA)',
+        'compsite': '(?P<Tru9I>TTAA)',
         'results': None,
         'site': 'TTAA',
         'substrat': 'DNA',
@@ -15565,16 +18780,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('I', 'M', 'R', 'V', 'W'),
+        'suppl': ('I', 'M', 'R', 'V'),
         'scd5': None,
         'charac': (1, -1, None, None, 'TTAA'),
         'ovhgseq': 'TA',
     }
 rest_dict['Tru9I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TscAI>CA[CG]TG)|(?P<TscAI_as>CA[CG]TG)',
+        'compsite': '(?P<TscAI>CA[CG]TG)',
         'results': None,
         'site': 'CASTG',
         'substrat': 'DNA',
@@ -15587,16 +18803,40 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 10,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (7, -7, None, None, 'CASTG'),
         'ovhgseq': 'NNCASTGNN',
     }
 rest_dict['TscAI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TseI>GC[AT]GC)|(?P<TseI_as>GC[AT]GC)',
+        'compsite': '(?P<TseFI>GT[CG]AC)',
+        'results': None,
+        'site': 'GTSAC',
+        'substrat': 'DNA',
+        'fst3': 0,
+        'fst5': 0,
+        'freq': 512,
+        'size': 5,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -5,
+        'scd3': None,
+        'suppl': ('I',),
+        'scd5': None,
+        'charac': (0, 0, None, None, 'GTSAC'),
+        'ovhgseq': 'GTSAC',
+    }
+rest_dict['TseFI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<TseI>GC[AT]GC)',
         'results': None,
         'site': 'GCWGC',
         'substrat': 'DNA',
@@ -15616,6 +18856,7 @@ def _temp():
     }
 rest_dict['TseI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<TsoI>TA[AG]CCA)|(?P<TsoI_as>TGG[CT]TA)',
@@ -15631,16 +18872,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': None,
         'charac': (17, 9, None, None, 'TARCCA'),
         'ovhgseq': 'NN',
     }
 rest_dict['TsoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Tsp45I>GT[CG]AC)|(?P<Tsp45I_as>GT[CG]AC)',
+        'compsite': '(?P<Tsp45I>GT[CG]AC)',
         'results': None,
         'site': 'GTSAC',
         'substrat': 'DNA',
@@ -15660,9 +18902,10 @@ def _temp():
     }
 rest_dict['Tsp45I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Tsp4CI>AC.GT)|(?P<Tsp4CI_as>AC.GT)',
+        'compsite': '(?P<Tsp4CI>AC.GT)',
         'results': None,
         'site': 'ACNGT',
         'substrat': 'DNA',
@@ -15682,27 +18925,29 @@ def _temp():
     }
 rest_dict['Tsp4CI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Tsp509I>AATT)|(?P<Tsp509I_as>AATT)',
+        'compsite': '(?P<TspARh3I>G[AG]ACGAC)|(?P<TspARh3I_as>GTCGT[CT]C)',
         'results': None,
-        'site': 'AATT',
+        'site': 'GRACGAC',
         'substrat': 'DNA',
-        'fst3': 0,
-        'fst5': 0,
-        'freq': 256,
-        'size': 4,
+        'fst3': None,
+        'fst5': None,
+        'freq': 8192,
+        'size': 7,
         'opt_temp': 37,
         'dna': None,
         'inact_temp': 65,
-        'ovhg': -4,
+        'ovhg': None,
         'scd3': None,
-        'suppl': ('N',),
+        'suppl': (),
         'scd5': None,
-        'charac': (0, 0, None, None, 'AATT'),
-        'ovhgseq': 'AATT',
+        'charac': (None, None, None, None, 'GRACGAC'),
+        'ovhgseq': None,
     }
-rest_dict['Tsp509I'] = _temp()
+rest_dict['TspARh3I'] = _temp()
+
 
 def _temp():
     return {
@@ -15719,16 +18964,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('X',),
+        'suppl': ('Q', 'X'),
         'scd5': None,
         'charac': (16, 9, None, None, 'ATGAA'),
         'ovhgseq': 'NN',
     }
 rest_dict['TspDTI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TspEI>AATT)|(?P<TspEI_as>AATT)',
+        'compsite': '(?P<TspEI>AATT)',
         'results': None,
         'site': 'AATT',
         'substrat': 'DNA',
@@ -15741,12 +18987,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('O',),
+        'suppl': (),
         'scd5': None,
         'charac': (0, 0, None, None, 'AATT'),
         'ovhgseq': 'AATT',
     }
 rest_dict['TspEI'] = _temp()
+
 
 def _temp():
     return {
@@ -15763,16 +19010,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 2,
         'scd3': None,
-        'suppl': ('X',),
+        'suppl': ('Q', 'X'),
         'scd5': None,
         'charac': (16, 9, None, None, 'ACGGA'),
         'ovhgseq': 'NN',
     }
 rest_dict['TspGWI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TspMI>CCCGGG)|(?P<TspMI_as>CCCGGG)',
+        'compsite': '(?P<TspMI>CCCGGG)',
         'results': None,
         'site': 'CCCGGG',
         'substrat': 'DNA',
@@ -15792,9 +19040,10 @@ def _temp():
     }
 rest_dict['TspMI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TspRI>CA[CG]TG)|(?P<TspRI_as>CA[CG]TG)',
+        'compsite': '(?P<TspRI>CA[CG]TG)',
         'results': None,
         'site': 'CASTG',
         'substrat': 'DNA',
@@ -15814,9 +19063,10 @@ def _temp():
     }
 rest_dict['TspRI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<TssI>GAG...CTC)|(?P<TssI_as>GAG...CTC)',
+        'compsite': '(?P<TssI>GAG...CTC)',
         'results': None,
         'site': 'GAGNNNCTC',
         'substrat': 'DNA',
@@ -15836,6 +19086,7 @@ def _temp():
     }
 rest_dict['TssI'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<TstI>CAC......TCC)|(?P<TstI_as>GGA......GTG)',
@@ -15851,12 +19102,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 5,
         'scd3': 7,
-        'suppl': ('F',),
+        'suppl': (),
         'scd5': 24,
         'charac': (-8, -25, 24, 7, 'CACNNNNNNTCC'),
         'ovhgseq': 'NNNNN',
     }
 rest_dict['TstI'] = _temp()
+
 
 def _temp():
     return {
@@ -15880,9 +19132,10 @@ def _temp():
     }
 rest_dict['TsuI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Tth111I>GAC...GTC)|(?P<Tth111I_as>GAC...GTC)',
+        'compsite': '(?P<Tth111I>GAC...GTC)',
         'results': None,
         'site': 'GACNNNGTC',
         'substrat': 'DNA',
@@ -15895,12 +19148,13 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('I', 'K', 'N', 'Q', 'R', 'V', 'W', 'X'),
+        'suppl': ('I', 'K', 'N', 'Q', 'V', 'X'),
         'scd5': None,
         'charac': (4, -4, None, None, 'GACNNNGTC'),
         'ovhgseq': 'N',
     }
 rest_dict['Tth111I'] = _temp()
+
 
 def _temp():
     return {
@@ -15924,6 +19178,7 @@ def _temp():
     }
 rest_dict['Tth111II'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<UbaF11I>TCGTA)|(?P<UbaF11I_as>TACGA)',
@@ -15945,6 +19200,7 @@ def _temp():
         'ovhgseq': None,
     }
 rest_dict['UbaF11I'] = _temp()
+
 
 def _temp():
     return {
@@ -15968,6 +19224,7 @@ def _temp():
     }
 rest_dict['UbaF12I'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<UbaF13I>GAG......CTGG)|(?P<UbaF13I_as>CCAG......CTC)',
@@ -15989,6 +19246,7 @@ def _temp():
         'ovhgseq': None,
     }
 rest_dict['UbaF13I'] = _temp()
+
 
 def _temp():
     return {
@@ -16012,6 +19270,7 @@ def _temp():
     }
 rest_dict['UbaF14I'] = _temp()
 
+
 def _temp():
     return {
         'compsite': '(?P<UbaF9I>TAC.....[AG]TGT)|(?P<UbaF9I_as>ACA[CT].....GTA)',
@@ -16033,6 +19292,7 @@ def _temp():
         'ovhgseq': None,
     }
 rest_dict['UbaF9I'] = _temp()
+
 
 def _temp():
     return {
@@ -16056,9 +19316,33 @@ def _temp():
     }
 rest_dict['UbaPI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<UnbI>GG.CC)|(?P<UnbI_as>GG.CC)',
+        'compsite': '(?P<UcoMSI>GAGCTC)',
+        'results': None,
+        'site': 'GAGCTC',
+        'substrat': 'DNA',
+        'fst3': -11,
+        'fst5': -7,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': -2,
+        'scd3': 7,
+        'suppl': (),
+        'scd5': 11,
+        'charac': (-7, -11, 11, 7, 'GAGCTC'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['UcoMSI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<UnbI>GG.CC)',
         'results': None,
         'site': 'GGNCC',
         'substrat': 'DNA',
@@ -16078,9 +19362,10 @@ def _temp():
     }
 rest_dict['UnbI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Van91I>CCA.....TGG)|(?P<Van91I_as>CCA.....TGG)',
+        'compsite': '(?P<Van91I>CCA.....TGG)',
         'results': None,
         'site': 'CCANNNNNTGG',
         'substrat': 'DNA',
@@ -16093,16 +19378,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 3,
         'scd3': None,
-        'suppl': ('F', 'K', 'M'),
+        'suppl': ('B', 'K'),
         'scd5': None,
         'charac': (7, -7, None, None, 'CCANNNNNTGG'),
         'ovhgseq': 'NNN',
     }
 rest_dict['Van91I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Vha464I>CTTAAG)|(?P<Vha464I_as>CTTAAG)',
+        'compsite': '(?P<Vha464I>CTTAAG)',
         'results': None,
         'site': 'CTTAAG',
         'substrat': 'DNA',
@@ -16122,9 +19408,10 @@ def _temp():
     }
 rest_dict['Vha464I'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<VneI>GTGCAC)|(?P<VneI_as>GTGCAC)',
+        'compsite': '(?P<VneI>GTGCAC)',
         'results': None,
         'site': 'GTGCAC',
         'substrat': 'DNA',
@@ -16144,9 +19431,10 @@ def _temp():
     }
 rest_dict['VneI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<VpaK11AI>GG[AT]CC)|(?P<VpaK11AI_as>GG[AT]CC)',
+        'compsite': '(?P<VpaK11AI>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -16166,9 +19454,10 @@ def _temp():
     }
 rest_dict['VpaK11AI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<VpaK11BI>GG[AT]CC)|(?P<VpaK11BI_as>GG[AT]CC)',
+        'compsite': '(?P<VpaK11BI>GG[AT]CC)',
         'results': None,
         'site': 'GGWCC',
         'substrat': 'DNA',
@@ -16188,9 +19477,10 @@ def _temp():
     }
 rest_dict['VpaK11BI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<VspI>ATTAAT)|(?P<VspI_as>ATTAAT)',
+        'compsite': '(?P<VspI>ATTAAT)',
         'results': None,
         'site': 'ATTAAT',
         'substrat': 'DNA',
@@ -16203,16 +19493,63 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F', 'I', 'R', 'V'),
+        'suppl': ('B', 'I', 'R', 'V'),
         'scd5': None,
         'charac': (2, -2, None, None, 'ATTAAT'),
         'ovhgseq': 'TA',
     }
 rest_dict['VspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XagI>CCT.....AGG)|(?P<XagI_as>CCT.....AGG)',
+        'compsite': '(?P<Vtu19109I>CAC[AG]A[CT]C)|(?P<Vtu19109I_as>G[AG]T[CT]GTG)',
+        'results': None,
+        'site': 'CACRAYC',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 7,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CACRAYC'),
+        'ovhgseq': None,
+    }
+rest_dict['Vtu19109I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<WviI>CAC[AG]AG)|(?P<WviI_as>CT[CT]GTG)',
+        'results': None,
+        'site': 'CACRAG',
+        'substrat': 'DNA',
+        'fst3': 19,
+        'fst5': 27,
+        'freq': 2048,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 2,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (27, 19, None, None, 'CACRAG'),
+        'ovhgseq': 'NN',
+    }
+rest_dict['WviI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<XagI>CCT.....AGG)',
         'results': None,
         'site': 'CCTNNNNNAGG',
         'substrat': 'DNA',
@@ -16225,16 +19562,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -1,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'CCTNNNNNAGG'),
         'ovhgseq': 'N',
     }
 rest_dict['XagI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XapI>[AG]AATT[CT])|(?P<XapI_as>[AG]AATT[CT])',
+        'compsite': '(?P<XapI>[AG]AATT[CT])',
         'results': None,
         'site': 'RAATTY',
         'substrat': 'DNA',
@@ -16247,16 +19585,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'RAATTY'),
         'ovhgseq': 'AATT',
     }
 rest_dict['XapI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XbaI>TCTAGA)|(?P<XbaI_as>TCTAGA)',
+        'compsite': '(?P<XbaI>TCTAGA)',
         'results': None,
         'site': 'TCTAGA',
         'substrat': 'DNA',
@@ -16269,16 +19608,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'C', 'F', 'H', 'I', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'V', 'W', 'X', 'Y'),
+        'suppl': ('B', 'C', 'I', 'J', 'K', 'M', 'N', 'Q', 'R', 'S', 'V', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'TCTAGA'),
         'ovhgseq': 'CTAG',
     }
 rest_dict['XbaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XceI>[AG]CATG[CT])|(?P<XceI_as>[AG]CATG[CT])',
+        'compsite': '(?P<XceI>[AG]CATG[CT])',
         'results': None,
         'site': 'RCATGY',
         'substrat': 'DNA',
@@ -16291,16 +19631,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (5, -5, None, None, 'RCATGY'),
         'ovhgseq': 'CATG',
     }
 rest_dict['XceI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XcmI>CCA.........TGG)|(?P<XcmI_as>CCA.........TGG)',
+        'compsite': '(?P<XcmI>CCA.........TGG)',
         'results': None,
         'site': 'CCANNNNNNNNNTGG',
         'substrat': 'DNA',
@@ -16320,9 +19661,10 @@ def _temp():
     }
 rest_dict['XcmI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XhoI>CTCGAG)|(?P<XhoI_as>CTCGAG)',
+        'compsite': '(?P<XhoI>CTCGAG)',
         'results': None,
         'site': 'CTCGAG',
         'substrat': 'DNA',
@@ -16335,16 +19677,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('B', 'F', 'H', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'U', 'W', 'X', 'Y'),
+        'suppl': ('B', 'J', 'K', 'M', 'N', 'O', 'Q', 'R', 'S', 'X'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CTCGAG'),
         'ovhgseq': 'TCGA',
     }
 rest_dict['XhoI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XhoII>[AG]GATC[CT])|(?P<XhoII_as>[AG]GATC[CT])',
+        'compsite': '(?P<XhoII>[AG]GATC[CT])',
         'results': None,
         'site': 'RGATCY',
         'substrat': 'DNA',
@@ -16357,38 +19700,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('R', 'W'),
+        'suppl': (),
         'scd5': None,
         'charac': (1, -1, None, None, 'RGATCY'),
         'ovhgseq': 'GATC',
     }
 rest_dict['XhoII'] = _temp()
 
-def _temp():
-    return {
-        'compsite': '(?P<XmaCI>CCCGGG)|(?P<XmaCI_as>CCCGGG)',
-        'results': None,
-        'site': 'CCCGGG',
-        'substrat': 'DNA',
-        'fst3': -1,
-        'fst5': 1,
-        'freq': 4096,
-        'size': 6,
-        'opt_temp': 37,
-        'dna': None,
-        'inact_temp': 65,
-        'ovhg': -4,
-        'scd3': None,
-        'suppl': ('M',),
-        'scd5': None,
-        'charac': (1, -1, None, None, 'CCCGGG'),
-        'ovhgseq': 'CCGG',
-    }
-rest_dict['XmaCI'] = _temp()
 
 def _temp():
     return {
-        'compsite': '(?P<XmaI>CCCGGG)|(?P<XmaI_as>CCCGGG)',
+        'compsite': '(?P<XmaI>CCCGGG)',
         'results': None,
         'site': 'CCCGGG',
         'substrat': 'DNA',
@@ -16401,16 +19723,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('I', 'N', 'R', 'U', 'V'),
+        'suppl': ('I', 'N', 'R', 'V'),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCCGGG'),
         'ovhgseq': 'CCGG',
     }
 rest_dict['XmaI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XmaIII>CGGCCG)|(?P<XmaIII_as>CGGCCG)',
+        'compsite': '(?P<XmaIII>CGGCCG)',
         'results': None,
         'site': 'CGGCCG',
         'substrat': 'DNA',
@@ -16430,9 +19753,10 @@ def _temp():
     }
 rest_dict['XmaIII'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XmaJI>CCTAGG)|(?P<XmaJI_as>CCTAGG)',
+        'compsite': '(?P<XmaJI>CCTAGG)',
         'results': None,
         'site': 'CCTAGG',
         'substrat': 'DNA',
@@ -16445,16 +19769,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -4,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (1, -1, None, None, 'CCTAGG'),
         'ovhgseq': 'CTAG',
     }
 rest_dict['XmaJI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XmiI>GT[AC][GT]AC)|(?P<XmiI_as>GT[AC][GT]AC)',
+        'compsite': '(?P<XmiI>GT[AC][GT]AC)',
         'results': None,
         'site': 'GTMKAC',
         'substrat': 'DNA',
@@ -16467,16 +19792,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': -2,
         'scd3': None,
-        'suppl': ('F',),
+        'suppl': ('B',),
         'scd5': None,
         'charac': (2, -2, None, None, 'GTMKAC'),
         'ovhgseq': 'MK',
     }
 rest_dict['XmiI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XmnI>GAA....TTC)|(?P<XmnI_as>GAA....TTC)',
+        'compsite': '(?P<XmnI>GAA....TTC)',
         'results': None,
         'site': 'GAANNNNTTC',
         'substrat': 'DNA',
@@ -16489,16 +19815,17 @@ def _temp():
         'inact_temp': 65,
         'ovhg': 0,
         'scd3': None,
-        'suppl': ('N', 'R', 'U', 'W'),
+        'suppl': ('N', 'R'),
         'scd5': None,
         'charac': (5, -5, None, None, 'GAANNNNTTC'),
         'ovhgseq': '',
     }
 rest_dict['XmnI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<XspI>CTAG)|(?P<XspI_as>CTAG)',
+        'compsite': '(?P<XspI>CTAG)',
         'results': None,
         'site': 'CTAG',
         'substrat': 'DNA',
@@ -16518,9 +19845,56 @@ def _temp():
     }
 rest_dict['XspI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ZraI>GACGTC)|(?P<ZraI_as>GACGTC)',
+        'compsite': '(?P<YkrI>C)|(?P<YkrI_as>G)',
+        'results': None,
+        'site': 'C',
+        'substrat': 'DNA',
+        'fst3': 9,
+        'fst5': 11,
+        'freq': 4,
+        'size': 1,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': 1,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (11, 9, None, None, 'C'),
+        'ovhgseq': 'N',
+    }
+rest_dict['YkrI'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<Yps3606I>CGGAAG)|(?P<Yps3606I_as>CTTCCG)',
+        'results': None,
+        'site': 'CGGAAG',
+        'substrat': 'DNA',
+        'fst3': None,
+        'fst5': None,
+        'freq': 4096,
+        'size': 6,
+        'opt_temp': 37,
+        'dna': None,
+        'inact_temp': 65,
+        'ovhg': None,
+        'scd3': None,
+        'suppl': (),
+        'scd5': None,
+        'charac': (None, None, None, None, 'CGGAAG'),
+        'ovhgseq': None,
+    }
+rest_dict['Yps3606I'] = _temp()
+
+
+def _temp():
+    return {
+        'compsite': '(?P<ZraI>GACGTC)',
         'results': None,
         'site': 'GACGTC',
         'substrat': 'DNA',
@@ -16540,9 +19914,10 @@ def _temp():
     }
 rest_dict['ZraI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<ZrmI>AGTACT)|(?P<ZrmI_as>AGTACT)',
+        'compsite': '(?P<ZrmI>AGTACT)',
         'results': None,
         'site': 'AGTACT',
         'substrat': 'DNA',
@@ -16562,9 +19937,10 @@ def _temp():
     }
 rest_dict['ZrmI'] = _temp()
 
+
 def _temp():
     return {
-        'compsite': '(?P<Zsp2I>ATGCAT)|(?P<Zsp2I_as>ATGCAT)',
+        'compsite': '(?P<Zsp2I>ATGCAT)',
         'results': None,
         'site': 'ATGCAT',
         'substrat': 'DNA',
@@ -16585,320 +19961,527 @@ def _temp():
 rest_dict['Zsp2I'] = _temp()
 
 suppliers = {}
+
+
 def _temp():
     return (
-        'Invitrogen Corporation',
-        ['MluI', 'HpaII', 'SalI', 'NcoI', 'ClaI', 'DraI', 'SstII', 'AvaI', 'PvuI', 'DpnI', 'TaqI', 'KpnI', 'NdeI', 'PinAI', 'BglII', 'NruI', 'RsaI', 'HincII', 'XbaI', 'MboI', 'AluI', 'MscI', 'SmaI', 'NheI', 'StuI', 'SphI', 'PvuII', 'SstI', 'SpeI', 'HinfI', 'EcoRV', 'EcoRI', 'XhoI', 'PstI', 'MseI', 'HaeIII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'ScaI', 'DdeI', 'NotI', 'HindIII', 'BamHI', 'HpaI', 'HhaI'],
+        'Life Technologies',
+        ['BshTI', 'MluI', 'HpaII', 'MreI', 'BclI', 'SacI', 'PauI', 'BglI', 'SalI', 'MspI', 'ScaI', 'Bsu15I', 'Mva1269I', 'Bsp68I', 'LweI', 'SmiI', 'PteI', 'TscAI', 'NcoI', 'PsyI', 'BseJI', 'ClaI', 'MauBI', 'CaiI', 'Eco24I', 'CseI', 'Eco47III', 'Eco91I', 'DraI', 'BseXI', 'BstXI', 'RruI', 'Esp3I', 'BseSI', 'Cfr9I', 'AarI', 'OliI', 'PvuI', 'BspOI', 'DpnI', 'Hin6I', 'Van91I', 'Bst1107I', 'Bme1390I', 'BveI', 'Psp5II', 'TaqI', 'Eco52I', 'GsuI', 'KpnI', 'SspDI', 'SsiI', 'RseI', 'MlsI', 'NdeI', 'HapII', 'Cfr13I', 'MboII', 'SdaI', 'BmsI', 'BglII', 'TasI', 'AjuI', 'AloI', 'FspBI', 'SchI', 'PfoI', 'Bpu10I', 'BshNI', 'SacII', 'Acc65I', 'BmeT110I', 'XapI', 'TaaI', 'PscI', 'Bsp1407I', 'NruI', 'MvaI', 'PasI', 'Hin1II', 'Bsh1236I', 'MssI', 'CpoI', 'Eco130I', 'PspFI', 'TaiI', 'FspAI', 'BfmI', 'Eco47I', 'BoxI', 'RsaI', 'HincII', 'HpyF10VI', 'XbaI', 'Lsp1109I', 'AjiI', 'Bsp119I', 'MboI', 'AluI', 'SduI', 'SgsI', 'BseGI', 'Eco72I', 'BcnI', 'SgeI', 'Mph1103I', 'EcoRII', 'Alw21I', 'XagI', 'Hpy8I', 'PsuI', 'PaeI', 'SmaI', 'NheI', 'BplI', 'Ppu21I', 'SmoI', 'FaqI', 'AdeI', 'StuI', 'BcuI', 'BspTI', 'SphI', 'BseLI', 'AasI', 'PvuII', 'EheI', 'FokI', 'Hin1I', 'Alw26I', 'Cfr10I', 'SpeI', 'SgrDI', 'Eco31I', 'HinfI', 'Eam1105I', 'BsuRI', 'XmiI', 'Eam1104I', 'Ecl136II', 'XmaJI', 'SfaAI', 'HphI', 'Psp1406I', 'Csp6I', 'EcoO109I', 'BseMII', 'HindIII', 'EcoRV', 'AatII', 'BfuI', 'EcoRI', 'TauI', 'XhoI', 'Bsp143I', 'BspPI', 'MnlI', 'PfeI', 'Bpu1102I', 'MunI', 'Tru1I', 'BspLI', 'Eco105I', 'NsbI', 'PstI', 'LguI', 'VspI', 'Alw44I', 'SfiI', 'BpiI', 'XceI', 'BseMI', 'HaeIII', 'Kpn2I', 'Cfr42I', 'SatI', 'AccI', 'SspI', 'Eco32I', 'KflI', 'BseDI', 'KspAI', 'Eco81I', 'BauI', 'AanI', 'ApaI', 'SaqAI', 'EcoT22I', 'Eco88I', 'Eco57I', 'Eco147I', 'PacI', 'PdmI', 'BalI', 'CsiI', 'AfaI', 'Bsp120I', 'NotI', 'MbiI', 'BamHI', 'BfoI', 'TatI', 'HpaI', 'HpyF3I', 'Pfl23II', 'Bsh1285I', 'HhaI', 'NmuCI', 'BseNI', 'PagI', 'PdiI'],
     )
 suppliers['B'] = _temp()
+
 
 def _temp():
     return (
         'Minotech Biotechnology',
-        ['SgrBI', 'BclI', 'BglI', 'SalI', 'PspPI', 'SnaBI', 'BstEII', 'NcoI', 'BshFI', 'AsuII', 'BssAI', 'BseAI', 'TaqI', 'KpnI', 'BglII', 'NaeI', 'BseBI', 'NruI', 'SlaI', 'RsaI', 'BsiSI', 'XbaI', 'Sau3AI', 'MboI', 'AluI', 'SseBI', 'SmaI', 'NheI', 'SphI', 'PvuII', 'ApaLI', 'SstI', 'HinfI', 'MspCI', 'EcoRV', 'EcoRI', 'BseCI', 'PstI', 'SfiI', 'SspI', 'CspAI', 'ScaI', 'NotI', 'HindIII', 'BamHI', 'HpaI', 'StyI'],
+        ['SgrBI', 'BclI', 'BglI', 'SalI', 'PspPI', 'ScaI', 'SnaBI', 'BstEII', 'NcoI', 'BshFI', 'AsuII', 'BssAI', 'BseAI', 'TaqI', 'KpnI', 'BglII', 'NaeI', 'BseBI', 'NruI', 'RsaI', 'BsiSI', 'XbaI', 'MboI', 'AluI', 'SlaI', 'SseBI', 'SmaI', 'NheI', 'SstI', 'Sau3AI', 'SphI', 'PvuII', 'ApaLI', 'HinfI', 'MspCI', 'HindIII', 'EcoRV', 'EcoRI', 'BseCI', 'PstI', 'SfiI', 'SspI', 'CspAI', 'NotI', 'BamHI', 'HpaI', 'StyI'],
     )
 suppliers['C'] = _temp()
 
+
 def _temp():
     return (
-        'Stratagene',
-        ['SanDI', 'DpnI', 'SrfI'],
+        'Agilent Technologies',
+        ['DpnI'],
     )
 suppliers['E'] = _temp()
 
-def _temp():
-    return (
-        'Fermentas International Inc.',
-        ['MluI', 'CseI', 'PscI', 'HpaII', 'MreI', 'BclI', 'SacI', 'PauI', 'BglI', 'SalI', 'MspI', 'Bsu15I', 'Mva1269I', 'Bsp68I', 'LweI', 'SmiI', 'PteI', 'BshTI', 'TstI', 'TscAI', 'NcoI', 'PsyI', 'BseJI', 'MauBI', 'Eco24I', 'Eco47III', 'Eco91I', 'DraI', 'BseXI', 'BstXI', 'RruI', 'Esp3I', 'BseSI', 'Cfr9I', 'AarI', 'RseI', 'PvuI', 'BspOI', 'DpnI', 'Hin6I', 'Van91I', 'Bst1107I', 'Bme1390I', 'BveI', 'Psp5II', 'TaqI', 'Eco52I', 'BfiI', 'KpnI', 'Kpn2I', 'SspDI', 'SsiI', 'MlsI', 'NdeI', 'PpiI', 'Cfr13I', 'MboII', 'SdaI', 'BmsI', 'BglII', 'AjuI', 'AloI', 'FspBI', 'SchI', 'PfoI', 'Bpu10I', 'BshNI', 'Acc65I', 'XapI', 'TaaI', 'Bsp1407I', 'MvaI', 'PasI', 'Hin1II', 'Bsh1236I', 'MssI', 'CpoI', 'Eco130I', 'BdaI', 'TaiI', 'FspAI', 'BfmI', 'Eco47I', 'BoxI', 'RsaI', 'HincII', 'HpyF10VI', 'XbaI', 'Lsp1109I', 'Cfr10I', 'AjiI', 'Bsp119I', 'MboI', 'AluI', 'SduI', 'SgsI', 'BseGI', 'Eco72I', 'BcnI', 'Mph1103I', 'EcoRII', 'Alw21I', 'XagI', 'Hpy8I', 'PsuI', 'PaeI', 'SmaI', 'NheI', 'BplI', 'Ppu21I', 'SmoI', 'FaqI', 'AdeI', 'BcuI', 'BspTI', 'GsuI', 'BseLI', 'AasI', 'PvuII', 'EheI', 'Hin1I', 'Alw26I', 'SgrDI', 'Eco31I', 'HinfI', 'Eam1105I', 'BsuRI', 'TsoI', 'XmiI', 'Eam1104I', 'Ecl136II', 'XmaJI', 'SfaAI', 'HphI', 'Psp1406I', 'Csp6I', 'EcoO109I', 'BseMII', 'AatII', 'BfuI', 'EcoRI', 'TauI', 'XhoI', 'Bsp143I', 'BspPI', 'CfrI', 'MnlI', 'PfeI', 'CaiI', 'Bpu1102I', 'MunI', 'Tru1I', 'BspLI', 'SmuI', 'Eco105I', 'NsbI', 'PstI', 'LguI', 'VspI', 'Alw44I', 'SfiI', 'BpiI', 'XceI', 'BseMI', 'Eco57MI', 'Cfr42I', 'SatI', 'Hin4I', 'SspI', 'Eco32I', 'KflI', 'BseDI', 'KspAI', 'Eco81I', 'BauI', 'AanI', 'ApaI', 'SaqAI', 'Eco88I', 'ScaI', 'AlfI', 'Eco57I', 'Eco147I', 'OliI', 'PacI', 'PdmI', 'CsiI', 'Bsp120I', 'NotI', 'MbiI', 'HindIII', 'BamHI', 'BfoI', 'TatI', 'HpyF3I', 'Pfl23II', 'Bsh1285I', 'HhaI', 'NmuCI', 'BseNI', 'PagI', 'PdiI'],
-    )
-suppliers['F'] = _temp()
-
-def _temp():
-    return (
-        'American Allied Biochemical, Inc.',
-        ['MluI', 'SacI', 'BglI', 'SalI', 'MspI', 'BstEII', 'NcoI', 'ClaI', 'BstXI', 'KpnI', 'BglII', 'SacII', 'RsaI', 'HincII', 'XbaI', 'Sau3AI', 'AluI', 'SmaI', 'SphI', 'PvuII', 'SpeI', 'HinfI', 'EcoRV', 'EcoRI', 'XhoI', 'PstI', 'HaeIII', 'NsiI', 'NotI', 'HindIII', 'BamHI', 'HpaI'],
-    )
-suppliers['H'] = _temp()
 
 def _temp():
     return (
         'SibEnzyme Ltd.',
-        ['AsuNHI', 'AgsI', 'BstSFI', 'MluI', 'CciI', 'BstHHI', 'HpaII', 'AhlI', 'PspN4I', 'BglI', 'SalI', 'MspI', 'VneI', 'BstH2I', 'BisI', 'BmtI', 'PspXI', 'AsiGI', 'CciNI', 'Sfr274I', 'SmiI', 'Ksp22I', 'BssT1I', 'MspA1I', 'Bsp19I', 'Bse1I', 'AspS9I', 'AbsI', 'FauNDI', 'BstMWI', 'AclWI', 'DraI', 'Bst2UI', 'AluBI', 'PsrI', 'BstACI', 'BstXI', 'BstDEI', 'GluI', 'BspACI', 'AcoI', 'XmaI', 'BstF5I', 'BstMBI', 'BstENI', 'BssECI', 'FalI', 'EgeI', 'Ama87I', 'BstDSI', 'BstV2I', 'AjnI', 'AspLEI', 'PalAI', 'Zsp2I', 'DseDI', 'BstAUI', 'Bpu14I', 'FaeI', 'TaqI', 'KpnI', 'BstSNI', 'AclI', 'MboII', 'BglII', 'PspPPI', 'SetI', 'AcsI', 'BstNSI', 'BseX3I', 'RsaNI', 'Bpu10I', 'Rsr2I', 'Acc65I', 'PspEI', 'Bst2BI', 'NruI', 'Ple19I', 'SmiMI', 'PciI', 'MalI', 'Bse118I', 'BsePI', 'BstMCI', 'Bme18I', 'RsaI', 'BssNAI', 'BstV1I', 'Bsp13I', 'Bst4CI', 'MabI', 'AsuHPI', 'BtrI', 'XbaI', 'ArsI', 'BstC8I', 'Psp124BI', 'GlaI', 'HgaI', 'BstX2I', 'AluI', 'ZraI', 'Bse21I', 'Sfr303I', 'BstSCI', 'Bse3DI', 'Bso31I', 'AccB7I', 'BstKTI', 'AccBSI', 'SmaI', 'AspA2I', 'Bsp1720I', 'Bsc4I', 'SphI', 'Mly113I', 'FriOI', 'PvuII', 'ErhI', 'FokI', 'AsuC2I', 'GsaI', 'HinfI', 'BsuRI', 'PpsI', 'BstPAI', 'HspAI', 'RgaI', 'Fsp4HI', 'Kzo9I', 'Acc36I', 'DraIII', 'Acc16I', 'MspR9I', 'EcoRV', 'PsiI', 'AatII', 'MroXI', 'EcoRI', 'ZrmI', 'BstFNI', 'PspOMI', 'BslFI', 'Bsa29I', 'MnlI', 'SbfI', 'PstI', 'Bse8I', 'FauI', 'VspI', 'PciSI', 'SfiI', 'Bst6I', 'PspLI', 'BspFNI', 'Msp20I', 'Bbv12I', 'HaeIII', 'BstAPI', 'SspI', 'AfeI', 'Tth111I', 'BstMAI', 'BstSLI', 'ApaI', 'BlsI', 'FblI', 'BmuI', 'BarI', 'PctI', 'FaiI', 'BpmI', 'AcuI', 'AccB1I', 'PceI', 'Sse9I', 'Tru9I', 'MhlI', 'BstBAI', 'DriI', 'MroNI', 'HindIII', 'EcoICRI', 'FatI', 'BamHI', 'Psp6I', 'BstAFI', 'SfaNI', 'RigI', 'HpaI', 'PspCI', 'HindII'],
+        ['AsuNHI', 'AgsI', 'MluI', 'CciI', 'BstHHI', 'HpaII', 'AhlI', 'KroI', 'PspN4I', 'BglI', 'SalI', 'PspEI', 'MspI', 'VneI', 'BstH2I', 'BisI', 'BmtI', 'PspXI', 'AsiGI', 'CciNI', 'Sfr274I', 'SmiI', 'Ksp22I', 'BstSFI', 'BssT1I', 'MspA1I', 'Bsp19I', 'Bse1I', 'AspS9I', 'AbsI', 'FauNDI', 'BstMWI', 'LmnI', 'AclWI', 'DraI', 'Bst2UI', 'AluBI', 'PsrI', 'BstACI', 'BstXI', 'BstDEI', 'GluI', 'AcoI', 'XmaI', 'BstF5I', 'BstMBI', 'BstENI', 'BssECI', 'FalI', 'EgeI', 'Ama87I', 'BstDSI', 'BstV2I', 'AjnI', 'Bsc4I', 'PalAI', 'Zsp2I', 'DseDI', 'BstAUI', 'Bpu14I', 'FaeI', 'TaqI', 'KpnI', 'BstSNI', 'AclI', 'MboII', 'BglII', 'PspPPI', 'SetI', 'AcsI', 'BstNSI', 'BseX3I', 'RsaNI', 'Bpu10I', 'Rsr2I', 'Acc65I', 'Bst2BI', 'NruI', 'Ple19I', 'TseFI', 'SspMI', 'PciI', 'MalI', 'Bse118I', 'BsuI', 'BsePI', 'BstMCI', 'Bme18I', 'RsaI', 'BssNAI', 'BstV1I', 'Bsp13I', 'Bst4CI', 'MabI', 'AsuHPI', 'BtrI', 'XbaI', 'ArsI', 'BstC8I', 'Psp124BI', 'GlaI', 'HgaI', 'BstX2I', 'AluI', 'ZraI', 'Bse21I', 'Sfr303I', 'BstSCI', 'Bse3DI', 'Bso31I', 'AccB7I', 'BstKTI', 'AccBSI', 'SmaI', 'SmiMI', 'BspACI', 'AspA2I', 'Bsp1720I', 'AspLEI', 'SphI', 'Mly113I', 'FriOI', 'PvuII', 'MfeI', 'ErhI', 'FokI', 'AsuC2I', 'GsaI', 'HinfI', 'BsuRI', 'PpsI', 'BstPAI', 'HspAI', 'RgaI', 'Fsp4HI', 'Kzo9I', 'Acc36I', 'DraIII', 'Acc16I', 'MspR9I', 'HindIII', 'EcoRV', 'PsiI', 'AatII', 'MroXI', 'EcoRI', 'ZrmI', 'BstFNI', 'BslFI', 'Bsa29I', 'MnlI', 'SbfI', 'PstI', 'Bse8I', 'FauI', 'VspI', 'PciSI', 'SfiI', 'Bst6I', 'BspFNI', 'Bbv12I', 'Tth111I', 'HaeIII', 'BstAPI', 'SspI', 'AfeI', 'PspOMI', 'BstMAI', 'BstSLI', 'ApaI', 'BlsI', 'Mox20I', 'FblI', 'BmuI', 'PcsI', 'BarI', 'PctI', 'FaiI', 'BpmI', 'PstNI', 'AcuI', 'AccB1I', 'PceI', 'PkrI', 'HpySE526I', 'Sse9I', 'Tru9I', 'MhlI', 'BstBAI', 'MteI', 'DriI', 'MroNI', 'AoxI', 'EcoICRI', 'FatI', 'BamHI', 'Psp6I', 'BstAFI', 'SfaNI', 'RigI', 'HpaI', 'PspCI', 'HindII', 'PspLI', 'AsiSI'],
     )
 suppliers['I'] = _temp()
+
 
 def _temp():
     return (
         'Nippon Gene Co., Ltd.',
-        ['BssHII', 'AxyI', 'MluI', 'BclI', 'SacI', 'EcoT38I', 'BglI', 'SalI', 'MspI', 'BstEII', 'NcoI', 'DraI', 'BstXI', 'SwaI', 'AvaI', 'TaqI', 'AseI', 'KpnI', 'Sau96I', 'HaeII', 'NdeI', 'MboII', 'AflII', 'BglII', 'AccII', 'SacII', 'NruI', 'NarI', 'RsaI', 'HincII', 'XbaI', 'Sau3AI', 'AluI', 'ScrFI', 'EcoRII', 'SmaI', 'NheI', 'StuI', 'SphI', 'NciI', 'FspI', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'EcoO109I', 'EcoRV', 'EcoRI', 'XhoI', 'Bsp1286I', 'AccIII', 'PstI', 'BsmI', 'Alw44I', 'SfiI', 'HaeIII', 'NdeII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'ScaI', 'AgeI', 'NspV', 'BalI', 'NotI', 'HindIII', 'AcyI', 'BamHI', 'AvaII', 'HpaI', 'StyI', 'HhaI'],
+        ['BssHII', 'AxyI', 'MluI', 'BclI', 'SacI', 'EcoT38I', 'BglI', 'SalI', 'MspI', 'ScaI', 'BstEII', 'NcoI', 'DraI', 'BstXI', 'SwaI', 'AvaI', 'TaqI', 'AseI', 'KpnI', 'Sau96I', 'HaeII', 'NdeI', 'MboII', 'AflII', 'BglII', 'AccII', 'SacII', 'NruI', 'NarI', 'RsaI', 'HincII', 'XbaI', 'AluI', 'ScrFI', 'EcoRII', 'SmaI', 'NheI', 'StuI', 'Sau3AI', 'SphI', 'FspI', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'NciI', 'EcoO109I', 'HindIII', 'EcoRV', 'EcoRI', 'XhoI', 'Bsp1286I', 'AccIII', 'AvaII', 'PstI', 'BsmI', 'Alw44I', 'SfiI', 'HaeIII', 'NdeII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'AgeI', 'NspV', 'BalI', 'NotI', 'AcyI', 'BamHI', 'HpaI', 'StyI', 'HhaI'],
     )
 suppliers['J'] = _temp()
+
 
 def _temp():
     return (
         'Takara Bio Inc.',
-        ['BssHII', 'MluI', 'BspT107I', 'SacI', 'XspI', 'BglI', 'SalI', 'MspI', 'BstPI', 'BanII', 'PmaCI', 'SnaBI', 'SmiI', 'BmgT120I', 'NcoI', 'ClaI', 'DraI', 'BstXI', 'PshAI', 'PvuI', 'Van91I', 'Bst1107I', 'TaqI', 'EaeI', 'Eco52I', 'BspT104I', 'KpnI', 'HaeII', 'EcoO65I', 'NdeI', 'HapII', 'MboII', 'AflII', 'EcoT14I', 'BglII', 'NaeI', 'AccII', 'SacII', 'BmeT110I', 'Aor51HI', 'Bsp1407I', 'NruI', 'MvaI', 'Sse8387I', 'CpoI', 'HincII', 'XbaI', 'Sau3AI', 'Cfr10I', 'MboI', 'AluI', 'BcnI', 'SmaI', 'NheI', 'StuI', 'SphI', 'PvuII', 'MflI', 'FokI', 'Hin1I', 'ApaLI', 'SpeI', 'HinfI', 'Eam1105I', 'Psp1406I', 'EcoO109I', 'BbeI', 'EcoRV', 'AatII', 'EcoRI', 'XhoI', 'VpaK11BI', 'Bsp1286I', 'AccIII', 'Bpu1102I', 'MunI', 'Aor13HI', 'NsbI', 'PstI', 'SfiI', 'BlnI', 'HaeIII', 'AccI', 'SspI', 'Tth111I', 'FbaI', 'Eco81I', 'ApaI', 'PshBI', 'EcoT22I', 'ScaI', 'BalI', 'AfaI', 'NotI', 'HindIII', 'BamHI', 'AvaII', 'HpaI', 'HhaI'],
+        ['BssHII', 'PshBI', 'MluI', 'BspT107I', 'SacI', 'XspI', 'BglI', 'SalI', 'MspI', 'BstPI', 'ScaI', 'BanII', 'PmaCI', 'SnaBI', 'SmiI', 'BmgT120I', 'NcoI', 'ClaI', 'DraI', 'BstXI', 'PshAI', 'PvuI', 'DpnI', 'Van91I', 'Bst1107I', 'TaqI', 'EaeI', 'Eco52I', 'BspT104I', 'KpnI', 'HaeII', 'EcoO65I', 'NdeI', 'HapII', 'MboII', 'AflII', 'EcoT14I', 'BglII', 'NaeI', 'AccII', 'SacII', 'BmeT110I', 'Aor51HI', 'Bsp1407I', 'NruI', 'Sse8387I', 'CpoI', 'HincII', 'XbaI', 'MboI', 'AluI', 'BcnI', 'SmaI', 'NheI', 'StuI', 'Sau3AI', 'SphI', 'PvuII', 'MflI', 'FokI', 'Hin1I', 'ApaLI', 'Cfr10I', 'SpeI', 'HinfI', 'Eam1105I', 'Psp1406I', 'EcoO109I', 'HindIII', 'EcoRV', 'AatII', 'EcoRI', 'XhoI', 'VpaK11BI', 'Bsp1286I', 'AccIII', 'Bpu1102I', 'MunI', 'Aor13HI', 'NsbI', 'PstI', 'SfiI', 'BlnI', 'Tth111I', 'HaeIII', 'BciT130I', 'AccI', 'SspI', 'FbaI', 'Eco81I', 'ApaI', 'EcoT22I', 'BalI', 'DdeI', 'AfaI', 'NotI', 'BamHI', 'HpaI', 'HhaI'],
     )
 suppliers['K'] = _temp()
+
 
 def _temp():
     return (
         'Roche Applied Science',
-        ['BssHII', 'MluI', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'Asp718I', 'MspI', 'SnaBI', 'XmaCI', 'BstEII', 'NcoI', 'ClaI', 'DraII', 'Eco47III', 'DraI', 'BstXI', 'SwaI', 'AvaI', 'PvuI', 'BseAI', 'DpnI', 'Van91I', 'Bst1107I', 'BsiWI', 'TaqI', 'SexAI', 'KpnI', 'NdeI', 'PinAI', 'BglII', 'NaeI', 'MaeI', 'AspI', 'NruI', 'MvaI', 'BpuAI', 'NarI', 'RsaI', 'MaeII', 'AflIII', 'AspEI', 'XbaI', 'Sau3AI', 'MvnI', 'AluI', 'RsrII', 'EcoRII', 'CfoI', 'SmaI', 'NheI', 'StuI', 'BbrPI', 'SphI', 'MaeIII', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'DraIII', 'MluNI', 'EcoRV', 'AatII', 'EcoRI', 'XhoI', 'MunI', 'EclXI', 'PstI', 'BsmI', 'SfiI', 'BlnI', 'HaeIII', 'NdeII', 'AccI', 'SspI', 'SgrAI', 'NsiI', 'ItaI', 'ApaI', 'SfuI', 'ScaI', 'BfrI', 'NspI', 'KspI', 'Tru9I', 'DdeI', 'NotI', 'MroI', 'Asp700I', 'HindIII', 'AcyI', 'RcaI', 'BamHI', 'AviII', 'AvaII', 'CelII', 'HpaI', 'StyI', 'HindII'],
+        ['BssHII', 'MluI', 'BclI', 'SacI', 'SalI', 'Asp718I', 'ScaI', 'SnaBI', 'NcoI', 'ClaI', 'Eco47III', 'DraI', 'BstXI', 'SwaI', 'PvuI', 'DpnI', 'TaqI', 'SexAI', 'KpnI', 'NdeI', 'BglII', 'MaeI', 'NruI', 'MvaI', 'NarI', 'RsaI', 'MaeII', 'AflIII', 'XbaI', 'MvnI', 'AluI', 'CfoI', 'SmaI', 'NheI', 'StuI', 'Sau3AI', 'BbrPI', 'SphI', 'MaeIII', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'DraIII', 'MluNI', 'HindIII', 'EcoRV', 'AatII', 'EcoRI', 'XhoI', 'MunI', 'PstI', 'BsmI', 'SfiI', 'BlnI', 'HaeIII', 'NdeII', 'AccI', 'NsiI', 'ApaI', 'SfuI', 'BfrI', 'KspI', 'Tru9I', 'DdeI', 'NotI', 'MroI', 'Asp700I', 'BamHI', 'HpaI', 'HindII'],
     )
 suppliers['M'] = _temp()
+
 
 def _temp():
     return (
         'New England Biolabs',
-        ['BssHII', 'EciI', 'BsrFI', 'DpnII', 'AlwI', 'MluI', 'NgoMIV', 'HpaII', 'TspMI', 'BclI', 'MlyI', 'BsaWI', 'SacI', 'MwoI', 'BfaI', 'DrdI', 'BmgBI', 'BglI', 'SalI', 'MspI', 'BanII', 'MslI', 'BmtI', 'PspXI', 'BsaBI', 'SnaBI', 'BstEII', 'TspRI', 'NcoI', 'MspA1I', 'BtgI', 'ClaI', 'BsaI', 'BsrBI', 'AlwNI', 'XmnI', 'DraI', 'Hpy166II', 'Hpy99I', 'StyD4I', 'BstXI', 'PspGI', 'BsiHKAI', 'BlpI', 'PshAI', 'XmaI', 'SwaI', 'AvaI', 'PvuI', 'DpnI', 'CspCI', 'PflFI', 'BpuEI', 'BsiWI', 'TaqI', 'EaeI', 'SexAI', 'BsrI', 'AseI', 'KpnI', 'Sau96I', 'BstNI', 'HaeII', 'AclI', 'ApoI', 'HpyCH4IV', 'NdeI', 'MboII', 'AflII', 'TseI', 'BglII', 'SmlI', 'NaeI', 'Bpu10I', 'SacII', 'Acc65I', 'BspQI', 'AvrII', 'NruI', 'BaeI', 'BtsCI', 'BssKI', 'PciI', 'PhoI', 'BcgI', 'BsaHI', 'SfoI', 'TliI', 'NarI', 'Bsu36I', 'RsaI', 'HincII', 'AflIII', 'BsgI', 'XbaI', 'Sau3AI', 'BfuAI', 'TfiI', 'PmlI', 'BbvI', 'MboI', 'HgaI', 'BanI', 'AluI', 'BaeGI', 'ZraI', 'Hpy188III', 'RsrII', 'BspMI', 'AciI', 'ScrFI', 'MscI', 'BseYI', 'CviQI', 'BmrI', 'Hpy188I', 'SmaI', 'PleI', 'EcoNI', 'NheI', 'BccI', 'BsiEI', 'StuI', 'BspCNI', 'SphI', 'HpyAV', 'NciI', 'FspI', 'CviAII', 'PvuII', 'Eco53kI', 'MfeI', 'BsrDI', 'BssSI', 'FokI', 'ApaLI', 'ApeKI', 'SpeI', 'HinfI', 'BciVI', 'HinP1I', 'BceAI', 'HphI', 'BsmAI', 'DraIII', 'EcoO109I', 'BtsI', 'SapI', 'PpuMI', 'EcoRV', 'PsiI', 'AatII', 'EcoRI', 'BsmFI', 'XhoI', 'Bsp1286I', 'PspOMI', 'MnlI', 'EagI', 'AscI', 'AhdI', 'NlaIII', 'SbfI', 'BsoBI', 'PstI', 'Tsp509I', 'MseI', 'FauI', 'SfcI', 'BspEI', 'BsmI', 'SfiI', 'BstUI', 'BstZ17I', 'KasI', 'HaeIII', 'BsmBI', 'XcmI', 'BstAPI', 'AccI', 'SspI', 'HpyCH4III', 'BsrGI', 'AfeI', 'Tth111I', 'SgrAI', 'NsiI', 'BspHI', 'BstYI', 'PmeI', 'FseI', 'ApaI', 'BseRI', 'MmeI', 'ScaI', 'AgeI', 'BtgZI', 'BpmI', 'EarI', 'CviKI_1', 'AcuI', 'BfuCI', 'NspI', 'PacI', 'BstBI', 'HpyCH4V', 'NlaIV', 'BbsI', 'DdeI', 'NotI', 'BsaXI', 'HindIII', 'FatI', 'BamHI', 'BslI', 'AvaII', 'BspDI', 'PaeR7I', 'SfaNI', 'HpaI', 'BsaJI', 'BbvCI', 'Fnu4HI', 'Cac8I', 'Tsp45I', 'StyI', 'PflMI', 'HhaI', 'AsiSI', 'AleI', 'NmeAIII', 'BsaAI'],
+        ['BssHII', 'EciI', 'BsrFI', 'DpnII', 'AlwI', 'MluI', 'AlwNI', 'NgoMIV', 'HpaII', 'TspMI', 'BclI', 'MlyI', 'BsaWI', 'SacI', 'MwoI', 'BfaI', 'DrdI', 'BmgBI', 'BglI', 'SalI', 'MspI', 'ScaI', 'BanII', 'MslI', 'BmtI', 'PspXI', 'BsaBI', 'SnaBI', 'BstEII', 'TspRI', 'NcoI', 'MspA1I', 'BtgI', 'ClaI', 'BsaI', 'BsrBI', 'XmnI', 'DraI', 'Hpy166II', 'Hpy99I', 'StyD4I', 'BstXI', 'PspGI', 'BsiHKAI', 'BsoBI', 'BlpI', 'PshAI', 'XmaI', 'BtsIMutI', 'SwaI', 'AvaI', 'PvuI', 'DpnI', 'CspCI', 'PflFI', 'BpuEI', 'TaqI', 'EaeI', 'SexAI', 'BsrI', 'AseI', 'KpnI', 'Sau96I', 'BstNI', 'HaeII', 'AclI', 'ApoI', 'HpyCH4IV', 'NdeI', 'MboII', 'AflII', 'TseI', 'BglII', 'SmlI', 'NaeI', 'Bpu10I', 'SacII', 'Acc65I', 'BspQI', 'MseI', 'AvrII', 'NruI', 'BaeI', 'BtsCI', 'PciI', 'BcgI', 'BsaHI', 'SfoI', 'MspJI', 'NarI', 'Bsu36I', 'RsaI', 'HincII', 'AflIII', 'BspCNI', 'BsgI', 'XbaI', 'AbaSI', 'BfuAI', 'TfiI', 'PmlI', 'BbvI', 'MboI', 'HgaI', 'BanI', 'AluI', 'BaeGI', 'ZraI', 'Hpy188III', 'RsrII', 'BspMI', 'MluCI', 'AciI', 'ScrFI', 'MscI', 'BseYI', 'CviQI', 'BmrI', 'Hpy188I', 'SmaI', 'PleI', 'EcoNI', 'NheI', 'BccI', 'FspEI', 'BsiEI', 'StuI', 'Sau3AI', 'BcoDI', 'BsiWI', 'SphI', 'HpyAV', 'FspI', 'CviAII', 'PvuII', 'Eco53kI', 'MfeI', 'BsrDI', 'BssSI', 'FokI', 'ApaLI', 'ApeKI', 'SpeI', 'HinfI', 'BciVI', 'HinP1I', 'NciI', 'BceAI', 'HphI', 'BsmAI', 'DraIII', 'EcoO109I', 'HindIII', 'BtsI', 'SapI', 'PpuMI', 'EcoRV', 'PsiI', 'AatII', 'EcoRI', 'BsmFI', 'XhoI', 'Bsp1286I', 'PluTI', 'MnlI', 'AvaII', 'EagI', 'AscI', 'AhdI', 'NlaIII', 'SbfI', 'PstI', 'FauI', 'SfcI', 'BspEI', 'BsmI', 'SfiI', 'BstUI', 'BstZ17I', 'KasI', 'Tth111I', 'HaeIII', 'BsmBI', 'XcmI', 'LpnPI', 'BstAPI', 'AccI', 'SspI', 'HpyCH4III', 'BsrGI', 'AfeI', 'SrfI', 'SgrAI', 'NsiI', 'BspHI', 'BstYI', 'PspOMI', 'PmeI', 'FseI', 'ApaI', 'BseRI', 'MmeI', 'AgeI', 'BtgZI', 'BpmI', 'EarI', 'CviKI_1', 'AcuI', 'BfuCI', 'NspI', 'PacI', 'BstBI', 'HpyCH4V', 'NlaIV', 'BbsI', 'DdeI', 'NotI', 'BsaXI', 'FatI', 'BamHI', 'BslI', 'BspDI', 'PaeR7I', 'SfaNI', 'HpaI', 'BsaJI', 'BbvCI', 'Fnu4HI', 'Cac8I', 'Tsp45I', 'StyI', 'PflMI', 'HhaI', 'AsiSI', 'AleI', 'NmeAIII', 'BsaAI'],
     )
 suppliers['N'] = _temp()
+
 
 def _temp():
     return (
         'Toyobo Biochemicals',
-        ['BssHII', 'MluI', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'MspI', 'BanII', 'BstEII', 'NcoI', 'Eco47III', 'DraI', 'BstXI', 'Cfr9I', 'AvaI', 'PvuI', 'DpnI', 'BsiWI', 'TaqI', 'Eco52I', 'AseI', 'KpnI', 'Sau96I', 'HaeII', 'Cfr13I', 'MboII', 'TspEI', 'BglII', 'NaeI', 'SacII', 'NruI', 'MvaI', 'CspI', 'NarI', 'Eco47I', 'RsaI', 'HincII', 'XbaI', 'Sau3AI', 'Cfr10I', 'BanIII', 'BanI', 'AluI', 'ScrFI', 'EcoRII', 'MscI', 'Csp45I', 'SmaI', 'NheI', 'BbrPI', 'SphI', 'NciI', 'FspI', 'PvuII', 'EheI', 'Hin1I', 'SpeI', 'HinfI', 'PpuMI', 'EcoRV', 'PsiI', 'AatII', 'EcoRI', 'AatI', 'XhoI', 'SbfI', 'Eco105I', 'PstI', 'BsmI', 'Alw44I', 'SfiI', 'HaeIII', 'AccI', 'SspI', 'SrfI', 'Eco81I', 'ApaI', 'EcoT22I', 'ScaI', 'NspV', 'BfrI', 'PacI', 'DdeI', 'NotI', 'MroI', 'HindIII', 'BamHI', 'HpaI', 'HhaI'],
+        ['MluI', 'BclI', 'SacI', 'BglI', 'SalI', 'ScaI', 'NcoI', 'PvuI', 'DpnI', 'KpnI', 'BglII', 'SacII', 'HincII', 'AluI', 'MscI', 'SmaI', 'NheI', 'SphI', 'PvuII', 'SpeI', 'HinfI', 'HindIII', 'EcoRV', 'EcoRI', 'XhoI', 'PstI', 'SfiI', 'HaeIII', 'PacI', 'DdeI', 'NotI', 'MroI', 'BamHI'],
     )
 suppliers['O'] = _temp()
+
 
 def _temp():
     return (
         'Molecular Biology Resources - CHIMERx',
-        ['BssHII', 'MluI', 'HpaII', 'BspTNI', 'SacI', 'BglI', 'SalI', 'MspI', 'BanII', 'NcoI', 'CviJI', 'DraI', 'BstXI', 'AcvI', 'PvuI', 'TaqI', 'SinI', 'KpnI', 'NdeI', 'PinAI', 'MboII', 'BglII', 'SacII', 'NruI', 'NarI', 'TaqII', 'RsaI', 'HincII', 'XbaI', 'MboI', 'AluI', 'RsrII', 'SmaI', 'StuI', 'SphI', 'FokI', 'SpeI', 'HinfI', 'BsiHKCI', 'EcoRV', 'EcoRI', 'XhoI', 'MnlI', 'PstI', 'SfiI', 'HaeIII', 'SspI', 'Tth111I', 'ApaI', 'ScaI', 'NotI', 'HindIII', 'BamHI', 'HpaI'],
+        ['BssHII', 'MluI', 'HpaII', 'SacI', 'BglI', 'SalI', 'MspI', 'ScaI', 'NcoI', 'ClaI', 'CviJI', 'DraI', 'BstXI', 'AcvI', 'AvaI', 'PvuI', 'DpnI', 'TaqI', 'KpnI', 'NdeI', 'MboII', 'BglII', 'SacII', 'NruI', 'NarI', 'TaqII', 'RsaI', 'HincII', 'XbaI', 'TspGWI', 'MboI', 'AluI', 'RsrII', 'SmaI', 'NheI', 'StuI', 'SphI', 'PvuII', 'SpeI', 'HinfI', 'BsiHKCI', 'HindIII', 'EcoRV', 'EcoRI', 'XhoI', 'MnlI', 'PinAI', 'PstI', 'SfiI', 'Tth111I', 'HaeIII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'TspDTI', 'BalI', 'DdeI', 'NotI', 'BamHI', 'HpaI', 'HhaI'],
     )
 suppliers['Q'] = _temp()
+
 
 def _temp():
     return (
         'Promega Corporation',
-        ['BssHII', 'MluI', 'NgoMIV', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'BstOI', 'MspI', 'BanII', 'SnaBI', 'BstEII', 'NcoI', 'MspA1I', 'ClaI', 'XmnI', 'Eco47III', 'DraI', 'BstXI', 'XmaI', 'AvaI', 'PvuI', 'DpnI', 'BbuI', 'TaqI', 'SinI', 'KpnI', 'HaeII', 'NdeI', 'MboII', 'BglII', 'NaeI', 'SacII', 'Acc65I', 'NruI', 'CspI', 'NarI', 'Bsu36I', 'Bst98I', 'RsaI', 'HincII', 'XbaI', 'BsrSI', 'Sau3AI', 'MboI', 'BanI', 'AluI', 'CfoI', 'Csp45I', 'AccB7I', 'SmaI', 'NheI', 'XhoII', 'StuI', 'SphI', 'NciI', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'SgfI', 'EcoRV', 'AatII', 'EcoRI', 'XhoI', 'Bsp1286I', 'AccIII', 'PstI', 'VspI', 'BstZI', 'Alw44I', 'SfiI', 'Hsp92I', 'HaeIII', 'NdeII', 'AccI', 'SspI', 'Tth111I', 'NsiI', 'ApaI', 'ScaI', 'AgeI', 'BsaMI', 'BalI', 'Tru9I', 'Hsp92II', 'DdeI', 'NotI', 'HindIII', 'EcoICRI', 'BamHI', 'AvaII', 'HpaI', 'StyI', 'HhaI'],
+        ['BssHII', 'MluI', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'MspI', 'ScaI', 'SnaBI', 'BstEII', 'NcoI', 'MspA1I', 'ClaI', 'XmnI', 'Eco47III', 'DraI', 'BstXI', 'XmaI', 'PvuI', 'DpnI', 'TaqI', 'KpnI', 'HaeII', 'NdeI', 'MboII', 'BglII', 'SacII', 'NruI', 'CspI', 'NarI', 'RsaI', 'Hsp92II', 'HincII', 'XbaI', 'MboI', 'BanI', 'AluI', 'CfoI', 'SmaI', 'NheI', 'StuI', 'Sau3AI', 'SphI', 'PvuII', 'SpeI', 'HinfI', 'NciI', 'HindIII', 'SgfI', 'EcoRV', 'EcoRI', 'XhoI', 'AccIII', 'AvaII', 'PstI', 'VspI', 'BstZI', 'SfiI', 'Hsp92I', 'HaeIII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'AgeI', 'BalI', 'Tru9I', 'DdeI', 'NotI', 'EcoICRI', 'BamHI', 'HpaI', 'HhaI'],
     )
 suppliers['R'] = _temp()
+
 
 def _temp():
     return (
         'Sigma Chemical Corporation',
-        ['BssHII', 'MluI', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'MspI', 'BstEII', 'NcoI', 'ClaI', 'DraI', 'SwaI', 'AvaI', 'PvuI', 'DpnI', 'TaqI', 'KpnI', 'NdeI', 'BglII', 'MvaI', 'RsaI', 'XbaI', 'Sau3AI', 'AluI', 'ScrFI', 'EcoRII', 'CfoI', 'SmaI', 'NheI', 'StuI', 'SphI', 'PvuII', 'SpeI', 'MluNI', 'EcoRV', 'EcoRI', 'XhoI', 'EclXI', 'PstI', 'BsmI', 'SfiI', 'BlnI', 'HaeIII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'ScaI', 'KspI', 'DdeI', 'NotI', 'HindIII', 'BamHI', 'AvaII', 'HpaI', 'StyI', 'HindII'],
+        ['HpaII', 'BclI', 'SacI', 'SalI', 'MspI', 'ScaI', 'BstEII', 'NcoI', 'ClaI', 'DraI', 'PvuI', 'DpnI', 'TaqI', 'KpnI', 'NdeI', 'BglII', 'MvaI', 'RsaI', 'XbaI', 'AluI', 'CfoI', 'SmaI', 'NheI', 'Sau3AI', 'SphI', 'PvuII', 'SpeI', 'HindIII', 'EcoRV', 'EcoRI', 'XhoI', 'EclXI', 'PstI', 'BsmI', 'SfiI', 'BlnI', 'HaeIII', 'AccI', 'NsiI', 'ApaI', 'KspI', 'DdeI', 'NotI', 'BamHI', 'HpaI'],
     )
 suppliers['S'] = _temp()
 
-def _temp():
-    return (
-        'Bangalore Genei',
-        ['MluI', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'MspI', 'BstEII', 'NcoI', 'ClaI', 'XmnI', 'DraI', 'XmaI', 'AvaI', 'PvuI', 'AssI', 'TaqI', 'KpnI', 'Sau96I', 'BglII', 'NaeI', 'NruI', 'NarI', 'HincII', 'XbaI', 'Sau3AI', 'StrI', 'MboI', 'BanI', 'AluI', 'SmaI', 'BasI', 'NheI', 'StuI', 'PvuII', 'ApaLI', 'SpeI', 'HinfI', 'MvrI', 'EcoRV', 'EcoRI', 'XhoI', 'PstI', 'SfiI', 'HaeIII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'NotI', 'HindIII', 'BamHI', 'HpaI', 'HhaI'],
-    )
-suppliers['U'] = _temp()
 
 def _temp():
     return (
         'Vivantis Technologies',
-        ['BssMI', 'AsuNHI', 'MluI', 'BstHHI', 'HpaII', 'AhlI', 'BglI', 'SalI', 'MspI', 'VneI', 'BstH2I', 'BmtI', 'AsiGI', 'CciNI', 'Sfr274I', 'SmiI', 'Ksp22I', 'BssT1I', 'MspA1I', 'Bsp19I', 'Bse1I', 'AspS9I', 'BmcAI', 'FauNDI', 'DraI', 'Bst2UI', 'Vha464I', 'BstXI', 'BstDEI', 'XmaI', 'BstF5I', 'BpvUI', 'BstMBI', 'BstENI', 'Ama87I', 'BstDSI', 'BstV2I', 'AspLEI', 'Zsp2I', 'DseDI', 'BstAUI', 'Bpu14I', 'TaqI', 'KpnI', 'BstSNI', 'AclI', 'MboII', 'BmrFI', 'BglII', 'AcsI', 'BstNSI', 'BmeRI', 'BseX3I', 'Bpu10I', 'Rsr2I', 'Acc65I', 'BtuMI', 'PspEI', 'Bst2BI', 'SmiMI', 'Bse118I', 'BsnI', 'BmiI', 'BsePI', 'BstMCI', 'Bme18I', 'RsaI', 'BssNAI', 'Bsp13I', 'Bst4CI', 'AsuHPI', 'BtrI', 'XbaI', 'Psp124BI', 'BstX2I', 'AluI', 'ZraI', 'Bse21I', 'Sfr303I', 'BpuMI', 'Bse3DI', 'Bso31I', 'AccB7I', 'AccBSI', 'SmaI', 'AspA2I', 'Bsp1720I', 'SphI', 'FriOI', 'PvuII', 'ErhI', 'BshVI', 'FokI', 'HinfI', 'BstPAI', 'HspAI', 'DraIII', 'Acc16I', 'EcoRV', 'AatII', 'MroXI', 'EcoRI', 'DinI', 'BstFNI', 'AfiI', 'PspOMI', 'MnlI', 'SbfI', 'PstI', 'Bse8I', 'VspI', 'SfiI', 'Bst6I', 'Msp20I', 'Bbv12I', 'SspI', 'Tth111I', 'BstMAI', 'ApaI', 'FblI', 'PctI', 'AccB1I', 'BssNI', 'PceI', 'Sse9I', 'Tru9I', 'MhlI', 'BstBAI', 'MroNI', 'HindIII', 'EcoICRI', 'BamHI', 'SfaNI', 'HpaI', 'PspCI', 'HindII'],
+        ['BssMI', 'AsuNHI', 'MluI', 'BstHHI', 'HpaII', 'AhlI', 'BglI', 'SalI', 'PspEI', 'MspI', 'VneI', 'BstH2I', 'BmtI', 'AsiGI', 'CciNI', 'Sfr274I', 'SmiI', 'Ksp22I', 'BssT1I', 'MspA1I', 'Bsp19I', 'Bse1I', 'AspS9I', 'BmcAI', 'FauNDI', 'DraI', 'Bst2UI', 'Vha464I', 'BstXI', 'BstDEI', 'XmaI', 'BstF5I', 'BstMBI', 'BstENI', 'Ama87I', 'BstDSI', 'BstV2I', 'Zsp2I', 'DseDI', 'BstAUI', 'Bpu14I', 'TaqI', 'KpnI', 'BstSNI', 'AclI', 'MboII', 'BmrFI', 'BglII', 'AcsI', 'BstNSI', 'BmeRI', 'BseX3I', 'Bpu10I', 'Rsr2I', 'Acc65I', 'BtuMI', 'Bse118I', 'BsnI', 'BmiI', 'BsePI', 'BstMCI', 'Bme18I', 'RsaI', 'BssNAI', 'Bsp13I', 'Bst4CI', 'AsuHPI', 'XbaI', 'Psp124BI', 'BstX2I', 'AluI', 'ZraI', 'Bse21I', 'Sfr303I', 'BpuMI', 'Bse3DI', 'Bso31I', 'AccB7I', 'AccBSI', 'SmaI', 'SmiMI', 'AspA2I', 'Bsp1720I', 'AspLEI', 'SphI', 'FriOI', 'PvuII', 'BshVI', 'FokI', 'HinfI', 'BstPAI', 'HspAI', 'DraIII', 'Acc16I', 'HindIII', 'EcoRV', 'AatII', 'MroXI', 'EcoRI', 'DinI', 'BstFNI', 'AfiI', 'MnlI', 'SbfI', 'PstI', 'Bse8I', 'VspI', 'SfiI', 'Bst6I', 'Msp20I', 'Bbv12I', 'Tth111I', 'SspI', 'PspOMI', 'BstMAI', 'ApaI', 'FblI', 'PctI', 'AccB1I', 'BssNI', 'PceI', 'Sse9I', 'Tru9I', 'MhlI', 'BstBAI', 'MroNI', 'EcoICRI', 'BamHI', 'SfaNI', 'HpaI', 'PspCI', 'HindII'],
     )
 suppliers['V'] = _temp()
 
-def _temp():
-    return (
-        'MP Biomedicals',
-        ['MluI', 'HpaII', 'BclI', 'SacI', 'BglI', 'SalI', 'MspI', 'BanII', 'BstEII', 'NcoI', 'DraII', 'XmnI', 'Eco47III', 'DraI', 'BstXI', 'SwaI', 'AvaI', 'PvuI', 'DpnI', 'TaqI', 'SinI', 'KpnI', 'Sau96I', 'HaeII', 'NdeI', 'MboII', 'BglII', 'SacII', 'Acc65I', 'BspXI', 'NruI', 'MvaI', 'NarI', 'RsaI', 'HincII', 'AflIII', 'XbaI', 'Sau3AI', 'MboI', 'AluI', 'SmaI', 'NheI', 'XhoII', 'SphI', 'NciI', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'DraIII', 'EcoRV', 'EcoRI', 'XhoI', 'MnlI', 'AccIII', 'EagI', 'AscI', 'NlaIII', 'PstI', 'BsmI', 'SfiI', 'HaeIII', 'NdeII', 'AccI', 'SspI', 'Tth111I', 'NsiI', 'PmeI', 'ApaI', 'ScaI', 'PacI', 'NlaIV', 'Tru9I', 'DdeI', 'NotI', 'HindIII', 'BamHI', 'BslI', 'AvaII', 'HpaI', 'HhaI'],
-    )
-suppliers['W'] = _temp()
 
 def _temp():
     return (
         'EURx Ltd.',
-        ['BssHII', 'MluI', 'HpaII', 'BspTNI', 'SacI', 'BglI', 'SalI', 'MspI', 'BanII', 'NcoI', 'CviJI', 'DraI', 'BstXI', 'AcvI', 'AvaI', 'PvuI', 'DpnI', 'TaqI', 'SinI', 'KpnI', 'NdeI', 'PinAI', 'MboII', 'BglII', 'SacII', 'NruI', 'NarI', 'TaqII', 'RsaI', 'HincII', 'XbaI', 'Sau3AI', 'TspGWI', 'MboI', 'AluI', 'RsrII', 'SmaI', 'StuI', 'SphI', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'BsiHKCI', 'EcoRV', 'EcoRI', 'XhoI', 'MnlI', 'PstI', 'SfiI', 'HaeIII', 'AccI', 'SspI', 'Tth111I', 'ApaI', 'MmeI', 'ScaI', 'TspDTI', 'BalI', 'NotI', 'HindIII', 'BamHI', 'BsuTUI', 'HpaI'],
+        ['BssHII', 'MluI', 'HpaII', 'BspTNI', 'SacI', 'BglI', 'SalI', 'MspI', 'ScaI', 'BanII', 'NcoI', 'ClaI', 'CviJI', 'DraI', 'BstXI', 'AcvI', 'AvaI', 'PvuI', 'DpnI', 'TaqI', 'SinI', 'KpnI', 'NdeI', 'MboII', 'BglII', 'SacII', 'NruI', 'NarI', 'TaqII', 'RsaI', 'HincII', 'XbaI', 'BspANI', 'TspGWI', 'MboI', 'AluI', 'RsrII', 'SmaI', 'NheI', 'StuI', 'SphI', 'PvuII', 'FokI', 'SpeI', 'HinfI', 'BsiHKCI', 'HindIII', 'EcoRV', 'EcoRI', 'XhoI', 'MnlI', 'AvaII', 'PinAI', 'PstI', 'BspMAI', 'SfiI', 'Tth111I', 'HaeIII', 'AccI', 'SspI', 'NsiI', 'ApaI', 'MmeI', 'TspDTI', 'BalI', 'DdeI', 'NotI', 'BamHI', 'BsuTUI', 'HpaI', 'HhaI'],
     )
 suppliers['X'] = _temp()
 
+
 def _temp():
     return (
-        'CinnaGen Inc.',
-        ['BclI', 'BglI', 'SalI', 'MspI', 'NcoI', 'DraI', 'PvuI', 'TaqI', 'KpnI', 'NdeI', 'BglII', 'RsaI', 'HincII', 'XbaI', 'MboI', 'AluI', 'SmaI', 'PvuII', 'HinfI', 'EcoRV', 'EcoRI', 'XhoI', 'PstI', 'HaeIII', 'NotI', 'HindIII', 'BamHI', 'AvaII', 'HhaI'],
+        'SinaClon BioScience Co.',
+        ['NcoI', 'BstXI', 'KpnI', 'RsaI', 'BsiSI', 'MboI', 'AluI', 'SlaI', 'SmaI', 'FokI', 'HinfI', 'HindIII', 'EcoRI', 'BamHI'],
     )
 suppliers['Y'] = _temp()
 
 typedict = {}
+
+
+def _temp():
+    return (
+        ('Palindromic', 'TwoCuts', 'Ov5', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['NmeDI'],
+    )
+typedict['type130'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'TwoCuts', 'Ov5', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['UcoMSI'],
+    )
+typedict['type132'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['RdeGBIII'],
+    )
+typedict['type142'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['FalI', 'BplI'],
+    )
+typedict['type143'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['BdaI', 'AlfI'],
+    )
+typedict['type144'] = _temp()
+
+
 def _temp():
     return (
         ('NonPalindromic', 'NoCut', 'Unknown', 'NotDefined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['BscGI', 'AspCNI'],
+        ['Sen13311III', 'SpoDI', 'OspHL35III', 'Cgl13032I', 'Pal408I', 'EsaSSI', 'Pse18267I', 'HpyUM032XIV', 'Hpy99XIV_mut1', 'Cdu23823II', 'RflFIII', 'Pdi8503III', 'Pme5II', 'Cgl13032II', 'Yps3606I', 'CjeFV', 'Bsu7003I', 'Psp10HII', 'Lsp48III', 'HpyAXVI_mut1', 'BscGI', 'Bsp3004IV', 'SpnRII', 'EcoE1140I', 'PliMI', 'Ecl35734I', 'Pac19842II', 'Sno506I', 'Hpy99XIV', 'Aco12261II', 'AspJHL3II', 'Sth20745III', 'Cdi11397I', 'Mba11I', 'TspARh3I', 'RdeGBI', 'Jma19592II', 'Vtu19109I', 'CjeFIII', 'FtnUV', 'AhyYL17I', 'Hpy99XXII', 'DrdII', 'PmeS132I', 'Lba2029III', 'Sen1736II', 'HpyAXVI_mut2', 'AchA6III', 'BanLI', 'HbaII', 'NhaXI', 'RpaTI', 'Cau10061II', 'Cal14237I', 'Esp3007I', 'BloAII', 'Csp2014I', 'Ssp6803IV', 'Cba16038I', 'SenTFIV', 'GauT27I', 'Pdu1735I', 'HpyAXIV', 'KpnNIH30III', 'CcrNAIII', 'Psp0357II', 'MtuHN878II', 'Lmo911II', 'Lsp6406VI', 'Gba708II', 'MkaDII', 'Jma19592I', 'Awo1030IV', 'Saf8902III', 'BfaSII', 'Mcr10I', 'Cla11845III', 'MspI7II', 'Rba2021I', 'Lmo370I', 'Nal45188II', 'AbaCIII', 'CjeNII', 'Ssp714II', 'Aba6411II', 'HpyUM037X', 'AspDUT2V', 'Pst14472I', 'Sbo46I', 'Sty13348III', 'EcoMII', 'Cma23826I', 'Hpy99XIII', 'Cly7489II', 'CalB3II', 'Bag18758I', 'Cba13II', 'Asu14238IV', 'HpyUM032XIII_mut1', 'Bce3081I'],
     )
 typedict['type146'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'NoCut', 'Unknown', 'NotDefined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['SpoDI', 'UbaF14I', 'EsaSSI', 'UbaPI', 'CjuII', 'AlwFI', 'BspGI', 'CjuI', 'MjaIV', 'Pfl1108I', 'AvaIII', 'UbaF13I', 'TssI', 'UbaF12I', 'DrdII', 'NhaXI', 'BspNCI', 'TsuI', 'UbaF9I', 'FinI', 'UbaF11I', 'CjeNII', 'BmgI', 'SnaI', 'HgiEII'],
+        ['UbaF14I', 'CjeP659IV', 'PsuGI', 'UbaPI', 'CjuII', 'AlwFI', 'BspGI', 'Pfl1108I', 'UbaF13I', 'AbaUMB2I', 'RlaI', 'PenI', 'UbaF12I', 'BspNCI', 'TsuI', 'UbaF9I', 'FinI', 'UbaF11I', 'BmgI'],
     )
 typedict['type148'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'NoCut', 'Unknown', 'NotDefined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['MjaIV', 'HpyUM032XIII'],
+    )
+typedict['type2'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['MlyI', 'BmgBI', 'SnaBI', 'MspA1I', 'CviJI', 'BsrBI', 'DraI', 'PshAI', 'SwaI', 'NaeI', 'PhoI', 'SfoI', 'RsaI', 'HincII', 'AluI', 'Hpy8I', 'SmaI', 'FspI', 'PvuII', 'BsuRI', 'EcoRV', 'BstUI', 'HaeIII', 'SspI', 'ScaI', 'BalI', 'NlaIV', 'HpaI', 'Cac8I', 'HindII', 'BsaAI'],
+        ['MlyI', 'BmgBI', 'BsrBI'],
     )
 typedict['type209'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['FnuDII', 'EsaBC3I', 'CviRI'],
+        ['NgoAVII'],
     )
 typedict['type210'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['PspN4I', 'MslI', 'Bsp68I', 'PmaCI', 'BsaBI', 'SmiI', 'BseJI', 'BshFI', 'BmcAI', 'XmnI', 'Eco47III', 'Hpy166II', 'AluBI', 'AcvI', 'RruI', 'EgeI', 'RseI', 'DpnI', 'AssI', 'Bst1107I', 'BstSNI', 'MlsI', 'SchI', 'AccII', 'BtuMI', 'Aor51HI', 'NruI', 'SmiMI', 'Bsh1236I', 'MalI', 'MssI', 'BsnI', 'FspAI', 'BmiI', 'BoxI', 'BssNAI', 'BtrI', 'BstC8I', 'AjiI', 'PmlI', 'GlaI', 'MvnI', 'ZraI', 'Eco72I', 'MscI', 'SseBI', 'AccBSI', 'Ppu21I', 'StuI', 'BbrPI', 'Eco53kI', 'EheI', 'BstPAI', 'Ecl136II', 'Acc16I', 'MluNI', 'PsiI', 'MroXI', 'AatI', 'ZrmI', 'DinI', 'BstFNI', 'BspLI', 'Eco105I', 'NsbI', 'Bse8I', 'BspFNI', 'BstZ17I', 'Msp20I', 'AfeI', 'SrfI', 'Eco32I', 'KspAI', 'AanI', 'PmeI', 'FaiI', 'Eco147I', 'CviKI_1', 'OliI', 'PdmI', 'HpyCH4V', 'PceI', 'BstBAI', 'AfaI', 'MbiI', 'Asp700I', 'EcoICRI', 'AviII', 'PspCI', 'PdiI', 'AleI'],
+        ['SchI', 'BtrI', 'AjiI', 'AccBSI', 'MbiI'],
     )
 typedict['type211'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['CdiI', 'HaeI', 'SciI', 'NspBII', 'SspD5I', 'LpnI', 'AhaIII', 'Sth302II', 'MstI'],
+        ['CdiI', 'SspD5I'],
     )
 typedict['type212'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['BssHII', 'BsrFI', 'DpnII', 'MluI', 'NgoMIV', 'HpaII', 'TspMI', 'BclI', 'BsaWI', 'SalI', 'MspI', 'Bsu15I', 'NcoI', 'ClaI', 'XmaI', 'Cfr9I', 'TaqI', 'EaeI', 'AseI', 'Kpn2I', 'AclI', 'ApoI', 'HpyCH4IV', 'NdeI', 'HapII', 'BglII', 'BsaHI', 'XbaI', 'Sau3AI', 'Cfr10I', 'MboI', 'AciI', 'CviQI', 'XhoII', 'CviAII', 'MfeI', 'BssSI', 'ApaLI', 'HinP1I', 'HspAI', 'EcoRI', 'XhoI', 'BseCI', 'CfrI', 'MunI', 'EagI', 'AscI', 'Tsp509I', 'MseI', 'VspI', 'KasI', 'SgrAI', 'BspHI', 'BstYI', 'AgeI', 'Sse9I', 'NotI', 'HindIII', 'FatI', 'BamHI', 'PaeR7I', 'BbvCI'],
+        ['AciI', 'BspACI', 'BssSI', 'BbvCI'],
     )
 typedict['type221'] = _temp()
 
-def _temp():
-    return (
-        ('NonPalindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['XmaIII'],
-    )
-typedict['type222'] = _temp()
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['BssMI', 'AsuNHI', 'CciI', 'PscI', 'MreI', 'AhlI', 'XspI', 'BfaI', 'PauI', 'Asp718I', 'VneI', 'PspXI', 'AsiGI', 'CciNI', 'Sfr274I', 'PteI', 'XmaCI', 'Ksp22I', 'BshTI', 'Bsp19I', 'MauBI', 'AbsI', 'AsuII', 'FauNDI', 'Vha464I', 'BstACI', 'BspACI', 'AcoI', 'BstMBI', 'BssAI', 'BseAI', 'Hin6I', 'PalAI', 'BstAUI', 'BsiWI', 'Bpu14I', 'Eco52I', 'BspT104I', 'SspDI', 'SsiI', 'PinAI', 'AflII', 'TspEI', 'AcsI', 'BseX3I', 'FspBI', 'RsaNI', 'Acc65I', 'AvrII', 'MaeI', 'XapI', 'BspXI', 'Bsp1407I', 'Bst2BI', 'PciI', 'Bse118I', 'SlaI', 'TliI', 'NarI', 'BsePI', 'Bst98I', 'MaeII', 'Bsp13I', 'BsiSI', 'StrI', 'Bsp119I', 'BanIII', 'BstX2I', 'SgsI', 'BseYI', 'Csp45I', 'PsuI', 'NheI', 'AspA2I', 'BcuI', 'BspTI', 'Mly113I', 'MflI', 'BshVI', 'Hin1I', 'SpeI', 'SgrDI', 'XmaJI', 'MspCI', 'Psp1406I', 'Kzo9I', 'Csp6I', 'Bsp143I', 'PspOMI', 'Bsa29I', 'AccIII', 'Tru1I', 'Aor13HI', 'EclXI', 'BspEI', 'BstZI', 'Alw44I', 'Hsp92I', 'PspLI', 'BlnI', 'NdeII', 'BsrGI', 'CspAI', 'FbaI', 'BauI', 'SaqAI', 'PshBI', 'SfuI', 'NspV', 'BfuCI', 'BfrI', 'BstBI', 'BssNI', 'Tru9I', 'Bsp120I', 'MroI', 'MroNI', 'AcyI', 'RcaI', 'BsuTUI', 'BspDI', 'BstAFI', 'TatI', 'Pfl23II', 'PagI'],
+        ['SsiI', 'Bst2BI', 'PspFI', 'BseYI', 'BauI'],
     )
 typedict['type223'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['SelI', 'BspLU11I', 'SimI', 'Asi256I', 'Ppu10I', 'Sse232I', 'BetI', 'SplI', 'GdiII', 'BsiI', 'BspMII'],
+        ['SimI', 'GdiII', 'BsiI'],
     )
 typedict['type224'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['AlwI', 'PspPI', 'StyD4I', 'PspGI', 'BlpI', 'Esp3I', 'AvaI', 'SexAI', 'SinI', 'Sau96I', 'BstNI', 'Cfr13I', 'TseI', 'Bpu10I', 'MvaI', 'BssKI', 'AflIII', 'Lsp1109I', 'BfuAI', 'TfiI', 'BbvI', 'HgaI', 'BanI', 'RsrII', 'BspMI', 'BcnI', 'ScrFI', 'EcoRII', 'FokI', 'Alw26I', 'ApeKI', 'Eco31I', 'HinfI', 'BceAI', 'Fsp4HI', 'BsmAI', 'EcoO109I', 'PpuMI', 'BsmFI', 'BsoBI', 'BsmBI', 'AccI', 'Tth111I', 'DdeI', 'AvaII', 'BsaJI', 'Fnu4HI', 'Tsp45I'],
+        ['AlwI', 'Esp3I', 'Bpu10I', 'Lsp1109I', 'BfuAI', 'BbvI', 'HgaI', 'BspMI', 'BccI', 'BcoDI', 'FokI', 'Alw26I', 'Eco31I', 'BceAI', 'BsmAI', 'BsmFI', 'FauI', 'BsmBI', 'BtgZI'],
     )
 typedict['type225'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['StsI', 'HgiCI', 'EcoHI'],
+        ['StsI', 'BscAI'],
     )
 typedict['type226'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['AxyI', 'BstSFI', 'CseI', 'SanDI', 'BspTNI', 'BspT107I', 'BstOI', 'BisI', 'BstPI', 'LweI', 'BstEII', 'BmgT120I', 'BssT1I', 'PsyI', 'BtgI', 'AspS9I', 'BsaI', 'DraII', 'AclWI', 'Eco91I', 'Bst2UI', 'BseXI', 'BstDEI', 'GluI', 'BstENI', 'BssECI', 'Ama87I', 'BstDSI', 'BstV2I', 'AarI', 'AjnI', 'PflFI', 'Bme1390I', 'BveI', 'Psp5II', 'EcoO65I', 'BmrFI', 'EcoT14I', 'BmsI', 'PspPPI', 'SmlI', 'BseBI', 'PfoI', 'BshNI', 'Rsr2I', 'BspQI', 'BmeT110I', 'PspEI', 'AspI', 'BpuAI', 'PasI', 'CpoI', 'Eco130I', 'CspI', 'BfmI', 'Eco47I', 'Bsu36I', 'Bme18I', 'BstV1I', 'MabI', 'Hpy188III', 'Bse21I', 'BstSCI', 'BpuMI', 'XagI', 'Bso31I', 'PleI', 'EcoNI', 'BccI', 'SmoI', 'FaqI', 'Bsp1720I', 'NciI', 'MaeIII', 'ErhI', 'AsuC2I', 'PpsI', 'BsiHKCI', 'XmiI', 'Eam1104I', 'Acc36I', 'MspR9I', 'SapI', 'VpaK11BI', 'BspPI', 'BslFI', 'PfeI', 'Bpu1102I', 'SmuI', 'FauI', 'SfcI', 'LguI', 'PciSI', 'Bst6I', 'BpiI', 'SatI', 'KflI', 'BseDI', 'Eco81I', 'ItaI', 'BstMAI', 'Eco88I', 'FblI', 'BtgZI', 'EarI', 'AccB1I', 'CsiI', 'BbsI', 'Psp6I', 'CelII', 'SfaNI', 'HpyF3I', 'StyI', 'NmuCI'],
+        ['BspTNI', 'LweI', 'BsaI', 'CseI', 'AclWI', 'BseXI', 'BstV2I', 'AarI', 'BveI', 'BmsI', 'BspQI', 'MspJI', 'BstV1I', 'Bso31I', 'PleI', 'FaqI', 'FspEI', 'PpsI', 'Eam1104I', 'Acc36I', 'SapI', 'BspPI', 'BslFI', 'LguI', 'PciSI', 'Bst6I', 'BpiI', 'LpnPI', 'BstMAI', 'EarI', 'BbsI', 'SfaNI'],
     )
 typedict['type227'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['DsaI', 'SauI', 'Sth132I', 'UnbI', 'BbvII', 'VpaK11AI', 'BinI', 'Bbr7I', 'SfeI', 'CauII', 'BscAI', 'Hpy178III', 'BspD6I', 'BcefI', 'AceIII', 'Ksp632I', 'AsuI', 'SecI', 'EspI', 'Sse8647I'],
+        ['SgrTI', 'Sth132I', 'BbvII', 'BinI', 'AspBHI', 'Bbr7I', 'BspD6I', 'BcefI', 'AceIII', 'Ksp632I'],
     )
 typedict['type228'] = _temp()
 
-def _temp():
-    return (
-        ('NonPalindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['SacI', 'BmtI', 'KpnI', 'HaeII', 'SacII', 'NlaIII', 'PstI', 'Cfr42I', 'FseI', 'ApaI', 'NspI', 'HhaI', 'AsiSI'],
-    )
-typedict['type233'] = _temp()
-
-def _temp():
-    return (
-        ('NonPalindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['PabI', 'McaTI'],
-    )
-typedict['type234'] = _temp()
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['SgrBI', 'BstHHI', 'BstH2I', 'BpvUI', 'SstII', 'PvuI', 'BspOI', 'BbuI', 'AspLEI', 'Zsp2I', 'FaeI', 'SdaI', 'BstNSI', 'Ple19I', 'Hin1II', 'Sse8387I', 'TaiI', 'Psp124BI', 'Sfr303I', 'Mph1103I', 'CfoI', 'PaeI', 'BstKTI', 'SphI', 'SstI', 'GsaI', 'MvrI', 'SfaAI', 'RgaI', 'BbeI', 'SgfI', 'AatII', 'SbfI', 'XceI', 'NsiI', 'EcoT22I', 'PacI', 'KspI', 'Hsp92II', 'BfoI', 'RigI'],
+        ['GsaI'],
     )
 typedict['type235'] = _temp()
 
-def _temp():
-    return (
-        ('NonPalindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['ChaI'],
-    )
-typedict['type236'] = _temp()
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['MwoI', 'EcoT38I', 'BglI', 'BanII', 'TspRI', 'Hpy99I', 'BsiHKAI', 'BstF5I', 'BsrI', 'BfiI', 'MboII', 'BmrI', 'Hpy188I', 'Bsc4I', 'BspCNI', 'HpyAV', 'HphI', 'DraIII', 'Bsp1286I', 'MnlI', 'SfiI', 'XcmI', 'MmeI', 'Eco57I', 'BslI'],
+        ['BstF5I', 'BpuEI', 'BsrI', 'MboII', 'TaqII', 'BspCNI', 'BsgI', 'TspGWI', 'BmrI', 'HpyAV', 'HphI', 'BseMII', 'MnlI', 'BseRI', 'MmeI', 'Eco57I', 'BpmI', 'AcuI', 'NmeAIII'],
     )
 typedict['type237'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['BthCI'],
+        ['MaqI', 'RpaBI', 'DraRI', 'SdeAI', 'RceI', 'WviI', 'BfiI', 'CstMI', 'PspOMII', 'TaqIII', 'CchII', 'PlaDI', 'SstE37I', 'RpaB5I', 'CdpI', 'CchIII', 'Tth111II', 'CjeNIII', 'BsbI', 'NlaCI', 'AquII', 'AquIV', 'ApyPI', 'RpaI', 'PspPRI', 'AquIII', 'RdeGBII'],
     )
 typedict['type238'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['EciI', 'AgsI', 'DrdI', 'Mva1269I', 'TscAI', 'Bse1I', 'BstMWI', 'Eco24I', 'AlwNI', 'BstXI', 'BseSI', 'BpuEI', 'Van91I', 'DseDI', 'SetI', 'BmeRI', 'TaaI', 'BtsCI', 'BstMCI', 'TaqII', 'HpyF10VI', 'Bst4CI', 'AsuHPI', 'AspEI', 'BsgI', 'BsrSI', 'TspGWI', 'BaeGI', 'SduI', 'BseGI', 'Alw21I', 'Bse3DI', 'AccB7I', 'BasI', 'AdeI', 'BsiEI', 'GsuI', 'BseLI', 'FriOI', 'AasI', 'BsrDI', 'BciVI', 'Eam1105I', 'TsoI', 'BseMII', 'BtsI', 'BfuI', 'TauI', 'AfiI', 'CaiI', 'AhdI', 'BsmI', 'Bbv12I', 'BseMI', 'Eco57MI', 'BstAPI', 'HpyCH4III', 'BstSLI', 'BlsI', 'BseRI', 'TspDTI', 'BmuI', 'PctI', 'BpmI', 'BsaMI', 'AcuI', 'MhlI', 'DriI', 'Bsh1285I', 'PflMI', 'BseNI', 'NmeAIII'],
+        ['EciI', 'Mva1269I', 'Bse1I', 'LmnI', 'BtsIMutI', 'GsuI', 'BtsCI', 'BsuI', 'AsuHPI', 'AbaSI', 'BseGI', 'Bse3DI', 'BsrDI', 'BciVI', 'BtsI', 'BfuI', 'BsmI', 'BseMI', 'TspDTI', 'BmuI', 'PctI', 'BseNI'],
     )
 typedict['type239'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['Nli3877I', 'Bce83I', 'SdeAI', 'Psp03I', 'RceI', 'DraRI', 'BsiYI', 'ApaBI', 'Tsp4CI', 'Hin4II', 'CstMI', 'PspOMII', 'DrdIV', 'PlaDI', 'FmuI', 'RpaB5I', 'McrI', 'MaqI', 'CdpI', 'Tth111II', 'HgiJII', 'BsbI', 'NlaCI', 'AquII', 'AquIV', 'ApyPI', 'PspPRI', 'AquIII', 'PssI', 'HgiAI', 'RleAI'],
+        ['BmeDI', 'Bce83I', 'Hin4II', 'TsoI', 'Eco57MI', 'YkrI', 'RleAI'],
     )
 typedict['type240'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'TwoCuts', 'Ov5', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['NmeDI'],
+        ['BceSIV'],
     )
 typedict['type274'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['AloI', 'BcgI'],
+        ['CspCI', 'AloI', 'BcgI'],
     )
 typedict['type285'] = _temp()
+
+
+def _temp():
+    return (
+        ('NonPalindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['TstI', 'NgoAVIII', 'PpiI', 'SdeOSI', 'CjeI'],
+    )
+typedict['type286'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
-        ['TstI', 'PsrI', 'FalI', 'CspCI', 'PpiI', 'AjuI', 'BaeI', 'BdaI', 'ArsI', 'BplI', 'Hin4I', 'AlfI', 'BarI', 'BsaXI'],
+        ['PsrI', 'AjuI', 'BaeI', 'ArsI', 'BarI', 'BsaXI'],
     )
 typedict['type287'] = _temp()
+
 
 def _temp():
     return (
         ('NonPalindromic', 'TwoCuts', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
-        ['CjeI', 'CjePI', 'NgoAVIII', 'Bsp24I', 'SdeOSI'],
+        ['CjePI', 'Bsp24I', 'Hin4I'],
     )
 typedict['type288'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'NoCut', 'Unknown', 'NotDefined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['NhoI', 'CjuI', 'AvaIII', 'TssI', 'SnaI', 'HgiEII'],
+    )
+typedict['type4'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['ScaI', 'SnaBI', 'MspA1I', 'CviJI', 'DraI', 'AluBI', 'PshAI', 'SwaI', 'NaeI', 'SfoI', 'RsaI', 'HincII', 'BstC8I', 'PmlI', 'AluI', 'Hpy8I', 'SmaI', 'FspI', 'PvuII', 'BsuRI', 'EcoRV', 'BstUI', 'HaeIII', 'SspI', 'BalI', 'NlaIV', 'HpaI', 'Cac8I', 'HindII', 'BsaAI'],
+    )
+typedict['type65'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['FnuDII', 'EsaBC3I', 'CviRI'],
+    )
+typedict['type66'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['PspN4I', 'MslI', 'Bsp68I', 'PmaCI', 'BsaBI', 'SmiI', 'BseJI', 'BshFI', 'BmcAI', 'XmnI', 'Eco47III', 'Hpy166II', 'AcvI', 'RruI', 'EgeI', 'OliI', 'DpnI', 'Bst1107I', 'BstSNI', 'RseI', 'MlsI', 'AccII', 'BtuMI', 'Aor51HI', 'NruI', 'Bsh1236I', 'MalI', 'MssI', 'BsnI', 'FspAI', 'BmiI', 'BoxI', 'BssNAI', 'BspANI', 'GlaI', 'MvnI', 'ZraI', 'Eco72I', 'MscI', 'SseBI', 'SmiMI', 'Ppu21I', 'StuI', 'BbrPI', 'Eco53kI', 'EheI', 'BstPAI', 'Ecl136II', 'Acc16I', 'MluNI', 'PsiI', 'MroXI', 'ZrmI', 'DinI', 'BstFNI', 'BspLI', 'Eco105I', 'NsbI', 'Bse8I', 'BspFNI', 'BstZ17I', 'Msp20I', 'AfeI', 'SrfI', 'Eco32I', 'KspAI', 'AanI', 'PmeI', 'Mox20I', 'FaiI', 'Eco147I', 'CviKI_1', 'PdmI', 'HpyCH4V', 'PceI', 'BstBAI', 'AfaI', 'Asp700I', 'EcoICRI', 'PspCI', 'PdiI', 'AleI'],
+    )
+typedict['type67'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Blunt', 'Defined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['NspBII', 'HaeI', 'SciI', 'LpnI', 'AhaIII', 'Sth302II', 'MstI'],
+    )
+typedict['type68'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['BssHII', 'BsrFI', 'DpnII', 'MluI', 'NgoMIV', 'HpaII', 'TspMI', 'BclI', 'BsaWI', 'SalI', 'MspI', 'Bsu15I', 'NcoI', 'ClaI', 'XmaI', 'Cfr9I', 'TaqI', 'EaeI', 'AseI', 'AclI', 'ApoI', 'HpyCH4IV', 'NdeI', 'HapII', 'MseI', 'BsaHI', 'XbaI', 'MboI', 'CviQI', 'NheI', 'Sau3AI', 'CviAII', 'MfeI', 'ApaLI', 'Cfr10I', 'HinP1I', 'HspAI', 'HindIII', 'EcoRI', 'XhoI', 'BseCI', 'MunI', 'EagI', 'AscI', 'VspI', 'KasI', 'Kpn2I', 'SgrAI', 'BspHI', 'BstYI', 'AgeI', 'BfuCI', 'Sse9I', 'NotI', 'FatI', 'BamHI', 'PaeR7I'],
+    )
+typedict['type77'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['XmaIII', 'CfrI', 'XhoII'],
+    )
+typedict['type78'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['BssMI', 'AsuNHI', 'PshBI', 'BshTI', 'CciI', 'MreI', 'AhlI', 'XspI', 'KroI', 'BfaI', 'PauI', 'Asp718I', 'VneI', 'PspXI', 'AsiGI', 'CciNI', 'Sfr274I', 'PteI', 'Ksp22I', 'Bsp19I', 'MauBI', 'AbsI', 'AsuII', 'FauNDI', 'Vha464I', 'BstACI', 'AcoI', 'BstMBI', 'BssAI', 'BseAI', 'Hin6I', 'PalAI', 'BstAUI', 'Bpu14I', 'Eco52I', 'BspT104I', 'SspDI', 'AflII', 'BglII', 'TasI', 'AcsI', 'BseX3I', 'FspBI', 'RsaNI', 'Acc65I', 'AvrII', 'MaeI', 'XapI', 'PscI', 'Bsp1407I', 'SspMI', 'PciI', 'Bse118I', 'NarI', 'BsePI', 'MaeII', 'Bsp13I', 'BsiSI', 'Bsp119I', 'BstX2I', 'SlaI', 'SgsI', 'MluCI', 'PsuI', 'AspA2I', 'BcuI', 'BspTI', 'BsiWI', 'Mly113I', 'MflI', 'BshVI', 'Hin1I', 'SpeI', 'SgrDI', 'XmaJI', 'MspCI', 'Psp1406I', 'Kzo9I', 'Csp6I', 'Bsp143I', 'Bsa29I', 'AccIII', 'Tru1I', 'Aor13HI', 'PinAI', 'EclXI', 'BspEI', 'BstZI', 'Alw44I', 'Hsp92I', 'BlnI', 'NdeII', 'BsrGI', 'CspAI', 'FbaI', 'PspOMI', 'SaqAI', 'SfuI', 'NspV', 'BfrI', 'BstBI', 'BssNI', 'HpySE526I', 'Tru9I', 'Bsp120I', 'MroI', 'MroNI', 'AoxI', 'AcyI', 'BsuTUI', 'BspDI', 'BstAFI', 'TatI', 'Pfl23II', 'PspLI', 'PagI'],
+    )
+typedict['type79'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Defined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['SelI', 'BspLU11I', 'SplI', 'TspEI', 'Asi256I', 'Ppu10I', 'Sse232I', 'BetI', 'BspMII'],
+    )
+typedict['type80'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['PspPI', 'AspS9I', 'StyD4I', 'PspGI', 'BsoBI', 'BlpI', 'BssECI', 'AjnI', 'AvaI', 'SexAI', 'SinI', 'Sau96I', 'BstNI', 'Cfr13I', 'TseI', 'MvaI', 'AflIII', 'TfiI', 'BanI', 'RsrII', 'BcnI', 'ScrFI', 'EcoRII', 'EcoNI', 'ApeKI', 'HinfI', 'NciI', 'Fsp4HI', 'EcoO109I', 'PpuMI', 'AvaII', 'Tth111I', 'AccI', 'DdeI', 'BsaJI', 'Fnu4HI', 'Tsp45I'],
+    )
+typedict['type81'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['HgiCI', 'EcoHI'],
+    )
+typedict['type82'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['AxyI', 'BspT107I', 'PspEI', 'BisI', 'BstPI', 'BstSFI', 'BstEII', 'BmgT120I', 'BssT1I', 'PsyI', 'BtgI', 'Eco91I', 'Bst2UI', 'BstDEI', 'GluI', 'BstENI', 'Ama87I', 'BstDSI', 'PflFI', 'Bme1390I', 'Psp5II', 'EcoO65I', 'BmrFI', 'EcoT14I', 'PspPPI', 'SmlI', 'BseBI', 'PfoI', 'BshNI', 'Rsr2I', 'BmeT110I', 'PasI', 'TseFI', 'CpoI', 'Eco130I', 'CspI', 'BfmI', 'Eco47I', 'Bsu36I', 'Bme18I', 'MabI', 'Hpy188III', 'Bse21I', 'BstSCI', 'BpuMI', 'SgeI', 'XagI', 'SmoI', 'Bsp1720I', 'MaeIII', 'ErhI', 'AsuC2I', 'BsiHKCI', 'XmiI', 'MspR9I', 'VpaK11BI', 'PfeI', 'Bpu1102I', 'SfcI', 'SatI', 'BciT130I', 'KflI', 'BseDI', 'Eco81I', 'Eco88I', 'FblI', 'AccB1I', 'CsiI', 'MteI', 'Psp6I', 'HpyF3I', 'StyI', 'NmuCI'],
+    )
+typedict['type83'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov5', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['SanDI', 'DsaI', 'SauI', 'DraII', 'UnbI', 'VpaK11AI', 'SfeI', 'CauII', 'Hpy178III', 'AsuI', 'SecI', 'EspI', 'Sse8647I'],
+    )
+typedict['type84'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['SacI', 'KpnI', 'HaeII', 'SacII', 'AatII', 'PluTI', 'NlaIII', 'PstI', 'Cfr42I', 'FseI', 'ApaI', 'NspI', 'HhaI', 'AsiSI'],
+    )
+typedict['type89'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['PabI', 'McaTI'],
+    )
+typedict['type90'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['SgrBI', 'BstHHI', 'BstH2I', 'BmtI', 'PvuI', 'BspOI', 'Zsp2I', 'FaeI', 'SdaI', 'BstNSI', 'Ple19I', 'Hin1II', 'Sse8387I', 'TaiI', 'Hsp92II', 'Psp124BI', 'Sfr303I', 'Mph1103I', 'CfoI', 'PaeI', 'BstKTI', 'SstI', 'AspLEI', 'SphI', 'SfaAI', 'RgaI', 'SgfI', 'SbfI', 'BspMAI', 'XceI', 'NsiI', 'EcoT22I', 'PacI', 'KspI', 'BfoI', 'RigI'],
+    )
+typedict['type91'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Defined', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['ChaI'],
+    )
+typedict['type92'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['AgsI', 'MwoI', 'EcoT38I', 'BanII', 'TspRI', 'Hpy99I', 'BstXI', 'Bsc4I', 'BaeGI', 'Hpy188I', 'DraIII', 'Bsp1286I', 'AhdI', 'SfiI', 'XcmI', 'BslI'],
+    )
+typedict['type93'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Dep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['BthCI', 'HauII'],
+    )
+typedict['type94'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Commercially_available', 'AbstractCut', 'RestrictionType'),
+        ['AlwNI', 'DrdI', 'BglI', 'TscAI', 'CaiI', 'BstMWI', 'Eco24I', 'BsiHKAI', 'BseSI', 'Van91I', 'DseDI', 'SetI', 'BmeRI', 'TaaI', 'BstMCI', 'HpyF10VI', 'Bst4CI', 'SduI', 'Alw21I', 'AccB7I', 'AdeI', 'BsiEI', 'BseLI', 'FriOI', 'AasI', 'Eam1105I', 'TauI', 'AfiI', 'Bbv12I', 'BstAPI', 'HpyCH4III', 'BstSLI', 'BlsI', 'PcsI', 'PstNI', 'PkrI', 'MhlI', 'DriI', 'Bsh1285I', 'PflMI'],
+    )
+typedict['type95'] = _temp()
+
+
+def _temp():
+    return (
+        ('Palindromic', 'OneCut', 'Ov3', 'Ambiguous', 'Meth_Undep', 'Not_available', 'AbstractCut', 'RestrictionType'),
+        ['Nli3877I', 'Psp03I', 'BsiYI', 'ApaBI', 'Tsp4CI', 'FmuI', 'McrI', 'HgiJII', 'PssI', 'HgiAI'],
+    )
+typedict['type96'] = _temp()
 
 del _temp

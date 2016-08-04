@@ -16,14 +16,14 @@ import sys
 import time
 
 try:
-    from Tkinter import * # Python 2
+    from Tkinter import *  # Python 2
 except ImportError:
-    from tkinter import * # Python 3
+    from tkinter import *  # Python 3
 
 try:
-    import tkFileDialog as filedialog # Python 2
+    import tkFileDialog as filedialog  # Python 2
 except ImportError:
-    from tkinter import filedialog # Python 3
+    from tkinter import filedialog  # Python 3
 
 sys.path.insert(0, '.')
 from xbb_utils import *
@@ -34,7 +34,8 @@ from xbb_help import xbbtools_help
 from Bio.Data import CodonTable
 from Bio.SeqIO.FastaIO import SimpleFastaParser
 
-class xbb_widget:
+
+class xbb_widget(object):
     def __init__(self, parent=None):
         self.is_a_master = (parent is None)
         self.parent = parent
@@ -96,17 +97,10 @@ class xbb_widget:
         self.colorsNT = {'A': 'green',
                          'C': 'lightblue',
                          'G': 'orange',
-                         'T': 'tomato'
-                         }
-
-        self.colorsPMWbg = {
-            'ComboBox': 'darkgreen',
-            'ComboBox.Label': 'darkgreen',
-            }
-
-        self.colorsPMWfg = {
-            'ComboBox.Label': 'lightblue',
-            }
+                         'T': 'tomato'}
+        self.colorsPMWbg = {'ComboBox': 'darkgreen',
+                            'ComboBox.Label': 'darkgreen'}
+        self.colorsPMWfg = {'ComboBox.Label': 'lightblue'}
 
     def init_optionsdb(self):
         # does anybody know a better way of defining colors ?
@@ -158,7 +152,7 @@ class xbb_widget:
         self.current_codon_table.set('Standard')
         self.current_codon_table_id = 1
 
-        keys = self.translation_tables.keys()
+        keys = list(self.translation_tables.keys())
         keys.remove('Standard')
         keys.sort()
         keys = ['Standard'] + keys
@@ -166,8 +160,11 @@ class xbb_widget:
         self.gencode_menu = Menu(self.translation_menu)
         menu = self.gencode_menu
         for table in keys:
-            menu.add_radiobutton(label=table, command=self.set_codon_table, variable=self.current_codon_table)
-        self.translation_menu.add_cascade(label="Genetic Codes", menu=self.gencode_menu)
+            menu.add_radiobutton(label=table,
+                                 command=self.set_codon_table,
+                                 variable=self.current_codon_table)
+        self.translation_menu.add_cascade(label="Genetic Codes",
+                                          menu=self.gencode_menu)
 
         self.menubar.add_cascade(label="Translations", menu=self.translation_menu)
 
@@ -187,7 +184,8 @@ class xbb_widget:
         self.parent.config(menu=self.menubar)
 
     def set_codon_table(self):
-        self.current_codon_table_id = self.translation_tables[self.current_codon_table.get()]
+        self.current_codon_table_id = \
+            self.translation_tables[self.current_codon_table.get()]
 
     def exit(self, *args):
         # depending on if this widget is the first created or a child widget
@@ -290,22 +288,22 @@ class xbb_widget:
 
     def get_selection(self):
         w = self.sequence_id
-        #print(w.selection_own())
-        #w.selection_own()
+        # print(w.selection_own())
+        # w.selection_own()
         try:
             return w.selection_get()
-            #return string.upper(w.get(sel.first, sel.last))
-        except:
+            # return string.upper(w.get(sel.first, sel.last))
+        except Exception:  # TODO - Which exceptions?
             return ''
 
     def get_self_selection(self):
         w = self.sequence_id
-        #w.selection_own()
+        # w.selection_own()
         try:
             return w.selection_get()
-            #return string.upper(w.get(sel.first, sel.last))
-            #return string.upper(w.selection_own_get())
-        except:
+            # return string.upper(w.get(sel.first, sel.last))
+            # return string.upper(w.selection_own_get())
+        except Exception:  # TODO - Which exceptions?
             return ''
 
     def count_selection(self, event):
@@ -325,7 +323,7 @@ class xbb_widget:
             for nt in ['A', 'C', 'G', 'T']:
                 n = seq.count(nt)
                 self.statistics_ids[nt].configure(text='%s=%d' % (nt, n))
-        except:
+        except Exception:  # TODO - Which exceptions?
             pass
 
     def position(self, event):
@@ -380,7 +378,9 @@ class xbb_widget:
             return
         np = NotePad()
         tid = np.text_id()
-        tid.insert(END, self.translator.frame_nice(seq, frame, self.current_codon_table_id))
+        tid.insert(END,
+                   self.translator.frame_nice(seq, frame,
+                                              self.current_codon_table_id))
 
     def extract(self, frame=1):
         seq = self.get_selection_or_sequence()
@@ -409,15 +409,9 @@ class xbb_widget:
         np = NotePad()
         tid = np.text_id()
 
-        tid.insert(END, """%s
-
-Length = %d
-A=%d C=%d G=%d T=%d other=%d
-GC=%f
-
-""" % (time.strftime('%y %b %d, %X\n', time.localtime(time.time())),
-               len(seq), aa['A'], aa['C'], aa['G'], aa['T'], aa['N'], GC)
-                   )
+        tid.insert(END, "%s\n\nLength = %d\nA=%d C=%d G=%d T=%d other=%d\nGC=%f\n\n" %
+                   (time.strftime('%y %b %d, %X\n', time.localtime(time.time())),
+                    len(seq), aa['A'], aa['C'], aa['G'], aa['T'], aa['N'], GC))
 
     def blast(self):
         seq = self.get_selection_or_sequence()
@@ -428,7 +422,7 @@ GC=%f
         w.selection_own()
         try:
             start, stop = w.tag_ranges(SEL)
-        except:
+        except Exception:  # TODO - Which exceptions?
             start, stop = 1.0, self.sequence_id.index(END)
 
         seq = w.get(start, stop)
@@ -447,13 +441,13 @@ GC=%f
         w.selection_own()
         try:
             start, stop = w.tag_ranges(SEL)
-        except:
+        except Exception:  # Which exceptions?
             start, stop = 1.0, self.sequence_id.index(END)
 
         seq = w.get(start, stop)
         seq = re.sub('[^A-Z]', '', seq)
 
-        #print('seq >%s<' % seq)
+        # print('seq >%s<' % seq)
         complementary = self.translator.complement(seq)
         w.delete(start, stop)
         w.insert(start, complementary)
@@ -466,7 +460,7 @@ GC=%f
         w.selection_own()
         try:
             start, stop = w.tag_ranges(SEL)
-        except:
+        except Exception:  # TODO - Which exceptions?
             start, stop = 1.0, self.sequence_id.index(END)
 
         seq = w.get(start, stop)
@@ -487,14 +481,14 @@ GC=%f
         pos = self.goto_entry.get()
         try:
             pos = int(pos) - 1
-        except:
+        except ValueError:
             try:
                 start, stop = pos.split(':')
                 start = int(start) - 1
                 stop = int(stop)
                 self.mark(start, stop)
                 return
-            except:
+            except Exception:  # TODO - which exceptions?
                 import traceback
                 traceback.print_exc()
 

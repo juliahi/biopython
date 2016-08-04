@@ -7,23 +7,24 @@
 import os
 import re
 import sys
+
 sys.path.insert(0, '.')
 
 try:
-    from Tkinter import * # Python 2
+    from Tkinter import *  # Python 2
 except ImportError:
-    from tkinter import * # Python 3
+    from tkinter import *  # Python 3
 
 try:
-    import tkColorChooser as colorchooser # Python 2
+    import tkColorChooser as colorchooser  # Python 2
 except ImportError:
-    from tkinter import colorchooser # Python 3
+    from tkinter import colorchooser  # Python 3
 
 from Bio.Data.IUPACData import ambiguous_dna_values
 from Bio.Seq import reverse_complement
 
 
-class DNAsearch:
+class DNAsearch(object):
     def __init__(self):
         self.init_alphabet()
         self.sequence = ''
@@ -113,7 +114,8 @@ class XDNAsearch(Toplevel, DNAsearch):
         self.cancel = Button(f, text='Cancel', command=self.exit)
         self.cancel.pack(side=LEFT)
         self.current_color = 'cyan'
-        self.colorb = Button(f, text='Color', command=self.change_color, foreground=self.current_color)
+        self.colorb = Button(f, text='Color', command=self.change_color,
+                             foreground=self.current_color)
         self.colorb.pack(side=LEFT)
         self.config_color(self.current_color)
 
@@ -123,12 +125,13 @@ class XDNAsearch(Toplevel, DNAsearch):
         if not color:
             try:
                 color = colorchooser.askcolor()[1]
-            except:
+            except Exception:  # TODO - Which exceptions?
                 color = 'cyan'
         self.current_color = color
         self.current_tag = 'searched_%s' % self.current_color
         self.master.tag_config(self.current_tag, background=self.current_color)
-        self.master.tag_config(self.current_tag + 'R', background=self.current_color, underline=1)
+        self.master.tag_config(self.current_tag + 'R',
+                               background=self.current_color, underline=1)
         self.colors.append(color)
 
     def change_color(self):

@@ -1,0 +1,71 @@
+% This is the main LaTeX file which is used to produce the Biopython
+% Tutorial documentation.
+%
+
+
+\documentclass{report}
+\usepackage{url}
+\usepackage{fullpage}
+\usepackage{hevea}
+\usepackage{graphicx}
+
+% make everything have section numbers
+\setcounter{secnumdepth}{4}
+
+% Make links between references
+\usepackage{hyperref}
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+  \pdffalse
+\else
+  \pdfoutput=1
+  \pdftrue
+\fi
+\ifpdf
+  \hypersetup{colorlinks=true, hyperindex=true, citecolor=red, urlcolor=blue}
+\fi
+
+\begin{document}
+
+\begin{htmlonly}
+\title{Gene Ontology package to Biopython Tutorial}
+\end{htmlonly}
+\begin{latexonly}
+\title{
+%Hack to get the logo on the PDF front page:
+\includegraphics[width=\textwidth]{images/biopython.jpg}\\
+%Hack to get some white space using a blank line:
+~\\
+Gene Ontology package to Biopython}
+\end{latexonly}
+
+\author{Kamil Koziara}
+\date{Last Update -- 3 September 2016 (Biopython 1.63b+)}
+
+%Hack to get the logo at the start of the HTML front page:
+%(hopefully this isn't going to be too wide for most people)
+\begin{rawhtml}
+<P ALIGN="center">
+<IMG ALIGN="center" SRC="images/biopython.jpg" TITLE="Biopython Logo" ALT="[Biopython Logo]" width="1024" height="288" />
+</p>
+\end{rawhtml}
+
+\maketitle
+\tableofcontents
+
+% Bio.Ontology
+%\chapter{Ontology analysis with Bio.Ontology}
+%\label{chapter:ontology}
+\include{Tutorial/chapter_ontology}
+
+
+
+\begin{thebibliography}{99}
+\bibitem{cock2009}
+Peter J. A. Cock, Tiago Antao, Jeffrey T. Chang, Brad A. Chapman, Cymon J. Cox, Andrew Dalke, Iddo Friedberg, Thomas Hamelryck, Frank Kauff, Bartek Wilczynski, Michiel J. L. de Hoon: ``Biopython: freely available Python tools for computational molecular biology and bioinformatics''. {\it Bioinformatics} {\bf 25} (11), 1422--1423 (2009). \href{http://dx.doi.org/10.1093/bioinformatics/btp163}{doi:10.1093/bioinformatics/btp163},
+\bibitem{chapman2000}
+Brad Chapman and Jeff Chang: ``Biopython: Python tools for computational biology''. \textit{ACM SIGBIO Newsletter} {\bf 20} (2): 15--19 (August 2000).
+
+\end{thebibliography}
+\end{document}
+

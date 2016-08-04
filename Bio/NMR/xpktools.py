@@ -1,40 +1,54 @@
-# xpktools.py: A python module containing function definitions and classes
-#          useful for manipulating data from nmrview .xpk peaklist files.
-#
-# ********** INDEX of functions and classes **********
-#
-#    XpkEntry class: A class suited for handling single lines of
-#        non-header data from an nmrview .xpk file.  This class
-#        provides methods for extracting data by the field name
-#        which is listed in the last line of the peaklist header.
+# Copyright 2004 by Bob Bussell.  All rights reserved.
+# This code is part of the Biopython distribution and governed by its
+# license.  Please see the LICENSE file that should have been included
+# as part of this package.
+"""Tools to manipulate data from nmrview .xpk peaklist files.
+"""
 
 from __future__ import print_function
 
 import sys
 
-# * * * * * INITIALIZATIONS * * * * *
+
 HEADERLEN = 6
-# * * * * * _______________ * * * * *
 
 
 class XpkEntry(object):
-    # Usage: XpkEntry(xpkentry,xpkheadline) where xpkentry is the line
-    #        from an nmrview .xpk file and xpkheadline is the line from
-    #        the header file that gives the names of the entries
-    #        which is typcially the sixth line of the header (counting fm 1)
-    # Variables are accessed by either their name in the header line as in
-    #   self.field["H1.P"] will return the H1.P entry for example.
-    #   self.field["entrynum"] returns the line number (1st field of line)
+    """Provide dictonary access to single entry from nmrview .xpk file.
 
+    This class is suited for handling single lines of non-header data
+    from an nmrview .xpk file. This class provides methods for extracting
+    data by the field name which is listed in the last line of the
+    peaklist header.
+
+    Parameters
+    ----------
+    xpkentry : str
+        The line from an nmrview .xpk file.
+    xpkheadline : str
+        The line from the header file that gives the names of the entries.
+        This is typically the sixth line of the header, 1-origin.
+
+    Attributes
+    ----------
+    fields : dict
+        Dictionary of fields where key is in header line, value is an entry.
+        Variables are accessed by either their name in the header line as in
+        self.field["H1.P"] will return the H1.P entry for example.
+        self.field["entrynum"] returns the line number (1st field of line)
+
+    """
     def __init__(self, entry, headline):
-        self.fields = {}  # Holds all fields from input line in a dictionary
-                          # keys are data labels from the .xpk header
+        # Holds all fields from input line in a dictionary
+        # keys are data labels from the .xpk header
+        self.fields = {}
+
         datlist = entry.split()
         headlist = headline.split()
 
         i = 0
         for i in range(len(datlist) - 1):
-            self.fields[headlist[i]] = datlist[i+1]
+            self.fields[headlist[i]] = datlist[i + 1]
         i = i + 1
 
         try:
@@ -44,9 +58,48 @@ class XpkEntry(object):
 
 
 class Peaklist(object):
-    # This class reads in an entire xpk file and returns
-    # Header file lines are available as attributes
-    # The data lines are available as a list
+    """Provide access to header lines and data from a nmrview xpk file.
+
+    Header file lines and file data are available as attributes.
+
+    Parameters
+    ----------
+    infn : str
+        The input nmrview filename.
+
+    Attributes
+    ----------
+    firstline  : str
+        The first line in the header.
+    axislabels : str
+        The axis labels.
+    dataset    : str
+        The label of the dataset.
+    sw         : str
+        The sw coordinates.
+    sf         : str
+        The sf coordinates.
+    datalabels : str
+        The labels of the entries.
+
+    data : list
+        File data after header lines.
+
+    Examples
+    --------
+
+    >>> from Bio.NMR.xpktools import Peaklist
+    >>> peaklist = Peaklist('../Doc/examples/nmr/noed.xpk')
+    >>> peaklist.firstline
+    'label dataset sw sf '
+    >>> peaklist.dataset
+    'test.nv'
+    >>> peaklist.sf
+    '{599.8230 } { 60.7860 } { 60.7860 }'
+    >>> peaklist.datalabels
+    ' H1.L  H1.P  H1.W  H1.B  H1.E  H1.J  15N2.L  15N2.P  15N2.W  15N2.B  15N2.E  15N2.J  N15.L  N15.P  N15.W  N15.B  N15.E  N15.J  vol  int  stat '
+
+    """
     def __init__(self, infn):
 
         with open(infn, 'r') as infile:
@@ -63,9 +116,33 @@ class Peaklist(object):
             self.data = [line.split("\012")[0] for line in infile]
 
     def residue_dict(self, index):
-        # Generate a dictionary idexed by residue number or a nucleus
-        # The nucleus should be given as the input argument in the
-        # same form as it appears in the xpk label line (H1, 15N for example)
+        """Return a dict of lines in \`data\` indexed by residue number or a nucleus.
+
+        The nucleus should be given as the input argument in the same form as
+        it appears in the xpk label line (H1, 15N for example)
+
+        Parameters
+        ----------
+        index : str
+            The nucleus to index data by.
+
+        Returns
+        -------
+        resdict : dict
+            Mappings of index nucleus to data line.
+
+        Examples
+        --------
+
+        >>> from Bio.NMR.xpktools import Peaklist
+        >>> peaklist = Peaklist('../Doc/examples/nmr/noed.xpk')
+        >>> residue_d = peaklist.residue_dict('H1')
+        >>> sorted(residue_d.keys())
+        ['10', '3', '4', '5', '6', '7', '8', '9', 'maxres', 'minres']
+        >>> residue_d['10']
+        ['8  10.hn   7.663   0.021   0.010   ++   0.000   10.n   118.341   0.324   0.010   +E   0.000   10.n   118.476   0.324   0.010   +E   0.000  0.49840 0.49840 0']
+
+        """
 
         maxres = -1
         minres = -1
@@ -103,6 +180,7 @@ class Peaklist(object):
         return self.dict
 
     def write_header(self, outfn):
+        """Write header lines from input file to handle `outfn`."""
         with open(outfn, 'wb') as outfile:
             outfile.write(self.firstline)
             outfile.write("\012")
@@ -119,22 +197,31 @@ class Peaklist(object):
 
 
 def replace_entry(line, fieldn, newentry):
-    # Replace an entry in a string by the field number
-    # No padding is implemented currently.  Spacing will change if
-    #  the original field entry and the new field entry are of
-    #  different lengths.
+    """Helper function replace an entry in a string by the field number.
+
+    No padding is implemented currently.  Spacing will change if
+    the original field entry and the new field entry are of
+    different lengths.
+    """
     # This method depends on xpktools._find_start_entry
 
     start = _find_start_entry(line, fieldn)
     leng = len(line[start:].split()[0])
-    newline = line[:start] + str(newentry) + line[(start+leng):]
+    newline = line[:start] + str(newentry) + line[(start + leng):]
     return newline
 
 
 def _find_start_entry(line, n):
-    # find the starting point character for the n'th entry in
-    # a space delimited line.  n is counted starting with 1
-    # The n=1 field by definition begins at the first character
+    """Find the starting character for entry `n` in a space delimited `line` (PRIVATE).
+
+    n is counted starting with 1.
+    The n=1 field by definition begins at the first character.
+
+    Returns
+    -------
+    starting character : str
+        The starting character for entry `n`.
+    """
     # This function is used by replace_entry
 
     infield = 0       # A flag that indicates that the counter is in a field
@@ -157,7 +244,7 @@ def _find_start_entry(line, n):
 
     while (c < leng and field < n):
         if (infield):
-            if (line[c] == " " and not (line[c-1] == " ")):
+            if (line[c] == " " and not (line[c - 1] == " ")):
                 infield = 0
             else:
                 if (not line[c] == " "):
@@ -170,11 +257,24 @@ def _find_start_entry(line, n):
 
 
 def data_table(fn_list, datalabel, keyatom):
-    # Generate and generate a data table from a list of
-    # input xpk files <fn_list>.  The data element reported is
-    # <datalabel> and the index for the data table is by the
-    # nucleus indicated by <keyatom>.
+    """Generate a data table from a list of input xpk files.
 
+    Parameters
+    ----------
+    fn_list : list
+        List of .xpk file names.
+    datalabel : str
+        The data element reported.
+    keyatom : str
+        The name of the nucleus used as an index for the data table.
+
+    Returns
+    -------
+    outlist : list
+       List of table rows indexed by `keyatom`.
+
+    """
+    # TODO - Clarify this docstring, add an example?
     outlist = []
 
     [dict_list, label_line_list] = _read_dicts(fn_list, keyatom)
@@ -208,7 +308,7 @@ def data_table(fn_list, datalabel, keyatom):
 
 
 def _read_dicts(fn_list, keyatom):
-    # Read multiple files into a list of residue dictionaries
+    """Read multiple files into a list of residue dictionaries (PRIVATE)."""
     dict_list = []
     datalabel_list = []
     for fn in fn_list:
@@ -218,3 +318,8 @@ def _read_dicts(fn_list, keyatom):
         datalabel_list.append(peaklist.datalabels)
 
     return [dict_list, datalabel_list]
+
+
+if __name__ == "__main__":
+    from Bio._utils import run_doctest
+    run_doctest()
