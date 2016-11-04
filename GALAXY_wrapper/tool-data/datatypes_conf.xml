@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<datatypes>
+    <datatype_files>
+	<tool file="biopython/gene_ontology.xml" />
+    </datatype_files>
+<registration>
+    <datatype extension="gaf" type="galaxy.datatypes.gaf:Gaf" subclass="True" 
+		display_in_upload="True" />  
+</registration>
+<sniffers>
+    <sniffed type="galaxy.datatypes.gaf:Gaf"/>
+</sniffers>
+</datatypes>
