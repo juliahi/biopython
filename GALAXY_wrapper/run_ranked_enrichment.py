@@ -69,7 +69,7 @@ def run_gsea(assocs, go_graph, gene_rank, perms, minset, corr, seed=None):
 def run_parent_child(assocs, go_graph, gene_rank, side, corrections, rank_as_population, method):
     from Bio.Ontology import RankedParentChildEnrichmentFinder
 
-    ef = RankedParentChildEnrichmentFinder(assocs, go_graph, resolver_generator)
+    ef = RankedParentChildEnrichmentFinder(assocs, go_graph)
     result = ef.find_enrichment(gene_rank, side, corrections, rank_as_population, method)
     return result
 
@@ -170,7 +170,8 @@ def main():
     gene_rank = read_deseq_output(args.inp, 1)
     
     go_graph = OntoIO.read(args.gograph, "obo")
-    assocs = OntoIO.read(args.assoc, "gaf", assoc_format = "in_mem_sql")
+    #assocs = OntoIO.read(args.assoc, "gaf", assoc_format = "in_mem_sql")
+    assocs = OntoIO.read(args.assoc, "gaf")
     
     result=None
     

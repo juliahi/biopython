@@ -130,7 +130,8 @@ def main():
     gene_list = read_list(args.inp)
     
     go_graph = OntoIO.read(args.gograph, "obo")
-    assocs = OntoIO.read(args.assoc, "gaf", assoc_format = "in_mem_sql")
+    #assocs = OntoIO.read(args.assoc, "gaf", assoc_format = "in_mem_sql")
+    assocs = OntoIO.read(args.assoc, "gaf")
     result=None
     
         
