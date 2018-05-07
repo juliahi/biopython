@@ -30,7 +30,7 @@ if sys.platform == "win32":
     # and by default installs to C:\Program Files\NCBI\BLAST-2.2.22+\bin
     # To keep things simple, assume BLAST+ is on the path on Windows.
     #
-    # On Windows the environment variable name isn't case senstive,
+    # On Windows the environment variable name isn't case sensitive,
     # but must split on ";" not ":"
     likely_dirs = os.environ.get("PATH", "").split(";")
 else:
@@ -253,9 +253,6 @@ class CheckCompleteArgList(unittest.TestCase):
         if exe_name in ["blastx", "tblastn"]:
             # Removed in BLAST 2.2.27+ so will look like extra arg on new BLAST
             extra = extra.difference(["-frame_shift_penalty"])
-        if exe_name == "rpsblast":
-            # New in BLAST 2.2.28+ so will look like extra args on old BLAST:
-            extra = extra.difference(["-comp_based_stats", "-use_sw_tback"])
         if exe_name in ["blastn", "blastp", "blastx", "tblastn", "tblastx",
                         "psiblast", "rpstblastn", "rpsblast"]:
             # New in BLAST 2.2.29+ so will look like extra args on old BLAST:
@@ -266,6 +263,9 @@ class CheckCompleteArgList(unittest.TestCase):
             # Removed in BLAST 2.2.30 so will look like extra args on new BLAST
             # Apparently -word_size should never have been added to these tools.
             extra = extra.difference(["-word_size"])
+            # New in BLAST 2.2.28+ (for rpsblast) and BLAST 2.6+ (for rpstblastn)
+            # so will look like extra args on old BLAST:
+            extra = extra.difference(["-comp_based_stats", "-use_sw_tback"])
         if exe_name == "deltablast":
             # New in BLAST+ 2.2.29 so will look like extra args on BLAST+ 2.2.28
             extra = extra.difference(["-entrez_query", "-max_hsps", "-sum_statistics"])
@@ -281,6 +281,10 @@ class CheckCompleteArgList(unittest.TestCase):
         if exe_name in ["deltablast", "psiblast"]:
             # New in BLAST+ 2.3.0 so will look like extra args on older verions
             extra = extra.difference(["-save_each_pssm", "-save_pssm_after_last_round"])
+        # This was added in BLAST+ 2.7.1 (or maybe 2.7.0) to most/all the tools,
+        # so will be seen as an extra argument on older versions:
+        if "-negative_seqidlist" in extra:
+            extra.remove("-negative_seqidlist")
 
         if extra or missing:
             import warnings

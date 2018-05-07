@@ -41,8 +41,8 @@ def unfold_entities(entity_list, target_level):
     list of modules -> list of atoms
     list of residues -> list of chains
 
-    o entity_list - list of entities or a single entity
-    o target_level - char (A, R, C, M, S)
+    - entity_list - list of entities or a single entity
+    - target_level - char (A, R, C, M, S)
 
     Note that if entity_list is an empty list, you get an empty list back:
 
@@ -77,13 +77,6 @@ def unfold_entities(entity_list, target_level):
     return list(entity_list)
 
 
-def _test():
-    """Run the Bio.PDB.Selection module's doctests (PRIVATE)."""
-    import doctest
-    print("Running doctests ...")
-    doctest.testmod()
-    print("Done")
-
-
 if __name__ == "__main__":
-    _test()
+    from Bio._utils import run_doctest
+    run_doctest()

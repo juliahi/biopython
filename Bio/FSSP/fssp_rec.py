@@ -1,8 +1,13 @@
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """A superclass for reading [f]ixed-column type [f]lat-[f]ile records."""
 
 
 class fff_rec(object):
     def __init__(self, inrec=''):
+        """Initialize the class."""
         self.data = inrec
 
     def __repr__(self):
@@ -25,6 +30,7 @@ class fff_rec(object):
 
 class align(object):
     """Definition of the align section in a FSSP file."""
+
     abs_res_num = (0, 4)
     pdb_res_num = (4, 9)
     chain_id = 10

@@ -9,8 +9,8 @@
 #
 """Restriction Digest Enzymes.
 
-Example:
-
+Examples
+--------
     >>> from Rana.fts import fts    #
     >>> from Rana.Vector import *   # Just a way to get a sequence.
     >>> from Bio.Seq import Seq     # Use your preferred method here.
@@ -54,7 +54,7 @@ Example:
 
 """
 
-from Bio.Restriction.Restriction import *
+from Bio.Restriction.Restriction import *  # noqa (legacy module arrangement)
 
 
 #
@@ -105,7 +105,7 @@ from Bio.Restriction.Restriction import *
 #   3) I prefer to keep all the code together.
 #   4) and 5) both are OK. Only a matter of preference.
 #
-#   So the following code has been moved back to Bio.Restricion.Restriction
+#   So the following code has been moved back to Bio.Restriction.Restriction
 #   For the user the results is transparent:
 #   from Bio.Restriction import * works as before.
 #

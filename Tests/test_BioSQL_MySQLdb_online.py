@@ -3,10 +3,12 @@
 # license.  Please see the LICENSE file that should have been included
 # as part of this package.
 
-"""Run BioSQL tests using SQLite"""
+"""Run BioSQL tests using MySQL"""
 
-from common_BioSQL import load_biosql_ini
-from common_BioSQL_online import *
+import unittest
+
+from common_BioSQL import *  # noqa
+from common_BioSQL_online import *  # noqa
 
 import requires_internet
 requires_internet.check()

@@ -1,4 +1,10 @@
-""" This module provides classes and functions to visualise a KGML Pathway Map
+# Copyright 2013 Leighton Pritchard.  All rights reserved.
+#
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
+"""Classes and functions to visualise a KGML Pathway Map.
 
 The KGML definition is as of release KGML v0.7.1
 (http://www.kegg.jp/kegg/xml/docs/)
@@ -13,7 +19,6 @@ import tempfile
 from io import BytesIO
 
 from reportlab.lib import colors
-from reportlab.graphics.shapes import *
 from reportlab.pdfgen import canvas
 
 from PIL import Image
@@ -24,7 +29,7 @@ from Bio.KEGG.KGML.KGML_pathway import Pathway
 
 
 def darken(color, factor=0.7):
-    """Returns darkened color as a ReportLab RGB color.
+    """Return darkened color as a ReportLab RGB color.
 
     Take a passed color and returns a Reportlab color that is darker by the
     factor indicated in the parameter.
@@ -36,7 +41,7 @@ def darken(color, factor=0.7):
 
 
 def color_to_reportlab(color):
-    """Returns the passed color in Reportlab Color format.
+    """Return the passed color in Reportlab Color format.
 
     We allow colors to be specified as hex values, tuples, or Reportlab Color
     objects, and with or without an alpha channel. This function acts as a
@@ -64,7 +69,7 @@ def color_to_reportlab(color):
 
 
 def get_temp_imagefilename(url):
-    """Returns filename of temporary file containing downloaded image.
+    """Return filename of temporary file containing downloaded image.
 
     Create a new temporary file to hold the image file at the passed URL
     and return the filename.
@@ -88,6 +93,7 @@ class KGMLCanvas(object):
                  fontsize=6, draw_relations=True, show_orthologs=True,
                  show_compounds=True, show_genes=True,
                  show_reaction_entries=True, margins=(0.02, 0.02)):
+        """Initialize."""
         self.pathway = pathway
         self.show_maps = show_maps
         self.show_orthologs = show_orthologs
@@ -128,10 +134,8 @@ class KGMLCanvas(object):
         # Instantiate canvas
         self.drawing = \
             canvas.Canvas(filename, bottomup=0,
-                          pagesize=(cwidth *
-                                        (1 + 2 * self.margins[0]),
-                                    cheight *
-                                        (1 + 2 * self.margins[1])))
+                          pagesize=(cwidth * (1 + 2 * self.margins[0]),
+                                    cheight * (1 + 2 * self.margins[1])))
         self.drawing.setFont(self.fontname, self.fontsize)
         # Transform the canvas to add the margins
         self.drawing.translate(self.margins[0] * self.pathway.bounds[1][0],
@@ -163,7 +167,7 @@ class KGMLCanvas(object):
         self.drawing.save()
 
     def __add_maps(self):
-        """Adds maps to the drawing of the map.
+        """Add maps to the drawing of the map (PRIVATE).
 
         We do this first, as they're regional labels to be overlaid by
         information.  Also, we want to set the color to something subtle.
@@ -181,7 +185,7 @@ class KGMLCanvas(object):
                     self.__add_labels(g)
 
     def __add_graphics(self, graphics):
-        """Adds the passed graphics object to the map.
+        """Add the passed graphics object to the map (PRIVATE).
 
         Add text, add after the graphics object, for sane Z-ordering.
         """
@@ -218,7 +222,7 @@ class KGMLCanvas(object):
                               stroke=1, fill=1)
 
     def __add_labels(self, graphics):
-        """Adds labels for the passed graphics objects to the map (PRIVATE).
+        """Add labels for the passed graphics objects to the map (PRIVATE).
 
         We don't check that the labels fit inside objects such as circles/
         rectangles/roundrectangles.
@@ -253,7 +257,7 @@ class KGMLCanvas(object):
         self.drawing.setFont(self.fontname, self.fontsize)
 
     def __add_orthologs(self):
-        """Adds 'ortholog' Entry elements to the drawing of the map (PRIVATE).
+        """Add 'ortholog' Entry elements to the drawing of the map (PRIVATE).
 
         In KGML, these are typically line objects, so we render them
         before the compound circles to cover the unsightly ends/junctions.
@@ -270,7 +274,7 @@ class KGMLCanvas(object):
                     self.__add_labels(g)
 
     def __add_reaction_entries(self):
-        """Adds Entry elements for Reactions to the map drawing (PRIVATE).
+        """Add Entry elements for Reactions to the map drawing (PRIVATE).
 
         In KGML, these are typically line objects, so we render them
         before the compound circles to cover the unsightly ends/junctions
@@ -287,7 +291,7 @@ class KGMLCanvas(object):
                     self.__add_labels(g)
 
     def __add_compounds(self):
-        """Adds compound elements to the drawing of the map (PRIVATE)."""
+        """Add compound elements to the drawing of the map (PRIVATE)."""
         for compound in self.pathway.compounds:
             for g in compound.graphics:
                 # Modify transparency of compounds that don't participate
@@ -307,7 +311,7 @@ class KGMLCanvas(object):
                     self.__add_labels(g)
 
     def __add_genes(self):
-        """Adds gene elements to the drawing of the map (PRIVATE)."""
+        """Add gene elements to the drawing of the map (PRIVATE)."""
         for gene in self.pathway.genes:
             for g in gene.graphics:
                 self.drawing.setStrokeColor(color_to_reportlab(g.fgcolor))
@@ -318,7 +322,7 @@ class KGMLCanvas(object):
                     self.__add_labels(g)
 
     def __add_relations(self):
-        """Adds relations to the map (PRIVATE).
+        """Add relations to the map (PRIVATE).
 
         This is tricky. There is no defined graphic in KGML for a
         relation, and the corresponding entries are typically defined

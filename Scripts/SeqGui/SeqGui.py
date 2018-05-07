@@ -64,7 +64,7 @@ codon_list.selection_set(0)
 codon_list.configure(exportselection=False)
 codon_scroller.config(command=codon_list.yview)
 
-# Radiobuttons are more appropiate than another listbox here:
+# Radiobuttons are more appropriate than another listbox here:
 transform_panel = ttk.LabelFrame(param_panel, text='Transformation')
 
 transform_var = tk.StringVar()
@@ -153,6 +153,7 @@ def set_statusbar(event):
     else:
         statustext.set('This is the statusbar')
     return
+
 
 # Set commands and bind events
 menue_single.bind('<<MenuSelect>>', set_statusbar)

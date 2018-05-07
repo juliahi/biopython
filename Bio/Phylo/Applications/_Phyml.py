@@ -1,7 +1,8 @@
 # Copyright 2011 by Eric Talevich.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its license.
-# Please see the LICENSE file that should have been included as part of this
-# package.
+#
+# This code is part of the Biopython distribution and governed by its
+# license.  Please see the LICENSE file that should have been included
+# as part of this package.
 """Command-line wrapper for the tree inference program PhyML."""
 
 from Bio._py3k import basestring
@@ -14,8 +15,8 @@ class PhymlCommandline(AbstractCommandline):
 
     Homepage: http://www.atgc-montpellier.fr/phyml
 
-    Citations:
-
+    References
+    ----------
     Guindon S, Gascuel O.
     A simple, fast, and accurate algorithm to estimate large phylogenies by maximum
     likelihood.
@@ -30,6 +31,7 @@ class PhymlCommandline(AbstractCommandline):
     """
 
     def __init__(self, cmd='phyml', **kwargs):
+        """Initialize the class."""
         self.parameters = [
             _Option(['-i', '--input', 'input'],
                     "PHYLIP format input nucleotide or amino-acid sequence filenam.",

@@ -1,7 +1,9 @@
 # Copyright 2009-2016 by Peter Cock.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
+#
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """Optimised sequence conversion code (PRIVATE).
 
 You are not expected to access this module, or any of its code, directly. This
@@ -363,7 +365,7 @@ _converter = {
 
 
 def _handle_convert(in_handle, in_format, out_handle, out_format, alphabet=None):
-    """SeqIO conversion function (PRIVATE)."""
+    """Convert handles from one format to another (PRIVATE)."""
     try:
         f = _converter[(in_format, out_format)]
     except KeyError:

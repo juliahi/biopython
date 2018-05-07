@@ -2,10 +2,10 @@
 # Revisions copyright 2008-2009 by Michiel de Hoon.
 # All rights reserved.
 #
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
-
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """Bio.SeqIO support for the "swiss" (aka SwissProt/UniProt) file format.
 
 You are expected to use this module via the Bio.SeqIO functions.
@@ -65,7 +65,7 @@ def _make_seqfeature(name, from_res, to_res, description, ft_id):
 
 
 def SwissIterator(handle):
-    """Breaks up a Swiss-Prot/UniProt file into SeqRecord objects.
+    """Break up a Swiss-Prot/UniProt file into SeqRecord objects.
 
     Every section from the ID line to the terminating // becomes
     a single SeqRecord with associated annotation and features.
@@ -102,13 +102,18 @@ def SwissIterator(handle):
                 record.dbxrefs.append(dbxref)
         annotations = record.annotations
         annotations['accessions'] = swiss_record.accessions
+        if swiss_record.protein_existence:
+            annotations['protein_existence'] = swiss_record.protein_existence
         if swiss_record.created:
             annotations['date'] = swiss_record.created[0]
+            annotations['sequence_version'] = swiss_record.created[1]
         if swiss_record.sequence_update:
             annotations[
                 'date_last_sequence_update'] = swiss_record.sequence_update[0]
+            annotations['sequence_version'] = swiss_record.sequence_update[1]
         if swiss_record.annotation_update:
             annotations['date_last_annotation_update'] = swiss_record.annotation_update[0]
+            annotations['entry_version'] = swiss_record.annotation_update[1]
         if swiss_record.gene_name:
             annotations['gene_name'] = swiss_record.gene_name
         annotations['organism'] = swiss_record.organism.rstrip(".")

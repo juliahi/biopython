@@ -5,7 +5,6 @@
 
 import re
 
-
 line_floats_re = re.compile("-*\d+\.\d+")
 
 try:
@@ -25,8 +24,7 @@ except ValueError:
 
 
 def parse_basics(lines, results):
-    """Parse the basic information that should be present in most codeml output files.
-    """
+    """Parse the basic information that should be present in most codeml output files."""
     # multi_models is used to designate there being results for more than one
     # model in the file
     multi_models = False
@@ -87,9 +85,7 @@ def parse_basics(lines, results):
 
 
 def parse_nssites(lines, results, multi_models, multi_genes):
-    """Determine which NSsites models are present and parse them.
-    """
-
+    """Determine which NSsites models are present and parse them."""
     ns_sites = {}
     model_re = re.compile("Model (\d+):\s+(.+)")
     gene_re = re.compile("Gene\s+([0-9]+)\s+.+")
@@ -110,10 +106,12 @@ def parse_nssites(lines, results, multi_models, multi_genes):
             genes = results["genes"]
             current_gene = None
             gene_start = None
+            model_results = None
             for line_num, line in enumerate(lines):
                 gene_res = gene_re.match(line)
                 if gene_res:
                     if current_gene is not None:
+                        assert model_results is not None
                         parse_model(lines[gene_start:line_num], model_results)
                         genes[current_gene - 1] = model_results
                     gene_start = line_num
@@ -165,8 +163,7 @@ def parse_nssites(lines, results, multi_models, multi_genes):
 
 
 def parse_model(lines, results):
-    """Parse an individual NSsites model's results.
-    """
+    """Parse an individual NSsites model's results."""
     parameters = {}
     SEs_flag = False
     dS_tree_flag = False
@@ -346,7 +343,9 @@ def parse_model(lines, results):
 
 
 def parse_siteclass_proportions(line_floats):
-    """For models which have multiple site classes, find the proportion of the
+    """Find proportion of alignment assigned to each class.
+
+    For models which have multiple site classes, find the proportion of the
     alignment assigned to each class.
     """
     site_classes = {}
@@ -357,7 +356,9 @@ def parse_siteclass_proportions(line_floats):
 
 
 def parse_siteclass_omegas(line, site_classes):
-    """For models which have multiple site classes, find the omega estimated
+    """Find omega estimate for each class.
+
+    For models which have multiple site classes, find the omega estimated
     for each class.
     """
     # The omega results are tabular with strictly 9 characters per column
@@ -374,8 +375,7 @@ def parse_siteclass_omegas(line, site_classes):
 
 
 def parse_clademodelc(branch_type_no, line_floats, site_classes):
-    """Parse results specific to the clade model C.
-    """
+    """Parse results specific to the clade model C."""
     if not site_classes or len(line_floats) == 0:
         return
     for n in range(len(line_floats)):
@@ -386,8 +386,7 @@ def parse_clademodelc(branch_type_no, line_floats, site_classes):
 
 
 def parse_branch_site_a(foreground, line_floats, site_classes):
-    """Parse results specific to the branch site A model.
-    """
+    """Parse results specific to the branch site A model."""
     if not site_classes or len(line_floats) == 0:
         return
     for n in range(len(line_floats)):
@@ -401,8 +400,7 @@ def parse_branch_site_a(foreground, line_floats, site_classes):
 
 
 def parse_pairwise(lines, results):
-    """Parse results from pairwise comparisons.
-    """
+    """Parse results from pairwise comparisons."""
     # Find pairwise comparisons
     # Example:
     # 2 (Pan_troglo) ... 1 (Homo_sapie)
@@ -412,6 +410,8 @@ def parse_pairwise(lines, results):
     # t= 0.0126  S=    81.4  N=   140.6  dN/dS= 0.0010  dN= 0.0000  dS= 0.0115
     pair_re = re.compile("\d+ \((.+)\) ... \d+ \((.+)\)")
     pairwise = {}
+    seq1 = None
+    seq2 = None
     for line in lines:
         # Find all floating point numbers in this line
         line_floats_res = line_floats_re.findall(line)
@@ -420,29 +420,28 @@ def parse_pairwise(lines, results):
         if pair_res:
             seq1 = pair_res.group(1)
             seq2 = pair_res.group(2)
-            if pairwise.get(seq1) is None:
+            if seq1 not in pairwise:
                 pairwise[seq1] = {}
-            if pairwise.get(seq2) is None:
+            if seq2 not in pairwise:
                 pairwise[seq2] = {}
-            if len(line_floats) == 1:
-                pairwise[seq1][seq2] = {"lnL": line_floats[0]}
-                pairwise[seq2][seq1] = pairwise[seq1][seq2]
-            elif len(line_floats) == 6:
-                pairwise[seq1][seq2] = {"t": line_floats[0],
-                                        "S": line_floats[1],
-                                        "N": line_floats[2],
-                                        "omega": line_floats[3],
-                                        "dN": line_floats[4],
-                                        "dS": line_floats[5]}
-                pairwise[seq2][seq1] = pairwise[seq1][seq2]
+        if len(line_floats) == 1 and seq1 is not None and seq2 is not None:
+            pairwise[seq1][seq2] = {"lnL": line_floats[0]}
+            pairwise[seq2][seq1] = pairwise[seq1][seq2]
+        elif len(line_floats) == 6 and seq1 is not None and seq2 is not None:
+            pairwise[seq1][seq2].update({"t": line_floats[0],
+                                         "S": line_floats[1],
+                                         "N": line_floats[2],
+                                         "omega": line_floats[3],
+                                         "dN": line_floats[4],
+                                         "dS": line_floats[5]})
+            pairwise[seq2][seq1] = pairwise[seq1][seq2]
     if pairwise:
         results["pairwise"] = pairwise
     return results
 
 
 def parse_distances(lines, results):
-    """Parse amino acid sequence distance results.
-    """
+    """Parse amino acid sequence distance results."""
     distances = {}
     sequences = []
     raw_aa_distances_flag = False

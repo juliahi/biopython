@@ -1,4 +1,4 @@
-# Copyright 2009-2016 by Peter Cock.  All rights reserved.
+# Copyright 2009-2017 by Peter Cock.  All rights reserved.
 # This code is part of the Biopython distribution and governed by its
 # license.  Please see the LICENSE file that should have been included
 # as part of this package.
@@ -8,16 +8,7 @@
 Initially this takes matched tests of GenBank and FASTA files from the NCBI
 and confirms they are consistent using our different parsers.
 """
-import sys
-# Remove unittest2 import after dropping support for Python2.6
-if sys.version_info < (2, 7):
-    try:
-        import unittest2 as unittest
-    except ImportError:
-        from Bio import MissingPythonDependencyError
-        raise MissingPythonDependencyError("Under Python 2.6 this test needs the unittest2 library")
-else:
-    import unittest
+import unittest
 
 from Bio import SeqIO
 from Bio.Alphabet import generic_dna, generic_protein
@@ -136,7 +127,7 @@ class SeqRecordMethods(unittest.TestCase):
             break
 
     def test_contains(self):
-        self.assertTrue(Seq("ABC", generic_protein) in self.record)
+        self.assertIn(Seq("ABC", generic_protein), self.record)
 
     def test_str(self):
         expected = """
@@ -312,6 +303,11 @@ Seq('ABCDEFGHIJKLMNOPQRSTUVWZYX', ProteinAlphabet())"""
             self.assertEqual(rec.letter_annotations, {"fake": "X" * 26})
             self.assertTrue(len(rec.features) <= len(self.record.features))
 
+
+class SeqRecordMethodsMore(unittest.TestCase):
+    """Test SeqRecord methods cont."""
+    # This class does not have a setUp defining self.record
+
     def test_reverse_complement_seq(self):
         s = SeqRecord(Seq("ACTG"), id="TestID", name="TestName",
                       description="TestDescription", dbxrefs=["TestDbxrefs"],
@@ -355,7 +351,35 @@ Seq('ABCDEFGHIJKLMNOPQRSTUVWZYX', ProteinAlphabet())"""
         s = SeqRecord(MutableSeq("ACTG"))
         self.assertEqual("CAGT", str(s.reverse_complement().seq))
 
-    def test_gt_exception(self):
+    def test_translate(self):
+        s = SeqRecord(Seq("ATGGTGTAA"), id="TestID", name="TestName",
+                      description="TestDescription", dbxrefs=["TestDbxrefs"],
+                      features=[SeqFeature(FeatureLocation(0, 3), type="Site")],
+                      annotations={'organism': 'bombyx'},
+                      letter_annotations={'test': 'abcdefghi'})
+
+        t = s.translate()
+        self.assertEqual(t.seq, "MV*")
+        self.assertEqual(t.id, "<unknown id>")
+        self.assertEqual(t.name, "<unknown name>")
+        self.assertEqual(t.description, "<unknown description>")
+        self.assertFalse(t.dbxrefs)
+        self.assertFalse(t.features)
+        self.assertFalse(t.annotations)
+        self.assertFalse(t.letter_annotations)
+
+        t = s.translate(cds=True, id=True, name=True, description=True,
+                        dbxrefs=True, annotations=True)
+        self.assertEqual(t.seq, "MV")
+        self.assertEqual(t.id, "TestID")
+        self.assertEqual(t.name, "TestName")
+        self.assertEqual(t.description, "TestDescription")
+        self.assertEqual(t.dbxrefs, ["TestDbxrefs"])
+        self.assertFalse(t.features)
+        self.assertEqual(t.annotations, {'organism': 'bombyx'})
+        self.assertFalse(t.letter_annotations)
+
+    def test_lt_exception(self):
         def lt():
             SeqRecord(Seq("A")) < SeqRecord(Seq("A"))
         self.assertRaises(NotImplementedError, lt)
@@ -363,7 +387,7 @@ Seq('ABCDEFGHIJKLMNOPQRSTUVWZYX', ProteinAlphabet())"""
     def test_le_exception(self):
         def le():
             SeqRecord(Seq("A")) <= SeqRecord(Seq("A"))
-            self.assertRaises(NotImplementedError, le)
+        self.assertRaises(NotImplementedError, le)
 
     def test_eq_exception(self):
         def equality():
@@ -384,6 +408,67 @@ Seq('ABCDEFGHIJKLMNOPQRSTUVWZYX', ProteinAlphabet())"""
         def ge():
             SeqRecord(Seq("A")) >= SeqRecord(Seq("A"))
         self.assertRaises(NotImplementedError, ge)
+
+    def test_hash_exception(self):
+        def hash1():
+            hash(SeqRecord(Seq("A")))
+        self.assertRaises(TypeError, hash1)
+
+        def hash2():
+            SeqRecord(Seq("A")).__hash__()
+        self.assertRaises(TypeError, hash2)
+
+
+class TestTranslation(unittest.TestCase):
+
+    def setUp(self):
+        self.s = SeqRecord(Seq("ATGGTGTAA"), id="TestID", name="TestName",
+                           description="TestDescription", dbxrefs=["TestDbxrefs"],
+                           features=[SeqFeature(FeatureLocation(0, 3), type="Site")],
+                           annotations={'organism': 'bombyx'},
+                           letter_annotations={'test': 'abcdefghi'})
+
+    def test_defaults(self):
+        t = self.s.translate()
+        self.assertEqual(t.seq, "MV*")
+        self.assertEqual(t.id, "<unknown id>")
+        self.assertEqual(t.name, "<unknown name>")
+        self.assertEqual(t.description, "<unknown description>")
+        self.assertFalse(t.dbxrefs)
+        self.assertFalse(t.features)
+        self.assertFalse(t.annotations)
+        self.assertFalse(t.letter_annotations)
+
+    def test_preserve(self):
+        t = self.s.translate(cds=True, id=True, name=True, description=True,
+                        dbxrefs=True, annotations=True)
+        self.assertEqual(t.seq, "MV")
+        self.assertEqual(t.id, "TestID")
+        self.assertEqual(t.name, "TestName")
+        self.assertEqual(t.description, "TestDescription")
+        self.assertEqual(t.dbxrefs, ["TestDbxrefs"])
+        self.assertFalse(t.features)
+        self.assertEqual(t.annotations, {'organism': 'bombyx'})
+        self.assertFalse(t.letter_annotations)
+
+        # Should not preserve these
+        self.assertRaises(TypeError, self.s.translate, features=True)
+        self.assertRaises(TypeError, self.s.translate, letter_annotations=True)
+
+    def test_new_annot(self):
+        t = self.s.translate(1, to_stop=True, gap="-",
+                             id="Foo", name="Bar", description="Baz", dbxrefs=["Nope"],
+                             features=[SeqFeature(FeatureLocation(0, 3), type="Site")],
+                             annotations={"a": "team"},
+                             letter_annotations={"aa": ["Met", "Val"]})
+        self.assertEqual(t.seq, "MV")
+        self.assertEqual(t.id, "Foo")
+        self.assertEqual(t.name, "Bar")
+        self.assertEqual(t.description, "Baz")
+        self.assertEqual(t.dbxrefs, ["Nope"])
+        self.assertEqual(len(t.features), 1)
+        self.assertEqual(t.annotations, {'a': 'team'})
+        self.assertEqual(t.letter_annotations, {"aa": ["Met", "Val"]})
 
 
 if __name__ == "__main__":

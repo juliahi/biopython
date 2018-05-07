@@ -4,8 +4,7 @@
 # This code is part of the Biopython distribution and governed by its
 # license.  Please see the LICENSE file that should have been included
 # as part of this package.
-"""Test for the SwissProt parser on SwissProt files.
-"""
+"""Test for the SwissProt parser on SwissProt files."""
 import os
 import unittest
 
@@ -17,7 +16,7 @@ from Bio.SeqRecord import SeqRecord
 class TestSwissProt(unittest.TestCase):
 
     def test_sp001(self):
-        "Parsing SwissProt file sp001"
+        """Parsing SwissProt file sp001."""
         filename = 'sp001'
         # test the record parser
 
@@ -60,7 +59,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -92,8 +91,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp002(self):
-        "Parsing SwissProt file sp002"
-
+        """Parsing SwissProt file sp002."""
         filename = 'sp002'
         # test the record parser
 
@@ -139,7 +137,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -171,8 +169,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp003(self):
-        "Parsing SwissProt file sp003"
-
+        """Parsing SwissProt file sp003."""
         filename = 'sp003'
         # test the record parser
 
@@ -258,7 +255,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -290,8 +287,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp004(self):
-        "Parsing SwissProt file sp004"
-
+        """Parsing SwissProt file sp004."""
         filename = 'sp004'
         # test the record parser
 
@@ -351,7 +347,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -383,8 +379,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp005(self):
-        "Parsing SwissProt file sp005"
-
+        """Parsing SwissProt file sp005."""
         filename = 'sp005'
         # test the record parser
 
@@ -425,7 +420,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -457,8 +452,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp006(self):
-        "Parsing SwissProt file sp006"
-
+        """Parsing SwissProt file sp006."""
         filename = 'sp006'
         # test the record parser
 
@@ -495,7 +489,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -527,8 +521,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp007(self):
-        "Parsing SwissProt file sp007"
-
+        """Parsing SwissProt file sp007."""
         filename = 'sp007'
         # test the record parser
 
@@ -574,7 +567,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -606,8 +599,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp008(self):
-        "Parsing SwissProt file sp008"
-
+        """Parsing SwissProt file sp008."""
         filename = 'sp008'
         # test the record parser
 
@@ -816,7 +808,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -848,8 +840,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp009(self):
-        "Parsing SwissProt file sp009"
-
+        """Parsing SwissProt file sp009."""
         filename = 'sp009'
         # test the record parser
 
@@ -886,7 +877,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -918,8 +909,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp010(self):
-        "Parsing SwissProt file sp010"
-
+        """Parsing SwissProt file sp010."""
         filename = 'sp010'
         # test the record parser
 
@@ -998,7 +988,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -1029,8 +1019,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp011(self):
-        "Parsing SwissProt file sp011"
-
+        """Parsing SwissProt file sp011."""
         filename = 'sp011'
         # test the record parser
 
@@ -1153,7 +1142,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -1184,8 +1173,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp012(self):
-        "Parsing SwissProt file sp012"
-
+        """Parsing SwissProt file sp012."""
         filename = 'sp012'
         # test the record parser
 
@@ -1222,7 +1210,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -1253,8 +1241,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp013(self):
-        "Parsing SwissProt file sp013"
-
+        """Parsing SwissProt file sp013."""
         filename = 'sp013'
         # test the record parser
 
@@ -1291,7 +1278,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -1322,8 +1309,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp014(self):
-        "Parsing SwissProt file sp014"
-
+        """Parsing SwissProt file sp014."""
         filename = 'sp014'
         # test the record parser
 
@@ -1451,7 +1437,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.
@@ -1482,8 +1468,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(records[0].accessions, record.accessions)
 
     def test_sp015(self):
-        "Parsing SwissProt file sp015"
-
+        """Parsing SwissProt file sp015."""
         filename = 'sp015'
         # test the record parser
 
@@ -1515,7 +1500,7 @@ class TestSwissProt(unittest.TestCase):
         self.assertEqual(str(seq_record.seq), record.sequence)
         self.assertEqual(seq_record.description, record.description)
         self.assertEqual(seq_record.name, record.entry_name)
-        self.assertTrue(seq_record.id in record.accessions)
+        self.assertIn(seq_record.id, record.accessions)
 
         # Now try using the iterator - note that all these
         # test cases have only one record.

@@ -1,13 +1,14 @@
 # Copyright 2008-2015 by Peter Cock.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
 #
-# This module is for reading and writing IntelliGenetics format files as
-# SeqRecord objects.  This file format appears to be the same as the MASE
-# multiple sequence alignment format.
-
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """Bio.SeqIO support for the "ig" (IntelliGenetics or MASE) file format.
+
+This module is for reading and writing IntelliGenetics format files as
+SeqRecord objects.  This file format appears to be the same as the MASE
+multiple sequence alignment format.
 
 You are expected to use this module via the Bio.SeqIO functions.
 """
@@ -33,8 +34,8 @@ def IgIterator(handle, alphabet=single_letter_alphabet):
     new line characters in the SeqRecord's annotations dictionary under the
     key 'comment'.
 
-    Example:
-
+    Examples
+    --------
     >>> with open("IntelliGenetics/TAT_mase_nuc.txt") as handle:
     ...     for record in IgIterator(handle):
     ...         print("%s length %i" % (record.id, len(record)))
@@ -109,6 +110,7 @@ def IgIterator(handle, alphabet=single_letter_alphabet):
 
     # We should be at the end of the file now
     assert not line
+
 
 if __name__ == "__main__":
     from Bio._utils import run_doctest

@@ -5,6 +5,7 @@
 # license.  Please see the LICENSE file that should have been included
 # as part of this package.
 
+"""Extract SCOP domain ATOM and HETATOM records from PDB."""
 
 from __future__ import print_function
 
@@ -56,6 +57,7 @@ Usage: scop_pdb [-h] [-i file] [-o file] [-p pdb_url_prefix]
 
   sid      -- A SCOP domain identifier. e.g. d3hbib_
 """)
+
 
 default_pdb_url = "http://www.rcsb.org/pdb/cgi/export.cgi/somefile.pdb?" \
     "format=PDB&pdbId=%s&compression=None"

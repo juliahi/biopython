@@ -11,7 +11,7 @@ from Bio._py3k import StringIO
 
 from Bio import SeqIO
 from Bio.SeqIO.FastaIO import FastaIterator
-from Bio.Alphabet import generic_protein, generic_nucleotide, generic_dna
+from Bio.Alphabet import generic_nucleotide, generic_dna
 
 
 def title_to_ids(title):
@@ -68,8 +68,31 @@ def read_title_and_seq(filename):
     return title[1:], seq
 
 
+class Wrapping(unittest.TestCase):
+    """Tests for two-line-per-record FASTA variant."""
+
+    def test_fails(self):
+        self.assertRaises(ValueError, SeqIO.read, "Fasta/aster.pro", "fasta-2line")
+
+    def test_passes(self):
+        expected = SeqIO.read("Fasta/aster.pro", "fasta")
+
+        record = SeqIO.read("Fasta/aster_no_wrap.pro", "fasta")
+        self.assertEqual(expected.id, record.id)
+        self.assertEqual(expected.name, record.name)
+        self.assertEqual(expected.description, record.description)
+        self.assertEqual(expected.seq, record.seq)
+
+        record = SeqIO.read("Fasta/aster_no_wrap.pro", "fasta-2line")
+        self.assertEqual(expected.id, record.id)
+        self.assertEqual(expected.name, record.name)
+        self.assertEqual(expected.description, record.description)
+        self.assertEqual(expected.seq, record.seq)
+
+
 class TitleFunctions(unittest.TestCase):
     """Cunning unit test where methods are added at run time."""
+
     def simple_check(self, filename, alphabet):
         """Basic test for parsing single record FASTA files."""
         title, seq = read_title_and_seq(filename)  # crude parser

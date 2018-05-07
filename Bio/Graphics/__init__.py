@@ -1,9 +1,11 @@
+# Copyright 2008 by Brad Chapman. All rights reserved.
 # Copyright 2008 by Michiel de Hoon.  All rights reserved.
-# Copyright 2008-2013 by Peter Cock.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
-################################################################################
+# Copyright 2009-2017 by Peter Cock.  All rights reserved.
+#
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """Bio.Graphics offers several graphical outputs, all using ReportLab."""
 
 # Check if ReportLab is installed.
@@ -24,7 +26,7 @@ except ImportError:
 
 
 def _write(drawing, output_file, format, dpi=72):
-    """Helper function to standardize output to files (PRIVATE).
+    """Standardize output to files (PRIVATE).
 
     Writes the provided drawing out to a file in a prescribed format.
 

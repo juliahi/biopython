@@ -1,18 +1,19 @@
-#!/usr/bin/env python
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
+# Copyright 2002 by Jeffrey Chang.
+# All rights reserved.
+#
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """Code for doing logistic regressions.
 
-
 Classes:
-LogisticRegression    Holds information for a LogisticRegression classifier.
-
+ - LogisticRegression    Holds information for a LogisticRegression classifier.
 
 Functions:
-train        Train a new classifier.
-calculate    Calculate the probabilities of each class, given an observation.
-classify     Classify an observation into a class.
+ - train        Train a new classifier.
+ - calculate    Calculate the probabilities of each class, given an observation.
+ - classify     Classify an observation into a class.
 """
 
 from __future__ import print_function
@@ -22,27 +23,25 @@ import numpy.linalg
 
 
 class LogisticRegression(object):
-    """Holds information necessary to do logistic regression
-    classification.
+    """Holds information necessary to do logistic regression classification.
 
-    Members:
-    beta    List of the weights for each dimension.
+    Attributes:
+     - beta - List of the weights for each dimension.
 
     """
+
     def __init__(self):
-        """LogisticRegression()"""
+        """Initialize."""
         self.beta = []
 
 
 def train(xs, ys, update_fn=None, typecode=None):
-    """train(xs, ys[, update_fn]) -> LogisticRegression
+    """Train a logistic regression classifier on a training set.
 
-    Train a logistic regression classifier on a training set.  xs is a
-    list of observations and ys is a list of the class assignments,
-    which should be 0 or 1.  xs and ys should contain the same number
-    of elements.  update_fn is an optional callback function that
-    takes as parameters that iteration number and log likelihood.
-
+    Argument xs is a list of observations and ys is a list of the class
+    assignments, which should be 0 or 1.  xs and ys should contain the
+    same number of elements.  update_fn is an optional callback function
+    that takes as parameters that iteration number and log likelihood.
     """
     if len(xs) != len(ys):
         raise ValueError("xs and ys should be the same length.")
@@ -112,12 +111,13 @@ def train(xs, ys, update_fn=None, typecode=None):
 
 
 def calculate(lr, x):
-    """calculate(lr, x) -> list of probabilities
+    """Calculate the probability for each class.
 
-    Calculate the probability for each class.  lr is a
-    LogisticRegression object.  x is the observed data.  Returns a
-    list of the probability that it fits each class.
+    Arguments:
+     - lr is a LogisticRegression object.
+     - x is the observed data.
 
+    Returns a list of the probability that it fits each class.
     """
     # Insert a constant term for x.
     x = numpy.asarray([1.0] + x)
@@ -128,11 +128,7 @@ def calculate(lr, x):
 
 
 def classify(lr, x):
-    """classify(lr, x) -> 1 or 0
-
-    Classify an observation into a class.
-
-    """
+    """Classify an observation into a class."""
     probs = calculate(lr, x)
     if probs[0] > probs[1]:
         return 0

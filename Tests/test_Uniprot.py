@@ -4,8 +4,7 @@
 # This code is part of the Biopython distribution and governed by its
 # license.  Please see the LICENSE file that should have been included
 # as part of this package.
-"""Test for the Uniprot parser on Uniprot XML files.
-"""
+"""Test for the Uniprot parser on Uniprot XML files."""
 import os
 import unittest
 
@@ -246,6 +245,44 @@ class TestUniprot(unittest.TestCase):
                 ['LD(50) is 50 ug/kg in mouse by intracerebroventricular '
                 'injection and 600 ng/g in Blatella germanica.'])
 
+    def test_sp016(self):
+        "Parsing SwissProt file sp016"
+        filename = 'sp016'
+        # test the record parser
+
+        datafile = os.path.join('SwissProt', filename)
+
+        test_handle = open(datafile)
+        seq_record = SeqIO.read(test_handle, "swiss")
+        test_handle.close()
+
+        self.assertTrue(isinstance(seq_record, SeqRecord))
+
+        # test ProteinExistence (the numerical value describing the evidence for the existence of the protein)
+        self.assertEqual(seq_record.annotations['protein_existence'], 1)
+        # test Sequence version
+        self.assertEqual(seq_record.annotations['sequence_version'], 1)
+        # test Entry version
+        self.assertEqual(seq_record.annotations['entry_version'], 93)
+
+    def test_sp002(self):
+        "Parsing SwissProt file sp002"
+        filename = 'sp002'
+        # test the record parser
+
+        datafile = os.path.join('SwissProt', filename)
+
+        test_handle = open(datafile)
+        seq_record = SeqIO.read(test_handle, "swiss")
+        test_handle.close()
+
+        self.assertTrue(isinstance(seq_record, SeqRecord))
+
+        # test Sequence version
+        self.assertEqual(seq_record.annotations['sequence_version'], 34)
+        # test Entry version
+        self.assertEqual(seq_record.annotations['entry_version'], 36)
+
     def compare_txt_xml(self, old, new):
         self.assertEqual(old.id, new.id)
         self.assertEqual(old.name, new.name)
@@ -331,6 +368,13 @@ class TestUniprot(unittest.TestCase):
         self.assertEqual(old.name, 'F2CXE6_HORVD')
         self.assertEqual(new.name, 'F2CXE6_HORVD')
 
+    def test_P84001(self):
+        """Parse mass spec structured comment with unknown loc"""
+        xml = list(SeqIO.parse("SwissProt/P84001.xml", "uniprot-xml"))[0]
+        self.assertEqual(xml.id, 'P84001')
+        self.assertEqual(len(xml.annotations['comment_massspectrometry']), 1)
+        self.assertEqual(xml.annotations['comment_massspectrometry'][0], 'undefined:9571|Electrospray')
+
     def test_multi_ex(self):
         """Compare SwissProt text and uniprot XML versions of several examples."""
         txt_list = list(SeqIO.parse("SwissProt/multi_ex.txt", "swiss"))
@@ -343,7 +387,7 @@ class TestUniprot(unittest.TestCase):
         self.assertEqual(len(txt_list), len(xml_list))
         for txt, xml, fas, id in zip(txt_list, xml_list, fas_list, ids):
             self.assertEqual(txt.id, id)
-            self.assertTrue(txt.id in fas.id.split("|"))
+            self.assertIn(txt.id, fas.id.split("|"))
             self.assertEqual(str(txt.seq), str(fas.seq))
             self.compare_txt_xml(txt, xml)
 
@@ -367,6 +411,13 @@ class TestUniprot(unittest.TestCase):
             compare_record(old, new)
         txt_index.close()
         xml_index.close()
+
+    def test_submittedName_allowed(self):
+        """Checks if parser supports new XML Element (submittedName)."""
+        for entry in SeqIO.parse(open("SwissProt/R5HY77.xml"), "uniprot-xml"):
+            self.assertEqual(entry.id, "R5HY77")
+            self.assertEqual(entry.description, "Elongation factor Ts")
+
 
 if __name__ == "__main__":
     runner = unittest.TextTestRunner(verbosity=2)

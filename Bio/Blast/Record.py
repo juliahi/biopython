@@ -1,8 +1,9 @@
 # Copyright 1999-2000 by Jeffrey Chang.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
-
+#
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 """Record classes to hold BLAST output.
 
 Classes:
@@ -42,7 +43,9 @@ class Header(object):
     database_letters    Number of letters in the database.  (int)
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.application = ''
         self.version = ''
         self.date = ''
@@ -66,7 +69,9 @@ class Description(object):
     e               E value.  (float)
     num_alignments  Number of alignments for the same subject.  (int)
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.title = ''
         self.score = None
         self.bits = None
@@ -88,7 +93,9 @@ class Alignment(object):
     hsps       A list of HSP objects.
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.title = ''
         self.hit_id = ''
         self.hit_def = ''
@@ -149,7 +156,9 @@ class HSP(object):
     query_start and counts down.
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.score = None
         self.bits = None
         self.expect = None
@@ -208,7 +217,9 @@ class MultipleAlignment(object):
     not aligned in the multiple alignment.
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.alignment = []
 
     def to_generic(self, alphabet):
@@ -257,7 +268,9 @@ class Round(object):
     alignments          A list of Alignment objects.
     multiple_alignment  A MultipleAlignment object.
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.number = None
         self.reused_seqs = []
         self.new_seqs = []
@@ -278,7 +291,9 @@ class DatabaseReport(object):
     ka_params_gap              A tuple of (lambda, k, h) values.  (floats)
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.database_name = []
         self.posted_date = []
         self.num_letters_in_database = []
@@ -321,7 +336,9 @@ class Parameters(object):
     gap_trigger         Tuple of (score, bits).  (int, float)
     blast_cutoff        Tuple of (score, bits).  (int, float)
     """
+
     def __init__(self):
+        """Initialize the class."""
         self.matrix = ''
         self.gap_penalties = (None, None)
         self.sc_match = None
@@ -363,7 +380,9 @@ class Blast(Header, DatabaseReport, Parameters):
     + members inherited from base classes
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         Header.__init__(self)
         DatabaseReport.__init__(self)
         Parameters.__init__(self)
@@ -381,7 +400,9 @@ class PSIBlast(Header, DatabaseReport, Parameters):
     + members inherited from base classes
 
     """
+
     def __init__(self):
+        """Initialize the class."""
         Header.__init__(self)
         DatabaseReport.__init__(self)
         Parameters.__init__(self)

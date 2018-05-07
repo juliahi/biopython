@@ -1,9 +1,11 @@
 # Copyright 1999 by Jeffrey Chang.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its
-# license.  Please see the LICENSE file that should have been included
-# as part of this package.
+#
+# This file is part of the Biopython distribution and governed by your
+# choice of the "Biopython License Agreement" or the "BSD 3-Clause License".
+# Please see the LICENSE file that should have been included as part of this
+# package.
 
-"""Index.py
+"""Index text files.
 
 This module provides a way to create indexes to text files.
 
@@ -27,9 +29,8 @@ except ImportError:
 
 
 class _ShelveIndex(dict):
-    """An index file wrapped around shelve.
+    """An index file wrapped around shelve."""
 
-    """
     # Without a good dbm module installed, this is pretty slow and
     # generates large files.  When generating an index on a FASTA-
     # formatted file with 82000 sequences (37Mb), the
@@ -72,9 +73,8 @@ class _ShelveIndex(dict):
 
 
 class _InMemoryIndex(dict):
-    """This creates an in-memory index file.
+    """Creates an in-memory index file (PRIVATE)."""
 
-    """
     # File Format:
     # version
     # key value
@@ -146,5 +146,6 @@ class _InMemoryIndex(dict):
         intlist = [int(i) for i in str.split(',')]
         intlist = array.array('b', intlist)
         return pickle.loads(''.join(chr(i) for i in intlist))
+
 
 Index = _InMemoryIndex

@@ -5,22 +5,20 @@
 
 """Bio.SearchIO base classes for HMMER-related code."""
 
-from Bio._py3k import _as_bytes
 from Bio.SearchIO._index import SearchIndexer
 
 
 class _BaseHmmerTextIndexer(SearchIndexer):
-
     """Base indexer class for HMMER plain text output."""
 
     def __init__(self, *args, **kwargs):
         super(_BaseHmmerTextIndexer, self).__init__(*args, **kwargs)
-        self._preamble = _as_bytes('')
+        self._preamble = b""
 
     def get_raw(self, offset):
         """Return the raw record from the file as a bytes string."""
         handle = self._handle
-        qresult_raw = _as_bytes('')
+        qresult_raw = b""
 
         # read header first
         if not self._preamble:

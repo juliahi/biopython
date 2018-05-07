@@ -1,11 +1,15 @@
 # Copyright 2014 Joe Cora.
+# Revisions copyright 2017 Peter Cock.
 # All rights reserved.
 # This code is part of the Biopython distribution and governed by its
 # license.  Please see the LICENSE file that should have been included
 # as part of this package.
-"""Provides objects to represent NEXUS standard data type matrix coding.
-"""
+"""Objects to represent NEXUS standard data type matrix coding."""
 from __future__ import print_function
+
+import sys
+
+from Bio._py3k import basestring
 
 
 class NexusError(Exception):
@@ -18,7 +22,9 @@ class StandardData(object):
     Each coding specifies t [type] => (std [standard], multi [multistate] or
     uncer [uncertain]) and d [data]
     """
+
     def __init__(self, data):
+        """Initialize the class."""
         self._data = []
         self._current_pos = 0
 
@@ -71,7 +77,7 @@ class StandardData(object):
             coding_list = {'t': 'std', 'd': []}
 
     def __len__(self):
-        """Returns the length of the coding, use len(my_coding)."""
+        """Return the length of the coding, use len(my_coding)."""
         return len(self._data)
 
     def __getitem__(self, arg):
@@ -80,22 +86,27 @@ class StandardData(object):
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
         try:
             return_coding = self._data[self._current_pos]
-        except:
+        except IndexError:
             self._current_pos = 0
             raise StopIteration
         else:
             self._current_pos += 1
             return return_coding
 
+    if sys.version_info[0] < 3:
+        def next(self):
+            """Return next item, deprecated Python 2 style alias for Python 3 style __next__ method."""
+            return self.__next__()
+
     def raw(self):
-        """Returns the full coding as a python list."""
+        """Return the full coding as a python list."""
         return self._data
 
     def __str__(self):
-        """Returns the full coding as a python string, use str(my_coding)."""
+        """Return the full coding as a python string, use str(my_coding)."""
         str_return = ''
         for coding in self._data:
             if coding['t'] == 'multi':

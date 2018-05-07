@@ -1,7 +1,8 @@
 # Copyright 2012 by Eric Talevich.  All rights reserved.
-# This code is part of the Biopython distribution and governed by its license.
-# Please see the LICENSE file that should have been included as part of this
-# package.
+#
+# This code is part of the Biopython distribution and governed by its
+# license.  Please see the LICENSE file that should have been included
+# as part of this package.
 """Command-line wrapper for the tree inference program RAxML.
 
 Derived from the help page for RAxML version 7.3 by Alexandros Stamatakis, but
@@ -20,8 +21,17 @@ class RaxmlCommandline(AbstractCommandline):
     The parameter 'parsimony_seed' (-p) must also be set for RAxML, but if you
     do not specify it, this wrapper will set the seed to 10000 for you.
 
-    Example:
+    References
+    ----------
+    Stamatakis A.
+    RAxML-VI-HPC: Maximum Likelihood-based Phylogenetic Analyses with
+    Thousands of Taxa and Mixed Models.
+    Bioinformatics 2006, 22(21):2688-2690.
 
+    Homepage: http://sco.h-its.org/exelixis/software.html
+
+    Examples
+    --------
     >>> from Bio.Phylo.Applications import RaxmlCommandline
     >>> raxml_cline = RaxmlCommandline(sequences="Tests/Phylip/interlaced2.phy",
     ...                                model="PROTCATWAG", name="interlaced2")
@@ -31,17 +41,10 @@ class RaxmlCommandline(AbstractCommandline):
     You would typically run the command line with raxml_cline() or via
     the Python subprocess module, as described in the Biopython tutorial.
 
-    Citation:
-
-    Stamatakis A.
-    RAxML-VI-HPC: Maximum Likelihood-based Phylogenetic Analyses with
-    Thousands of Taxa and Mixed Models.
-    Bioinformatics 2006, 22(21):2688-2690.
-
-    Homepage: http://sco.h-its.org/exelixis/software.html
     """
 
     def __init__(self, cmd='raxmlHPC', **kwargs):
+        """Initialize the class."""
         self.parameters = [
                 _Option(['-a', 'weight_filename'],
                         "Name of a column weight file to assign individual weights "

@@ -37,11 +37,23 @@ dna_alphas = [Alphabet.generic_dna]
 rna_alphas = [Alphabet.generic_rna]
 nucleotide_alphas = [Alphabet.generic_nucleotide,
                      Alphabet.Gapped(Alphabet.generic_nucleotide)]
-no_alpha_formats = ["fasta", "clustal", "phylip", "phylip-relaxed",
-                    "phylip-sequential", "tab", "ig",
-                    "stockholm", "emboss", "fastq", "fastq-solexa",
-                    "fastq-illumina", "qual"]
-possible_unknown_seq_formats = ["qual", "genbank", "gb", "embl", "imgt"]
+no_alpha_formats = set([
+    'clustal',
+    'emboss',
+    'fasta', 'fasta-2line',
+    'fastq', 'fastq-illumina', 'fastq-solexa',
+    'ig',
+    'phylip', 'phylip-relaxed', 'phylip-sequential',
+    'qual',
+    'stockholm',
+    'tab',
+])
+possible_unknown_seq_formats = set([
+    "embl",
+    "genbank", "gb",
+    "imgt",
+    "qual",
+])
 
 # List of formats including alignment only file formats we can read AND write.
 # The list is initially hard coded to preserve the original order of the unit
@@ -80,6 +92,8 @@ test_files = [
     ("fasta", False, 'Fasta/lavender.nu', 1),
     # Following protein examples are also used in test_SeqIO_FastaIO.py
     ("fasta", False, 'Fasta/aster.pro', 1),
+    ("fasta", False, 'Fasta/aster_no_wrap.pro', 1),
+    ("fasta-2line", False, 'Fasta/aster_no_wrap.pro', 1),
     ("fasta", False, 'Fasta/loveliesbleeding.pro', 1),
     ("fasta", False, 'Fasta/rose.pro', 1),
     ("fasta", False, 'Fasta/rosemary.pro', 1),
@@ -172,12 +186,14 @@ test_files = [
     ("embl", False, 'EMBL/AAA03323.embl', 1),  # 2008, PA line but no AC
     ("embl", False, 'EMBL/AE017046.embl', 1),  # See also NC_005816.gb
     ("embl", False, 'EMBL/Human_contigs.embl', 2),  # contigs, no sequences
+    ("embl", False, 'EMBL/kipo_prt_sample.embl', 20),  # Alt. patent ID line
     # wrapped locations and unspecified type
     ("embl", False, 'EMBL/location_wrap.embl', 1),
     # features over indented for EMBL
     ("embl", False, 'EMBL/A04195.imgt', 1),
     # features over indented for EMBL
     ("imgt", False, 'EMBL/A04195.imgt', 1),
+    ("imgt", False, 'EMBL/hla_3260_sample.imgt', 8),
     ("stockholm", True, 'Stockholm/simple.sth', 2),
     ("stockholm", True, 'Stockholm/funny.sth', 6),
     # Following PHYLIP files are currently only used here and in test_AlignIO.py,
@@ -243,9 +259,11 @@ class ForwardOnlyHandle(object):
     """Mimic a network handle without seek and tell methods etc."""
 
     def __init__(self, handle):
+        """Initialize."""
         self._handle = handle
 
     def __iter__(self):
+        """Iterate."""
         return iter(self._handle)
 
     def read(self, length=None):
@@ -262,7 +280,7 @@ class ForwardOnlyHandle(object):
 
 
 def compare_record(record_one, record_two):
-    """This is meant to be a strict comparison for exact agreement..."""
+    """Attempt strict SeqRecord comparison."""
     assert isinstance(record_one, SeqRecord)
     assert isinstance(record_two, SeqRecord)
     assert record_one.seq is not None
@@ -425,10 +443,10 @@ def check_simple_write_read(records, indent=" "):
             elif format == "clustal":
                 assert r1.id.replace(" ", "_")[:30] == r2.id, \
                     "'%s' vs '%s'" % (r1.id, r2.id)
-            elif format == "stockholm":
+            elif format in ["stockholm", "maf"]:
                 assert r1.id.replace(" ", "_") == r2.id, \
                     "'%s' vs '%s'" % (r1.id, r2.id)
-            elif format == "fasta":
+            elif format in ["fasta", "fasta-2line"]:
                 assert r1.id.split()[0] == r2.id
             else:
                 assert r1.id == r2.id, \
