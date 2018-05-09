@@ -68,11 +68,18 @@ GAF10FIELDS = ['DB',
         'Assigned_By'] 
 
 GAF_VERSION = { "1.0" : GAF10FIELDS,
-                "2.0" : GAF20FIELDS}
+                "2.0" : GAF20FIELDS,
+                "2.1" : GAF20FIELDS}
 
 def _split_multi(value):
     if len(value) > 0:
         return value.split('|')
+    else:
+        return []
+
+def _split_multi21(value):  # for extension in version 2.1, where field 8: "With" have 2 types of separators
+    if len(value) > 0:
+        return value.split('|,')
     else:
         return []
 
@@ -97,7 +104,18 @@ def _to_goa(obj_rows, version):
     assocs = []
     for row in obj_rows:
         if len(row) == row_len:
-            assocs.append(TermAssociation(row[4],
+            if version == '2.1':
+                assocs.append(TermAssociation(row[4],
+                                       {GAF20FIELDS[3] : _split_multi(row[3]),
+                                        GAF20FIELDS[5] : _split_multi(row[5]),
+                                        GAF20FIELDS[6] : row[6],
+                                        GAF20FIELDS[7] :_split_multi21(row[7]),
+                                        GAF20FIELDS[8] : row[8],
+                                        GAF20FIELDS[13] : row[13],
+                                        GAF20FIELDS[14] : row[14]}
+                                          ))
+            else:
+                assocs.append(TermAssociation(row[4],
                                        {GAF20FIELDS[3] : _split_multi(row[3]),
                                         GAF20FIELDS[5] : _split_multi(row[5]),
                                         GAF20FIELDS[6] : row[6],
